@@ -61,9 +61,9 @@ void enqueue(Queue *Q, ElType X)
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam Tab melingkar. */
 
-ElType dequeue(Queue *Q)
+void dequeue(Queue *Q, ElType *X)
 {
-    ElType val = HEAD(*Q);
+    *X = HEAD(*Q);
     if (IDX_HEAD(*Q) == IDX_TAIL(*Q))
     {
         IDX_HEAD(*Q) = IDX_UNDEF;
@@ -73,7 +73,6 @@ ElType dequeue(Queue *Q)
     {
         IDX_HEAD(*Q) = ((IDX_HEAD(*Q) + 1) % (IDX_MAX + 1));
     }
-    return val;
 }
 /* Proses: Menghapus val pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
