@@ -1,2 +1,0 @@
-test:
-	gcc -o main driver.c queue_linked.c
