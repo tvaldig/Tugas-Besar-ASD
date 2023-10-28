@@ -10,12 +10,12 @@ typedef int ElType;
 typedef struct node *Address;
 typedef struct node {
     ElType info;
-    address next;
+    Address next;
 }Node;
 
 typedef struct {
-    address addrHead;
-    address addrTail;
+    Address addrHead;
+    Address addrTail;
 } Queue;
 
 #define NEXT(p) (p)->next
@@ -45,7 +45,10 @@ void enqueue (Queue *q, ElType x);
 /* I.S. q mungkin kosong */
 /* F.S. x menjadi Tail, Tail"maju" */
 
-void dequeue (Queue *q, ElType x);
+void dequeue (Queue *q, ElType *x);
 /* Proses: Menghapus x pada bagian HEAD dari q dan mendealokasi elemen HEAD */
 /* Pada dasarnya operasi deleteFirst */
-/* */
+/* I.S. q tidak mungkin kosong */
+/* F.S. x = nilai elemen HEAD pada I.S., HEAD "mundur"*/
+
+#endif
