@@ -1,7 +1,7 @@
 all : run clean
 
-driver: circular_queue.h driver-test-queue.c circular_queue.c
-	gcc -o main driver-test-queue.c circular_queue.c
+driver: circular_queue.h driver-queue.c circular_queue.c
+	gcc -o main driver-queue.c circular_queue.c
 
 run: driver
 	./main.exe
