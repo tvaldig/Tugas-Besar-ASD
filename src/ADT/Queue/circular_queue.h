@@ -5,10 +5,10 @@
 #ifndef __circular_queue_h__
 #define __circular_queue_h__
 
-#include "boolean.h"
+#include "../../boolean.h"
 
 #define IDX_UNDEF -1
-#define IDX_MAX 9
+#define IDX_MAX 99
 
 /* Definisi tipe elemen dan indeks pada Queue */
 typedef int ElType;
@@ -52,7 +52,7 @@ void enqueue(Queue *Q, ElType X);
 /* F.S. Tail "maju" dengan mekanisme circular buffer,
         X menjadi idxTail yang baru
         Jika Q kosong, idxHead dimulai dari 0 */
-ElType dequeue(Queue *Q);
+void dequeue(Queue *Q, ElType *X);
 /* Proses: Menghapus idxHead pada Q dengan aturan FIFO, lalu mengembalikan nilainya */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. mengembalikan nilai Q pada idxHead;
