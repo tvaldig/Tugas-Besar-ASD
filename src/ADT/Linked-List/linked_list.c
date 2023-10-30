@@ -14,7 +14,7 @@
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty(List L)
+boolean IsEmptyLinkedList(List L)
 {
     /* Mengirim true jika list kosong */
     return (First(L) == Nil);
@@ -29,7 +29,7 @@ void CreateEmpty(List *L)
 }
 
 /****************** Manajemen Memori ******************/
-address Alokasi(infotype X)
+address alokasi(infotype X)
 {
     /* Mengirimkan address hasil alokasi sebuah elemen */
     /* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
@@ -57,7 +57,7 @@ void Dealokasi(address *P)
     free(*P);
 }
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search(List L, infotype X)
+address search(List L, infotype X)
 {
     /* Mencari apakah ada elemen list dengan Info(P)= X */
     /* Jika ada, mengirimkan address elemen tersebut. */
@@ -66,7 +66,7 @@ address Search(List L, infotype X)
     boolean found = false;
     address elmt = First(L);
 
-    if (!IsEmpty(L))
+    if (!IsEmptyLinkedList(L))
     {
         while ((!found) && (elmt != Nil))
         {
@@ -153,7 +153,7 @@ void InsertLast(List *L, address P)
 {
     /* I.S. Sembarang, P sudah dialokasi  */
     /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
-    if (IsEmpty(*L))
+    if (IsEmptyLinkedList(*L))
     {
         InsertFirst(L, P);
     }
@@ -257,7 +257,7 @@ void PrintInfo(List L)
     /* Jika list kosong : menulis [] */
     /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
     printf("[");
-    if (!IsEmpty(L))
+    if (!IsEmptyLinkedList(L))
     {
         address P = First(L);
         do
@@ -271,11 +271,11 @@ void PrintInfo(List L)
     printf("]");
 }
 
-int NbElmt(List L)
+int NbElmtLinkedList(List L)
 {
     /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
     int count = 0;
-    if (!IsEmpty(L))
+    if (!IsEmptyLinkedList(L))
     {
         address P = First(L);
         while (Next(P) != Nil)
@@ -316,7 +316,7 @@ void Konkat1(List *L1, List *L2, List *L3)
     address X;
 
     CreateEmpty(L3);
-    if (!IsEmpty(*L1))
+    if (!IsEmptyLinkedList(*L1))
     {
         address P = First(*L1);
         First(*L3) = P;

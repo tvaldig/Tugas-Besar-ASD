@@ -1,7 +1,7 @@
 
 
 #include <stdio.h>
-#include "boolean.h"
+#include "../../boolean.h"
 #include "mesinkarakter.h"
 
 char currentChar;

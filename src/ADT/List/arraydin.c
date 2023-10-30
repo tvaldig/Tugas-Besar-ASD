@@ -20,7 +20,7 @@ void DeallocateArrayDin(ArrayDin *array)
     (*array).Neff = 0;
 }
 
-boolean IsEmpty(ArrayDin array)
+boolean IsEmptyArrayDin(ArrayDin array)
 {
     return array.Neff == 0;
 }

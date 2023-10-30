@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include "boolean.h"
+#include "../../boolean.h"
 #include "mesinkata.h"
 Word currentWord;
 boolean EndWord;
