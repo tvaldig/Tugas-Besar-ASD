@@ -5,7 +5,7 @@
     array
 */
 #include "array.h"
-#include "boolean.h"
+#include "../../boolean.h"
 #include <stdio.h>
 /* Indeks yang digunakan [IdxMin..IdxMax] */
 /* Jika T adalah TabInt, cara deklarasi dan akses: */
@@ -109,7 +109,7 @@ boolean IsIdxEff(TabInt T, IdxType i)
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
-boolean IsEmpty(TabInt T)
+boolean IsEmptyArray(TabInt T)
 {
     return NbElmt(T) == 0;
 }
@@ -124,7 +124,7 @@ boolean IsFull(TabInt T)
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsi(TabInt T)
 {
-    if (IsEmpty(T))
+    if (IsEmptyArray(T))
     {
         printf("Tabel kosong\n");
     }

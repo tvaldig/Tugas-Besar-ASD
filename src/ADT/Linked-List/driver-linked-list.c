@@ -19,11 +19,11 @@ int main(){
     printf("INFO dari node baru: %d\n", Info(p));
     printf("NEXT dari node baru: %d\n\n", Next(p));
 
-    /* Test CreateEmpty dan IsEmpty */
+    /* Test CreateEmpty dan IsEmptyLinkedList */
     delayoutput();
     List temp, temp2, hasil;
     CreateEmpty(&temp);
-    if(IsEmpty(temp)){
+    if(IsEmptyLinkedList(temp)){
         printf("List kosong berhasil dibuat\n\n");
     }
 
@@ -52,7 +52,7 @@ int main(){
     InsertAfter(&temp, new, p);
     PrintInfo(temp);
     printf("\n");
-    printf("Jumlah elemen dalam list: %d\n", NbElmt(temp));
+    printf("Jumlah elemen dalam list: %d\n", NbElmtLinkedList(temp));
     printf("Nilai maksiumum dalam list: %d\n\n", Max(temp));
 
     /* Tes Konkat */
