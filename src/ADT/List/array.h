@@ -87,7 +87,7 @@ boolean IsIdxEff(TabInt T, IdxType i);
 boolean IsEmptyArray(TabInt T);
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFull(TabInt T);
+boolean IsFullArray(TabInt T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */

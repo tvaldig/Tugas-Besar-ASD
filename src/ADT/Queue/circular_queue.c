@@ -13,12 +13,12 @@ void CreateQueue(Queue *Q)
 /* Proses : Melakukan alokasi, membuat sebuah Q kosong */
 
 /* ********* Prototype ********* */
-boolean IsEmpty(Queue Q)
+boolean IsEmptyQueue(Queue Q)
 {
     return (IDX_HEAD(Q) == IDX_UNDEF) && (IDX_TAIL(Q) == IDX_UNDEF);
 }
 /* Mengirim true jika Q kosong: lihat definisi di atas */
-boolean IsFull(Queue Q)
+boolean IsFullQueue(Queue Q)
 {
     return Length(Q) == IDX_MAX + 1;
 }

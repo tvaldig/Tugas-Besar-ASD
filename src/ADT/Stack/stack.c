@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void CreateEmpty(Stack *S)
+void CreateEmptyStack(Stack *S)
 {
-    S->TOP = Nil;
+    S->TOP = NIL;
 }
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
@@ -14,7 +14,7 @@ void CreateEmpty(Stack *S)
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsEmpty(Stack S)
 {
-    return S.TOP == Nil;
+    return S.TOP == NIL;
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 boolean IsFull(Stack S)

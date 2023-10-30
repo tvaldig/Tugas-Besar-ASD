@@ -25,7 +25,7 @@ boolean IsEmptyArrayDin(ArrayDin array)
     return array.Neff == 0;
 }
 
-int Length(ArrayDin array)
+int LengthArrayDin(ArrayDin array)
 {
     return array.Neff;
 }
