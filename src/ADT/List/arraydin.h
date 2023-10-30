@@ -67,4 +67,9 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i);
  */
 void DeleteAt(ArrayDin *array, IdxType i);
 
+void InsertFirstArrayDin(ArrayDin *array, ElType el);
+
+void InsertLastArrayDin(ArrayDin *array, ElType el);
+
+
 #endif

@@ -35,7 +35,7 @@ boolean IsEmptyQueue(Queue Q);
 boolean IsFullQueue(Queue Q);
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu ketika idxHead=0 dan idxTail=IDX_MAX atau idxHead=idxTail+1 ketika idxHead > idxTail */
-int Length(Queue Q);
+int LengthQueue(Queue Q);
 /* Mengirimkan banyaknya elemen Q, 0 jika kosong */
 
 /* *** Kreator *** */

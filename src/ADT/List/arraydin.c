@@ -60,7 +60,7 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i)
     (*array).A[i] = el;
     (*array).Neff++;
 }
-void InsertLast(ArrayDin *array, ElType el)
+void InsertLastArrayDin(ArrayDin *array, ElType el)
 {
     return InsertAt(array, el, array->Neff);
 }
@@ -69,7 +69,7 @@ void InsertLast(ArrayDin *array, ElType el)
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el)
+void InsertFirstArrayDin(ArrayDin *array, ElType el)
 {
     return InsertAt(array, el, 0);
 }
