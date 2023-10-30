@@ -3,7 +3,9 @@
 #include "../../boolean.h"
 #include "mesinkata.h"
 Word currentWord;
+Word currentCommand;
 boolean EndWord;
+boolean EndCommand;
 
 void IgnoreBlanks()
 {
@@ -74,3 +76,55 @@ void CopyWord()
           currentChar = BLANK atau currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+
+void STARTCOMMAND(){
+    START();
+    IgnoreBlanks();
+    if(currentChar == ENTER){
+        EndCommand = true;
+    } else {
+        EndCommand = false;
+        ADVCOMMAND();
+    }
+}
+
+void ADVCOMMAND()
+{
+    if (currentChar == ENTER && !EndCommand)
+    {
+        EndCommand= true;
+    }
+    else
+    {
+        CopyCommand();
+    }
+}
+
+void CopyCommand()
+{
+    int i = 0;
+    while (currentChar != MARK && currentChar != ENTER)
+    {
+        if (i < NMax)
+        {
+            currentCommand.TabWord[i] = currentChar;
+            i++;
+        }
+        ADV();
+    }
+    currentCommand.Length = i;
+
+
+}
+void ConvertWordToString(Word *word, char *output)
+{
+    int i = 0;
+    while(i < word->Length){
+        output[i] = word->TabWord[i];
+        i++;
+        if(i == word->Length){
+            output[i] = '\0';
+        }
+    }
+   
+}
