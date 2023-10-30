@@ -1,11 +1,11 @@
 
-
 #include <stdio.h>
-#include "boolean.h"
+#include "../../boolean.h"
 #include "mesinkarakter.h"
 
 char currentChar;
 boolean EOP;
+boolean finish;
 static FILE *pita;
 static int retval;
 
@@ -13,6 +13,10 @@ void START()
 {
     pita = stdin;
     ADV();
+    if (EOP)
+    {
+        printf("tes terminal selesai");
+    }
 }
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
@@ -25,11 +29,8 @@ void START()
 void ADV()
 {
     retval = fscanf(pita, "%c", &currentChar);
-    EOP = currentChar == MARK;
-    if (EOP)
-    {
-        fclose(pita);
-    }
+    EOP = currentChar == ENTER;
+   
 }
 
 /* Pita dimajukan satu karakter.
