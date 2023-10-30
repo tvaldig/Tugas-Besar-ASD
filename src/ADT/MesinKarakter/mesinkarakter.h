@@ -4,12 +4,14 @@
 #ifndef __MESIN_KAR_H_
 #define __MESIN_KAR_H_
 
-#include "boolean.h"
+#include "../../boolean.h"
 
 #define MARK '.'
+#define ENTER '\n'
 /* State Mesin */
 extern char currentChar;
 extern boolean EOP;
+extern boolean finish;
 
 void START();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
