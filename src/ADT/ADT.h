@@ -3,7 +3,7 @@
 
 #include "./Linked-List/linked_list.h"
 #include "./List/array.h"
-#include "./List-Dinamis/arraydin.h"
+#include "./List/arraydin.h"
 #include "./MesinKarakter/mesinkarakter.h"
 #include "./MesinKata/mesinkata.h"
 #include "./Queue/circular_queue.h"
