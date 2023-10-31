@@ -6,7 +6,7 @@
 
 #include "../../boolean.h"
 #include "../MesinKarakter/mesinkarakter.h"
-#define NMax 50
+#define NMax 100
 #define BLANK ' '
 
 typedef struct
@@ -55,12 +55,14 @@ void CopyCommand();
 
 void STARTFROMFILE(char *file);
 
-void ADVFROMFILE();
+void ADVOnEnter();
 
-void COPYFROMFILE();
+void COPYFILE();
 
 void IgnoreBlankFile();
-/* PRIMITIF CONVERTER WORD ATAU STRING*/
+
+void displayWord(Word w);
+    /* PRIMITIF CONVERTER WORD ATAU STRING*/
 void ConvertWordToString(Word *word, char *output);
 
 boolean IsStringEqual(char str1[], char str2[]);

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "start.h"
 
-void startFunction(){
-    
+void startFunction(TabInt *T){
+    STARTFROMFILE("../save/new.txt");
+    displayWord(currentWord);
 }

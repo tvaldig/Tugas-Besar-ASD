@@ -118,7 +118,7 @@ void CopyCommand()
 }
 
 
-void IgnoreBlankFile();
+
 
 void ConvertWordToString(Word *word, char *output)
 {
@@ -148,49 +148,46 @@ boolean IsStringEqual(char str1[], char str2[])
     if (equal)
         return true;
     else
-        false;
+        return false;
 }
 
 void STARTFROMFILE(char *file){
     finish = false;
-    startFromFile(file);
-    copywFile();
+    STARTFILE(file);
+    COPYFILE();
+} 
+
+void ADVOnEnter(){
+
 }
 
-void ADVFROMFILE(){
-    Word EMPTY = {"", 0};
-    currentWord = EMPTY;
-    if (currentChar == ENTER)
-    {
-        EndWord = false;
-        advFile();
-        copywFile();
-    }
-}
-
-void COPYFROMFILE(){
+void COPYFILE(){
     int i = 0;
-    while (currentChar != ENTER && !finish)
+    while (!finish)
     {
         if (i < NMax)
         {
             currentWord.TabWord[i] = currentChar;
             i++;
-            advFile();
+            ADVFILE();
         }
     }
-    if (i > NMax)
-    {
-        currentWord.Length = NMax;
-    }
-    else
-    {
         currentWord.Length = i;
-    }
+    
 }
 
 void IgnoreBlankFile(){
-    while(currentChar== BLANK){
-        ADVFROMFILE();   
+    while(currentChar == BLANK){
+        ADVFILE();   
     }
+}
+
+void displayWord(Word w)
+{
+    int i;
+    for (i = 0; i < w.Length; i++)
+    {
+        printf("%c", w.TabWord[i]);
+    }
+    printf("\n");
 }

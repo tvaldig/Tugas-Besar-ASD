@@ -10,5 +10,5 @@
 #include "../../ADT/Queue/circular_queue.h"
 #include "../../ADT/Stack/stack.h"
 
-void startFunction();
+void startFunction(TabInt *T);
 #endif

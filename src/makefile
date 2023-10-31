@@ -1,9 +1,10 @@
+
 all: run clean
 
-driver: main.c 
-	gcc -o main driver-linked-list.c linked_list.c
+test: main.c COMMANDS/welcomeMenu/welcomemenu.c COMMANDS/start/start.c ADT/MesinKata/mesinkata.c ADT/MesinKarakter/mesinkarakter.c
+	gcc -o main main.c COMMANDS/welcomeMenu/welcomemenu.c COMMANDS/start/start.c ADT/MesinKata/mesinkata.c ADT/MesinKarakter/mesinkarakter.c
 
-run: driver
+run: test
 	./main.exe
 
 clean:

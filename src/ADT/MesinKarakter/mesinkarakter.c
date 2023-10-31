@@ -59,7 +59,6 @@ void STARTFILE(char *str)
 {
     finish = false;
     pita = fopen(str, "r");
-
     ADVFILE();
 }
 
@@ -70,4 +69,4 @@ void ADVFILE(){
         fclose(pita);
         finish = true;
     }
-}
+}  
