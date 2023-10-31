@@ -13,21 +13,21 @@ void CreateQueue(Queue *Q)
 /* Proses : Melakukan alokasi, membuat sebuah Q kosong */
 
 /* ********* Prototype ********* */
-boolean IsEmpty(Queue Q)
+boolean IsEmptyQueue(Queue Q)
 {
     return (IDX_HEAD(Q) == IDX_UNDEF) && (IDX_TAIL(Q) == IDX_UNDEF);
 }
 /* Mengirim true jika Q kosong: lihat definisi di atas */
-boolean IsFull(Queue Q)
+boolean IsFullQueue(Queue Q)
 {
-    return Length(Q) == IDX_MAX + 1;
+    return LengthQueue(Q) == IDX_MAX + 1;
 }
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam Tab melingkar*/
 
-int Length(Queue Q)
+int LengthQueue(Queue Q)
 {
-    if (IsEmpty(Q))
+    if (IsEmptyQueue(Q))
     {
         return 0;
     }
@@ -45,7 +45,7 @@ int Length(Queue Q)
 /* *** Primitif Add/Delete *** */
 void enqueue(Queue *Q, ElType X)
 {
-    if (IsEmpty(*Q))
+    if (IsEmptyQueue(*Q))
     {
         IDX_HEAD(*Q) = 0;
         IDX_TAIL(*Q) = 0;
@@ -53,7 +53,7 @@ void enqueue(Queue *Q, ElType X)
     }
     else
     {
-        IDX_TAIL(*Q) = (IDX_HEAD(*Q) + Length(*Q)) % (IDX_MAX + 1);
+        IDX_TAIL(*Q) = (IDX_HEAD(*Q) + LengthQueue(*Q)) % (IDX_MAX + 1);
         TAIL(*Q) = X;
     }
 }
@@ -83,9 +83,9 @@ void dequeue(Queue *Q, ElType *X)
 void displayQueue(Queue Q)
 {
     printf("[");
-    if (!IsEmpty(Q))
+    if (!IsEmptyQueue(Q))
     {
-        for (int i = IDX_HEAD(Q); i < IDX_HEAD(Q) + Length(Q); i++)
+        for (int i = IDX_HEAD(Q); i < IDX_HEAD(Q) + LengthQueue(Q); i++)
         {
             printf("%d", Q.Tab[i % (IDX_MAX + 1)]);
             if (i % (IDX_MAX + 1) != IDX_TAIL(Q))

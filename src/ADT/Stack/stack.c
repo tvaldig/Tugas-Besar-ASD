@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void CreateEmpty(Stack *S)
+void CreateEmptyStack(Stack *S)
 {
-    S->TOP = Nil;
+    S->TOP = NIL;
 }
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
@@ -14,7 +14,7 @@ void CreateEmpty(Stack *S)
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsEmpty(Stack S)
 {
-    return S.TOP == Nil;
+    return S.TOP == NIL;
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 boolean IsFull(Stack S)
@@ -47,7 +47,7 @@ Stack validParantheses(char *input, int length)
 {
     Stack temp;
     int i = 0;
-    CreateEmpty(&temp);
+    CreateEmptyStack(&temp);
     while (i < length)
     {
         if (input[i] == '{')
@@ -77,54 +77,4 @@ Stack validParantheses(char *input, int length)
         i++;
     }
     return temp;
-}
-
-// JAWABAN PALINDROME TAHUN 2021
-int main()
-{
-    Stack s1, s2;
-    int x;
-    infotype y;
-    boolean palindrome = false;
-    CreateEmpty(&s1);
-    CreateEmpty(&s2);
-    scanf("%d", &x);
-    while (x != 0)
-    {
-        Push(&s1, x);
-        scanf("%d", &x);
-    }
-
-    if (Top(s1) == 0)
-    {
-        palindrome = true;
-    }
-    else if (Top(s1) == 1)
-    {
-        if (InfoTop(s1) == s1.T[0])
-        {
-            palindrome = true;
-        }
-    }
-    else
-    {
-        for (int i = 0; i < Top(s1) / 2; i++)
-        {
-            Push(&s2, InfoTop(s1));
-            Pop(&s1, &y);
-            if (s1.T[i] == s2.T[i])
-            {
-                palindrome = true;
-            }
-        }
-    }
-
-    if (palindrome)
-    {
-        printf("Angka palindrome");
-    }
-    else
-    {
-        printf("Bukan palindrome");
-    }
 }

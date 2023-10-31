@@ -15,7 +15,7 @@ int main(){
 
     printf("Sebuah queue sudah berhasil dibuat\n");
 
-    if(IsEmpty(temp)){
+    if(IsEmptyQueue(temp)){
         displayQueue(temp);
         printf("Queue tersebut kosong\n");
     }
@@ -51,7 +51,7 @@ int main(){
     delayoutput();
     printf("Proses dequeue semua elemen elemen\n");
 
-    while(!IsEmpty(temp)){
+    while(!IsEmptyQueue(temp)){
         dequeue(&temp, &input);
         printf("Berhasil didequeue, nilai dari HEAD: %d\n", input);
         displayQueue(temp);
@@ -62,7 +62,7 @@ int main(){
     /* Tes IsFull */
     delayoutput();
     int i = 1;
-    while(!IsFull(temp)){
+    while(!IsFullQueue(temp)){
         enqueue(&temp, i);
         i++;
     }

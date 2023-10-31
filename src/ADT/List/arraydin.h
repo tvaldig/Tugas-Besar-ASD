@@ -41,7 +41,7 @@ boolean IsEmptyArrayDin(ArrayDin array);
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ArrayDin array);
+int LengthArrayDin(ArrayDin array);
 
 /**
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
@@ -66,5 +66,10 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i);
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
 void DeleteAt(ArrayDin *array, IdxType i);
+
+void InsertFirstArrayDin(ArrayDin *array, ElType el);
+
+void InsertLastArrayDin(ArrayDin *array, ElType el);
+
 
 #endif

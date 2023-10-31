@@ -115,7 +115,7 @@ boolean IsEmptyArray(TabInt T)
 }
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFull(TabInt T)
+boolean IsFullArray(TabInt T)
 {
     return NbElmt(T) == MaxNbEl(T);
 }
