@@ -7,19 +7,19 @@
 
 #include "../../boolean.h"
 
-#define Nil -1
+#define NIL -1
 #define MaxEl 100
 /* Nil adalah stack dengan elemen kosong . */
 
 typedef int infotype;
-typedef int address; /* indeks tabel */
+typedef int idx; /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct
 {
     infotype T[MaxEl]; /* tabel penyimpan elemen */
-    address TOP;       /* alamat TOP: elemen puncak */
+    idx TOP;       /* alamat TOP: elemen puncak */
 } Stack;
 /* Definisi stack S kosong : S.TOP = Nil */
 /* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxEl-1] */
@@ -33,7 +33,7 @@ typedef struct
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
-void CreateEmpty(Stack *S);
+void CreateEmptyStack(Stack *S);
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0..MaxEl-1 (inklusif) */

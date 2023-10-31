@@ -90,7 +90,7 @@ void InsVFirst(List *L, infotype X)
     /* I.S. L mungkin kosong */
     /* F.S. Melakukan alokasi sebuah elemen dan */
     /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
-    address P = Alokasi(X);
+    address P = alokasi(X);
     if (P != Nil)
     {
         InsertFirst(L, P);
@@ -103,7 +103,7 @@ void InsVLast(List *L, infotype X)
     /* F.S. Melakukan alokasi sebuah elemen dan */
     /* menambahkan elemen list di akhir: elemen terakhir yang baru */
     /* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
-    address P = Alokasi(X);
+    address P = alokasi(X);
     if (P != Nil)
     {
         InsertLast(L, P);
@@ -196,7 +196,7 @@ void DelP(List *L, infotype X)
     /* maka yang dihapus hanya elemen pertama dengan Info = X */
     /* Jika tidak ada elemen list dengan Info(P)=X, maka list tetap */
     /* List mungkin menjadi kosong karena penghapusan */
-    address P = Search(*L, X);
+    address P = search(*L, X);
 
     if (P != Nil)
     {
