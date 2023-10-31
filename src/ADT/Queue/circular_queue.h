@@ -15,11 +15,10 @@
 typedef int IdxType;
 
 typedef struct{
-    IdxType penyanyiqueue;
-    IdxType albumqueue;
-    IdxType laguqueue;
+    IdxType penyanyi;
+    IdxType album;
+    IdxType lagu;
 } isiqueue;
-
 
 typedef struct
 {
@@ -32,12 +31,12 @@ typedef struct
 /* Jika q adalah Queue, maka akses elemen : */
 #define IDX_HEAD(q) (q).idxHead
 #define IDX_TAIL(q) (q).idxTail
-#define HEADPENYANYI(q) (q).Tab[(q).idxHead].penyanyiqueue
-#define HEADALBUM(q) (q).Tab[(q).idxHead].albumqueue
-#define HEADLAGU(q) (q).Tab[(q).idxHead].laguqueue
-#define TAILPENYANYI(q) (q).Tab[(q).idxTail].penyanyiqueue
-#define TAILALBUM(q) (q).Tab[(q).idxTail].albumqueue
-#define TAILLAGU(q) (q).Tab[(q).idxTail].laguqueue
+#define HEADPENYANYI(q) (q).Tab[(q).idxHead].penyanyi
+#define HEADALBUM(q) (q).Tab[(q).idxHead].album
+#define HEADLAGU(q) (q).Tab[(q).idxHead].lagu
+#define TAILPENYANYI(q) (q).Tab[(q).idxTail].penyanyi
+#define TAILALBUM(q) (q).Tab[(q).idxTail].album
+#define TAILLAGU(q) (q).Tab[(q).idxTail].lagu
 
 
 /* ********* Prototype ********* */

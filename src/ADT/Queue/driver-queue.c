@@ -9,7 +9,7 @@ void delayoutput(){
 }
 
 int main(){
-    /* Tes CreateQueue dan isEmpty */
+    /* Tes CreateQueue dan isEmptyStack */
     Queue temp;
     CreateQueue(&temp);
 
@@ -49,8 +49,8 @@ int main(){
     delayoutput();
     dequeue(&temp, &inputpenyanyi, &inputalbum, &inputlagu);
     printf("Berhasil didequeue, penyanyi: %d\n", inputpenyanyi);
-    printf("Berhasil didequeue, penyanyi: %d\n", inputalbum);
-    printf("Berhasil didequeue, penyanyi: %d\n", inputlagu);
+    printf("Berhasil didequeue, album: %d\n", inputalbum);
+    printf("Berhasil didequeue, lagu: %d\n", inputlagu);
 
     displayQueue(temp);
     printf("\n");
@@ -61,11 +61,12 @@ int main(){
     while(!IsEmptyQueue(temp)){
         dequeue(&temp, &inputpenyanyi, &inputalbum, &inputlagu);
         printf("Berhasil didequeue, penyanyi: %d\n", inputpenyanyi);
-        printf("Berhasil didequeue, penyanyi: %d\n", inputalbum);
-        printf("Berhasil didequeue, penyanyi: %d\n", inputlagu);
+        printf("Berhasil didequeue, album: %d\n", inputalbum);
+        printf("Berhasil didequeue, lagu: %d\n", inputlagu);
         printf("\n");
     }
 
+    displayQueue(temp);
     printf("\n");
 
 
