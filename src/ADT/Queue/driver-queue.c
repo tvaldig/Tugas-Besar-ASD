@@ -24,20 +24,20 @@ int main(){
     printf("Panjang Queue: %d\n\n", LengthQueue(temp));
 
     /* Tes enqueue */
-    Word inputpenyanyi;
-    Word inputalbum;
-    Word inputlagu;
+    IdxType inputpenyanyi;
+    IdxType inputalbum;
+    IdxType inputlagu;
 
     int n;
     printf("Masukkan berapa elemen yang mau diinput ke dalam queue: ");
     scanf("%d", &n);
     for(int i = 0; i<n; i++){ /* tes enqueue dengan 20 elemen */
         printf("Nama penyanyi yang mau dimasukkan ke dalam Queue: ");
-        scanf("%s", inputpenyanyi.TabWord);
+        scanf("%d", &inputpenyanyi);
         printf("Nama album yang mau dimasukkan ke dalam Queue: ");
-        scanf("%s", inputalbum.TabWord);
+        scanf("%d", &inputalbum);
         printf("Nama lagu yang mau dimasukkan ke dalam Queue: ");
-        scanf("%s", inputlagu.TabWord);
+        scanf("%d", &inputlagu);
         enqueue(&temp, inputpenyanyi, inputalbum, inputlagu);
     }
 
@@ -48,9 +48,9 @@ int main(){
     /* Tes dequeue */
     delayoutput();
     dequeue(&temp, &inputpenyanyi, &inputalbum, &inputlagu);
-    printf("Berhasil didequeue, penyanyi: %s\n", inputpenyanyi.TabWord);
-    printf("Berhasil didequeue, penyanyi: %s\n", inputalbum.TabWord);
-    printf("Berhasil didequeue, penyanyi: %s\n", inputlagu.TabWord);
+    printf("Berhasil didequeue, penyanyi: %d\n", inputpenyanyi);
+    printf("Berhasil didequeue, penyanyi: %d\n", inputalbum);
+    printf("Berhasil didequeue, penyanyi: %d\n", inputlagu);
 
     displayQueue(temp);
     printf("\n");
@@ -60,9 +60,9 @@ int main(){
 
     while(!IsEmptyQueue(temp)){
         dequeue(&temp, &inputpenyanyi, &inputalbum, &inputlagu);
-        printf("Berhasil didequeue, penyanyi: %s\n", inputpenyanyi.TabWord);
-        printf("Berhasil didequeue, penyanyi: %s\n", inputalbum.TabWord);
-        printf("Berhasil didequeue, penyanyi: %s\n", inputlagu.TabWord);
+        printf("Berhasil didequeue, penyanyi: %d\n", inputpenyanyi);
+        printf("Berhasil didequeue, penyanyi: %d\n", inputalbum);
+        printf("Berhasil didequeue, penyanyi: %d\n", inputlagu);
         printf("\n");
     }
 

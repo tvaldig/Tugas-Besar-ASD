@@ -12,13 +12,14 @@
 #define IDX_MAX 99
 
 /* Definisi tipe elemen dan indeks pada Queue */
+typedef int IdxType;
+
 typedef struct{
-    Word penyanyiqueue;
-    Word albumqueue;
-    Word laguqueue;
+    IdxType penyanyiqueue;
+    IdxType albumqueue;
+    IdxType laguqueue;
 } isiqueue;
 
-typedef int IdxType;
 
 typedef struct
 {
@@ -57,13 +58,13 @@ void CreateQueue(Queue *Q);
 /* - idxTail=IDX_UNDEF. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *Q, Word penyanyi, Word album, Word lagu);
+void enqueue(Queue *Q, IdxType penyanyi, IdxType album, IdxType lagu);
 /* Proses: Menambahkan X pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. Tail "maju" dengan mekanisme circular buffer,
         X menjadi idxTail yang baru
         Jika Q kosong, idxHead dimulai dari 0 */
-void dequeue(Queue *Q, Word *penyanyi, Word *album, Word *lagu);
+void dequeue(Queue *Q, IdxType *penyanyi, IdxType *album, IdxType *lagu);
 /* Proses: Menghapus idxHead pada Q dengan aturan FIFO, lalu mengembalikan nilainya */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. mengembalikan nilai Q pada idxHead;
