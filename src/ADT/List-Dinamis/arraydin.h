@@ -6,7 +6,7 @@
 #define true 1
 #define false 0
 
-#define InitialSize 10
+#define InitialSize 1
 
 typedef int IdxType;
 

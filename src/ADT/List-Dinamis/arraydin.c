@@ -47,9 +47,9 @@ void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, Id
         playlist *temp = (playlist *)realloc(array->A, Capacity2 * sizeof(playlist));
         if (temp != NULL)
         {
-            array->A->penyanyi = penyanyi;
-            array->A->penyanyi = album;
-            array->A->penyanyi = lagu;
+            array->A->penyanyi = temp->penyanyi;
+            array->A->album = temp->album;
+            array->A->lagu = temp->lagu;
             array->Capacity = Capacity2;
         }
     }
