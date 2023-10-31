@@ -21,5 +21,4 @@ typedef struct {
     Album album[100];
 } Penyanyi;
 
-
 #endif

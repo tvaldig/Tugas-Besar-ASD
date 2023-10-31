@@ -113,8 +113,6 @@ void CopyCommand()
         ADV();
     }
     currentCommand.Length = i;
-
-
 }
 
 
@@ -132,6 +130,7 @@ void ConvertWordToString(Word *word, char *output)
     }
    
 }
+
 
 boolean IsStringEqual(char str1[], char str2[])
 {
@@ -157,13 +156,20 @@ void STARTFROMFILE(char *file){
     COPYFILE();
 } 
 
-void ADVOnEnter(){
-
+void ADVOnEnter(boolean isInt){
+    Word Empty = {"", 0};
+    currentWord = Empty;
+    if(currentChar == ENTER && !isInt){
+        ADVFILE();
+        COPYFILE();
+    } else {
+        ADVFILE();
+        COPYFILEOnBlank();
+    }
 }
-
-void COPYFILE(){
+void COPYFILEOnBlank(){
     int i = 0;
-    while (!finish)
+    while (currentChar != BLANK && !finish)
     {
         if (i < NMax)
         {
@@ -172,7 +178,21 @@ void COPYFILE(){
             ADVFILE();
         }
     }
-        currentWord.Length = i;
+    currentWord.Length = i;
+}
+
+void COPYFILE(){
+    int i = 0;
+    while (currentChar != ENTER && !finish)
+    {
+        if (i < NMax)
+        {
+            currentWord.TabWord[i] = currentChar;
+            i++;
+            ADVFILE();
+        }
+    }
+    currentWord.Length = i;
     
 }
 
@@ -190,4 +210,14 @@ void displayWord(Word w)
         printf("%c", w.TabWord[i]);
     }
     printf("\n");
+}
+
+int ConvertWordToInt(Word word)
+{
+    int num = 0;
+    for (int i = 0; i < word.Length; i++)
+    {
+        num = num * 10 + (word.TabWord[i] - '0');
+    }
+    return num;
 }

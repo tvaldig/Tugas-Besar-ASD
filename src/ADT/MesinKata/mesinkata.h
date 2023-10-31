@@ -55,9 +55,11 @@ void CopyCommand();
 
 void STARTFROMFILE(char *file);
 
-void ADVOnEnter();
+void ADVOnEnter(boolean isInt);
 
 void COPYFILE();
+
+void COPYFILEOnBlank();
 
 void IgnoreBlankFile();
 
@@ -66,4 +68,6 @@ void displayWord(Word w);
 void ConvertWordToString(Word *word, char *output);
 
 boolean IsStringEqual(char str1[], char str2[]);
+
+int ConvertWordToInt(Word word);
 #endif
