@@ -1,6 +1,6 @@
 {
     "files.associations": {
-        "mesinkarakter.h": "c"
-    },
-    "C_Cpp.errorSquiggles": "enabledIfIncludesResolve"
+        "mesinkarakter.h": "c",
+        "circular_queue.h": "c"
+    }
 }

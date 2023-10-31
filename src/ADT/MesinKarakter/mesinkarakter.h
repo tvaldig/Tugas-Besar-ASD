@@ -35,4 +35,8 @@ char GetCC();
 boolean IsEOP();
 /* Mengirimkan true jika currentChar = MARK */
 
+void STARTFILE(char *str);
+
+void ADVFILE();
+
 #endif
