@@ -21,30 +21,37 @@ int main(){
     }
 
     /* Tes Length */
-    printf("Panjang Queue: %d\n\n", Length(temp));
+    printf("Panjang Queue: %d\n\n", LengthQueue(temp));
 
     /* Tes enqueue */
-    int input;
-    printf("Elemen yang mau dimasukkan ke dalam Queue: ");
-    scanf("%d", &input);
-    enqueue(&temp, input);
-    displayQueue(temp);
-    printf("\n");
+    Word inputpenyanyi;
+    Word inputalbum;
+    Word inputlagu;
 
-    delayoutput();
-
-    for(int i = 0; i<20; i++){ /* tes enqueue dengan 20 elemen */
-        enqueue(&temp, i);
+    int n;
+    printf("Masukkan berapa elemen yang mau diinput ke dalam queue: ");
+    scanf("%d", &n);
+    for(int i = 0; i<n; i++){ /* tes enqueue dengan 20 elemen */
+        printf("Nama penyanyi yang mau dimasukkan ke dalam Queue: ");
+        scanf("%s", inputpenyanyi.TabWord);
+        printf("Nama album yang mau dimasukkan ke dalam Queue: ");
+        scanf("%s", inputalbum.TabWord);
+        printf("Nama lagu yang mau dimasukkan ke dalam Queue: ");
+        scanf("%s", inputlagu.TabWord);
+        enqueue(&temp, inputpenyanyi, inputalbum, inputlagu);
     }
 
-    printf("Enqueue 20 elemen baru berhasil dilakukan\n");
+    printf("Enqueue %d elemen baru berhasil dilakukan\n",n);
     displayQueue(temp);
     printf("\n");
 
     /* Tes dequeue */
     delayoutput();
-    dequeue(&temp, &input);
-    printf("Berhasil didequeue, nilai dari HEAD: %d\n", input);
+    dequeue(&temp, &inputpenyanyi, &inputalbum, &inputlagu);
+    printf("Berhasil didequeue, penyanyi: %s\n", inputpenyanyi.TabWord);
+    printf("Berhasil didequeue, penyanyi: %s\n", inputalbum.TabWord);
+    printf("Berhasil didequeue, penyanyi: %s\n", inputlagu.TabWord);
+
     displayQueue(temp);
     printf("\n");
 
@@ -52,25 +59,15 @@ int main(){
     printf("Proses dequeue semua elemen elemen\n");
 
     while(!IsEmptyQueue(temp)){
-        dequeue(&temp, &input);
-        printf("Berhasil didequeue, nilai dari HEAD: %d\n", input);
-        displayQueue(temp);
+        dequeue(&temp, &inputpenyanyi, &inputalbum, &inputlagu);
+        printf("Berhasil didequeue, penyanyi: %s\n", inputpenyanyi.TabWord);
+        printf("Berhasil didequeue, penyanyi: %s\n", inputalbum.TabWord);
+        printf("Berhasil didequeue, penyanyi: %s\n", inputlagu.TabWord);
+        printf("\n");
     }
 
     printf("\n");
 
-    /* Tes IsFull */
-    delayoutput();
-    int i = 1;
-    while(!IsFullQueue(temp)){
-        enqueue(&temp, i);
-        i++;
-    }
-    printf("Queue penuh\n");
-    displayQueue(temp);
-    printf("\n");
 
-    printf("Pengetesan queue_linked berhasil dilakukan\n");
 
-    
 }

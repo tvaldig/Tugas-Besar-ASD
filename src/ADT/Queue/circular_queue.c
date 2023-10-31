@@ -43,27 +43,33 @@ int LengthQueue(Queue Q)
 /* Mengirimkan banyaknya elemen Queue. Mengirimkan 0 jika Q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *Q, ElType X)
+void enqueue(Queue *Q, Word penyanyi, Word album, Word lagu)
 {
     if (IsEmptyQueue(*Q))
     {
         IDX_HEAD(*Q) = 0;
         IDX_TAIL(*Q) = 0;
-        TAIL(*Q) = X;
+        TAILPENYANYI(*Q) = penyanyi;
+        TAILALBUM(*Q) = album;
+        TAILLAGU(*Q) = lagu;
     }
     else
     {
         IDX_TAIL(*Q) = (IDX_HEAD(*Q) + LengthQueue(*Q)) % (IDX_MAX + 1);
-        TAIL(*Q) = X;
+        TAILPENYANYI(*Q) = penyanyi;
+        TAILALBUM(*Q) = album;
+        TAILLAGU(*Q) = lagu;
     }
 }
 /* Proses: Menambahkan val pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam Tab melingkar. */
 
-void dequeue(Queue *Q, ElType *X)
+void dequeue(Queue *Q, Word *penyanyi, Word *album, Word *lagu)
 {
-    *X = HEAD(*Q);
+    *penyanyi = HEADPENYANYI(*Q);
+    *album = HEADALBUM(*Q);
+    *lagu = HEADLAGU(*Q);
     if (IDX_HEAD(*Q) == IDX_TAIL(*Q))
     {
         IDX_HEAD(*Q) = IDX_UNDEF;
@@ -87,7 +93,10 @@ void displayQueue(Queue Q)
     {
         for (int i = IDX_HEAD(Q); i < IDX_HEAD(Q) + LengthQueue(Q); i++)
         {
-            printf("%d", Q.Tab[i % (IDX_MAX + 1)]);
+            printf("%s|", Q.Tab[i % (IDX_MAX + 1)].penyanyiqueue.TabWord);
+            printf("%s|", Q.Tab[i % (IDX_MAX + 1)].albumqueue.TabWord);
+            printf("%s", Q.Tab[i % (IDX_MAX + 1)].laguqueue.TabWord);
+
             if (i % (IDX_MAX + 1) != IDX_TAIL(Q))
             {
                 printf(",");
