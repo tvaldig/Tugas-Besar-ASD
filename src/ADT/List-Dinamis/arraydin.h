@@ -9,10 +9,16 @@
 #define InitialSize 10
 
 typedef int IdxType;
-typedef int ElType;
+
+typedef struct{
+    IdxType penyanyi;
+    IdxType album;
+    IdxType lagu;
+} playlist;
+
 typedef struct
 {
-    ElType *A;
+    playlist *A;
     int Capacity;
     int Neff;
 } ArrayDin;
@@ -47,7 +53,7 @@ int LengthArrayDin(ArrayDin array);
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ArrayDin array, IdxType i);
+playlist Get(ArrayDin array, IdxType i);
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
@@ -59,7 +65,7 @@ int GetCapacity(ArrayDin array);
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i);
+void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, IdxType i);
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
@@ -67,9 +73,12 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i);
  */
 void DeleteAt(ArrayDin *array, IdxType i);
 
-void InsertFirstArrayDin(ArrayDin *array, ElType el);
+void InsertFirstArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu);
 
-void InsertLastArrayDin(ArrayDin *array, ElType el);
+void InsertLastArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu);
 
+IdxType SearchArrayDin(ArrayDin array, IdxType penyanyi, IdxType album, IdxType lagu);
+
+void PrintArrayDin(ArrayDin array);
 
 #endif
