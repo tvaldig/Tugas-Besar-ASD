@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "arraydin.h"
@@ -7,7 +5,7 @@
 ArrayDin MakeArrayDin()
 {
     ArrayDin arr;
-    arr.A = (ElType *)malloc(InitialSize * sizeof(ElType));
+    arr.A = (playlist *)malloc(InitialSize * sizeof(playlist));
     arr.Capacity = InitialSize;
     arr.Neff = 0;
     return arr;
@@ -30,7 +28,7 @@ int LengthArrayDin(ArrayDin array)
     return array.Neff;
 }
 
-ElType Get(ArrayDin array, IdxType i)
+playlist Get(ArrayDin array, IdxType i)
 {
     return array.A[i];
 }
@@ -40,16 +38,18 @@ int GetCapacity(ArrayDin array)
     return array.Capacity;
 }
 
-void InsertAt(ArrayDin *array, ElType el, IdxType i)
+void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, IdxType i)
 {
 
     if ((array->Neff) == (array->Capacity))
     {
         int Capacity2 = 2 * ((*array).Capacity);
-        ElType *temp = (ElType *)realloc(array->A, Capacity2 * sizeof(ElType));
+        playlist *temp = (playlist *)realloc(array->A, Capacity2 * sizeof(playlist));
         if (temp != NULL)
         {
-            array->A = temp;
+            array->A->penyanyi = temp->penyanyi;
+            array->A->album = temp->album;
+            array->A->lagu = temp->lagu;
             array->Capacity = Capacity2;
         }
     }
@@ -57,21 +57,25 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i)
     {
         (*array).A[j] = (*array).A[j - 1];
     }
-    (*array).A[i] = el;
+    (*array).A[i].penyanyi = penyanyi;
+    (*array).A[i].album = album;
+    (*array).A[i].lagu = lagu;
+    
     (*array).Neff++;
 }
-void InsertLastArrayDin(ArrayDin *array, ElType el)
+
+void InsertLastArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu)
 {
-    return InsertAt(array, el, array->Neff);
+    return InsertAt(array, penyanyi, album, lagu, array->Neff);
 }
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirstArrayDin(ArrayDin *array, ElType el)
+void InsertFirstArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu)
 {
-    return InsertAt(array, el, 0);
+    return InsertAt(array, penyanyi, album, lagu, 0);
 }
 
 /**
@@ -114,7 +118,10 @@ void PrintArrayDin(ArrayDin array)
     printf("[");
     for (j = 0; j < (array).Neff; j++)
     {
-        printf("%d", (array).A[j]);
+        printf("%d|", (array).A[j].penyanyi);
+        printf("%d|", (array).A[j].album);
+        printf("%d", (array).A[j].lagu);
+
         if (j != (array).Neff - 1)
         {
             printf(", ");
@@ -130,7 +137,7 @@ void PrintArrayDin(ArrayDin array)
 void ReverseArrayDin(ArrayDin *array)
 {
     IdxType j;
-    ElType *temp = (ElType *)malloc((*array).Capacity * sizeof(ElType));
+    playlist *temp = (playlist *)malloc((*array).Capacity * sizeof(playlist));
 
     for (j = 0; j < (*array).Neff; j++)
     {
@@ -158,13 +165,16 @@ ArrayDin CopyArrayDin(ArrayDin array)
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el)
+IdxType SearchArrayDin(ArrayDin array, IdxType penyanyi, IdxType album, IdxType lagu)
 {
     // KAMUS
     IdxType j = 0;
     // ALGORITMA
-    while (((array).A[j] != el) && (j <= (array).Neff))
+    while ((j <= (array).Neff))
     {
+        if (((array).A[j].penyanyi == penyanyi) && (array.A[j].album == album) && ((array).A[j].lagu == lagu)){
+            break;
+        }
         j++;
     }
     if (j > (array).Neff)

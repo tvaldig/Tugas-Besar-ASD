@@ -6,17 +6,23 @@
 #define __circular_queue_h__
 
 #include "../../boolean.h"
+#include "../MesinKata/mesinkata.h"
 
 #define IDX_UNDEF -1
 #define IDX_MAX 99
 
 /* Definisi tipe elemen dan indeks pada Queue */
-typedef int ElType;
 typedef int IdxType;
+
+typedef struct{
+    IdxType penyanyi;
+    IdxType album;
+    IdxType lagu;
+} isiqueue;
 
 typedef struct
 {
-    ElType Tab[IDX_MAX + 1]; /* tabel penyimpan elemen */
+    isiqueue Tab[IDX_MAX + 1]; /* tabel penyimpan elemen */
     IdxType idxHead;         /* indeks elemen paling awal (terdepan) */
     IdxType idxTail;         /* indeks tempat menambah elemen baru */
 } Queue;
@@ -25,8 +31,13 @@ typedef struct
 /* Jika q adalah Queue, maka akses elemen : */
 #define IDX_HEAD(q) (q).idxHead
 #define IDX_TAIL(q) (q).idxTail
-#define HEAD(q) (q).Tab[(q).idxHead]
-#define TAIL(q) (q).Tab[(q).idxTail]
+#define HEADPENYANYI(q) (q).Tab[(q).idxHead].penyanyi
+#define HEADALBUM(q) (q).Tab[(q).idxHead].album
+#define HEADLAGU(q) (q).Tab[(q).idxHead].lagu
+#define TAILPENYANYI(q) (q).Tab[(q).idxTail].penyanyi
+#define TAILALBUM(q) (q).Tab[(q).idxTail].album
+#define TAILLAGU(q) (q).Tab[(q).idxTail].lagu
+
 
 /* ********* Prototype ********* */
 boolean IsEmptyQueue(Queue Q);
@@ -46,13 +57,13 @@ void CreateQueue(Queue *Q);
 /* - idxTail=IDX_UNDEF. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *Q, ElType X);
+void enqueue(Queue *Q, IdxType penyanyi, IdxType album, IdxType lagu);
 /* Proses: Menambahkan X pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. Tail "maju" dengan mekanisme circular buffer,
         X menjadi idxTail yang baru
         Jika Q kosong, idxHead dimulai dari 0 */
-void dequeue(Queue *Q, ElType *X);
+void dequeue(Queue *Q, IdxType *penyanyi, IdxType *album, IdxType *lagu);
 /* Proses: Menghapus idxHead pada Q dengan aturan FIFO, lalu mengembalikan nilainya */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. mengembalikan nilai Q pada idxHead;
