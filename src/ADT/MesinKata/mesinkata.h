@@ -53,6 +53,15 @@ void ADVCOMMAND();
 
 void CopyCommand();
 
+void STARTFROMFILE(char *file);
+
+void ADVFROMFILE();
+
+void COPYFROMFILE();
+
+void IgnoreBlankFile();
+/* PRIMITIF CONVERTER WORD ATAU STRING*/
 void ConvertWordToString(Word *word, char *output);
 
+boolean IsStringEqual(char str1[], char str2[]);
 #endif

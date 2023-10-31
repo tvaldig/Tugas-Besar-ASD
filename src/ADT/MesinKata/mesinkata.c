@@ -116,6 +116,10 @@ void CopyCommand()
 
 
 }
+
+
+void IgnoreBlankFile();
+
 void ConvertWordToString(Word *word, char *output)
 {
     int i = 0;
@@ -127,4 +131,66 @@ void ConvertWordToString(Word *word, char *output)
         }
     }
    
+}
+
+boolean IsStringEqual(char str1[], char str2[])
+{
+    boolean equal = true;
+    int i = 0;
+    while (str1[i] != '\0' && str2 != '\0')
+    {
+        if (str1[i] != str2[i])
+        {
+            equal = false;
+        }
+        i++;
+    }
+    if (equal)
+        return true;
+    else
+        false;
+}
+
+void STARTFROMFILE(char *file){
+    finish = false;
+    startFromFile(file);
+    copywFile();
+}
+
+void ADVFROMFILE(){
+    Word EMPTY = {"", 0};
+    currentWord = EMPTY;
+    if (currentChar == ENTER)
+    {
+        EndWord = false;
+        advFile();
+        copywFile();
+    }
+}
+
+void COPYFROMFILE(){
+    int i = 0;
+    while (currentChar != ENTER && !finish)
+    {
+        if (i < NMax)
+        {
+            currentWord.TabWord[i] = currentChar;
+            i++;
+            advFile();
+        }
+    }
+    if (i > NMax)
+    {
+        currentWord.Length = NMax;
+    }
+    else
+    {
+        currentWord.Length = i;
+    }
+}
+
+void IgnoreBlankFile(){
+    while(currentChar== BLANK){
+        ADVFROMFILE();   
+    }
 }
