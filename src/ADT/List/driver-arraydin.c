@@ -79,8 +79,7 @@ int main(){
     }
 
     PrintArrayDin(temp);
-
-
-
-
+    DeallocateArrayDin(&temp);
+    printf("Proses dealokasi berhasil dilakukan\n");
+    return 0;
 }

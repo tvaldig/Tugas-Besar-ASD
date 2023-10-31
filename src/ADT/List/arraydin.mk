@@ -1,10 +1,10 @@
 all: run clean
 
-driver: arraydin.h arraydin.c driver-arraydin.c
+driver: arraydin.c arraydin.h driver-arraydin.c
 	gcc -o main arraydin.c driver-arraydin.c
 
 run: driver
-	./main.exe
+	./main
 
 clean:
 	del main.exe
