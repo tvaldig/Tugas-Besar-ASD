@@ -2,9 +2,11 @@
 #include "boolean.h"
 #include "COMMANDS/welcomeMenu/welcomemenu.h"
 #include "COMMANDS/start/start.h"
+#include "ADT/ADT.h"
 
 int main()
 {
+    Penyanyi P[100];
     TabInt ListDefault;
     MakeEmpty(&ListDefault);
     char command[100];
@@ -14,7 +16,6 @@ int main()
     if (IsStringEqual(command, "START"))
     {
         startFunction(&ListDefault);
-        if(currentWord.Length != 0) printf("selesai\n");
     }
 
     
