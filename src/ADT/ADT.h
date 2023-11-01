@@ -17,13 +17,6 @@ typedef struct{
     ElType jumlahlagu;
 } Album;
 
-typedef struct {
-    Word nama;
-    ElType jumlahalbum;
-} Penyanyi;
-
-extern TabInt ArrayPenyanyi;
-extern Penyanyi penyanyi;
 extern TabInt MapAlbum;
 extern Album album;
 extern TabInt LaguDalamAlbum;

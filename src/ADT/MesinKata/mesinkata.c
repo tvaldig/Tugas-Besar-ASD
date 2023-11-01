@@ -182,6 +182,7 @@ void ADVOnEnter(boolean isInt){
         COPYFILEOnBlank();
     }
 }
+
 void COPYFILEOnBlank(){
     int i = 0;
     while (currentChar != BLANK && !finish)

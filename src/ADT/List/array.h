@@ -11,13 +11,22 @@
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
 typedef int ElType;
+
+typedef struct
+{
+    Word nama;
+    ElType jumlahalbum;
+} Penyanyi;
+
 typedef struct
 {
     ElType TI[IdxMax - IdxMin + 1]; 
-    Word nama;/* memori tempat penyimpan elemen (container) */
+    Penyanyi data_penyanyi;/* memori tempat penyimpan elemen (container) */
     int Neff;                       /* banyaknya elemen efektif */
 } TabInt;
 
+extern Penyanyi penyanyi;
+extern TabInt ArrayPenyanyi;
 /* Indeks yang digunakan [IdxMin..IdxMax] */
 /* Jika T adalah TabInt, cara deklarasi dan akses: */
 /* Deklarasi : T : TabInt */
