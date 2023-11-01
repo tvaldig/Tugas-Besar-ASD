@@ -64,10 +64,15 @@ void COPYFILEOnBlank();
 void IgnoreBlankFile();
 
 void displayWord(Word w);
+
     /* PRIMITIF CONVERTER WORD ATAU STRING*/
 void ConvertWordToString(Word *word, char *output);
 
 boolean IsStringEqual(char str1[], char str2[]);
 
+void splitWord(Word *word, Word *str1, Word *str2);
+
+void ADVCONTINUE();
 int ConvertWordToInt(Word word);
+
 #endif

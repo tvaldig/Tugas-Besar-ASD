@@ -1,27 +1,40 @@
 #include <stdio.h>
 #include "start.h"
 
-void startFunction(TabInt *T){
+TabInt ArrayPenyanyi;
+Penyanyi penyanyi;
+TabInt MapAlbum;
+Album album;
+TabInt LaguDalamAlbum;
+
+void startFunction(){
     int n, m, l;
-    Penyanyi p[100];
-    Album a;
     STARTFROMFILE("../save/new.txt");
     n = ConvertWordToInt(currentWord);
     for(int i = 0; i < n; i++){
-        ADVOnEnter(true);
+        ADVOnEnter(true); //true karena dia mau baca integer jumlah album
         m = ConvertWordToInt(currentWord);
-        ADVFILE();
-        COPYFILE();
-        //Input penyanyi ke List disini
+        ArrayPenyanyi.TI[i] = i;
+        displayWord(currentWord);
+        ADVCONTINUE();// setelah blank dilanjut
+        displayWord(currentWord);
+        penyanyi.nama = currentWord;
+        penyanyi.jumlahalbum = m;
+        ArrayPenyanyi.nama = penyanyi.nama;
+        //masukin penyanyi ke array statis
         for(int j = 0; j < m; j++){
-            ADVOnEnter(true);
+            ADVOnEnter(true); //true karena dia mau baca integer jumlah lagu
             l = ConvertWordToInt(currentWord);
-            ADVFILE();
-            COPYFILE();
-            //Input Album ke map disini
-            for(int k = 0; k < l; k++){
-                ADVOnEnter(false);
-                // Input Lagu ke set disini
+            displayWord(currentWord);
+            ADVCONTINUE();// setelah blank dilanjut
+            displayWord(currentWord);
+            // masukin ke Map
+            album.nama = currentWord;
+            album.jumlahlagu = l;
+            for(int k = 0; k < l; l++){
+                ADVOnEnter(false); //false karena dia mau baca string
+                // Masukin lagu ke set
+                displayWord(currentWord);
             }
         }
     }

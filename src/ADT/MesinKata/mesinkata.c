@@ -115,7 +115,22 @@ void CopyCommand()
     currentCommand.Length = i;
 }
 
-
+void splitWord(Word *word, Word *word1, Word *word2){
+    int i = 0;
+    boolean end = false;
+    while(!end){
+        if(word->TabWord[i] == BLANK){
+            end = true;
+        }
+        word1->TabWord[i] = word->TabWord[i];
+        i++;
+    }
+    printf("%d\n", i);
+    while(i < word->Length){
+        word2->TabWord[i] = word->TabWord[i];
+        i++;
+    }  
+}
 
 
 void ConvertWordToString(Word *word, char *output)
@@ -180,7 +195,10 @@ void COPYFILEOnBlank(){
     }
     currentWord.Length = i;
 }
-
+void ADVCONTINUE(){
+    ADVFILE();
+    COPYFILE();
+}
 void COPYFILE(){
     int i = 0;
     while (currentChar != ENTER && !finish)

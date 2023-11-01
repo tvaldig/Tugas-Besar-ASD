@@ -13,12 +13,19 @@ typedef Word Lagu;
 
 typedef struct{
     Word nama;
-    TabInt Lagu;
+    TabInt LaguDalamAlbum;
+    ElType jumlahlagu;
 } Album;
 
 typedef struct {
     Word nama;
-    Album album[100];
+    ElType jumlahalbum;
 } Penyanyi;
+
+extern TabInt ArrayPenyanyi;
+extern Penyanyi penyanyi;
+extern TabInt MapAlbum;
+extern Album album;
+extern TabInt LaguDalamAlbum;
 
 #endif

@@ -6,17 +6,11 @@
 
 int main()
 {
-    Penyanyi P[100];
-    TabInt ListDefault;
-    MakeEmpty(&ListDefault);
     char command[100];
     welcomeMenu();
     STARTCOMMAND();
-    ConvertWordToString(&currentCommand, command);
-    if (IsStringEqual(command, "START"))
+    if (IsStringEqual(currentCommand.TabWord, "START"))
     {
-        startFunction(&ListDefault);
+        startFunction();
     }
-
-    
 }
