@@ -1,4 +1,4 @@
-#include "src\boolean.h"
+#include "../../boolean.h"
 
 #ifndef ARRAY_H
 #define ARRAY_H
@@ -84,10 +84,10 @@ boolean IsIdxEff(TabInt T, IdxType i);
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
-boolean IsEmpty(TabInt T);
+boolean IsEmptyArray(TabInt T);
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFull(TabInt T);
+boolean IsFullArray(TabInt T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */

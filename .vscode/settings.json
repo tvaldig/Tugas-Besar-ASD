@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "mesinkarakter.h": "c",
+        "circular_queue.h": "c"
+    }
+}

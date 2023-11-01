@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void CreateEmpty(Stack *S)
+void CreateEmptyStack(Stack *S)
 {
-    S->TOP = Nil;
+    S->TOP = NIL;
 }
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
@@ -12,119 +12,57 @@ void CreateEmpty(Stack *S)
 /* Ciri stack kosong : TOP bernilai Nil */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty(Stack S)
+boolean IsEmptyStack(Stack S)
 {
-    return S.TOP == Nil;
+    return S.TOP == NIL;
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFull(Stack S)
+boolean IsFullStack(Stack S)
 {
     return S.TOP == MaxEl - 1;
 }
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(Stack *S, infotype X)
+void Push(Stack *S, idx penyanyi, idx album, idx lagu)
 {
     S->TOP++;
-    InfoTop(*S) = X;
+    InfoTopPenyanyi(*S) = penyanyi;
+    InfoTopAlbum (*S) = album;
+    InfoTopLagu (*S) = lagu;
 }
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. TOP bertambah 1, X menjadi TOP yang baru, */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(Stack *S, infotype *X)
+void Pop(Stack *S, idx *penyanyi, idx *album, idx *lagu)
 {
-    *X = InfoTop(*S);
+    *penyanyi = InfoTopPenyanyi(*S);
+    *album = InfoTopAlbum(*S);
+    *lagu = InfoTopLagu(*S);
+
     S->TOP--;
 }
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
-Stack validParantheses(char *input, int length)
-{
-    Stack temp;
-    int i = 0;
-    CreateEmpty(&temp);
-    while (i < length)
-    {
-        if (input[i] == '{')
-        {
-            if (input[i + 1] == '}')
-            {
-                Push(&temp, input[i]);
-                Push(&temp, input[i + 1]);
-            }
-        }
-        if (input[i] == '[')
-        {
-            if (input[i + 1] == ']')
-            {
-                Push(&temp, input[i]);
-                Push(&temp, input[i + 1]);
-            }
-        }
-        if (input[i] == '(')
-        {
-            if (input[i + 1] == ')')
-            {
-                Push(&temp, input[i]);
-                Push(&temp, input[i + 1]);
-            }
-        }
-        i++;
+void displayStack(Stack q){
+    
+    if (IsEmptyStack(q)){
+        printf("[]\n");
     }
-    return temp;
-}
-
-// JAWABAN PALINDROME TAHUN 2021
-int main()
-{
-    Stack s1, s2;
-    int x;
-    infotype y;
-    boolean palindrome = false;
-    CreateEmpty(&s1);
-    CreateEmpty(&s2);
-    scanf("%d", &x);
-    while (x != 0)
-    {
-        Push(&s1, x);
-        scanf("%d", &x);
+    else{
+        printf ("[");
+        printf("%d|",(q).T[0].penyanyi);  
+        printf("%d|",(q).T[0].album);        
+        printf("%d",(q).T[0].lagu); 
+        for (int i = 1; i<= (q).TOP;i++){
+            printf(",%d|",(q).T[i].penyanyi);  
+            printf("%d|",(q).T[i].album);        
+            printf("%d",(q).T[i].lagu);              
     }
-
-    if (Top(s1) == 0)
-    {
-        palindrome = true;
-    }
-    else if (Top(s1) == 1)
-    {
-        if (InfoTop(s1) == s1.T[0])
-        {
-            palindrome = true;
-        }
-    }
-    else
-    {
-        for (int i = 0; i < Top(s1) / 2; i++)
-        {
-            Push(&s2, InfoTop(s1));
-            Pop(&s1, &y);
-            if (s1.T[i] == s2.T[i])
-            {
-                palindrome = true;
-            }
-        }
-    }
-
-    if (palindrome)
-    {
-        printf("Angka palindrome");
-    }
-    else
-    {
-        printf("Bukan palindrome");
+    printf("]\n");
     }
 }

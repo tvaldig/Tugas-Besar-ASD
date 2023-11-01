@@ -13,21 +13,21 @@ void CreateQueue(Queue *Q)
 /* Proses : Melakukan alokasi, membuat sebuah Q kosong */
 
 /* ********* Prototype ********* */
-boolean IsEmpty(Queue Q)
+boolean IsEmptyQueue(Queue Q)
 {
     return (IDX_HEAD(Q) == IDX_UNDEF) && (IDX_TAIL(Q) == IDX_UNDEF);
 }
 /* Mengirim true jika Q kosong: lihat definisi di atas */
-boolean IsFull(Queue Q)
+boolean IsFullQueue(Queue Q)
 {
-    return Length(Q) == IDX_MAX + 1;
+    return LengthQueue(Q) == IDX_MAX + 1;
 }
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam Tab melingkar*/
 
-int Length(Queue Q)
+int LengthQueue(Queue Q)
 {
-    if (IsEmpty(Q))
+    if (IsEmptyQueue(Q))
     {
         return 0;
     }
@@ -43,27 +43,33 @@ int Length(Queue Q)
 /* Mengirimkan banyaknya elemen Queue. Mengirimkan 0 jika Q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *Q, ElType X)
+void enqueue(Queue *Q, IdxType penyanyi, IdxType album, IdxType lagu)
 {
-    if (IsEmpty(*Q))
+    if (IsEmptyQueue(*Q))
     {
         IDX_HEAD(*Q) = 0;
         IDX_TAIL(*Q) = 0;
-        TAIL(*Q) = X;
+        TAILPENYANYI(*Q) = penyanyi;
+        TAILALBUM(*Q) = album;
+        TAILLAGU(*Q) = lagu;
     }
     else
     {
-        IDX_TAIL(*Q) = (IDX_HEAD(*Q) + Length(*Q)) % (IDX_MAX + 1);
-        TAIL(*Q) = X;
+        IDX_TAIL(*Q) = (IDX_HEAD(*Q) + LengthQueue(*Q)) % (IDX_MAX + 1);
+        TAILPENYANYI(*Q) = penyanyi;
+        TAILALBUM(*Q) = album;
+        TAILLAGU(*Q) = lagu;
     }
 }
 /* Proses: Menambahkan val pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam Tab melingkar. */
 
-void dequeue(Queue *Q, ElType *X)
+void dequeue(Queue *Q, IdxType *penyanyi, IdxType *album, IdxType *lagu)
 {
-    *X = HEAD(*Q);
+    *penyanyi = HEADPENYANYI(*Q);
+    *album = HEADALBUM(*Q);
+    *lagu = HEADLAGU(*Q);
     if (IDX_HEAD(*Q) == IDX_TAIL(*Q))
     {
         IDX_HEAD(*Q) = IDX_UNDEF;
@@ -83,11 +89,14 @@ void dequeue(Queue *Q, ElType *X)
 void displayQueue(Queue Q)
 {
     printf("[");
-    if (!IsEmpty(Q))
+    if (!IsEmptyQueue(Q))
     {
-        for (int i = IDX_HEAD(Q); i < IDX_HEAD(Q) + Length(Q); i++)
+        for (int i = IDX_HEAD(Q); i < IDX_HEAD(Q) + LengthQueue(Q); i++)
         {
-            printf("%d", Q.Tab[i % (IDX_MAX + 1)]);
+            printf("%d|", Q.Tab[i % (IDX_MAX + 1)].penyanyi);
+            printf("%d|", Q.Tab[i % (IDX_MAX + 1)].album);
+            printf("%d", Q.Tab[i % (IDX_MAX + 1)].lagu);
+
             if (i % (IDX_MAX + 1) != IDX_TAIL(Q))
             {
                 printf(",");
