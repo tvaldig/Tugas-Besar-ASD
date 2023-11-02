@@ -8,18 +8,12 @@
 #include "./MesinKata/mesinkata.h"
 #include "./Queue/circular_queue.h"
 #include "./Stack/stack.h"
+#include "./Map/map.h"
+#include "./Set/set.h"
 
-
-typedef struct{
-    Word nama;
-    TabInt LaguDalamAlbum;
-    ElType jumlahlagu;
-} Album;
-
-typedef Album MAP_ALBUM[100];
-
-extern TabInt MapAlbum;
-extern Album album;
-extern TabInt LaguDalamAlbum;
-
+Penyanyi penyanyi;
+Album album;
+MapAlbum mapAlbum;
+TabInt ArrayPenyanyi;
+Set SetLagu;
 #endif

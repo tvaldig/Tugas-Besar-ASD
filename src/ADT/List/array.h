@@ -14,7 +14,7 @@ typedef int ElType;
 
 typedef struct
 {
-    Word nama;
+    Word namapenyanyi;
     ElType jumlahalbum;
 } Penyanyi;
 
