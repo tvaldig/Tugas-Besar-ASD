@@ -55,11 +55,13 @@ void CopyCommand();
 
 void STARTFROMFILE(char *file);
 
-void ADVOnEnter(boolean isInt);
+void ADVOnEnter(boolean OnBlank);
 
 void COPYFILE();
 
 void COPYFILEOnBlank();
+
+void ADVCONTINUE();
 
 void IgnoreBlankFile();
 
@@ -70,9 +72,7 @@ void ConvertWordToString(Word *word, char *output);
 
 boolean IsStringEqual(char str1[], char str2[]);
 
-void splitWord(Word *word, Word *str1, Word *str2);
 
-void ADVCONTINUE();
 int ConvertWordToInt(Word word);
 
 #endif
