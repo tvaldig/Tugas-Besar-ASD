@@ -9,16 +9,19 @@
 #include "./Queue/circular_queue.h"
 #include "./Stack/stack.h"
 
-typedef Word Lagu; 
 
 typedef struct{
     Word nama;
     TabInt Lagu;
 } Album;
 
+typedef Album MAP_ALBUM[100];
+
 typedef struct {
     Word nama;
-    Album album[100];
+    MAP_ALBUM album;
 } Penyanyi;
+
+
 
 #endif
