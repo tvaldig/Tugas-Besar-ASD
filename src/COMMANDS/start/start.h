@@ -3,5 +3,5 @@
 
 #include "../../ADT/ADT.h"
 
-void startFunction(TabInt *T);
+void startFunction();
 #endif

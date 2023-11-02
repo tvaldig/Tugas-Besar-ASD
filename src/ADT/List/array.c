@@ -1,9 +1,4 @@
-/*
-    Timotius Vivaldi Gunawan
-    18222091
-    Pra Praktikum 4
-    array
-*/
+
 #include "array.h"
 #include "../../boolean.h"
 #include <stdio.h>

@@ -12,16 +12,14 @@
 
 typedef struct{
     Word nama;
-    TabInt Lagu;
+    TabInt LaguDalamAlbum;
+    ElType jumlahlagu;
 } Album;
 
 typedef Album MAP_ALBUM[100];
 
-typedef struct {
-    Word nama;
-    MAP_ALBUM album;
-} Penyanyi;
-
-
+extern TabInt MapAlbum;
+extern Album album;
+extern TabInt LaguDalamAlbum;
 
 #endif

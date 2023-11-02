@@ -116,8 +116,6 @@ void CopyCommand()
 }
 
 
-
-
 void ConvertWordToString(Word *word, char *output)
 {
     int i = 0;
@@ -156,10 +154,10 @@ void STARTFROMFILE(char *file){
     COPYFILE();
 } 
 
-void ADVOnEnter(boolean isInt){
+void ADVOnEnter(boolean OnBlank){
     Word Empty = {"", 0};
     currentWord = Empty;
-    if(currentChar == ENTER && !isInt){
+    if(currentChar == ENTER && !OnBlank){
         ADVFILE();
         COPYFILE();
     } else {
@@ -167,6 +165,7 @@ void ADVOnEnter(boolean isInt){
         COPYFILEOnBlank();
     }
 }
+
 void COPYFILEOnBlank(){
     int i = 0;
     while (currentChar != BLANK && !finish)
@@ -180,7 +179,10 @@ void COPYFILEOnBlank(){
     }
     currentWord.Length = i;
 }
-
+void ADVCONTINUE(){
+    ADVFILE();
+    COPYFILE();
+}
 void COPYFILE(){
     int i = 0;
     while (currentChar != ENTER && !finish)
