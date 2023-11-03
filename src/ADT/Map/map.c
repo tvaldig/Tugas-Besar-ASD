@@ -28,6 +28,8 @@ boolean IsFullMap(MapAlbum M)
 /* ********** Operator Dasar MapAlbum ********* */
 valuetype Value(MapAlbum M, keytype k)
 {
+    Set s;
+    CreateEmptySet(&s);
     boolean found = false;
     int i = 0;
     while (i < M.Count && !found)
@@ -47,7 +49,7 @@ valuetype Value(MapAlbum M, keytype k)
     }
     else
     {
-        return;
+        return s;
     }
 }
 /* Mengembalikan nilai value dengan key k dari M */
@@ -55,10 +57,10 @@ valuetype Value(MapAlbum M, keytype k)
 
 void InsertMap(MapAlbum *M, keytype k, valuetype v)
 {
-    if (!(IsMemberAlbum((*M), k)))
+    if (!(IsMemberMap((*M), k)))
     {
         M->Elements[M->Count].Key = k;
-        M->Elements[M->Count].Value = v;
+        M->Elements[M->Count].Value= v;
         M->Count++;
     }
 }
