@@ -2,9 +2,17 @@
 #include "start.h"
 
 Penyanyi penyanyi;
+Album album;
 MapAlbum mapAlbum;
 TabInt ArrayPenyanyi;
 Set SetLagu;
+
+
+void copyword(Word source, Word hasilcopy){
+    for(int i = 0; i < source.Length; i++){
+        hasilcopy.TabWord[i] = source.TabWord[i];
+    }
+}
 
 void startFunction(){
     keytype keyCounter = 0, laguAlbum = 0;
@@ -23,6 +31,7 @@ void startFunction(){
 
         // membaca nama penyanyi
         penyanyi.namapenyanyi = currentWord;
+        displayWord(currentWord);
 
         // memasukan tipe data penyanyi ke array penyanyi
         ArrayPenyanyi.penyanyi[i] = penyanyi;
@@ -47,15 +56,23 @@ void startFunction(){
             }
             keyCounter++;
             mapAlbum.Count++;
-            for (int k = 0; k < l; k++)
-            {                      // iterasi untuk membaca lagu
-                ADVOnEnter(false); // false untuk mengaktifkan ADV selanjutnya dengan akuisisi sebelum ENTER
-
-                // Melakukan konfigurasi lagu ke dalam set
+            for(int k = 0; k < l; k++){
+                ADVOnEnter(false); //false karena dia mau baca string
+                // Masukin lagu ke set
                 mapAlbum.Elements[laguAlbum].Value.lagu[k].JudulLagu = currentWord;
-                mapAlbum.Elements[laguAlbum].Value.Count = l;
+                mapAlbum.Elements[laguAlbum].Value.Count++;
+
             }
             laguAlbum++;
         }
     }
+
+    Queue antrian;
+    Stack riwayat;
+    printf("%s\n", ArrayPenyanyi.penyanyi[0].namapenyanyi.TabWord);
+
+    Word a = {"BLACKPINK", 9};
+
+
+    printf("id penyanyi: %d\n", searchidpenyanyi(ArrayPenyanyi,a));
 }

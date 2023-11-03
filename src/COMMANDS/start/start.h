@@ -6,7 +6,9 @@ extern Penyanyi penyanyi;
 extern MapAlbum mapAlbum;
 extern TabInt ArrayPenyanyi;
 extern Set SetLagu;
-
+extern Queue antrian;
+extern Stack riwayat;
+extern playlist play_list;
 
 void startFunction();
 #endif
