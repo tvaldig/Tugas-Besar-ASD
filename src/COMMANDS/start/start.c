@@ -2,11 +2,23 @@
 #include "start.h"
 
 Penyanyi penyanyi;
-Album album;
 MapAlbum mapAlbum;
 TabInt ArrayPenyanyi;
 Set SetLagu;
 
+int searchidpenyanyi(TabInt p, Word w){
+    int i = 0;
+    printf("%s\n", p.penyanyi[i].namapenyanyi.TabWord);
+    printf("%s\n",w.TabWord);
+    if(p.penyanyi[i].namapenyanyi.TabWord == w.TabWord){
+        printf("sama kok stringnya");
+    }
+    while(p.penyanyi[i].namapenyanyi.TabWord != w.TabWord){
+        i++;
+    }
+
+    return i;
+}
 
 void copyword(Word source, Word hasilcopy){
     for(int i = 0; i < source.Length; i++){
@@ -28,6 +40,7 @@ void startFunction(){
         penyanyi.jumlahalbum = m;
         ADVCONTINUE(); // setelah blank dilanjut
         penyanyi.namapenyanyi = currentWord;
+        displayWord(currentWord);
 
         penyanyi.Id = i;
         // masukin penyanyi ke array statis
@@ -53,4 +66,13 @@ void startFunction(){
             }
         }
     }
+
+    Queue antrian;
+    Stack riwayat;
+    printf("%s\n", ArrayPenyanyi.penyanyi[0].namapenyanyi.TabWord);
+
+    Word a = {"BLACKPINK", 9};
+
+
+    printf("id penyanyi: %d\n", searchidpenyanyi(ArrayPenyanyi,a));
 }
