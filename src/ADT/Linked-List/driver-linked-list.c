@@ -11,7 +11,7 @@ void delayoutput(){
 
 int main(){
     /* Test Alokasi */
-    address p, new;
+    addressnode p, new;
     int input;
     printf("Masukkan INFO untuk node baru: ");
     scanf("%d", &input);

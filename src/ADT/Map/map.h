@@ -11,7 +11,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 // #define true 1
 #define Nil 0
 #define MaxEl 100
-#define Undefined Set.
+#define Undefined -999
 
 // typedef int bool;
 typedef int keytype;
@@ -31,8 +31,7 @@ typedef struct
     address Count;
 } MapAlbum;
 
-extern Album album;
-extern MapAlbum mapAlbum;
+
 /* Definisi MapAlbum M kosong : M.Count = Nil */
 /* M.Count = jumlah element MapAlbum */
 /* M.Elements = tempat penyimpanan element MapAlbum */

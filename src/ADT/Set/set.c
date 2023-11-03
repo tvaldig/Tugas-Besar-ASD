@@ -22,7 +22,7 @@ boolean IsFullSet(Set S){
 /* Ciri Set penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSet(Set *S, infotype Elmt){
+void InsertSet(Set *S, Word Elmt){
     if(!(IsMember(*S, Elmt))){
         S->lagu[S->Count] = Elmt;
         S->Count++;
@@ -33,11 +33,11 @@ void InsertSet(Set *S, infotype Elmt){
         S mungkin sudah beranggotakan Elmt */
 /* F.S. Elmt menjadi anggota dari S. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan */
 
-void DeleteSet(Set *S, infotype Elmt){
+void DeleteSet(Set *S, Word Elmt){
     boolean found = false;
     int i = 0;
     while(i < S->Count && !found){
-        if(S->lagu[i] == Elmt){
+        if(S->lagu[i].TabWord == Elmt.TabWord){
             found = true;
            
             while(i < S->Count-1){
@@ -56,11 +56,11 @@ void DeleteSet(Set *S, infotype Elmt){
         Elmt mungkin anggota / bukan anggota dari S */
 /* F.S. Elmt bukan anggota dari S */
 
-boolean IsMemberSet(Set S, infotype Elmt){
+boolean IsMemberSet(Set S, Word Elmt){
     boolean found = false;
     int i = 0;
     while(i < S.Count && !found){
-        if(S.lagu[i] == Elmt){
+        if(S.lagu[i].TabWord == Elmt.TabWord){
             found = true;
         } else {
             i++;

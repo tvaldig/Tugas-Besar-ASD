@@ -25,8 +25,7 @@ typedef struct
     int Neff;                       /* banyaknya elemen efektif */
 } TabInt;
 
-extern Penyanyi penyanyi;
-extern TabInt ArrayPenyanyi;
+
 /* Indeks yang digunakan [IdxMin..IdxMax] */
 /* Jika T adalah TabInt, cara deklarasi dan akses: */
 /* Deklarasi : T : TabInt */

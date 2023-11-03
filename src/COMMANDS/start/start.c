@@ -1,11 +1,20 @@
 #include <stdio.h>
 #include "start.h"
 
+Penyanyi penyanyi;
+Album album;
+MapAlbum mapAlbum;
+TabInt ArrayPenyanyi;
+Set SetLagu;
+
+
 void copyword(Word source, Word hasilcopy){
     for(int i = 0; i < source.Length; i++){
         hasilcopy.TabWord[i] = source.TabWord[i];
     }
 }
+
+
 
 void startFunction(){
     int keyCounter = 0;

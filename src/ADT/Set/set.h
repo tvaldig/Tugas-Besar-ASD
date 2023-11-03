@@ -10,15 +10,13 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 #define Zero 0
 #define MaxEl 100
 
-typedef Word infotype;
 typedef int address;
 typedef struct
 {
-    infotype lagu[MaxEl];
+    Word lagu[MaxEl];
     address Count;
 } Set;
 
-extern Set SetLagu;
 
 /* Definisi Set S kosong : S.Count = Nil */
 /* S.Count = jumlah element Set */
@@ -42,19 +40,19 @@ boolean IsFullSet(Set S);
 /* Ciri Set penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSet(Set *S, infotype Elmt);
+void InsertSet(Set *S, Word Elmt);
 /* Menambahkan Elmt sebagai elemen Set S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */
 /* F.S. Elmt menjadi anggota dari S. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan */
 
-void DeleteSet(Set *S, infotype Elmt);
+void DeleteSet(Set *S, Word Elmt);
 /* Menghapus Elmt dari Set S. */
 /* I.S. S tidak kosong
         Elmt mungkin anggota / bukan anggota dari S */
 /* F.S. Elmt bukan anggota dari S */
 
-boolean IsMemberSet(Set S, infotype Elmt);
+boolean IsMemberSet(Set S, Word Elmt);
 /* Mengembalikan true jika Elmt adalah member dari S */
 
 #endif

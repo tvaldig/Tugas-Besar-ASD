@@ -4,6 +4,9 @@
 #include "COMMANDS/start/start.h"
 #include "ADT/ADT.h"
 
+
+
+
 int main()
 {
     char command[100];
