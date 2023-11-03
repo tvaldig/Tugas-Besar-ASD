@@ -30,6 +30,7 @@ typedef struct
     Album Elements[MaxEl];
     address Count;
 } MapAlbum;
+
 extern Album album;
 extern MapAlbum mapAlbum;
 /* Definisi MapAlbum M kosong : M.Count = Nil */

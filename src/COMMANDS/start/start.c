@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include "start.h"
 
+void copyword(Word source, Word hasilcopy){
+    for(int i = 0; i < source.Length; i++){
+        hasilcopy.TabWord[i] = source.TabWord[i];
+    }
+}
+
 void startFunction(){
     int keyCounter = 0;
     int n, m, l;
@@ -30,7 +36,7 @@ void startFunction(){
             for(int k = 0; k < l; k++){
                 ADVOnEnter(false); //false karena dia mau baca string
                 // Masukin lagu ke set
-                SetLagu.lagu = currentWord;
+                copyword(currentWord, SetLagu.lagu[k]);
             }
         }
     }

@@ -2,7 +2,7 @@
 #include "set.h"
 
 void CreateEmptySet(Set *S){
-    S->Count= Nil;
+    S->Count= Zero;
 }
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
@@ -10,7 +10,7 @@ void CreateEmptySet(Set *S){
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptySet(Set S){
-    return S.Count == Nil;
+    return S.Count ==  Zero;
 }
 /* Mengirim true jika Set S kosong*/
 /* Ciri Set kosong : count bernilai Nil */

@@ -11,9 +11,9 @@
 #include "./Map/map.h"
 #include "./Set/set.h"
 
-Penyanyi penyanyi;
-Album album;
-MapAlbum mapAlbum;
-TabInt ArrayPenyanyi;
-Set SetLagu;
+extern Penyanyi penyanyi;
+extern Album album;
+extern MapAlbum mapAlbum;
+extern TabInt ArrayPenyanyi;
+extern Set SetLagu;
 #endif

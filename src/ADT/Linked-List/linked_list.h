@@ -10,16 +10,16 @@
 
 #define Nil NULL
 
-typedef int infotype;
-typedef struct tElmtlist *address;
+typedef int InfoType;
+typedef struct tElmtlist *addressnode;
 typedef struct tElmtlist
 {
-    infotype info;
+    InfoType info;
     address next;
 } ElmtList;
 typedef struct
 {
-    address First;
+    addressnode First;
 } List;
 
 /* Definisi list : */
