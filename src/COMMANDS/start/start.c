@@ -14,38 +14,42 @@ void copyword(Word source, Word hasilcopy){
     }
 }
 
-
-
 void startFunction(){
-    int keyCounter = 0;
+    keytype keyCounter = 0;
+    int countAlbum;
+    char test[100];
     int n, m, l;
-    char namaPenyanyi[100];
     STARTFROMFILE("../save/new.txt");
     n = ConvertWordToInt(currentWord);
-    album.Value = SetLagu;
     for(int i = 0; i < n; i++){
         ADVOnEnter(true); //true karena dia mau baca integer jumlah album
-      
         //menerima jumlah album dan nama penyanyi
         m = ConvertWordToInt(currentWord);
         penyanyi.jumlahalbum = m;
         ADVCONTINUE(); // setelah blank dilanjut
         penyanyi.namapenyanyi = currentWord;
+
+        penyanyi.Id = i;
         // masukin penyanyi ke array statis
-        ArrayPenyanyi.data_penyanyi = penyanyi;
+        ArrayPenyanyi.Neff++;
+        ArrayPenyanyi.penyanyi[i] = penyanyi;
         for(int j = 0; j < m; j++){
             ADVOnEnter(true); //true karena dia mau baca integer jumlah lagu
             l = ConvertWordToInt(currentWord);
-            album.Key = keyCounter;
-            keyCounter++;
             ADVCONTINUE();// setelah blank dilanjut
-            album.AlbumName = currentWord;
+            mapAlbum.Elements[j].Key = keyCounter;
+            keyCounter++;
+            printf("%d\n", keyCounter);
+            mapAlbum.Elements[j].AlbumName = currentWord;
+            mapAlbum.Elements[j].Value = SetLagu;
             // masukin ke Map
-            mapAlbum.Elements[j] = album;
+            mapAlbum.Count++;
             for(int k = 0; k < l; k++){
                 ADVOnEnter(false); //false karena dia mau baca string
                 // Masukin lagu ke set
-                copyword(currentWord, SetLagu.lagu[k]);
+                mapAlbum.Elements[j].Value.lagu[k].JudulLagu = currentWord;
+                mapAlbum.Elements[j].Value.Count++;
+
             }
         }
     }

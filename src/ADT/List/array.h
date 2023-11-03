@@ -16,12 +16,12 @@ typedef struct
 {
     Word namapenyanyi;
     ElType jumlahalbum;
+    ElType Id;
 } Penyanyi;
 
 typedef struct
 {
-    ElType TI[IdxMax - IdxMin + 1]; 
-    Penyanyi data_penyanyi;/* memori tempat penyimpan elemen (container) */
+    Penyanyi penyanyi[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
     int Neff;                       /* banyaknya elemen efektif */
 } TabInt;
 

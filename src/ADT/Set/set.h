@@ -11,12 +11,17 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 #define MaxEl 100
 
 typedef int address;
+
+typedef struct {
+        int IdLagu;
+        Word JudulLagu;
+} Lagu;
+
 typedef struct
 {
-    Word lagu[MaxEl];
+    Lagu lagu[MaxEl];
     address Count;
 } Set;
-
 
 /* Definisi Set S kosong : S.Count = Nil */
 /* S.Count = jumlah element Set */

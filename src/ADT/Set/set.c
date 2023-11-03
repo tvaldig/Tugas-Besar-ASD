@@ -23,8 +23,8 @@ boolean IsFullSet(Set S){
 
 /* ********** Operator Dasar Set ********* */
 void InsertSet(Set *S, Word Elmt){
-    if(!(IsMember(*S, Elmt))){
-        S->lagu[S->Count] = Elmt;
+    if(!(IsMemberSet(*S, Elmt))){
+        S->lagu[S->Count].JudulLagu = Elmt;
         S->Count++;
     }
 }
@@ -37,7 +37,7 @@ void DeleteSet(Set *S, Word Elmt){
     boolean found = false;
     int i = 0;
     while(i < S->Count && !found){
-        if(S->lagu[i].TabWord == Elmt.TabWord){
+        if(S->lagu[i].JudulLagu.TabWord == Elmt.TabWord){
             found = true;
            
             while(i < S->Count-1){
@@ -60,7 +60,7 @@ boolean IsMemberSet(Set S, Word Elmt){
     boolean found = false;
     int i = 0;
     while(i < S.Count && !found){
-        if(S.lagu[i].TabWord == Elmt.TabWord){
+        if(S.lagu[i].JudulLagu.TabWord == Elmt.TabWord){
             found = true;
         } else {
             i++;
