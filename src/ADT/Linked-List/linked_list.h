@@ -16,7 +16,6 @@ typedef struct tElmtlist
     int info;
     addressnode next;
 } ElmtList;
-
 typedef struct
 {
     addressnode First;
