@@ -8,16 +8,15 @@ Set SetLagu;
 
 int searchidpenyanyi(TabInt p, Word w){
     int i = 0;
-    printf("%s\n", p.penyanyi[i].namapenyanyi.TabWord);
-    printf("%s\n",w.TabWord);
-    if(p.penyanyi[i].namapenyanyi.TabWord == w.TabWord){
-        printf("sama kok stringnya");
-    }
-    while(p.penyanyi[i].namapenyanyi.TabWord != w.TabWord){
+    boolean found = false;
+    while(!(found)){
+        if(p.penyanyi[i].namapenyanyi.Length == w.Length){
+            if(IsStringEqual(p.penyanyi->namapenyanyi.TabWord, w.TabWord)){
+                return i;
+            }
+        }
         i++;
     }
-
-    return i;
 }
 
 void copyword(Word source, Word hasilcopy){
