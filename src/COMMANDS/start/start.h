@@ -3,6 +3,7 @@
 
 #include "../../ADT/ADT.h"
 
+
 extern Penyanyi penyanyi;
 extern Album album;
 extern MapAlbum mapAlbum;
