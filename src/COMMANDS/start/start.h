@@ -8,7 +8,7 @@ extern TabInt ArrayPenyanyi;
 extern Set SetLagu;
 extern Queue antrian;
 extern Stack riwayat;
-extern playlist play_list;
+extern ArrayDin playlists;
 
 void startFunction();
 #endif

@@ -23,6 +23,7 @@ int main()
         {
             if(IsStringEqual(command, "START")){
                 printf("Start berhasil\n");
+                startFunction();
             } else if(IsStringEqual(command, "LOAD")){
                 printf("Load berhasil\n");
             } else if(IsStringEqual(command, "HELP")) {

@@ -118,7 +118,7 @@ void PrintArrayDin(ArrayDin array)
     for (j = 0; j < (array).Neff; j++)
     {
         printf("%d|", (array).A[j].idplaylist);
-        printf("%s", (array).A[j].namaplaylist);
+        printf("%s", (array).A[j].namaplaylist.TabWord);
 
         if (j != (array).Neff - 1)
         {

@@ -19,6 +19,7 @@ typedef struct tElmtlist
     int idlagu;
     addressnode next;
 } ElmtList;
+
 typedef struct
 {
     addressnode First;

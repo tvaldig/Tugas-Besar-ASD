@@ -146,17 +146,34 @@ void startFunction(){
     Reversestack(&riwayat);
     displayStack(riwayat);
 
+    ArrayDin playlists;
+
+    playlists = MakeArrayDin();
+
     ADVOnEnter(false);
     n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah playlist
 
     for(int i = 0; i < n; i++){
         ADVOnEnter(true);
         m = ConvertWordToInt(currentWord);
-
         
+        ADVCONTINUE();
+        InsertFirstArrayDin(&playlists, -1, -1, -1, currentWord);
 
+        printf("%s\n", currentWord.TabWord);
+
+        PrintArrayDin(playlists);
+        
         for(int j = 0; j < m; j++){
-
+            ADVSEMICOLON(); 
+            idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
+            ADVSEMICOLON();
+            idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
+            ADVSEMICOLON();
+            idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
+            addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu);
+            printf("%d %d %d\n", temp->idpenyanyi, temp->idalbum, temp->idlagu);
+            InsertLast(playlists.A, temp);
         }
 
     }
