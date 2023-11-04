@@ -12,7 +12,7 @@ int main()
     char command[100];
     welcomeMenu();
     while(!program){
-        STARTCOMMAND();
+        printf(">>");STARTCOMMAND();
         ConvertWordToString(&currentCommand, command);
         if (checkCommand(command, false))
         {
