@@ -2,6 +2,7 @@
 #include "start.h"
 
 Penyanyi penyanyi;
+Album album;
 MapAlbum mapAlbum;
 TabInt ArrayPenyanyi;
 Set SetLagu;
@@ -26,43 +27,55 @@ void copyword(Word source, Word hasilcopy){
 }
 
 void startFunction(){
-    keytype keyCounter = 0;
-    int countAlbum;
-    char test[100];
-    int n, m, l;
-    STARTFROMFILE("../save/new.txt");
-    n = ConvertWordToInt(currentWord);
-    for(int i = 0; i < n; i++){
-        ADVOnEnter(true); //true karena dia mau baca integer jumlah album
-        //menerima jumlah album dan nama penyanyi
+    keytype keyCounter = 0, laguAlbum = 0;
+    int countAlbum, n, m, l;
+    STARTFROMFILE("../save/new.txt");  // memulai Mesin Kata
+    n = ConvertWordToInt(currentWord); // membaca jumlah penyanyi
+    for (int i = 0; i < n; i++)
+    {                     // iterasi untuk setiap penyanyi
+        ADVOnEnter(true); // true untuk mengaktifkan ADV selanjutnya dengan akuisisi sebelum BLANK
+
+        // membaca jumlah album pada penyanyi
         m = ConvertWordToInt(currentWord);
         penyanyi.jumlahalbum = m;
-        ADVCONTINUE(); // setelah blank dilanjut
+
+        ADVCONTINUE(); // setelah blank dilanjutkan akuisisi sampai ENTER
+
+        // membaca nama penyanyi
         penyanyi.namapenyanyi = currentWord;
         displayWord(currentWord);
 
-        penyanyi.Id = i;
-        // masukin penyanyi ke array statis
-        ArrayPenyanyi.Neff++;
+        // memasukan tipe data penyanyi ke array penyanyi
         ArrayPenyanyi.penyanyi[i] = penyanyi;
-        for(int j = 0; j < m; j++){
-            ADVOnEnter(true); //true karena dia mau baca integer jumlah lagu
+        ArrayPenyanyi.Neff++;
+        for (int j = 0; j < m; j++)
+        {                     // melakukan iterasi untuk setiap album penyanyi
+            ADVOnEnter(true); // true untuk mengaktifkan ADV selanjutnya dengan akuisisi sebelum BLANK
+
+            // membaca jumlah lagu pada setiap album
             l = ConvertWordToInt(currentWord);
-            ADVCONTINUE();// setelah blank dilanjut
-            mapAlbum.Elements[j].Key = keyCounter;
+            ADVCONTINUE(); // setelah blank dilanjutkan akuisisi sampai ENTER
+
+            // melakukan konfigurasi untuk key, value, dan nama album
+            mapAlbum.Elements[keyCounter].Key = keyCounter;
+            mapAlbum.Elements[keyCounter].Value = SetLagu;
+            mapAlbum.Elements[keyCounter].AlbumName = currentWord;
+
+            // melakukan konfigurasi untuk id album pertama dari penyanyi
+            if (j == 0)
+            {
+                penyanyi.IdAlbumPertama = keyCounter;
+            }
             keyCounter++;
-            printf("%d\n", keyCounter);
-            mapAlbum.Elements[j].AlbumName = currentWord;
-            mapAlbum.Elements[j].Value = SetLagu;
-            // masukin ke Map
             mapAlbum.Count++;
             for(int k = 0; k < l; k++){
                 ADVOnEnter(false); //false karena dia mau baca string
                 // Masukin lagu ke set
-                mapAlbum.Elements[j].Value.lagu[k].JudulLagu = currentWord;
-                mapAlbum.Elements[j].Value.Count++;
+                mapAlbum.Elements[laguAlbum].Value.lagu[k].JudulLagu = currentWord;
+                mapAlbum.Elements[laguAlbum].Value.Count++;
 
             }
+            laguAlbum++;
         }
     }
 
