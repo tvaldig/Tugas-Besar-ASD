@@ -174,6 +174,7 @@ void startFunction(){
             addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu);
             printf("%d %d %d\n", temp->idpenyanyi, temp->idalbum, temp->idlagu);
             InsertLast(playlists.A, temp);
+            printf("berhasil masuk sini\n");
         }
 
     }
