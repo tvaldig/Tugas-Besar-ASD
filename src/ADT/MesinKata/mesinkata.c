@@ -203,6 +203,28 @@ void COPYFILE(){
     
 }
 
+void ADVSEMICOLON(){
+    Word Empty = {"", 0};
+    currentWord = Empty;
+    ADVFILE();
+    COPYFILESEMICOLON();
+}
+
+void COPYFILESEMICOLON(){
+    int i = 0;
+    while (currentChar != ENTER && !finish && currentChar != ';')
+    {
+        if (i < NMax)
+        {
+            currentWord.TabWord[i] = currentChar;
+            i++;
+            ADVFILE();
+        }
+    }
+    currentWord.Length = i;
+    
+}
+
 void IgnoreBlankFile(){
     while(currentChar == BLANK){
         ADVFILE();   

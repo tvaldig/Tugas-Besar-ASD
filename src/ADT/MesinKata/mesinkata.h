@@ -72,6 +72,9 @@ void ConvertWordToString(Word *word, char *output);
 
 boolean IsStringEqual(char str1[], char str2[]);
 
+void COPYFILESEMICOLON();
+
+void ADVSEMICOLON();
 
 int ConvertWordToInt(Word word);
 

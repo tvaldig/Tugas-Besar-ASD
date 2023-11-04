@@ -114,6 +114,23 @@ void startFunction(){
 
     printf("id lagu: %d\n", searchidlagu(ArrayPenyanyi, 0, a, mapAlbum, 0));
     
+    printf(" ------------------- \n");
+    ADVOnEnter(false);
+    printf("%s\n", currentWord.TabWord);
+    ADVSEMICOLON();
+    printf("%s\n", currentWord.TabWord);
+    ADVSEMICOLON();
+    printf("%s\n", currentWord.TabWord);
+    ADVSEMICOLON();
+    printf("%s\n", currentWord.TabWord);
+    ADVSEMICOLON();
+    printf("%s\n", currentWord.TabWord);
+    ADVSEMICOLON();
+    printf("%s\n", currentWord.TabWord);
+    ADVSEMICOLON();
+    printf("%s\n", currentWord.TabWord);
+    printf(" ------------------- \n");
+
 }
 
 
