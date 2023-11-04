@@ -7,16 +7,43 @@ MapAlbum mapAlbum;
 TabInt ArrayPenyanyi;
 Set SetLagu;
 
-int searchidpenyanyi(TabInt p, Word w){
+int searchidpenyanyi(TabInt p, Word input){ // Mencari key id penyanyi berdasarkan inputan user
     int i = 0;
-    while(true){
-        if(p.penyanyi[i].namapenyanyi.Length == w.Length){
-            if(IsStringEqual(p.penyanyi->namapenyanyi.TabWord, w.TabWord)){
+    while(i < p.Neff){
+        if(p.penyanyi[i].namapenyanyi.Length == input.Length){
+            if(IsStringEqual(p.penyanyi->namapenyanyi.TabWord, input.TabWord)){
                 return i;
             }
         }
         i++;
     }
+    return -1;
+}
+
+int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map){
+    int i = p.penyanyi[idpenyanyi].IdAlbumPertama;
+    while(i < p.penyanyi[idpenyanyi].jumlahalbum){
+        if(map.Elements[i].AlbumName.Length == input.Length){
+            if(IsStringEqual(map.Elements[i].AlbumName.TabWord, input.TabWord)){
+                return i;
+            }
+        }
+        i++;
+    }
+    return -1;
+}
+
+int searchidlagu (TabInt p, int idpenyanyi, Word input, MapAlbum map, int idalbum){
+    int i = 0;
+    while(i < map.Elements[idalbum].Value.Count){
+        if(map.Elements[idalbum].Value.lagu[i].JudulLagu.Length == input.Length){
+            if(IsStringEqual(map.Elements[idalbum].Value.lagu[i].JudulLagu.TabWord, input.TabWord)){
+                return i;
+            }
+        }
+        i++;
+    }
+    return -1;
 }
 
 void copyword(Word source, Word hasilcopy){
@@ -63,7 +90,7 @@ void startFunction(){
             // melakukan konfigurasi untuk id album pertama dari penyanyi
             if (j == 0)
             {
-                penyanyi.IdAlbumPertama = keyCounter;
+                ArrayPenyanyi.penyanyi[i].IdAlbumPertama = keyCounter;
             }
             keyCounter++;
             mapAlbum.Count++;
@@ -78,12 +105,27 @@ void startFunction(){
         }
     }
 
-    Queue antrian;
+    Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     Stack riwayat;
-    printf("%s\n", ArrayPenyanyi.penyanyi[0].namapenyanyi.TabWord);
+    
+    Word a = {"Ready For Love", 14};
 
-    Word a = {"BLACKPINK", 9};
+    printf("jumlah lagu: %d\n", mapAlbum.Elements[0].Value.Count);
 
-
-    printf("id penyanyi: %d\n", searchidpenyanyi(ArrayPenyanyi,a));
+    printf("id lagu: %d\n", searchidlagu(ArrayPenyanyi, 0, a, mapAlbum, 0));
+    
 }
+
+
+
+
+/*
+    printf("Isi dari penyanyi: %s\n", ArrayPenyanyi.penyanyi[1].namapenyanyi.TabWord);
+    printf("Isi dari idalbum penyanyi: %d\n", ArrayPenyanyi.penyanyi[1].IdAlbumPertama);
+    printf("Isi dari jumlahalbum penyanyi: %d\n", ArrayPenyanyi.penyanyi[1].jumlahalbum);
+    printf("Isi dari album pertama lagu pertama: %s %d\n", mapAlbum.Elements[ArrayPenyanyi.penyanyi[0].IdAlbumPertama].Value.lagu->JudulLagu.TabWord,mapAlbum.Elements[ArrayPenyanyi.penyanyi[0].IdAlbumPertama].Value.lagu->IdLagu);
+    printf("Nama dari album pertama penyanyi pertama: %s\n", mapAlbum.Elements[ArrayPenyanyi.penyanyi[0].IdAlbumPertama].AlbumName.TabWord);
+
+
+
+*/
