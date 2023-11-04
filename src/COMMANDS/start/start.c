@@ -106,11 +106,9 @@ void startFunction(){
     }
 
     Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
-    Stack riwayat;
     CreateQueue(&antrian);
     
-    ADVOnEnter(false); // Mulai membaca sesi
-
+    ADVOnEnter(false); // Mulai membaca sesi bagian queue (antrian)
     n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah antrian (jumlah queue)
 
     int idxpenyanyi, idxalbum, idxlagu; 
@@ -128,10 +126,32 @@ void startFunction(){
         enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
     }
 
-    ADVOnEnter(false);
-    printf("%s\n", currentWord.TabWord);
+    displayQueue(antrian);
+
+    Stack riwayat;
+    CreateEmptyStack(&riwayat);
+
+    ADVOnEnter(false); // mulai membaca sesi bagian riwayat (stack)
+    n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah riwayat (jumlah stack)
+
+    for(int i = 0; i < n; i++){
+        ADVSEMICOLON();
+        idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
+
+        ADVSEMICOLON();
+        idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
+
+        ADVSEMICOLON();
+        idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
+
+        Push(&riwayat, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke stack riwayat
+    }
+
+    Reversestack(&riwayat);
+    displayStack(riwayat);
 
 }
+    
 
 
 
