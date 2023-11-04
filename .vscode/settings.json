@@ -2,7 +2,6 @@
     "files.associations": {
         "mesinkarakter.h": "c",
         "circular_queue.h": "c",
-        "stdio.h": "c"
-    },
-    "C_Cpp.errorSquiggles": "enabled"
+        "invalidcommand.h": "c"
+    }
 }
