@@ -1,5 +1,6 @@
 #include "../../ADT/ADT.h"
 #include "./invalidCommand.h"
+#include <stdio.h>
 
 boolean checkInSessionCommand(char *command){
     /* Cek apakah sesuai command dalam sesi */

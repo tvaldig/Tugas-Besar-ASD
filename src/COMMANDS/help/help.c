@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "help.h"
-#include "./../boolean.h"
+
 
 void help(boolean login) {
     if (login) {
