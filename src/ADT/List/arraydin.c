@@ -38,7 +38,7 @@ int GetCapacity(ArrayDin array)
     return array.Capacity;
 }
 
-void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, IdxType i)
+void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, IdxType i, Word nama)
 {
 
     if ((array->Neff) == (array->Capacity))
@@ -47,9 +47,7 @@ void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, Id
         playlist *temp = (playlist *)realloc(array->A, Capacity2 * sizeof(playlist));
         if (temp != NULL)
         {
-            array->A->penyanyi = temp->penyanyi;
-            array->A->album = temp->album;
-            array->A->lagu = temp->lagu;
+            array->A = temp;
             array->Capacity = Capacity2;
         }
     }
@@ -57,25 +55,26 @@ void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, Id
     {
         (*array).A[j] = (*array).A[j - 1];
     }
-    (*array).A[i].penyanyi = penyanyi;
-    (*array).A[i].album = album;
-    (*array).A[i].lagu = lagu;
-    
+    (*array).A[i].First->idpenyanyi = penyanyi;
+    (*array).A[i].First->idalbum = album;
+    (*array).A[i].First->idlagu = lagu;
+    array->A[i].namaplaylist = nama;
+    array->A[i].idplaylist = i;
     (*array).Neff++;
 }
 
-void InsertLastArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu)
+void InsertLastArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, Word nama)
 {
-    return InsertAt(array, penyanyi, album, lagu, array->Neff);
+    return InsertAt(array, penyanyi, album, lagu, array->Neff, nama);
 }
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirstArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu)
+void InsertFirstArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, Word nama)
 {
-    return InsertAt(array, penyanyi, album, lagu, 0);
+    return InsertAt(array, penyanyi, album, lagu, 0, nama);
 }
 
 /**
@@ -118,13 +117,12 @@ void PrintArrayDin(ArrayDin array)
     printf("[");
     for (j = 0; j < (array).Neff; j++)
     {
-        printf("%d|", (array).A[j].penyanyi);
-        printf("%d|", (array).A[j].album);
-        printf("%d", (array).A[j].lagu);
+        printf("%d|", (array).A[j].idplaylist);
+        printf("%s", (array).A[j].namaplaylist);
 
         if (j != (array).Neff - 1)
         {
-            printf(", ");
+            printf(" ; ");
         }
     }
     printf("]\n");
@@ -165,18 +163,19 @@ ArrayDin CopyArrayDin(ArrayDin array)
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, IdxType penyanyi, IdxType album, IdxType lagu)
+IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist, Word nama)
 {
     // KAMUS
     IdxType j = 0;
     // ALGORITMA
     while ((j <= (array).Neff))
     {
-        if (((array).A[j].penyanyi == penyanyi) && (array.A[j].album == album) && ((array).A[j].lagu == lagu)){
+        if (array.A[j].idplaylist == idplaylist){
             break;
         }
         j++;
     }
+
     if (j > (array).Neff)
     {
         j = -1;

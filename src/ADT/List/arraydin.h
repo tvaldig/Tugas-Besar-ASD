@@ -8,14 +8,9 @@
 
 #define InitialSize 1
 
+#include "../Linked-List/linked_list.h"
+
 typedef int IdxType;
-
-typedef struct{
-    IdxType penyanyi;
-    IdxType album;
-    IdxType lagu;
-} playlist;
-
 typedef struct
 {
     playlist *A;

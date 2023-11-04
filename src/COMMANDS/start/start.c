@@ -116,13 +116,11 @@ void startFunction(){
     for(int i = 0; i < n; i++){
         ADVSEMICOLON();
         idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
-
         ADVSEMICOLON();
         idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
-
         ADVSEMICOLON();
         idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
-
+        
         enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
     }
 
@@ -137,18 +135,32 @@ void startFunction(){
     for(int i = 0; i < n; i++){
         ADVSEMICOLON();
         idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
-
         ADVSEMICOLON();
         idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
-
         ADVSEMICOLON();
         idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
-
+        
         Push(&riwayat, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke stack riwayat
     }
 
     Reversestack(&riwayat);
     displayStack(riwayat);
+
+    ADVOnEnter(false);
+    n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah playlist
+
+    for(int i = 0; i < n; i++){
+        ADVOnEnter(true);
+        m = ConvertWordToInt(currentWord);
+
+        
+
+        for(int j = 0; j < m; j++){
+
+        }
+
+    }
+
 
 }
     
