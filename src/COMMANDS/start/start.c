@@ -11,7 +11,7 @@ int searchidpenyanyi(TabInt p, Word input){ // Mencari key id penyanyi berdasark
     int i = 0;
     while(i < p.Neff){
         if(p.penyanyi[i].namapenyanyi.Length == input.Length){
-            if(IsStringEqual(p.penyanyi->namapenyanyi.TabWord, input.TabWord)){
+            if(IsStringEqual(p.penyanyi[i].namapenyanyi.TabWord, input.TabWord)){
                 return i;
             }
         }
@@ -22,7 +22,7 @@ int searchidpenyanyi(TabInt p, Word input){ // Mencari key id penyanyi berdasark
 
 int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map){
     int i = p.penyanyi[idpenyanyi].IdAlbumPertama;
-    while(i < p.penyanyi[idpenyanyi].jumlahalbum){
+    while(i < p.penyanyi[idpenyanyi].jumlahalbum + i){
         if(map.Elements[i].AlbumName.Length == input.Length){
             if(IsStringEqual(map.Elements[i].AlbumName.TabWord, input.TabWord)){
                 return i;
@@ -107,29 +107,29 @@ void startFunction(){
 
     Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     Stack riwayat;
+    CreateQueue(&antrian);
     
-    Word a = {"Ready For Love", 14};
+    ADVOnEnter(false); // Mulai membaca sesi
 
-    printf("jumlah lagu: %d\n", mapAlbum.Elements[0].Value.Count);
+    n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah antrian (jumlah queue)
 
-    printf("id lagu: %d\n", searchidlagu(ArrayPenyanyi, 0, a, mapAlbum, 0));
-    
-    printf(" ------------------- \n");
+    int idxpenyanyi, idxalbum, idxlagu; 
+
+    for(int i = 0; i < n; i++){
+        ADVSEMICOLON();
+        idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
+
+        ADVSEMICOLON();
+        idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
+
+        ADVSEMICOLON();
+        idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
+
+        enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
+    }
+
     ADVOnEnter(false);
     printf("%s\n", currentWord.TabWord);
-    ADVSEMICOLON();
-    printf("%s\n", currentWord.TabWord);
-    ADVSEMICOLON();
-    printf("%s\n", currentWord.TabWord);
-    ADVSEMICOLON();
-    printf("%s\n", currentWord.TabWord);
-    ADVSEMICOLON();
-    printf("%s\n", currentWord.TabWord);
-    ADVSEMICOLON();
-    printf("%s\n", currentWord.TabWord);
-    ADVSEMICOLON();
-    printf("%s\n", currentWord.TabWord);
-    printf(" ------------------- \n");
 
 }
 
