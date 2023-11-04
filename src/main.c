@@ -23,6 +23,7 @@ int main()
         {
             if(checkCommand(command, false)){
                 program = true;
+                startFunction();
                 printf(" start berhasil dijalankan\n");
             } else {
                 wrongCommand();

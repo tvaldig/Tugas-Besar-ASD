@@ -9,8 +9,7 @@ Set SetLagu;
 
 int searchidpenyanyi(TabInt p, Word w){
     int i = 0;
-    boolean found = false;
-    while(!(found)){
+    while(true){
         if(p.penyanyi[i].namapenyanyi.Length == w.Length){
             if(IsStringEqual(p.penyanyi->namapenyanyi.TabWord, w.TabWord)){
                 return i;
