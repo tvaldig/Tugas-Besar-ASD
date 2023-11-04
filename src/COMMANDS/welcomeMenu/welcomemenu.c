@@ -1,11 +1,23 @@
 #include <stdio.h>
 #include "welcomemenu.h"
 
+void delay(){
+    int delay;
+    for (int i = 0; i < 100099999; i++)
+    {
+        delay = i;
+    }
+}
+
 void welcomeMenu()
 {
-    printf("Loading...\n");
-    printf("_____________________\n");
-    printf("W-A-Y-A-N-G--W-A-V-E\n");
-    printf("_____________________\n");
-    printf("OPTION : START | LOAD | HELP\n");
+    STARTFROMFILE("../save/wayangwave.txt");
+
+    while (!finish)
+    {
+        delay();
+        printf("%s\n", currentWord.TabWord);
+        ADVOnEnter(false);
+    }
+    printf("Masukan Command :\n");
 }
