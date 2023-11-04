@@ -14,42 +14,17 @@ int main()
     while(!program){
         STARTCOMMAND();
         ConvertWordToString(&currentCommand, command);
-        if (IsStringEqual(command, "START"))
+        if (checkCommand(command, false))
         {
-            if(checkCommand(command, false)){
-                program = true;
-                printf(" start berhasil dijalankan\n");
-            } else {
-                wrongCommand();
+            if(IsStringEqual(command, "START")){
+                printf("Start berhasil\n");
+            } else if(IsStringEqual(command, "LOAD")){
+                printf("Load berhasil\n");
+            } else if(IsStringEqual(command, "HELP")) {
+                help(false);
             }
         }
-        else if (IsStringEqual(command, "LOAD")){
-            if (checkCommand(command, false))
-            {
-                program = true;
-                printf("load berhasil dijalankan\n");
-            }
-            else
-            {
-                wrongCommand();
-            }
-        }
-        else if (IsStringEqual(command, "HELP"))
-        {
-            if (checkCommand(command, false))
-            {
-                help(true);
-                program = true;
-            }
-            else
-            {
-                wrongCommand();
-            }
-        } else {
-            unknownCommand();
-        }
-    }
     
-
+    }
     
 }
