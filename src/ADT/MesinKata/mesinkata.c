@@ -144,10 +144,7 @@ boolean IsStringEqual(char str1[], char str2[])
         }
         i++;
     }
-    if (equal)
-        return true;
-    else
-        return false;
+    return equal;
 }
 
 void STARTFROMFILE(char *file){
