@@ -107,77 +107,79 @@ void startFunction(){
 
     Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     CreateQueue(&antrian);
-    
-    ADVOnEnter(false); // Mulai membaca sesi bagian queue (antrian)
-    n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah antrian (jumlah queue)
-
-    int idxpenyanyi, idxalbum, idxlagu; 
-
-    for(int i = 0; i < n; i++){
-        ADVSEMICOLON();
-        idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
-        ADVSEMICOLON();
-        idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
-        ADVSEMICOLON();
-        idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
-        
-        enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
-    }
-
-    displayQueue(antrian);
 
     Stack riwayat;
-    CreateEmptyStack(&riwayat);
-
-    ADVOnEnter(false); // mulai membaca sesi bagian riwayat (stack)
-    n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah riwayat (jumlah stack)
-
-    for(int i = 0; i < n; i++){
-        ADVSEMICOLON();
-        idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
-        ADVSEMICOLON();
-        idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
-        ADVSEMICOLON();
-        idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
-        
-        Push(&riwayat, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke stack riwayat
-    }
-
-    Reversestack(&riwayat);
-    displayStack(riwayat);
+    CreateEmptyStack(&riwayat); // membuat stack kosong  
 
     ArrayDin playlists;
+    playlists = MakeArrayDin(); // membuat arraydin playlists kosong
+  
+    if(!finish){
+        ADVOnEnter(false); // Mulai membaca sesi bagian queue (antrian)
+        n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah antrian (jumlah queue)
 
-    playlists = MakeArrayDin();
+        int idxpenyanyi, idxalbum, idxlagu; 
 
-    ADVOnEnter(false);
-    n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah playlist
-
-    for(int i = 0; i < n; i++){
-        ADVOnEnter(true);
-        m = ConvertWordToInt(currentWord);
-        
-        ADVCONTINUE();
-        InsertLastArrayDin(&playlists, -1, -1, -1, currentWord);
-
-        printf("%s\n", currentWord.TabWord);
-
-        PrintArrayDin(playlists);
-        
-        for(int j = 0; j < m; j++){
-            ADVSEMICOLON(); 
+        for(int i = 0; i < n; i++){
+            ADVSEMICOLON();
             idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
             ADVSEMICOLON();
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
             idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
             
-            printf("berhasil masuk sini\n");
+            enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
         }
 
+        displayQueue(antrian); // tes isi queue
+
+        ADVOnEnter(false); // mulai membaca sesi bagian riwayat (stack)
+        n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah riwayat (jumlah stack)
+
+        for(int i = 0; i < n; i++){
+            ADVSEMICOLON();
+            idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
+            ADVSEMICOLON();
+            idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
+            ADVSEMICOLON();
+            idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
+            
+            Push(&riwayat, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke stack riwayat
+        }
+
+        Reversestack(&riwayat); // karena urutan riwayat di text adalah dari yang terbaru maka isi stack perlu direverse
+        displayStack(riwayat); // tes isi stack
+
+        ADVOnEnter(false);
+        n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah playlist
+
+        for(int i = 0; i < n; i++){
+            ADVOnEnter(true);
+            m = ConvertWordToInt(currentWord);
+            
+            ADVCONTINUE();
+            InsertLastArrayDin(&playlists, currentWord);
+
+            printf("%s\n", currentWord.TabWord);
+
+            CreateEmpty(&(playlists.A[i])); // membuat satu playlist baru di arraydin playlists
+
+            for(int j = 0; j < m; j++){
+                ADVSEMICOLON(); 
+                idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
+                ADVSEMICOLON();
+                idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
+                ADVSEMICOLON();
+                idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
+
+                addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu); // membuat sebuah node baru berisi idxpenyanyi, idxalbum, idxlagu
+                InsertLast(&(playlists.A[i]), temp); // memasukkan data dari node yang sudah dibuat ke playlists
+            }
+            PrintInfo(playlists.A[i]); // tes isi satu playlist
+        }
+        
+        PrintArrayDin(playlists); // tes isi playlists
     }
-
-
 }
     
 

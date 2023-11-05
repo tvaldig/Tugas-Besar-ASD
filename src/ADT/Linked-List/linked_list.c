@@ -37,7 +37,6 @@ addressnode alokasi(int idpenyanyi, int idalbum, int idlagu)
     /* Jika alokasi gagal, mengirimkan Nil */
     
     addressnode E = (addressnode) malloc (sizeof(Elmtlist));
-    printf("%d\n", E);
     if (E != NULL)
     {
         PENYANYI(E) = idpenyanyi;
@@ -271,7 +270,7 @@ void PrintInfo(playlist L)
                 printf(" ; ");
         } while (P != null);
     }
-    printf("]");
+    printf("]\n");
 }
 
 int NbElmtLinkedList(playlist L)
