@@ -46,16 +46,17 @@ int searchidlagu (TabInt p, int idpenyanyi, Word input, MapAlbum map, int idalbu
     return -1;
 }
 
-void copyword(Word source, Word hasilcopy){
-    for(int i = 0; i < source.Length; i++){
-        hasilcopy.TabWord[i] = source.TabWord[i];
-    }
-}
 
-void startFunction(){
+void startFunction(Word fname){
     keytype keyCounter = 0, laguAlbum = 0;
     int countAlbum, n, m, l;
-    STARTFROMFILE("../save/new.txt");  // memulai Mesin Kata
+    STARTFROMFILE(fname.TabWord) ;  // memulai Mesin Kata
+
+    if(finish){
+        printf("Masukkan nama file yang benar!\n");
+        return;
+    }
+
     n = ConvertWordToInt(currentWord); // membaca jumlah penyanyi
     for (int i = 0; i < n; i++)
     {                     // iterasi untuk setiap penyanyi
@@ -181,18 +182,3 @@ void startFunction(){
         PrintArrayDin(playlists); // tes isi playlists
     }
 }
-    
-
-
-
-
-/*
-    printf("Isi dari penyanyi: %s\n", ArrayPenyanyi.penyanyi[1].namapenyanyi.TabWord);
-    printf("Isi dari idalbum penyanyi: %d\n", ArrayPenyanyi.penyanyi[1].IdAlbumPertama);
-    printf("Isi dari jumlahalbum penyanyi: %d\n", ArrayPenyanyi.penyanyi[1].jumlahalbum);
-    printf("Isi dari album pertama lagu pertama: %s %d\n", mapAlbum.Elements[ArrayPenyanyi.penyanyi[0].IdAlbumPertama].Value.lagu->JudulLagu.TabWord,mapAlbum.Elements[ArrayPenyanyi.penyanyi[0].IdAlbumPertama].Value.lagu->IdLagu);
-    printf("Nama dari album pertama penyanyi pertama: %s\n", mapAlbum.Elements[ArrayPenyanyi.penyanyi[0].IdAlbumPertama].AlbumName.TabWord);
-
-
-
-*/

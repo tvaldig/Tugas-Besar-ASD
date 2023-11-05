@@ -22,10 +22,13 @@ int main()
         if (checkCommand(command, false))
         {
             if(IsStringEqual(command, "START")){
+                Word fname = {"../save/new.txt"};
+                startFunction(fname);
                 printf("Start berhasil\n");
-                startFunction();
             } else if(IsStringEqual(command, "LOAD")){
-                printf("Load berhasil\n");
+                STARTCOMMAND();
+                Word direktori = {"../save/",8};
+                startFunction(ConcatString(direktori, currentCommand));
             } else if(IsStringEqual(command, "HELP")) {
                 help(false);
             }

@@ -59,6 +59,10 @@ void STARTFILE(char *str)
 {
     finish = false;
     pita = fopen(str, "r");
+    if(pita == NULL){
+        finish = true;
+        return;
+    }
     ADVFILE();
 }
 
