@@ -9,13 +9,14 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 
 // #define false 0
 // #define true 1
-#define Nil 0
+
+#define Nil -1
 #define MaxEl 100
-#define Undefined Set
+#define Undefined -999
 
 // typedef int bool;
 typedef int keytype;
-typedef Set valuetype;
+typedef int valuetype;
 typedef int address;
 
 typedef struct
@@ -64,13 +65,8 @@ void InsertMap(MapAlbum *M, keytype k, valuetype v, Word albumname);
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 
-void DeleteMap(MapAlbum *M, keytype k);
-/* Menghapus Elmt dari MapAlbum M. */
-/* I.S. M tidak kosong
-        element dengan key k mungkin anggota / bukan anggota dari M */
-/* F.S. element dengan key k bukan anggota dari M */
-
 boolean IsMemberMap(MapAlbum M, keytype k);
 /* Mengembalikan true jika k adalah member dari M */
 
+void PrintMap(MapAlbum M);
 #endif
