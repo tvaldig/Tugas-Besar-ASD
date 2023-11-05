@@ -58,7 +58,7 @@ valuetype Value(MapAlbum M, keytype k);
 /* Mengembalikan nilai value dengan key k dari M */
 /* Jika tidak ada key k pada M, akan mengembalikan Undefined */
 
-void InsertMap(MapAlbum *M, keytype k, valuetype v);
+void InsertMap(MapAlbum *M, keytype k, valuetype v, Word albumname);
 /* Menambahkan Elmt sebagai elemen MapAlbum M. */
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
