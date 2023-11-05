@@ -3,7 +3,7 @@
 
 void delay(){
     int delay;
-    for (int i = 0; i < 100099999; i++)
+    for (int i = 0; i < 100000999; i++)
     {
         delay = i;
     }

@@ -11,7 +11,7 @@
 
 int main()
 {
-    boolean program = false;
+    boolean program = false, inSession = false;
     char command[100];
     char tes[100];
     char lagu[100];
@@ -28,19 +28,18 @@ int main()
                 }else{
                     Word fname = {"../save/new.txt",15};
                     startFunction(fname);
-                    printf("Start berhasil\n");
+                    inSession = true;
                 }
             } else if(IsStringEqual(command, "LOAD")){
                 if(currentChar == '\n'){
-                    printf("Command tidak diketahui\n");
+                    printf("Masukan nama file!\n");
                 }else{
                     STARTCOMMAND();
                     Word direktori = {"../save/",8};
                     startFunction(ConcatString(direktori, currentCommand));
-                    printf("Load berhasil\n");
                 }
             } else if(IsStringEqual(command, "HELP")) {
-                help(false);
+                help(inSession);
             }
         }
     
