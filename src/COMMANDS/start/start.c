@@ -128,8 +128,6 @@ void startFunction(Word fname){
             enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
         }
 
-        displayQueue(antrian); // tes isi queue
-
         ADVOnEnter(false); // mulai membaca sesi bagian riwayat (stack)
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah riwayat (jumlah stack)
 
@@ -145,7 +143,6 @@ void startFunction(Word fname){
         }
 
         Reversestack(&riwayat); // karena urutan riwayat di text adalah dari yang terbaru maka isi stack perlu direverse
-        displayStack(riwayat); // tes isi stack
 
         ADVOnEnter(false);
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah playlist
@@ -156,8 +153,6 @@ void startFunction(Word fname){
             
             ADVCONTINUE();
             InsertLastArrayDin(&playlists, currentWord);
-
-            printf("%s\n", currentWord.TabWord);
 
             CreateEmpty(&(playlists.A[i])); // membuat satu playlist baru di arraydin playlists
 
@@ -172,9 +167,6 @@ void startFunction(Word fname){
                 addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu); // membuat sebuah node baru berisi idxpenyanyi, idxalbum, idxlagu
                 InsertLast(&(playlists.A[i]), temp); // memasukkan data dari node yang sudah dibuat ke playlists
             }
-            PrintInfo(playlists.A[i]); // tes isi satu playlist
-        }
-        
-        PrintArrayDin(playlists); // tes isi playlists
+        }        
     }
 }
