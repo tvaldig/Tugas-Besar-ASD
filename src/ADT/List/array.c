@@ -50,30 +50,39 @@ IdxType GetLastIdx(TabInt T)
 }
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
+
 /* *** Menghasilkan sebuah elemen *** */
-ElType GetElmt(TabInt T, IdxType i)
+Word GetNamaPenyanyi(TabInt T, IdxType i)
+{
+    return T.penyanyi[i].namapenyanyi;
+}
+/* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
+/* Mengirimkan elemen tabel nama penyanyi yang ke-i */
+
+ElType GetJumlahAlbum(TabInt T, IdxType i){
+    return T.penyanyi[i].jumlahalbum;
+}
+/* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
+/* Mengirimkan elemen tabel jumlah album yang ke-i */
+
+ElType GetIdAlbumPertama(TabInt T, IdxType i)
 {
     return T.penyanyi[i].IdAlbumPertama;
 }
 /* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
-/* Mengirimkan elemen tabel yang ke-i */
+/* Mengirimkan elemen tabel id album pertama yang ke-i */
+
 
 /* *** Selektor SET : Mengubah nilai TABEL dan elemen tabel *** */
-/* Untuk type private/limited private pada bahasa tertentu */
-void SetTab(TabInt Tin, TabInt *Tout)
-{
-    (*Tout) = Tin;
-}
-/* I.S. Tin terdefinisi, sembarang */
-/* F.S. Tout berisi salinan Tin */
 /* Assignment THsl -> Tin */
-void SetEl(TabInt *T, IdxType i, ElType v)
+void SetPenyanyi(TabInt *T, IdxType i, Penyanyi penyanyi)
 {
-    T->penyanyi->IdAlbumPertama = v;
-    if (i > GetLastIdx(*T))
-    {
-        T->Neff += 1;
-    }
+    T->penyanyi[i] = penyanyi;
+    T->Neff++;
+}
+
+void SetIdAlbumPertamaPenyanyi(TabInt *T, IdxType i, ElType idAlbum){
+    T->penyanyi[i].IdAlbumPertama = idAlbum;
 }
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
@@ -119,120 +128,19 @@ boolean IsFullArray(TabInt T)
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsi(TabInt T)
 {
+    char penyanyi[100];
     if (IsEmptyArray(T))
     {
         printf("Tabel kosong\n");
     }
     else
     {
-        for (IdxType i = GetFirstIdx(T); i <= GetLastIdx(T); i++)
+        for (IdxType i = 0; i < GetLastIdx(T); i++)
         {
-            printf("%d:%d\n", i, T.penyanyi->IdAlbumPertama);
+            Word wordpenyanyi = GetNamaPenyanyi(T,i);
+            ConvertWordToString(&wordpenyanyi,penyanyi);
+            printf("ID: %d, NAMA PENYANYI: %s, JUMLAH ALBUM: %d, IDALBUMPERTAMA: %d\n", i, penyanyi, GetJumlahAlbum(T,i), GetIdAlbumPertama(T,i));
         }
     }
 }
 /* Proses : Menuliskan isi tabel dengan traversal */
-/* I.S. T boleh kosong */
-/* F.S. Jika T tidak kosong : indeks dan elemen tabel ditulis berderet ke bawah */
-/* Jika isi tabel [1,2,3] maka akan diprint
-0:1
-1:2
-2:3
-*/
-/* Jika T kosong : Hanya menulis "Tabel kosong" */
-
-/* ********** OPERATOR ARITMATIKA ********** */
-/* *** Aritmatika tabel : Penjumlahan, pengurangan, perkalian, ... *** */
-TabInt PlusTab(TabInt T1, TabInt T2)
-{
-    TabInt TPlus;
-    MakeEmpty(&TPlus);
-    for (IdxType i = GetFirstIdx(TPlus); i <= GetLastIdx(TPlus); i++)
-    {
-        TPlus.penyanyi->IdAlbumPertama = GetElmt(T1, i) + GetElmt(T2, i);
-    }
-    TPlus.Neff = T1.Neff;
-    return TPlus;
-}
-/* Prekondisi : T1 dan T2 berukuran sama dan tidak kosong */
-/* Mengirimkan T1 + T2 */
-TabInt MinusTab(TabInt T1, TabInt T2)
-{
-    TabInt TMin;
-    MakeEmpty(&TMin);
-    for (IdxType i = GetFirstIdx(TMin); i <= GetLastIdx(TMin); i++)
-    {
-        TMin.penyanyi[i].IdAlbumPertama = GetElmt(T1, i) - GetElmt(T2, i);
-    }
-    TMin.Neff = T1.Neff;
-    return TMin;
-}
-/* Prekondisi : T1 dan T2 berukuran sama dan tidak kosong */
-/* Mengirimkan T1 - T2 */
-
-/* ********** NILAI EKSTREM ********** */
-ElType ValMax(TabInt T)
-{
-    ElType max = GetElmt(T, 1);
-    for (int i = GetFirstIdx(T) + 1; i < GetLastIdx(T); i++)
-    {
-
-        if (T.penyanyi[i].IdAlbumPertama > max)
-        {
-            max = T.penyanyi[i].IdAlbumPertama;
-        }
-    }
-    return max;
-}
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan nilai maksimum tabel */
-
-ElType ValMin(TabInt T)
-{
-    ElType min = GetElmt(T, 1);
-    for (int i = GetFirstIdx(T) + 1; i < GetLastIdx(T); i++)
-    {
-
-        if (T.penyanyi[i].IdAlbumPertama < min)
-        {
-            min = T.penyanyi[i].IdAlbumPertama;
-        }
-    }
-    return min;
-}
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan nilai minimum tabel */
-
-/* *** Mengirimkan indeks elemen bernilai ekstrem *** */
-IdxType IdxMaxTab(TabInt T)
-{
-    IdxType maxin;
-    maxin = GetFirstIdx(T);
-    for (int i = GetFirstIdx(T) + 1; i <= GetLastIdx(T); i++)
-    {
-        if (GetElmt(T, maxin) < GetElmt(T, i))
-        {
-            maxin = i;
-        }
-    }
-    return (maxin);
-}
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks i dengan elemen ke-i adalah nilai maksimum pada tabel */
-
-IdxType IdxMinTab(TabInt T)
-{
-    IdxType minin;
-    minin = GetFirstIdx(T);
-    for (int i = GetFirstIdx(T) + 1; i <= GetLastIdx(T); i++)
-    {
-        if (GetElmt(T, minin) > GetElmt(T, i))
-        {
-            minin = i;
-        }
-    }
-    return (minin);
-}
-/* Prekondisi : Tabel tidak kosong */
-/* Mengirimkan indeks i */
-/* dengan elemen ke-i nilai minimum pada tabel */
