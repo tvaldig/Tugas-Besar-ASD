@@ -118,6 +118,7 @@ void startFunction(Word fname)
             laguAlbum++;
         }
     }
+    TulisIsi(ArrayPenyanyi);
 
     Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     CreateQueue(&antrian);
