@@ -56,7 +56,7 @@ void startFunction(Word fname){
         printf("Masukkan nama file yang benar!\n");
         return;
     }
-
+    MakeEmpty(&ArrayPenyanyi);
     n = ConvertWordToInt(currentWord); // membaca jumlah penyanyi
     for (int i = 0; i < n; i++)
     {                     // iterasi untuk setiap penyanyi
@@ -65,15 +65,12 @@ void startFunction(Word fname){
         // membaca jumlah album pada penyanyi
         m = ConvertWordToInt(currentWord);
         penyanyi.jumlahalbum = m;
-
         ADVCONTINUE(); // setelah blank dilanjutkan akuisisi sampai ENTER
-
         // membaca nama penyanyi
         penyanyi.namapenyanyi = currentWord;
-
+        SetPenyanyi(&ArrayPenyanyi, i, penyanyi);
         // memasukan tipe data penyanyi ke array penyanyi
-        ArrayPenyanyi.penyanyi[i] = penyanyi;
-        ArrayPenyanyi.Neff++;
+        
         for (int j = 0; j < m; j++)
         {                     // melakukan iterasi untuk setiap album penyanyi
             ADVOnEnter(true); // true untuk mengaktifkan ADV selanjutnya dengan akuisisi sebelum BLANK
@@ -90,7 +87,7 @@ void startFunction(Word fname){
             // melakukan konfigurasi untuk id album pertama dari penyanyi
             if (j == 0)
             {
-                ArrayPenyanyi.penyanyi[i].IdAlbumPertama = keyCounter;
+                SetIdAlbumPertamaPenyanyi(&ArrayPenyanyi,i,keyCounter);
             }
             keyCounter++;
             mapAlbum.Count++;

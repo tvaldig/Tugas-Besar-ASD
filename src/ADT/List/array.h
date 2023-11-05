@@ -4,8 +4,8 @@
 #define ARRAY_H
 /* Kamus Umum */
 
-#define IdxMax 100
-#define IdxMin 1
+#define IdxMax 99
+#define IdxMin 0
 #define IdxUndef -999 /* indeks tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
@@ -60,20 +60,31 @@ IdxType GetLastIdx(TabInt T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
 /* *** Menghasilkan sebuah elemen *** */
-ElType GetElmt(TabInt T, IdxType i);
+Word GetNamaPenyanyi(TabInt T, IdxType i);
 /* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
-/* Mengirimkan elemen tabel yang ke-i */
+/* Mengirimkan elemen tabel nama penyanyi yang ke-i */
+
+ElType GetJumlahAlbum(TabInt T, IdxType i);
+/* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
+/* Mengirimkan elemen tabel jumlah album yang ke-i */
+
+ElType GetIdAlbumPertama(TabInt T, IdxType i);
+
+/* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
+ /* Mengirimkan elemen tabel id album pertama yang ke-i */
 
 /* *** Selektor SET : Mengubah nilai TABEL dan elemen tabel *** */
-/* Untuk type private/limited private pada bahasa tertentu */
-void SetTab(TabInt Tin, TabInt *Tout);
-/* I.S. Tin terdefinisi, sembarang */
-/* F.S. Tout berisi salinan Tin */
-/* Assignment THsl -> Tin */
-void SetEl(TabInt *T, IdxType i, ElType v);
+
+void SetPenyanyi(TabInt *T, IdxType i, Penyanyi penyanyi);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
-/* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
+/* Mengeset nilai elemen tabel yang ke-i sehingga bernilai datapenyanyi*/
+
+void SetIdAlbumPertamaPenyanyi(TabInt *T, IdxType i, ElType idAlbum);
+/* I.S. T terdefinisi, sembarang */
+/* F.S. Elemen T yang ke-i bernilai v */
+/* Mengeset nilai elemen tabel yang ke-i sehingga bernilai idalbum*/
+
 void SetNeff(TabInt *T, IdxType N);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Nilai indeks efektif T bernilai N */
@@ -100,41 +111,5 @@ boolean IsFullArray(TabInt T);
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsi(TabInt T);
 /* Proses : Menuliskan isi tabel dengan traversal */
-/* I.S. T boleh kosong */
-/* F.S. Jika T tidak kosong : indeks dan elemen tabel ditulis berderet ke bawah */
-/* Jika isi tabel [1,2,3] maka akan diprint
-0:1
-1:2
-2:3
-*/
-/* Jika T kosong : Hanya menulis "Tabel kosong" */
-
-/* ********** OPERATOR ARITMATIKA ********** */
-/* *** Aritmatika tabel : Penjumlahan, pengurangan, perkalian, ... *** */
-TabInt PlusTab(TabInt T1, TabInt T2);
-/* Prekondisi : T1 dan T2 berukuran sama dan tidak kosong */
-/* Mengirimkan T1 + T2 */
-TabInt MinusTab(TabInt T1, TabInt T2);
-/* Prekondisi : T1 dan T2 berukuran sama dan tidak kosong */
-/* Mengirimkan T1 - T2 */
-
-/* ********** NILAI EKSTREM ********** */
-ElType ValMax(TabInt T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan nilai maksimum tabel */
-
-ElType ValMin(TabInt T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan nilai minimum tabel */
-
-/* *** Mengirimkan indeks elemen bernilai ekstrem *** */
-IdxType IdxMaxTab(TabInt T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks i dengan elemen ke-i adalah nilai maksimum pada tabel */
-
-IdxType IdxMinTab(TabInt T);
-/* Prekondisi : Tabel tidak kosong */
-/* Mengirimkan indeks i */
-/* dengan elemen ke-i nilai minimum pada tabel */
 
 #endif
