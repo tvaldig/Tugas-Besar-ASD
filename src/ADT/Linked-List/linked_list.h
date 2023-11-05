@@ -18,7 +18,7 @@ typedef struct tElmtlist
     int idalbum;
     int idlagu;
     addressnode next;
-} ElmtList;
+} Elmtlist;
 
 typedef struct
 {

@@ -35,19 +35,16 @@ addressnode alokasi(int idpenyanyi, int idalbum, int idlagu)
     /* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
     /* menghasilkan P, maka Info(P)=X, Next(P)=Nil */
     /* Jika alokasi gagal, mengirimkan Nil */
-    ElmtList* E;
+    
+    addressnode E = (addressnode) malloc (sizeof(Elmtlist));
     printf("%d\n", E);
     if (E != NULL)
     {
-        E->idpenyanyi = idpenyanyi;
-        E->idalbum = idalbum;
-        E->idlagu = idlagu;
-        E->next = null;
+        PENYANYI(E) = idpenyanyi;
+        ALBUM(E) = idalbum;
+        LAGU(E) = idlagu;
+        Next(E) = null;
         return E;
-    }
-    else
-    {
-        return null;
     }
 }
 

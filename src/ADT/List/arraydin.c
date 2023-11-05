@@ -38,7 +38,7 @@ int GetCapacity(ArrayDin array)
     return array.Capacity;
 }
 
-void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, IdxType i, Word nama)
+void InsertAt(ArrayDin *array, IdxType i, Word nama)
 {
 
     if ((array->Neff) == (array->Capacity))
@@ -55,26 +55,23 @@ void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, Id
     {
         (*array).A[j] = (*array).A[j - 1];
     }
-    (*array).A[i].First->idpenyanyi = penyanyi;
-    (*array).A[i].First->idalbum = album;
-    (*array).A[i].First->idlagu = lagu;
     array->A[i].namaplaylist = nama;
     array->A[i].idplaylist = i;
     (*array).Neff++;
 }
 
-void InsertLastArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, Word nama)
+void InsertLastArrayDin(ArrayDin *array, Word nama)
 {
-    return InsertAt(array, penyanyi, album, lagu, array->Neff, nama);
+    return InsertAt(array, array->Neff, nama);
 }
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirstArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, Word nama)
+void InsertFirstArrayDin(ArrayDin *array, Word nama)
 {
-    return InsertAt(array, penyanyi, album, lagu, 0, nama);
+    return InsertAt(array, 0, nama);
 }
 
 /**

@@ -158,7 +158,7 @@ void startFunction(){
         m = ConvertWordToInt(currentWord);
         
         ADVCONTINUE();
-        InsertFirstArrayDin(&playlists, -1, -1, -1, currentWord);
+        InsertLastArrayDin(&playlists, -1, -1, -1, currentWord);
 
         printf("%s\n", currentWord.TabWord);
 
@@ -171,9 +171,7 @@ void startFunction(){
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
             idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
-            addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu);
-            printf("%d %d %d\n", temp->idpenyanyi, temp->idalbum, temp->idlagu);
-            InsertLast(playlists.A, temp);
+            
             printf("berhasil masuk sini\n");
         }
 
