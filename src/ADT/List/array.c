@@ -1,9 +1,4 @@
-/*
-    Timotius Vivaldi Gunawan
-    18222091
-    Pra Praktikum 4
-    array
-*/
+
 #include "array.h"
 #include "../../boolean.h"
 #include <stdio.h>
@@ -58,7 +53,7 @@ IdxType GetLastIdx(TabInt T)
 /* *** Menghasilkan sebuah elemen *** */
 ElType GetElmt(TabInt T, IdxType i)
 {
-    return T.TI[i];
+    return T.penyanyi[i].IdAlbumPertama;
 }
 /* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
 /* Mengirimkan elemen tabel yang ke-i */
@@ -74,7 +69,7 @@ void SetTab(TabInt Tin, TabInt *Tout)
 /* Assignment THsl -> Tin */
 void SetEl(TabInt *T, IdxType i, ElType v)
 {
-    T->TI[i] = v;
+    T->penyanyi->IdAlbumPertama = v;
     if (i > GetLastIdx(*T))
     {
         T->Neff += 1;
@@ -132,7 +127,7 @@ void TulisIsi(TabInt T)
     {
         for (IdxType i = GetFirstIdx(T); i <= GetLastIdx(T); i++)
         {
-            printf("%d:%d\n", i, T.TI[i]);
+            printf("%d:%d\n", i, T.penyanyi->IdAlbumPertama);
         }
     }
 }
@@ -154,7 +149,7 @@ TabInt PlusTab(TabInt T1, TabInt T2)
     MakeEmpty(&TPlus);
     for (IdxType i = GetFirstIdx(TPlus); i <= GetLastIdx(TPlus); i++)
     {
-        TPlus.TI[i] = GetElmt(T1, i) + GetElmt(T2, i);
+        TPlus.penyanyi->IdAlbumPertama = GetElmt(T1, i) + GetElmt(T2, i);
     }
     TPlus.Neff = T1.Neff;
     return TPlus;
@@ -167,7 +162,7 @@ TabInt MinusTab(TabInt T1, TabInt T2)
     MakeEmpty(&TMin);
     for (IdxType i = GetFirstIdx(TMin); i <= GetLastIdx(TMin); i++)
     {
-        TMin.TI[i] = GetElmt(T1, i) - GetElmt(T2, i);
+        TMin.penyanyi[i].IdAlbumPertama = GetElmt(T1, i) - GetElmt(T2, i);
     }
     TMin.Neff = T1.Neff;
     return TMin;
@@ -182,9 +177,9 @@ ElType ValMax(TabInt T)
     for (int i = GetFirstIdx(T) + 1; i < GetLastIdx(T); i++)
     {
 
-        if (T.TI[i] > max)
+        if (T.penyanyi[i].IdAlbumPertama > max)
         {
-            max = T.TI[i];
+            max = T.penyanyi[i].IdAlbumPertama;
         }
     }
     return max;
@@ -198,9 +193,9 @@ ElType ValMin(TabInt T)
     for (int i = GetFirstIdx(T) + 1; i < GetLastIdx(T); i++)
     {
 
-        if (T.TI[i] < min)
+        if (T.penyanyi[i].IdAlbumPertama < min)
         {
-            min = T.TI[i];
+            min = T.penyanyi[i].IdAlbumPertama;
         }
     }
     return min;

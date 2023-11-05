@@ -8,14 +8,9 @@
 
 #define InitialSize 1
 
+#include "../Linked-List/linked_list.h"
+
 typedef int IdxType;
-
-typedef struct{
-    IdxType penyanyi;
-    IdxType album;
-    IdxType lagu;
-} playlist;
-
 typedef struct
 {
     playlist *A;
@@ -65,7 +60,7 @@ int GetCapacity(ArrayDin array);
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, IdxType i);
+void InsertAt(ArrayDin *array, IdxType i, Word nama);
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
@@ -73,11 +68,11 @@ void InsertAt(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu, Id
  */
 void DeleteAt(ArrayDin *array, IdxType i);
 
-void InsertFirstArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu);
+void InsertFirstArrayDin(ArrayDin *array, Word nama);
 
-void InsertLastArrayDin(ArrayDin *array, IdxType penyanyi, IdxType album, IdxType lagu);
+void InsertLastArrayDin(ArrayDin *array, Word nama);
 
-IdxType SearchArrayDin(ArrayDin array, IdxType penyanyi, IdxType album, IdxType lagu);
+IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist, Word nama);
 
 void PrintArrayDin(ArrayDin array);
 

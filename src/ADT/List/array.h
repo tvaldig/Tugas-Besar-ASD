@@ -1,8 +1,7 @@
 #include "../../boolean.h"
-
+#include "../MesinKata/mesinkata.h"
 #ifndef ARRAY_H
 #define ARRAY_H
-
 /* Kamus Umum */
 
 #define IdxMax 100
@@ -15,9 +14,17 @@ typedef int ElType;
 
 typedef struct
 {
-    ElType TI[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
+    Word namapenyanyi;
+    ElType jumlahalbum;
+    ElType IdAlbumPertama;
+} Penyanyi;
+
+typedef struct
+{
+    Penyanyi penyanyi[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
     int Neff;                       /* banyaknya elemen efektif */
 } TabInt;
+
 
 /* Indeks yang digunakan [IdxMin..IdxMax] */
 /* Jika T adalah TabInt, cara deklarasi dan akses: */

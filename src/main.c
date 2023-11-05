@@ -6,10 +6,15 @@
 #include "COMMANDS/help/help.h"
 #include "ADT/ADT.h"
 
+
+
+
 int main()
 {
     boolean program = false;
     char command[100];
+    char tes[100];
+    char lagu[100];
     welcomeMenu();
     while(!program){
         printf(">>");STARTCOMMAND();
@@ -17,9 +22,23 @@ int main()
         if (checkCommand(command, false))
         {
             if(IsStringEqual(command, "START")){
-                printf("Start berhasil\n");
+                if(currentChar == ' '){
+                    STARTCOMMAND();
+                    printf("Command tidak diketahui\n");
+                }else{
+                    Word fname = {"../save/new.txt",15};
+                    startFunction(fname);
+                    printf("Start berhasil\n");
+                }
             } else if(IsStringEqual(command, "LOAD")){
-                printf("Load berhasil\n");
+                if(currentChar == '\n'){
+                    printf("Command tidak diketahui\n");
+                }else{
+                    STARTCOMMAND();
+                    Word direktori = {"../save/",8};
+                    startFunction(ConcatString(direktori, currentCommand));
+                    printf("Load berhasil\n");
+                }
             } else if(IsStringEqual(command, "HELP")) {
                 help(false);
             }
