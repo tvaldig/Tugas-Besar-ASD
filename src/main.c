@@ -17,9 +17,9 @@ int main()
     char lagu[100];
     //welcomeMenu();
     while(!program){
-        printf(">>");STARTCOMMAND();
+        printf(">>");
+        STARTCOMMAND();
         ConvertWordToString(&currentCommand, command);
-        printf("%s\n", currentCommand.TabWord);
         if (checkCommand(command, false))
         {
             if(IsStringEqual(command, "START")){

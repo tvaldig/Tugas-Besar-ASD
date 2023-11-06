@@ -21,6 +21,7 @@ boolean checkInSessionCommand(char *command){
     } else if (IsStringEqual(command, "QUIT")) {
         return true;
     } else {
+        ENDCOMMAND();
         return false;
     }
 }
@@ -30,8 +31,8 @@ boolean checkCommand(char *command, boolean inSession) {
     if (!(inSession)) {
         // Jika belum dalam sesi
         if (IsStringEqual(command, "HELP")) {
-            if(currentChar == ' ' || currentChar == '\n'){
-                wrongCommand();
+            if(currentChar == ' '){
+                unknownCommand();
                 ENDCOMMAND();
                 return false;
             }else{
@@ -41,14 +42,13 @@ boolean checkCommand(char *command, boolean inSession) {
         }else if (IsStringEqual(command, "START")){
             if (currentChar == ' '){
                 ENDCOMMAND();
-                wrongCommand();
+                unknownCommand();
                 return false;
             }else{
                 return true;
             }
         
         }else if (IsStringEqual(command, "LOAD")){
-            printf("%c\n", currentChar);
             if(currentChar == '\n'){
                 printf("Masukkan nama file!\n");
                 return false;
@@ -59,8 +59,10 @@ boolean checkCommand(char *command, boolean inSession) {
         
         else if (checkInSessionCommand(command)) {
             wrongCommand();
+            ENDCOMMAND();
             return false;
-        } else {
+        } else{
+            ENDCOMMAND();
             unknownCommand();
             return false;
         }

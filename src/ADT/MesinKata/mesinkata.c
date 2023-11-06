@@ -89,9 +89,13 @@ void STARTCOMMAND(){
 }
 
 void ENDCOMMAND(){
-    while(currentChar != '\n'){
-        ADV();
+    if(currentChar != ENTER){
+        START();
+        while(currentChar != ENTER){
+            ADV();
+        }
     }
+    
 }
 
 void ADVCOMMAND()
