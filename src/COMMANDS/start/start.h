@@ -11,5 +11,6 @@ extern Queue antrian;
 extern Stack riwayat;
 extern ArrayDin playlists;
 
-void startFunction();
+void startFunction(Word fname, boolean loadiftrue);
+
 #endif

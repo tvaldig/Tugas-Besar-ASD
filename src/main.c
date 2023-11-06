@@ -23,22 +23,14 @@ int main()
         {
             if(IsStringEqual(command, "START")){
                 Word fname = {"../save/new.txt",15};
-                startFunction(fname);
+                startFunction(fname, false);
                 inSession = true;
                 printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
 
             }else if(IsStringEqual(command, "LOAD")){
                 STARTCOMMAND();
                 Word direktori = {"../save/",8};
-                startFunction(ConcatString(direktori, currentCommand));
-                if(!finish){
-                    int i = 0;
-                    while(currentCommand.TabWord[i] != '.'){
-                        printf("%c", currentCommand.TabWord[i]);
-                        ADV();
-                    }
-                    printf(" berhasil dibaca. WayangWave berhasil dijalankan.\n");
-                }
+                startFunction(ConcatString(direktori, currentCommand), true);
 
             }else if(IsStringEqual(command, "HELP")) {
                 help(inSession);
