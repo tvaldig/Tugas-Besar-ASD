@@ -29,9 +29,34 @@ boolean checkCommand(char *command, boolean inSession) {
     /* Mengembalikan false jika command tidak sesuai */
     if (!(inSession)) {
         // Jika belum dalam sesi
-        if (IsStringEqual(command, "HELP") || IsStringEqual(command, "START") || IsStringEqual(command, "LOAD")) {
-            return true;
-        } else if (checkInSessionCommand(command)) {
+        if (IsStringEqual(command, "HELP")) {
+            if(currentChar == ' ' || currentChar == '\n'){
+                wrongCommand();
+                ENDCOMMAND();
+                return false;
+            }else{
+                return true;
+            }
+        
+        }else if (IsStringEqual(command, "START")){
+            if (currentChar == ' '){
+                ENDCOMMAND();
+                wrongCommand();
+                return false;
+            }else{
+                return true;
+            }
+        
+        }else if (IsStringEqual(command, "LOAD")){
+            if(currentChar == '\n'){
+                printf("Masukkan nama file!\n");
+                return false;
+            }else{
+                return true;
+            }
+        }
+        
+        else if (checkInSessionCommand(command)) {
             wrongCommand();
             return false;
         } else {

@@ -22,27 +22,28 @@ int main()
         if (checkCommand(command, false))
         {
             if(IsStringEqual(command, "START")){
-                if(currentChar == ' '){
-                    STARTCOMMAND();
-                    printf("Command tidak diketahui\n");
-                }else{
-                    Word fname = {"../save/new.txt",15};
-                    startFunction(fname);
-                    inSession = true;
+                Word fname = {"../save/new.txt",15};
+                startFunction(fname);
+                inSession = true;
+                printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
+
+            }else if(IsStringEqual(command, "LOAD")){
+                STARTCOMMAND();
+                Word direktori = {"../save/",8};
+                startFunction(ConcatString(direktori, currentCommand));
+                if(!finish){
+                    int i = 0;
+                    while(currentCommand.TabWord[i] != '.'){
+                        printf("%c", currentCommand.TabWord[i]);
+                        ADV();
+                    }
+                    printf(" berhasil dibaca. WayangWave berhasil dijalankan.\n");
                 }
-            } else if(IsStringEqual(command, "LOAD")){
-                if(currentChar == '\n'){
-                    printf("Masukan nama file!\n");
-                }else{
-                    STARTCOMMAND();
-                    Word direktori = {"../save/",8};
-                    startFunction(ConcatString(direktori, currentCommand));
-                }
-            } else if(IsStringEqual(command, "HELP")) {
+
+            }else if(IsStringEqual(command, "HELP")) {
                 help(inSession);
             }
         }
-    
     }
     
 }

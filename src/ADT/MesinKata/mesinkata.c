@@ -88,6 +88,12 @@ void STARTCOMMAND(){
     }
 }
 
+void ENDCOMMAND(){
+    while(currentChar != '\n'){
+        ADV();
+    }
+}
+
 void ADVCOMMAND()
 {
     Word empty = {"", 0};
@@ -101,6 +107,7 @@ void ADVCOMMAND()
         CopyCommand();
     }
 }
+
 
 void CopyCommand()
 {
