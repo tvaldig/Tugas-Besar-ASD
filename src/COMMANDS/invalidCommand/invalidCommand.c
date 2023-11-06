@@ -72,7 +72,7 @@ boolean checkCommand(char *command, boolean inSession) {
             ENDCOMMAND();
             wrongCommand();
             return false;
-        } else if (IsStringEqual(command, "HELP") || checkInSessionCommand(command)) {
+        }else if (IsStringEqual(command, "HELP") || checkInSessionCommand(command)) {
             return true;
         } else {
             ENDCOMMAND();
