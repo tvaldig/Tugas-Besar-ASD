@@ -21,7 +21,7 @@ typedef int address;
 
 typedef struct
 {
-        keytype Key; // Id Album
+        keytype Key; 
         valuetype Value;
         Word AlbumName;
 } Album;

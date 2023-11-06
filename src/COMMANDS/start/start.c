@@ -35,25 +35,16 @@ int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
     return -1;
 }
 
-int searchidlagu(Set *s, Word input)
+int searchidlagu(Set *s, MapAlbum map, int idxalbum, Word input)
 {
-    int i = 0, j = 0;
-    while (j < 10)
-    {
-        while (i < s[j].Count)
-        {
-            if (s[j].AlbumLagu[i].JudulLagu.Length == input.Length)
-            {
-                if (IsStringEqual(s[j].AlbumLagu[i].JudulLagu.TabWord, input.TabWord))
-                {
+    int idxset = Value(map, idxalbum);
+    for (int i = 0; i < s[idxset].Count; i++){
+        if (s[idxset].AlbumLagu[i].JudulLagu.Length == input.Length){
+            if (IsStringEqual(s[idxset].AlbumLagu[i].JudulLagu.TabWord, input.TabWord)){
                     return i;
-                }
             }
-            i++;
         }
-        j++;
     }
-
     return -1;
 }
 
@@ -144,7 +135,7 @@ void startFunction(Word fname)
             ADVSEMICOLON();
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
-            idxlagu = searchidlagu(SetLagu, currentWord); // mencari idxlagu dari file
+            idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
 
             enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
         }
@@ -159,7 +150,7 @@ void startFunction(Word fname)
             ADVSEMICOLON();
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
-            idxlagu = searchidlagu(SetLagu, currentWord); // mencari idxlagu dari file
+            idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
 
             Push(&riwayat, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke stack riwayat
         }
@@ -186,7 +177,7 @@ void startFunction(Word fname)
                 ADVSEMICOLON();
                 idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
                 ADVSEMICOLON();
-                idxlagu = searchidlagu(SetLagu, currentWord); // mencari idxlagu dari file
+                idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
 
                 addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu); // membuat sebuah node baru berisi idxpenyanyi, idxalbum, idxlagu
                 InsertLast(&(playlists.A[i]), temp);                        // memasukkan data dari node yang sudah dibuat ke playlists
