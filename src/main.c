@@ -19,6 +19,7 @@ int main()
     while(!program){
         printf(">>");STARTCOMMAND();
         ConvertWordToString(&currentCommand, command);
+        printf("%s\n", currentCommand.TabWord);
         if (checkCommand(command, false))
         {
             if(IsStringEqual(command, "START")){

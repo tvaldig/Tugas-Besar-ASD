@@ -48,6 +48,7 @@ boolean checkCommand(char *command, boolean inSession) {
             }
         
         }else if (IsStringEqual(command, "LOAD")){
+            printf("%c\n", currentChar);
             if(currentChar == '\n'){
                 printf("Masukkan nama file!\n");
                 return false;
