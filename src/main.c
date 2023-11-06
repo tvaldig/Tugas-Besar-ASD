@@ -13,14 +13,12 @@ int main()
 {
     boolean program = false, inSession = false;
     char command[100];
-    char tes[100];
-    char lagu[100];
     //welcomeMenu();
     while(!program){
         printf(">>");
         STARTCOMMAND();
         ConvertWordToString(&currentCommand, command);
-        if (checkCommand(command, false))
+        if (checkCommand(command, inSession))
         {
             if(IsStringEqual(command, "START")){
                 Word fname = {"../save/new.txt",15};
