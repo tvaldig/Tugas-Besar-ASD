@@ -38,7 +38,7 @@ int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
 int searchidlagu(Set *s, Word input)
 {
     int i = 0, j = 0;
-    while (j < 10)
+    while (j < 100)
     {
         while (i < s[j].Count)
         {
@@ -64,10 +64,11 @@ void startFunction(Word fname)
     Album album;
     MapAlbum mapAlbum;
     TabInt ArrayPenyanyi;
-    int countAlbum, n, m, l;
+    Set SetLagu[100];
+    int n, m, l, idSet = 0;
     MakeEmpty(&ArrayPenyanyi);
     CreateEmptyMap(&mapAlbum);
-    Set SetLagu[10];
+
     STARTFROMFILE(fname.TabWord); // memulai Mesin Kata
 
     if (finish)
@@ -99,9 +100,9 @@ void startFunction(Word fname)
             ADVCONTINUE(); // setelah blank dilanjutkan akuisisi sampai ENTER
 
             // Membuat set lagu untuk setiap album
-            CreateEmptySet(&SetLagu[keyCounter]);
+            CreateEmptySet(&SetLagu[idSet + keyCounter]);
             // melakukan Insert pada Map
-            InsertMap(&mapAlbum, keyCounter, keyCounter, currentWord);
+            InsertMap(&mapAlbum, keyCounter, idSet + keyCounter, currentWord);
 
             // melakukan konfigurasi untuk id album pertama dari penyanyi
             if (j == 0)
@@ -113,19 +114,25 @@ void startFunction(Word fname)
             {
                 ADVOnEnter(false); // false karena dia mau baca string
                 // Masukin lagu ke set
-                InsertSetLagu(&SetLagu[keyCounter], laguAlbum, keyCounter, currentWord);
+                InsertSetLagu(&SetLagu[idSet + keyCounter], laguAlbum, keyCounter, idSet + keyCounter, currentWord);
             }
+            idSet++;
             laguAlbum++;
             keyCounter++;
         }
     }
+
+    // Isi Array Penyanyi
     TulisIsi(ArrayPenyanyi);
     printf("\n");
+    // Isi Map Album
     PrintMap(mapAlbum);
     printf("\n");
-    PrintSet(SetLagu[0]);
-    printf("\n");
-    PrintSet(SetLagu[1]);
+
+    // Isi Set Lagu
+    printf("%d\n", Value(mapAlbum, 1));
+    int val = Value(mapAlbum, 1);
+    PrintSet(SetLagu[val]);
 
     Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     CreateQueue(&antrian);
@@ -197,8 +204,6 @@ void startFunction(Word fname)
                 addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu); // membuat sebuah node baru berisi idxpenyanyi, idxalbum, idxlagu
                 InsertLast(&(playlists.A[i]), temp);                        // memasukkan data dari node yang sudah dibuat ke playlists
             }
-            PrintInfo(playlists.A[i]); // tes isi satu playlist
         }
-        PrintArrayDin(playlists); // tes isi playlists
     }
 }

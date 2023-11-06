@@ -57,7 +57,7 @@ valuetype Value(MapAlbum M, keytype k)
 void InsertMap(MapAlbum *M,  keytype k, valuetype v, Word albumname)
 {
         M->Elements[M->Count+1].Key = k;
-        M->Elements[M->Count + 1].Key = v;
+        M->Elements[M->Count + 1].Value = v;
         M->Elements[M->Count+1].AlbumName = albumname;
         M->Count++;
 }

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "start.h"
 
-
 int searchidpenyanyi(TabInt p, Word input){ // Mencari key id penyanyi berdasarkan inputan user
     int i = 0;
     while(i < p.Neff){
@@ -30,7 +29,7 @@ int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map){
 
 int searchidlagu (Set *s, Word input){
     int i = 0, j = 0;
-    while(j < 10){
+    while(j < 100){
         while (i < s[j].Count)
         {
             if (s[j].AlbumLagu[i].JudulLagu.Length == input.Length)
@@ -56,8 +55,8 @@ void startFunction(Word fname){
     Album album;
     MapAlbum mapAlbum;
     TabInt ArrayPenyanyi;
-    Set SetLagu[10];
-    int countAlbum, n, m, l;
+    Set SetLagu[100];
+    int n, m, l, idSet = 0;
     MakeEmpty(&ArrayPenyanyi);
     CreateEmptyMap(&mapAlbum);
     
@@ -91,26 +90,27 @@ void startFunction(Word fname){
             ADVCONTINUE(); // setelah blank dilanjutkan akuisisi sampai ENTER
 
             //Membuat set lagu untuk setiap album
-            CreateEmptySet(&SetLagu[keyCounter]);
+            CreateEmptySet(&SetLagu[idSet+keyCounter]);
             // melakukan Insert pada Map
-            InsertMap(&mapAlbum, keyCounter, keyCounter, currentWord);
-            
+            InsertMap(&mapAlbum, keyCounter, idSet+keyCounter, currentWord);
+        
             // melakukan konfigurasi untuk id album pertama dari penyanyi
             if (j == 0)
             {
                 SetIdAlbumPertamaPenyanyi(&ArrayPenyanyi,i, keyCounter);
             }
-          
+
             for(int k = 0; k < l; k++){
                 ADVOnEnter(false); //false karena dia mau baca string
                 // Masukin lagu ke set
-                InsertSetLagu(&SetLagu[keyCounter], laguAlbum, keyCounter, currentWord);
+                InsertSetLagu(&SetLagu[idSet+keyCounter], laguAlbum, keyCounter, idSet+keyCounter, currentWord);
+                
             }
+            idSet++;
             laguAlbum++;
             keyCounter++;
         }
     }
-
     
     Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     CreateQueue(&antrian);
