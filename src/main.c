@@ -7,8 +7,6 @@
 #include "ADT/ADT.h"
 
 
-
-
 int main()
 {
     boolean program = false;
