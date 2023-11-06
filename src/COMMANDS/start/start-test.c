@@ -35,29 +35,23 @@ int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
     return -1;
 }
 
-int searchidlagu(Set *s, Word input)
+int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
 {
-    int i = 0, j = 0;
-    while (j < 10)
-    {
-        while (i < s[j].Count)
-        {
-            if (s[j].AlbumLagu[i].JudulLagu.Length == input.Length)
+    int idxset = Value(map, idalbum);
+
+    for(int i = 0; i < s[idxset].Count; i++){
+        if (s[idxset].AlbumLagu[i].JudulLagu.Length == input.Length)
             {
-                if (IsStringEqual(s[j].AlbumLagu[i].JudulLagu.TabWord, input.TabWord))
+                if (IsStringEqual(s[idxset].AlbumLagu[i].JudulLagu.TabWord, input.TabWord))
                 {
                     return i;
                 }
             }
-            i++;
-        }
-        j++;
     }
-
     return -1;
 }
 
-void startFunction(Word fname)
+void startFunction(Word fname, boolean loadiftrue)
 {
     keytype keyCounter = 0;
     Penyanyi penyanyi;
@@ -73,7 +67,17 @@ void startFunction(Word fname)
     if (finish)
     {
         printf("Masukkan nama file yang benar!\n");
+        ENDCOMMAND();
         return;
+    }
+
+    if (loadiftrue){
+        int i = 0;
+        while(currentCommand.TabWord[i] != '.'){
+            printf("%c", currentCommand.TabWord[i]);
+            i++;
+        }
+        printf(" berhasil dibaca. WayangWave berhasil dijalankan.\n");
     }
 
     n = ConvertWordToInt(currentWord); // membaca jumlah penyanyi
@@ -158,10 +162,12 @@ void startFunction(Word fname)
             ADVSEMICOLON();
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
-            idxlagu = searchidlagu(SetLagu, currentWord); // mencari idxlagu dari file
+            idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
 
             enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
         }
+
+        displayQueue(antrian); // menampilkan isi queue saat ini 
 
         ADVOnEnter(false);                 // mulai membaca sesi bagian riwayat (stack)
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah riwayat (jumlah stack)
@@ -173,12 +179,14 @@ void startFunction(Word fname)
             ADVSEMICOLON();
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
-            idxlagu = searchidlagu(SetLagu, currentWord); // mencari idxlagu dari file
+            idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
 
             Push(&riwayat, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke stack riwayat
         }
 
         Reversestack(&riwayat); // karena urutan riwayat di text adalah dari yang terbaru maka isi stack perlu direverse
+
+        displayStack(riwayat); // menampilkan isi stack saat ini
 
         ADVOnEnter(false);
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah playlist
@@ -200,11 +208,14 @@ void startFunction(Word fname)
                 ADVSEMICOLON();
                 idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
                 ADVSEMICOLON();
-                idxlagu = searchidlagu(SetLagu, currentWord); // mencari idxlagu dari file
+                idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
 
                 addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu); // membuat sebuah node baru berisi idxpenyanyi, idxalbum, idxlagu
                 InsertLast(&(playlists.A[i]), temp);                        // memasukkan data dari node yang sudah dibuat ke playlists
             }
+            PrintInfo(playlists.A[i]); // output isi dari playlist
         }
+
+        PrintArrayDin(playlists);
     }
 }
