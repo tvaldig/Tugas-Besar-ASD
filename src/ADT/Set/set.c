@@ -3,6 +3,7 @@
 
 void CreateEmptySet(Set *S){
     S->Count= Zero;
+    S->idSet=-999;
 }
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
@@ -65,7 +66,7 @@ void PrintSet(Set s){
     } else {
         printf("ID SET: %d\n", s.idSet);
         for(int i = Zero; i < s.Count; i++){
-            printf("%d: ID Album:%d, Judul Lagu %d:%s\n", i, s.AlbumLagu[i].IdAlbum, i+1, s.AlbumLagu[i].JudulLagu.TabWord);
+            printf("ID Lagu:%d ID Album:%d, Judul Lagu %d:%s\n", i, s.AlbumLagu[i].IdAlbum, i+1, s.AlbumLagu[i].JudulLagu.TabWord);
         }
     }
 }

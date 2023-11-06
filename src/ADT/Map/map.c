@@ -30,7 +30,7 @@ valuetype Value(MapAlbum M, keytype k)
 {
     boolean found = false;
     int i = 0;
-    while (i < M.Count && !found)
+    while (i <= M.Count && !found)
     {
         if (M.Elements[i].Key == k)
         {
@@ -45,9 +45,8 @@ valuetype Value(MapAlbum M, keytype k)
     {
         return M.Elements[i].Value;
     }
-    else
-    {
-        return Undefined;
+    else{
+        return k;
     }
 }
 /* Mengembalikan nilai value dengan key k dari M */
