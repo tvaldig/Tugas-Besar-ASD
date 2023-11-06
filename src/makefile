@@ -5,6 +5,3 @@ test: main.c COMMANDS/welcomeMenu/welcomemenu.c COMMANDS/start/start.c ADT/Mesin
 
 run: test
 	./main.exe
-
-clean:
-	del main.exe
