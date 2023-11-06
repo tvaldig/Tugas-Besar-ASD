@@ -28,8 +28,6 @@ boolean IsFullMap(MapAlbum M)
 /* ********** Operator Dasar MapAlbum ********* */
 valuetype Value(MapAlbum M, keytype k)
 {
-    Set MT;
-    CreateEmptySet(&MT);
     boolean found = false;
     int i = 0;
     while (i < M.Count && !found)
@@ -58,13 +56,10 @@ valuetype Value(MapAlbum M, keytype k)
 
 void InsertMap(MapAlbum *M,  keytype k, valuetype v, Word albumname)
 {
-    if(!IsMemberMap(*M,k)){
         M->Elements[M->Count+1].Key = k;
+        M->Elements[M->Count + 1].Key = v;
         M->Elements[M->Count+1].AlbumName = albumname;
-        M->Elements[M->Count + 1].Value = v;
         M->Count++;
-    }
-   
 }
 
 
@@ -98,7 +93,6 @@ void PrintMap(MapAlbum M){
         printf("Map Kosong");
     } else {
         for(int i = 0; i <= M.Count; i++){
-            
             printf("Key: %d, IdSet:%d, Judul Album: %s\n", M.Elements[i].Key, M.Elements[i].Value, M.Elements[i].AlbumName.TabWord);
         }
     }

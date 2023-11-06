@@ -14,7 +14,8 @@ typedef int address;
 
 typedef struct {
         Word JudulLagu;
-        int idAlbum;
+        int IdLagu;
+        int IdAlbum;
 } Lagu;
 
 typedef struct
@@ -46,7 +47,7 @@ boolean IsFullSet(Set S);
 /* Ciri Set penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSetLagu(Set *S, int IdAlbum, Word Elmt);
+void InsertSetLagu(Set *S, int IdLagu, int IdAlbum, Word Elmt);
 /* Menambahkan Elmt sebagai elemen Set S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */

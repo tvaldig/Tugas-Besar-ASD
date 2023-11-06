@@ -22,10 +22,11 @@ boolean IsFullSet(Set S){
 /* Ciri Set penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSetLagu(Set *S, int IdAlbum, Word Elmt){
+void InsertSetLagu(Set *S, int IdLagu, int IdAlbum, Word Elmt){
     if(!(IsMemberSet(*S, Elmt))){
         S->AlbumLagu[S->Count].JudulLagu = Elmt;
-        S->AlbumLagu[S->Count].idAlbum = IdAlbum;
+        S->AlbumLagu[S->Count].IdLagu = IdLagu;
+        S->AlbumLagu[S->Count].IdAlbum = IdAlbum;
         S->Count++;
     }
 }
@@ -41,9 +42,13 @@ void InsertSetLagu(Set *S, int IdAlbum, Word Elmt){
 
 boolean IsMemberSet(Set S, Word Elmt){
     boolean found = false;
+    char ElmtOut[100];
+    char JudulLaguOut[100];
     int i = 0;
+    ConvertWordToString(&Elmt, ElmtOut);
     while(i < S.Count && !found){
-        if(S.AlbumLagu[i].JudulLagu.TabWord == Elmt.TabWord){
+        ConvertWordToString(&S.AlbumLagu[i].JudulLagu, JudulLaguOut);
+        if(IsStringEqual(JudulLaguOut, ElmtOut)){
             found = true;
         } else {
             i++;
@@ -58,7 +63,7 @@ void PrintSet(Set s){
         printf("Set Kosong");
     } else {
         for(int i = Zero; i < s.Count; i++){
-            
+            printf("%d: ID Album:%d, Judul Lagu %d:%s\n", i, s.AlbumLagu[i].IdAlbum, i+1, s.AlbumLagu[i].JudulLagu.TabWord);
         }
     }
 }
