@@ -51,7 +51,7 @@ void STARTCOMMAND();
 
 void ADVCOMMAND();
 
-void CopyCommand();
+void CopyCommandOnBlank();
 
 void STARTFROMFILE(char *file);
 
@@ -81,5 +81,12 @@ int ConvertWordToInt(Word word);
 Word ConcatString(Word input1, Word input2);
 
 void ENDCOMMAND();
+
+void CONTINUECOMMAND();
+
+void ADVCOMMANDENTER();
+
+void CopyCommandOnEnter();
+
 
 #endif

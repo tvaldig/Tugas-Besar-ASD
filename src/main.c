@@ -28,7 +28,7 @@ int main()
                 printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
 
             }else if(IsStringEqual(command, "LOAD")){
-                STARTCOMMAND();
+                CONTINUECOMMAND();
                 Word direktori = {"../save/",8};
                 startFunction(ConcatString(direktori, currentCommand), true);
 

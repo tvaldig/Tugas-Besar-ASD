@@ -64,7 +64,6 @@ void startFunction(Word fname, boolean loadiftrue)
     if (finish)
     {
         printf("Masukkan nama file yang benar!\n");
-        printf("masuk sini\n");
         ENDCOMMAND();
         return;
     }
@@ -73,7 +72,7 @@ void startFunction(Word fname, boolean loadiftrue)
         int i = 0;
         while(currentCommand.TabWord[i] != '.'){
             printf("%c", currentCommand.TabWord[i]);
-            ADV();
+            i++;
         }
         printf(" berhasil dibaca. WayangWave berhasil dijalankan.\n");
     }
