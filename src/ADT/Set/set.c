@@ -3,6 +3,7 @@
 
 void CreateEmptySet(Set *S){
     S->Count= Zero;
+    S->idSet=-999;
 }
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
@@ -22,11 +23,12 @@ boolean IsFullSet(Set S){
 /* Ciri Set penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSetLagu(Set *S, int IdLagu, int IdAlbum, Word Elmt){
+void InsertSetLagu(Set *S, int IdLagu, int IdAlbum, int IdSet, Word Elmt){
     if(!(IsMemberSet(*S, Elmt))){
         S->AlbumLagu[S->Count].JudulLagu = Elmt;
         S->AlbumLagu[S->Count].IdLagu = IdLagu;
         S->AlbumLagu[S->Count].IdAlbum = IdAlbum;
+        S->idSet = IdSet;
         S->Count++;
     }
 }
@@ -60,10 +62,13 @@ boolean IsMemberSet(Set S, Word Elmt){
 
 void PrintSet(Set s){
     if(IsEmptySet(s)){
-        printf("Set Kosong");
+        printf("Set Kosong\n");
     } else {
+        printf("ID SET: %d\n", s.idSet);
         for(int i = Zero; i < s.Count; i++){
-            printf("%d: ID Album:%d, Judul Lagu %d:%s\n", i, s.AlbumLagu[i].IdAlbum, i+1, s.AlbumLagu[i].JudulLagu.TabWord);
+            printf("ID Lagu:%d ID Album:%d, Judul Lagu %d:%s\n", i, s.AlbumLagu[i].IdAlbum, i+1, s.AlbumLagu[i].JudulLagu.TabWord);
         }
     }
 }
+
+

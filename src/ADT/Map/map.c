@@ -30,7 +30,7 @@ valuetype Value(MapAlbum M, keytype k)
 {
     boolean found = false;
     int i = 0;
-    while (i < M.Count && !found)
+    while (i <= M.Count && !found)
     {
         if (M.Elements[i].Key == k)
         {
@@ -45,9 +45,8 @@ valuetype Value(MapAlbum M, keytype k)
     {
         return M.Elements[i].Value;
     }
-    else
-    {
-        return Undefined;
+    else{
+        return k;
     }
 }
 /* Mengembalikan nilai value dengan key k dari M */
@@ -57,7 +56,7 @@ valuetype Value(MapAlbum M, keytype k)
 void InsertMap(MapAlbum *M,  keytype k, valuetype v, Word albumname)
 {
         M->Elements[M->Count+1].Key = k;
-        M->Elements[M->Count + 1].Key = v;
+        M->Elements[M->Count + 1].Value = v;
         M->Elements[M->Count+1].AlbumName = albumname;
         M->Count++;
 }

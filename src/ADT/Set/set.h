@@ -47,7 +47,7 @@ boolean IsFullSet(Set S);
 /* Ciri Set penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSetLagu(Set *S, int IdLagu, int IdAlbum, Word Elmt);
+void InsertSetLagu(Set *S, int IdLagu, int IdAlbum, int IdSet, Word Elmt);
 /* Menambahkan Elmt sebagai elemen Set S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */
@@ -58,4 +58,6 @@ boolean IsMemberSet(Set S, Word Elmt);
 /* Mengembalikan true jika Elmt adalah member dari S */
 
 void PrintSet(Set S);
+
+
 #endif
