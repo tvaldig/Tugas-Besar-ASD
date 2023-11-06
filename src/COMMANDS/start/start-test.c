@@ -57,7 +57,7 @@ int searchidlagu(Set *s, Word input)
     return -1;
 }
 
-void startFunction(Word fname, boolean loadiftrue)
+void startFunction(Word fname)
 {
     keytype keyCounter = 0;
     Penyanyi penyanyi;
@@ -74,15 +74,6 @@ void startFunction(Word fname, boolean loadiftrue)
     {
         printf("Masukkan nama file yang benar!\n");
         return;
-    }
-
-    if (loadiftrue){
-        int i = 0;
-        while(currentCommand.TabWord[i] != '.'){
-            printf("%c", currentCommand.TabWord[i]);
-            i++;
-        }
-        printf(" berhasil dibaca. WayangWave berhasil dijalankan.\n");
     }
 
     n = ConvertWordToInt(currentWord); // membaca jumlah penyanyi

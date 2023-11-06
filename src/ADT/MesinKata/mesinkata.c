@@ -88,19 +88,13 @@ void STARTCOMMAND(){
     }
 }
 
-
-
-void CONTINUECOMMAND(){
-    IgnoreBlanks();
-    if(currentChar == ENTER){
-        EndCommand = true;
-    }else{
-        EndCommand = false;
-        ADVCOMMANDENTER();
+void ENDCOMMAND(){
+    while(currentChar != '\n'){
+        ADV();
     }
 }
 
-void ADVCOMMANDENTER()
+void ADVCOMMAND()
 {
     Word empty = {"", 0};
     currentCommand = empty;
@@ -110,7 +104,7 @@ void ADVCOMMANDENTER()
     }
     else
     {
-        CopyCommandOnEnter();
+        CopyCommand();
     }
 }
 
@@ -118,7 +112,7 @@ void ADVCOMMANDENTER()
 void CopyCommand()
 {
     int i = 0;
-    while (currentChar != ENTER)
+    while (currentChar != BLANK && currentChar != ENTER)
     {
         if (i < NMax)
         {
