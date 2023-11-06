@@ -15,7 +15,7 @@ int main()
     char command[100];
     char tes[100];
     char lagu[100];
-    welcomeMenu();
+    //welcomeMenu();
     while(!program){
         printf(">>");STARTCOMMAND();
         ConvertWordToString(&currentCommand, command);
