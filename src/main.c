@@ -11,7 +11,7 @@
 
 int main()
 {
-    boolean program = false, inSession = false;
+    boolean program = false;
     char command[100];
     //welcomeMenu();
     while(!program){
@@ -23,7 +23,6 @@ int main()
             if(IsStringEqual(command, "START")){
                 Word fname = {"../save/new.txt",15};
                 startFunction(fname, false);
-                inSession = true;
                 printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
 
             }else if(IsStringEqual(command, "LOAD")){

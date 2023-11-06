@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "start.h"
 
+boolean inSession = false;
+
 int searchidpenyanyi(TabInt p, Word input)
 { // Mencari key id penyanyi berdasarkan inputan user
     int i = 0;
@@ -79,6 +81,8 @@ void startFunction(Word fname, boolean loadiftrue)
         }
         printf(" berhasil dibaca. WayangWave berhasil dijalankan.\n");
     }
+
+    inSession = true;
 
     n = ConvertWordToInt(currentWord); // membaca jumlah penyanyi
     for (int i = 0; i < n; i++)

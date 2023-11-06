@@ -10,6 +10,7 @@ extern Set SetLagu;
 extern Queue antrian;
 extern Stack riwayat;
 extern ArrayDin playlists;
+extern boolean inSession;
 
 void startFunction(Word fname, boolean loadiftrue);
 
