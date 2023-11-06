@@ -38,7 +38,7 @@ int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
 int searchidlagu(Set *s, Word input)
 {
     int i = 0, j = 0;
-    while (j < 100)
+    while (j < 10)
     {
         while (i < s[j].Count)
         {
@@ -59,16 +59,15 @@ int searchidlagu(Set *s, Word input)
 
 void startFunction(Word fname)
 {
-    keytype keyCounter = 0, laguAlbum = 0;
+    keytype keyCounter = 0;
     Penyanyi penyanyi;
     Album album;
     MapAlbum mapAlbum;
     TabInt ArrayPenyanyi;
     Set SetLagu[100];
-    int n, m, l, idSet = 0;
+    int n, m, l, idSet = 0, laguAlbum = 0;
     MakeEmpty(&ArrayPenyanyi);
     CreateEmptyMap(&mapAlbum);
-
     STARTFROMFILE(fname.TabWord); // memulai Mesin Kata
 
     if (finish)
@@ -90,7 +89,7 @@ void startFunction(Word fname)
         penyanyi.namapenyanyi = currentWord;
         SetPenyanyi(&ArrayPenyanyi, i, penyanyi);
         // memasukan tipe data penyanyi ke array penyanyi
-
+        
         for (int j = 0; j < m; j++)
         {                     // melakukan iterasi untuk setiap album penyanyi
             ADVOnEnter(true); // true untuk mengaktifkan ADV selanjutnya dengan akuisisi sebelum BLANK
@@ -100,9 +99,9 @@ void startFunction(Word fname)
             ADVCONTINUE(); // setelah blank dilanjutkan akuisisi sampai ENTER
 
             // Membuat set lagu untuk setiap album
-            CreateEmptySet(&SetLagu[idSet + keyCounter]);
+            CreateEmptySet(&SetLagu[keyCounter+1]);
             // melakukan Insert pada Map
-            InsertMap(&mapAlbum, keyCounter, idSet + keyCounter, currentWord);
+            InsertMap(&mapAlbum, keyCounter, keyCounter+1, currentWord);
 
             // melakukan konfigurasi untuk id album pertama dari penyanyi
             if (j == 0)
@@ -114,14 +113,16 @@ void startFunction(Word fname)
             {
                 ADVOnEnter(false); // false karena dia mau baca string
                 // Masukin lagu ke set
-                InsertSetLagu(&SetLagu[idSet + keyCounter], laguAlbum, keyCounter, idSet + keyCounter, currentWord);
+                InsertSetLagu(&SetLagu[keyCounter+1], laguAlbum, keyCounter, keyCounter+1, currentWord);
+                
             }
             idSet++;
             laguAlbum++;
             keyCounter++;
         }
+        
     }
-
+   
     // Isi Array Penyanyi
     TulisIsi(ArrayPenyanyi);
     printf("\n");
@@ -130,9 +131,9 @@ void startFunction(Word fname)
     printf("\n");
 
     // Isi Set Lagu
-    printf("%d\n", Value(mapAlbum, 1));
-    int val = Value(mapAlbum, 1);
-    PrintSet(SetLagu[val]);
+    PrintSet(SetLagu[Value(mapAlbum, -1)]); //kalo set belom ada dia return set kosong
+    printf("\n");
+    PrintSet(SetLagu[Value(mapAlbum, 4)]);
 
     Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     CreateQueue(&antrian);
