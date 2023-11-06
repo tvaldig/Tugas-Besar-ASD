@@ -163,7 +163,6 @@ void startFunction(Word fname, boolean loadiftrue)
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
             idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
-
             enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
         }
 

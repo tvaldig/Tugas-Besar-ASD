@@ -1,21 +1,49 @@
-5 # Jumlah record lagu dalam queue
-BLACKPINK;BORN PINK;Typa Girl # Lagu 1 dalam queue
-BLACKPINK;THE ALBUM;How You Like That # Lagu 2 …
-Arctic Monkeys;AM;Do I Wanna Know? # Lagu 3 …
-BLACKPINK;BORN PINK;Shut Down # Lagu 4 …
-Arctic Monkeys;AM;Arabella # Lagu 5 …
-2 # Jumlah record riwayat pemutaran lagu
-Arctic Monkeys;Favourite Worst Nightmare;505 # Riwayat terbaru ke-1
-BLACKPINK;BORN PINK;Pink Venom # Riwayat terbaru ke-2
-3 # Jumlah playlist
-3 BLACKPINK My Top Three # Jumlah lagu dan nama playlist 1
-BLACKPINK;THE ALBUM;How You Like That # Lagu 1 di playlist 1
-BLACKPINK;BORN PINK;Typa Girl # Lagu 2 …
-BLACKPINK;BORN PINK;Pink Venom # Lagu 3 …
-5 Arctic Monkeys My Top 5 # <Masuk ke playlist 2 dan seterusnya>
-Arctic Monkeys;AM;R U Mine?
-Arctic Monkeys;AM;Do I Wanna Know?
+3
+3 Taylor Swift
+5 Lover
+ME!
+I Forgot That You Existed
+The Man
+Daylight
+The Man
+2 Red
+The Last Time
+Starlight
+3 Evermore
+Evermore
+Coney Island
+Willow
+3 Arctic Monkeys
+5 Favourite Worst Nightmare
+Brianstorm
+Teddy Picker
+Fluorescent Adolescent
+Old Yellow Bricks
+505
+4 Humbug
+My Propeller
+Crying Lightning
+Secret Door
+Pretty Visitors
+3 AM
+Do I Wanna Know?
+R U Mine?
+Arabella
+2 Kodaline
+3 In a Perfect World
+Big Bad World
+Talk
+Way Back When
+2 Politics of Living
+Head Held High
+Born Again
+3
+Kodaline;Politics of Living;Head Held High
+Taylor Swift;Evermore;Evermore
 Arctic Monkeys;AM;Arabella
-Arctic Monkeys;Favourite Worst Nightmare;505
-Arctic Monkeys;Humbug;Pretty Visitors
-0 Mixed Playlist
+2
+Taylor Swift;Evermore;Evermore
+Arctic Monkeys;AM;Arabella
+1
+1 Playlist Favorit
+Kodaline;Politics of Living;Head Held High
