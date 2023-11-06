@@ -88,41 +88,6 @@ void STARTCOMMAND(){
     }
 }
 
-void ADVCOMMAND()
-{
-    Word empty = {"", 0};
-    currentCommand = empty;
-    if (currentChar == ENTER && !EndCommand)
-    {
-        EndCommand= true;
-    }
-    else
-    {
-        CopyCommandOnBlank();
-    }
-}
-
-void CopyCommandOnBlank()
-{
-    int i = 0;
-    while (currentChar != BLANK)
-    {
-        if (i < NMax)
-        {
-            currentCommand.TabWord[i] = currentChar;
-            i++;
-        }
-        ADV();
-    }
-    currentCommand.Length = i;
-}
-
-void ENDCOMMAND(){
-    while(currentChar != '\n'){
-        ADV();
-    }
-}
-
 
 
 void CONTINUECOMMAND(){
@@ -149,7 +114,8 @@ void ADVCOMMANDENTER()
     }
 }
 
-void CopyCommandOnEnter()
+
+void CopyCommand()
 {
     int i = 0;
     while (currentChar != ENTER)

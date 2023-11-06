@@ -64,7 +64,6 @@ void startFunction(Word fname, boolean loadiftrue)
     if (finish)
     {
         printf("Masukkan nama file yang benar!\n");
-        ENDCOMMAND();
         return;
     }
 

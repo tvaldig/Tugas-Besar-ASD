@@ -23,20 +23,27 @@ int main()
         if (checkCommand(command, false))
         {
             if(IsStringEqual(command, "START")){
-                Word fname = {"../save/new.txt",15};
-                startFunction(fname, false);
-                inSession = true;
-                printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
-
-            }else if(IsStringEqual(command, "LOAD")){
-                CONTINUECOMMAND();
-                Word direktori = {"../save/",8};
-                startFunction(ConcatString(direktori, currentCommand), true);
-
-            }else if(IsStringEqual(command, "HELP")) {
+                if(currentChar == ' '){
+                    STARTCOMMAND();
+                    printf("Command tidak diketahui\n");
+                }else{
+                    Word fname = {"../save/new.txt",15};
+                    startFunction(fname);
+                    inSession = true;
+                }
+            } else if(IsStringEqual(command, "LOAD")){
+                if(currentChar == '\n'){
+                    printf("Masukan nama file!\n");
+                }else{
+                    STARTCOMMAND();
+                    Word direktori = {"../save/",8};
+                    startFunction(ConcatString(direktori, currentCommand));
+                }
+            } else if(IsStringEqual(command, "HELP")) {
                 help(inSession);
             }
         }
+    
     }
     
 }
