@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "start.h"
+#include "startload.h"
 
 boolean inSession = false;
 
@@ -53,7 +53,7 @@ int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
     return -1;
 }
 
-void startFunction(Word fname, boolean loadiftrue)
+void startLoadFunction(Word fname, boolean loadiftrue)
 {
     keytype keyCounter = 0;
     Penyanyi penyanyi;
@@ -97,7 +97,7 @@ void startFunction(Word fname, boolean loadiftrue)
         penyanyi.namapenyanyi = currentWord;
         SetPenyanyi(&ArrayPenyanyi, i, penyanyi);
         // memasukan tipe data penyanyi ke array penyanyi
-
+        
         for (int j = 0; j < m; j++)
         {                     // melakukan iterasi untuk setiap album penyanyi
             ADVOnEnter(true); // true untuk mengaktifkan ADV selanjutnya dengan akuisisi sebelum BLANK
@@ -107,9 +107,9 @@ void startFunction(Word fname, boolean loadiftrue)
             ADVCONTINUE(); // setelah blank dilanjutkan akuisisi sampai ENTER
 
             // Membuat set lagu untuk setiap album
-            CreateEmptySet(&SetLagu[keyCounter + 1]);
+            CreateEmptySet(&SetLagu[keyCounter+1]);
             // melakukan Insert pada Map
-            InsertMap(&mapAlbum, keyCounter, keyCounter + 1, currentWord);
+            InsertMap(&mapAlbum, keyCounter, keyCounter+1, currentWord);
 
             // melakukan konfigurasi untuk id album pertama dari penyanyi
             if (j == 0)
@@ -121,13 +121,27 @@ void startFunction(Word fname, boolean loadiftrue)
             {
                 ADVOnEnter(false); // false karena dia mau baca string
                 // Masukin lagu ke set
-                InsertSetLagu(&SetLagu[keyCounter + 1], laguAlbum, keyCounter, keyCounter + 1, currentWord);
+                InsertSetLagu(&SetLagu[keyCounter+1], laguAlbum, keyCounter, keyCounter+1, currentWord);
+                
             }
             idSet++;
             laguAlbum++;
             keyCounter++;
         }
+        
     }
+   
+    // Isi Array Penyanyi
+    TulisIsi(ArrayPenyanyi);
+    printf("\n");
+    // Isi Map Album
+    PrintMap(mapAlbum);
+    printf("\n");
+
+    // Isi Set Lagu
+    PrintSet(SetLagu[Value(mapAlbum, -1)]); //kalo set belom ada dia return set kosong
+    printf("\n");
+    PrintSet(SetLagu[Value(mapAlbum, 4)]);
 
     Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     CreateQueue(&antrian);
@@ -153,9 +167,10 @@ void startFunction(Word fname, boolean loadiftrue)
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
             idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
-
             enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
         }
+
+        displayQueue(antrian); // menampilkan isi queue saat ini 
 
         ADVOnEnter(false);                 // mulai membaca sesi bagian riwayat (stack)
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah riwayat (jumlah stack)
@@ -173,6 +188,8 @@ void startFunction(Word fname, boolean loadiftrue)
         }
 
         Reversestack(&riwayat); // karena urutan riwayat di text adalah dari yang terbaru maka isi stack perlu direverse
+
+        displayStack(riwayat); // menampilkan isi stack saat ini
 
         ADVOnEnter(false);
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah playlist
@@ -199,6 +216,9 @@ void startFunction(Word fname, boolean loadiftrue)
                 addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu); // membuat sebuah node baru berisi idxpenyanyi, idxalbum, idxlagu
                 InsertLast(&(playlists.A[i]), temp);                        // memasukkan data dari node yang sudah dibuat ke playlists
             }
+            PrintInfo(playlists.A[i]); // output isi dari playlist
         }
+
+        PrintArrayDin(playlists);
     }
 }
