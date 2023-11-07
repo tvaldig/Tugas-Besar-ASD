@@ -14,10 +14,12 @@
 /* Definisi tipe elemen dan indeks pada Queue */
 typedef int IdxType;
 
+typedef int KEY;
+
 typedef struct{
     IdxType penyanyi;
-    IdxType album;
-    IdxType lagu;
+    KEY album;
+    KEY lagu;
 } isiqueue;
 
 typedef struct
