@@ -4,4 +4,6 @@
 #include "../../ADT/ADT.h"
 
 void queueFunction();
+
+void ClearQueue(Queue *q);
 #endif
