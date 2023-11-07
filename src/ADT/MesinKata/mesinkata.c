@@ -88,6 +88,16 @@ void STARTCOMMAND(){
     }
 }
 
+void ENDCOMMAND(){
+    if(currentChar != ENTER){
+        START();
+        while(currentChar != ENTER){
+            ADV();
+        }
+    }
+    
+}
+
 void ADVCOMMAND()
 {
     Word empty = {"", 0};
@@ -101,6 +111,7 @@ void ADVCOMMAND()
         CopyCommand();
     }
 }
+
 
 void CopyCommand()
 {

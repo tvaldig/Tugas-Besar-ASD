@@ -1,17 +1,17 @@
 #include <stdio.h>
-#include "start.h"
+#include "startload.h"
 
-Penyanyi penyanyi;
-Album album;
-MapAlbum mapAlbum;
-TabInt ArrayPenyanyi;
-Set SetLagu;
+boolean inSession = false;
 
-int searchidpenyanyi(TabInt p, Word input){ // Mencari key id penyanyi berdasarkan inputan user
+int searchidpenyanyi(TabInt p, Word input)
+{ // Mencari key id penyanyi berdasarkan inputan user
     int i = 0;
-    while(i < p.Neff){
-        if(p.penyanyi[i].namapenyanyi.Length == input.Length){
-            if(IsStringEqual(p.penyanyi[i].namapenyanyi.TabWord, input.TabWord)){
+    while (i < p.Neff)
+    {
+        if (p.penyanyi[i].namapenyanyi.Length == input.Length)
+        {
+            if (IsStringEqual(p.penyanyi[i].namapenyanyi.TabWord, input.TabWord))
+            {
                 return i;
             }
         }
@@ -20,11 +20,15 @@ int searchidpenyanyi(TabInt p, Word input){ // Mencari key id penyanyi berdasark
     return -1;
 }
 
-int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map){
+int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
+{
     int i = p.penyanyi[idpenyanyi].IdAlbumPertama;
-    while(i < p.penyanyi[idpenyanyi].jumlahalbum + i){
-        if(map.Elements[i].AlbumName.Length == input.Length){
-            if(IsStringEqual(map.Elements[i].AlbumName.TabWord, input.TabWord)){
+    while (i < p.penyanyi[idpenyanyi].jumlahalbum + i)
+    {
+        if (map.Elements[i].AlbumName.Length == input.Length)
+        {
+            if (IsStringEqual(map.Elements[i].AlbumName.TabWord, input.TabWord))
+            {
                 return i;
             }
         }
@@ -33,30 +37,53 @@ int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map){
     return -1;
 }
 
-int searchidlagu (TabInt p, int idpenyanyi, Word input, MapAlbum map, int idalbum){
-    int i = 0;
-    while(i < map.Elements[idalbum].Value.Count){
-        if(map.Elements[idalbum].Value.lagu[i].JudulLagu.Length == input.Length){
-            if(IsStringEqual(map.Elements[idalbum].Value.lagu[i].JudulLagu.TabWord, input.TabWord)){
-                return i;
+int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
+{
+    int idxset = Value(map, idalbum);
+
+    for(int i = 0; i < s[idxset].Count; i++){
+        if (s[idxset].AlbumLagu[i].JudulLagu.Length == input.Length)
+            {
+                if (IsStringEqual(s[idxset].AlbumLagu[i].JudulLagu.TabWord, input.TabWord))
+                {
+                    return i;
+                }
             }
-        }
-        i++;
     }
     return -1;
 }
 
+void startLoadFunction(Word fname, boolean loadiftrue)
+{
+    keytype keyCounter = 0;
+    Penyanyi penyanyi;
+    Album album;
+    MapAlbum mapAlbum;
+    TabInt ArrayPenyanyi;
+    Set SetLagu[100];
+    int n, m, l, idSet = 0, laguAlbum = 0;
+    MakeEmpty(&ArrayPenyanyi);
+    CreateEmptyMap(&mapAlbum);
+    STARTFROMFILE(fname.TabWord); // memulai Mesin Kata
 
-void startFunction(Word fname){
-    keytype keyCounter = 0, laguAlbum = 0;
-    int countAlbum, n, m, l;
-    STARTFROMFILE(fname.TabWord) ;  // memulai Mesin Kata
-
-    if(finish){
+    if (finish)
+    {
         printf("Masukkan nama file yang benar!\n");
+        ENDCOMMAND();
         return;
     }
-    MakeEmpty(&ArrayPenyanyi);
+
+    if (loadiftrue){
+        int i = 0;
+        while(currentCommand.TabWord[i] != '.'){
+            printf("%c", currentCommand.TabWord[i]);
+            i++;
+        }
+        printf(" berhasil dibaca. WayangWave berhasil dijalankan.\n");
+    }
+
+    inSession = true;
+
     n = ConvertWordToInt(currentWord); // membaca jumlah penyanyi
     for (int i = 0; i < n; i++)
     {                     // iterasi untuk setiap penyanyi
@@ -70,7 +97,7 @@ void startFunction(Word fname){
         penyanyi.namapenyanyi = currentWord;
         SetPenyanyi(&ArrayPenyanyi, i, penyanyi);
         // memasukan tipe data penyanyi ke array penyanyi
-        
+
         for (int j = 0; j < m; j++)
         {                     // melakukan iterasi untuk setiap album penyanyi
             ADVOnEnter(true); // true untuk mengaktifkan ADV selanjutnya dengan akuisisi sebelum BLANK
@@ -79,26 +106,26 @@ void startFunction(Word fname){
             l = ConvertWordToInt(currentWord);
             ADVCONTINUE(); // setelah blank dilanjutkan akuisisi sampai ENTER
 
-            // melakukan konfigurasi untuk key, value, dan nama album
-            mapAlbum.Elements[keyCounter].Key = keyCounter;
-            mapAlbum.Elements[keyCounter].Value = SetLagu;
-            mapAlbum.Elements[keyCounter].AlbumName = currentWord;
+            // Membuat set lagu untuk setiap album
+            CreateEmptySet(&SetLagu[keyCounter + 1]);
+            // melakukan Insert pada Map
+            InsertMap(&mapAlbum, keyCounter, keyCounter + 1, currentWord);
 
             // melakukan konfigurasi untuk id album pertama dari penyanyi
             if (j == 0)
             {
-                SetIdAlbumPertamaPenyanyi(&ArrayPenyanyi,i,keyCounter);
+                SetIdAlbumPertamaPenyanyi(&ArrayPenyanyi, i, keyCounter);
             }
-            keyCounter++;
-            mapAlbum.Count++;
-            for(int k = 0; k < l; k++){
-                ADVOnEnter(false); //false karena dia mau baca string
-                // Masukin lagu ke set
-                mapAlbum.Elements[laguAlbum].Value.lagu[k].JudulLagu = currentWord;
-                mapAlbum.Elements[laguAlbum].Value.Count++;
 
+            for (int k = 0; k < l; k++)
+            {
+                ADVOnEnter(false); // false karena dia mau baca string
+                // Masukin lagu ke set
+                InsertSetLagu(&SetLagu[keyCounter + 1], laguAlbum, keyCounter, keyCounter + 1, currentWord);
             }
+            idSet++;
             laguAlbum++;
+            keyCounter++;
         }
     }
 
@@ -106,39 +133,42 @@ void startFunction(Word fname){
     CreateQueue(&antrian);
 
     Stack riwayat;
-    CreateEmptyStack(&riwayat); // membuat stack kosong  
+    CreateEmptyStack(&riwayat); // membuat stack kosong
 
     ArrayDin playlists;
     playlists = MakeArrayDin(); // membuat arraydin playlists kosong
-  
-    if(!finish){
-        ADVOnEnter(false); // Mulai membaca sesi bagian queue (antrian)
+
+    if (!finish)
+    {
+        ADVOnEnter(false);                 // Mulai membaca sesi bagian queue (antrian)
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah antrian (jumlah queue)
 
-        int idxpenyanyi, idxalbum, idxlagu; 
+        int idxpenyanyi, idxalbum, idxlagu;
 
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++)
+        {
             ADVSEMICOLON();
             idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
             ADVSEMICOLON();
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
-            idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
-            
+            idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
+
             enqueue(&antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
         }
 
-        ADVOnEnter(false); // mulai membaca sesi bagian riwayat (stack)
+        ADVOnEnter(false);                 // mulai membaca sesi bagian riwayat (stack)
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah riwayat (jumlah stack)
 
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++)
+        {
             ADVSEMICOLON();
             idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
             ADVSEMICOLON();
             idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
             ADVSEMICOLON();
-            idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
-            
+            idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
+
             Push(&riwayat, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke stack riwayat
         }
 
@@ -147,26 +177,28 @@ void startFunction(Word fname){
         ADVOnEnter(false);
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah playlist
 
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++)
+        {
             ADVOnEnter(true);
             m = ConvertWordToInt(currentWord);
-            
+
             ADVCONTINUE();
             InsertLastArrayDin(&playlists, currentWord);
 
             CreateEmpty(&(playlists.A[i])); // membuat satu playlist baru di arraydin playlists
 
-            for(int j = 0; j < m; j++){
-                ADVSEMICOLON(); 
+            for (int j = 0; j < m; j++)
+            {
+                ADVSEMICOLON();
                 idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord); // mencari idxpenyanyi dari file
                 ADVSEMICOLON();
                 idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum); // mencari idxalbum dari file
                 ADVSEMICOLON();
-                idxlagu = searchidlagu(ArrayPenyanyi, idxpenyanyi, currentWord, mapAlbum, idxalbum); // mencari idxlagu dari file
+                idxlagu = searchidlagu(SetLagu, mapAlbum, idxalbum, currentWord); // mencari idxlagu dari file
 
                 addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu); // membuat sebuah node baru berisi idxpenyanyi, idxalbum, idxlagu
-                InsertLast(&(playlists.A[i]), temp); // memasukkan data dari node yang sudah dibuat ke playlists
+                InsertLast(&(playlists.A[i]), temp);                        // memasukkan data dari node yang sudah dibuat ke playlists
             }
-        }        
+        }
     }
 }

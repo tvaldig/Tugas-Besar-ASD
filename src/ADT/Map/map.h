@@ -2,20 +2,21 @@
 #define map_H
 #include <stdio.h>
 #include "../../boolean.h"
-#include "../Set/set.h"
+#include "../MesinKata/mesinkata.h"
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
 
 // #define false 0
 // #define true 1
-#define Nil 0
+
+#define Nil -1
 #define MaxEl 100
-#define Undefined Set
+#define Undefined -999
 
 // typedef int bool;
 typedef int keytype;
-typedef Set valuetype;
+typedef int valuetype;
 typedef int address;
 
 typedef struct
@@ -58,19 +59,14 @@ valuetype Value(MapAlbum M, keytype k);
 /* Mengembalikan nilai value dengan key k dari M */
 /* Jika tidak ada key k pada M, akan mengembalikan Undefined */
 
-void InsertMap(MapAlbum *M, keytype k, valuetype v);
+void InsertMap(MapAlbum *M, keytype k, valuetype v, Word albumname);
 /* Menambahkan Elmt sebagai elemen MapAlbum M. */
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 
-void DeleteMap(MapAlbum *M, keytype k);
-/* Menghapus Elmt dari MapAlbum M. */
-/* I.S. M tidak kosong
-        element dengan key k mungkin anggota / bukan anggota dari M */
-/* F.S. element dengan key k bukan anggota dari M */
-
 boolean IsMemberMap(MapAlbum M, keytype k);
 /* Mengembalikan true jika k adalah member dari M */
 
+void PrintMap(MapAlbum M);
 #endif

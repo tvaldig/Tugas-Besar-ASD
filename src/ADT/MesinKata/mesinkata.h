@@ -80,4 +80,6 @@ int ConvertWordToInt(Word word);
 
 Word ConcatString(Word input1, Word input2);
 
+void ENDCOMMAND();
+
 #endif

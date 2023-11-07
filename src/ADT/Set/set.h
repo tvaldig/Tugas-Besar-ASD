@@ -13,14 +13,16 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 typedef int address;
 
 typedef struct {
-        int IdLagu;
         Word JudulLagu;
+        int IdLagu;
+        int IdAlbum;
 } Lagu;
 
 typedef struct
 {
-    Lagu lagu[MaxEl];
+    Lagu AlbumLagu[MaxEl];
     address Count;
+    int idSet;
 } Set;
 
 /* Definisi Set S kosong : S.Count = Nil */
@@ -45,19 +47,17 @@ boolean IsFullSet(Set S);
 /* Ciri Set penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSet(Set *S, Word Elmt);
+void InsertSetLagu(Set *S, int IdLagu, int IdAlbum, int IdSet, Word Elmt);
 /* Menambahkan Elmt sebagai elemen Set S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */
 /* F.S. Elmt menjadi anggota dari S. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan */
 
-void DeleteSet(Set *S, Word Elmt);
-/* Menghapus Elmt dari Set S. */
-/* I.S. S tidak kosong
-        Elmt mungkin anggota / bukan anggota dari S */
-/* F.S. Elmt bukan anggota dari S */
 
 boolean IsMemberSet(Set S, Word Elmt);
 /* Mengembalikan true jika Elmt adalah member dari S */
+
+void PrintSet(Set S);
+
 
 #endif
