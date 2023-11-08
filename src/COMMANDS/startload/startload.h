@@ -12,6 +12,6 @@ extern Stack riwayat;
 extern ArrayDin playlists;
 extern boolean inSession;
 
-void startFunction(Word fname, boolean loadiftrue);
+void startLoadFunction(Word fname, boolean loadiftrue);
 
 #endif
