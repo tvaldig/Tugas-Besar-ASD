@@ -78,13 +78,13 @@ boolean checkCommand(char *command, boolean inSession) {
 /* Cek command sesuai sesi */
 
 void unknownCommand() {
-    ENDCOMMAND();
     printf("Command tidak diketahui!\n");
+    ENDCOMMAND();
 }
 /* Jika command tidak diketahui */
 
 void wrongCommand(){
-    ENDCOMMAND();
     printf("Command tidak bisa dieksekusi!\n");
+    ENDCOMMAND();
 }
 /* Jika command tidak sesuai sudah/belum masuk sesi */
