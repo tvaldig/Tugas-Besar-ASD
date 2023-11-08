@@ -29,7 +29,7 @@ int main()
                     currentCommand.TabWord[currentCommand.Length-1] = '\0';
                     currentCommand.Length--;
                     Word direktori = {"../save/",8};
-                    startFunction(ConcatString(direktori, currentCommand), true);
+                    startLoadFunction(ConcatString(direktori, currentCommand), true);
                 }else{
                     unknownCommand();
                 }
