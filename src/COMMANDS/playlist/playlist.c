@@ -14,4 +14,6 @@ void PLAYLIST(){
 
 void CREATE_PLAYLIST(){
     printf("\nMasukkan nama playlist yang ingin dibuat : ");
+    STARTCOMMAND();
+    
 }
