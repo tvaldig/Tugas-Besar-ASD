@@ -33,7 +33,6 @@ boolean checkCommand(char *command, boolean inSession) {
         if (IsStringEqual(command, "HELP")) {
             if(currentChar == ' '){
                 unknownCommand();
-                ENDCOMMAND();
                 return false;
             }else{
                 return true;
@@ -41,7 +40,6 @@ boolean checkCommand(char *command, boolean inSession) {
         
         }else if (IsStringEqual(command, "START")){
             if (currentChar == ' '){
-                ENDCOMMAND();
                 unknownCommand();
                 return false;
             }else{
@@ -59,23 +57,19 @@ boolean checkCommand(char *command, boolean inSession) {
         
         else if (checkInSessionCommand(command)) {
             wrongCommand();
-            ENDCOMMAND();
             return false;
         } else{
-            ENDCOMMAND();
             unknownCommand();
             return false;
         }
     } else {
         // Jika sudah dalam sesi
         if (IsStringEqual(command, "START") || IsStringEqual(command, "LOAD")) {
-            ENDCOMMAND();
             wrongCommand();
             return false;
         }else if (IsStringEqual(command, "HELP") || checkInSessionCommand(command)) {
             return true;
         } else {
-            ENDCOMMAND();
             unknownCommand();
             return false;
         }
@@ -84,11 +78,13 @@ boolean checkCommand(char *command, boolean inSession) {
 /* Cek command sesuai sesi */
 
 void unknownCommand() {
+    ENDCOMMAND();
     printf("Command tidak diketahui!\n");
 }
 /* Jika command tidak diketahui */
 
 void wrongCommand(){
+    ENDCOMMAND();
     printf("Command tidak bisa dieksekusi!\n");
 }
 /* Jika command tidak sesuai sudah/belum masuk sesi */
