@@ -321,3 +321,26 @@ void Konkat1(playlist *L1, playlist *L2, playlist *L3)
     CreateEmpty(L1);
     CreateEmpty(L2);
 }
+
+boolean IsMember(playlist L, int idpenyanyi, int idalbum, int idlagu)
+{
+    boolean found = false;
+    addressnode elmt = First(L);
+
+    if (!IsEmptyLinkedList(L))
+    {
+        while ((!found) && (elmt != null))
+        {
+            if (PENYANYI(elmt) == idpenyanyi && ALBUM(elmt) == idalbum && LAGU(elmt) == idlagu)
+            {
+                return true;
+            }
+            else
+            {
+                elmt = Next(elmt);
+            }
+        }
+    }
+
+    return false;
+}

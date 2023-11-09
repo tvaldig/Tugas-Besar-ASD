@@ -35,14 +35,10 @@ void CREATE_PLAYLIST(){
 
     if(count >= 3){
         InsertLastArrayDin(&playlists, currentCommand);
+        CreateEmpty(&(playlists.A[playlists.Neff-1]));
         printf("\nPlaylist %s berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!\n\n", currentCommand.TabWord);
     }else{
         printf("\nMinimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.\n\n");
     }
-
-    PrintArrayDin(playlists);
-    CreateEmpty(&(playlists.A[playlists.Neff-1]));
-    printf("%s\n", playlists.A[playlists.Neff-1].namaplaylist.TabWord);
-    PrintInfo(playlists.A[playlists.Neff-1]);
 
 }
