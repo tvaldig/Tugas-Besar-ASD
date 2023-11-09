@@ -22,7 +22,7 @@ int main()
                     printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n\n");
 
                 }else if(IsStringEqual(command, "LOAD")){
-                    STARTCOMMAND();
+                    STARTCOMMAND(true);
                     if(IsCommandWithSemicolon(currentCommand)){
                         handleSemicolon(currentCommand);
                         Word direktori = {"../save/",8};

@@ -5,11 +5,13 @@
 int idxplaylist, idxpenyanyi, idxalbum, idxlagu, idxset;
 
 void PLAYLIST(){
-    STARTCOMMAND();
-    if(IsStringEqual(currentCommand.TabWord,"CREATE;")){
+    STARTCOMMAND(true);
+    if(IsStringEqual(currentCommand.TabWord,"CREATE;"))
+    {
         CREATE_PLAYLIST();
-    }else if(IsStringEqual(currentCommand.TabWord, "ADD")){
-        STARTCOMMAND();
+    }else if(IsStringEqual(currentCommand.TabWord, "ADD"))
+    {
+        STARTCOMMAND(true);
         if(IsStringEqual(currentCommand.TabWord,"SONG;")){
             ADD_SONG_PLAYLIST();
         }else if (IsStringEqual(currentCommand.TabWord,"ALBUM;")){
@@ -17,8 +19,11 @@ void PLAYLIST(){
         }else{
             unknownCommand();
         }
-
-     }else{ // bila tidak diakhiri dengan ';'
+    }else if(IsStringEqual(currentCommand.TabWord, "SWAP"))
+    {
+        
+    }else
+     { // bila tidak diakhiri dengan ';'
         unknownCommand();
         return;
      }
@@ -26,7 +31,7 @@ void PLAYLIST(){
 
 void CREATE_PLAYLIST(){
     printf("\nMasukkan nama playlist yang ingin dibuat : "); // Menerima input nama playlist
-    STARTCOMMANDONELINE();
+    STARTCOMMAND(false);
 
     int i = 0, count = 0;
 
@@ -58,7 +63,7 @@ void ADD_ALBUM_PLAYLIST(){
     printPenyanyi(); // Menampilkan list penyanyi yang ada di program
 
     printf("\nMasukkan Nama Penyanyi yang dipilih : ");
-    STARTCOMMANDONELINE(); // Menerima input penyanyi dari user
+    STARTCOMMAND(false); // Menerima input penyanyi dari user
     
     if(IsCommandWithSemicolon(currentCommand))
     { // Mengecek apakah command diakhiri dengan semicolon
@@ -71,7 +76,7 @@ void ADD_ALBUM_PLAYLIST(){
             printAlbum(idxpenyanyi); // Menampilkan album yang dimiliki oleh penyanyi tersebut
 
             printf("\nMasukkan Judul Album yang dipilih : ");
-            STARTCOMMANDONELINE(); // Menerima input album dari user
+            STARTCOMMAND(false); // Menerima input album dari user
 
             if(IsCommandWithSemicolon(currentCommand))
             {
@@ -104,7 +109,7 @@ void ADD_ALBUM_PLAYLIST(){
     printPlaylist(); // Menampilkan daftar playlist
 
     printf("\nMasukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
-    STARTCOMMANDONELINE();
+    STARTCOMMAND(false);
 
     if(IsCommandWithSemicolon(currentCommand)){
         handleSemicolon(currentCommand); // Menghilangkan semicolon dari inputan user
@@ -134,7 +139,7 @@ void ADD_SONG_PLAYLIST(){
     printPenyanyi(); // Menampilkan list penyanyi yang ada di program
 
     printf("\nMasukkan Nama Penyanyi yang dipilih : ");
-    STARTCOMMANDONELINE(); // Menerima input penyanyi dari user
+    STARTCOMMAND(false); // Menerima input penyanyi dari user
     
     if(IsCommandWithSemicolon(currentCommand))
     { // Mengecek apakah command diakhiri dengan semicolon
@@ -147,7 +152,7 @@ void ADD_SONG_PLAYLIST(){
             printAlbum(idxpenyanyi); // Menampilkan album yang dimiliki oleh penyanyi tersebut
 
             printf("\nMasukkan Judul Album yang dipilih : ");
-            STARTCOMMANDONELINE(); // Menerima input album dari user
+            STARTCOMMAND(false); // Menerima input album dari user
 
             if(IsCommandWithSemicolon(currentCommand))
             {
@@ -160,7 +165,7 @@ void ADD_SONG_PLAYLIST(){
                     printLagu(idxalbum, idxpenyanyi); // Menampilkan lagu yang dimiliki oleh album tersebut
 
                     printf("\nMasukkan ID Lagu yang dipilih : ");
-                    STARTCOMMAND(); // Menerima input lagu dari user
+                    STARTCOMMAND(true); // Menerima input lagu dari user
 
                     if(IsCommandWithSemicolon(currentCommand))
                     {
@@ -205,7 +210,7 @@ void ADD_SONG_PLAYLIST(){
     printPlaylist(); // Menampilkan daftar playlist
 
     printf("\nMasukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
-    STARTCOMMANDONELINE();
+    STARTCOMMAND(false);
 
     if(IsCommandWithSemicolon(currentCommand)){
         handleSemicolon(currentCommand); // Menghilangkan semicolon dari inputan user
@@ -226,4 +231,6 @@ void ADD_SONG_PLAYLIST(){
     printf("Lagu dengan judul \"%s\" pada album \"%s\" oleh penyanyi \"%s\" berhasil ditambahkan ke dalam playlist \"%s\".\n\n",SetLagu[idxset].AlbumLagu[idxlagu].JudulLagu.TabWord,mapAlbum.Elements[idxalbum].AlbumName.TabWord, ArrayPenyanyi.penyanyi[idxpenyanyi].namapenyanyi.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
 }
 
-
+void SWAP_PLAYLIST(){
+    
+}

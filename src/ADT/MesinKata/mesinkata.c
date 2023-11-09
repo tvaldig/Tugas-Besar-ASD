@@ -302,3 +302,13 @@ void handleSemicolon(Word command){
     currentCommand.TabWord[currentCommand.Length - 1] = '\0';
     currentCommand.Length--;
 }
+
+void ENDCOMMAND(){
+    if(currentChar != ENTER){
+        START();
+        while(currentChar != ENTER){
+            ADV();
+        }
+    }
+    
+}
