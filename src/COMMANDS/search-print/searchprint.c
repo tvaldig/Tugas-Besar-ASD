@@ -67,3 +67,14 @@ void printAlbum(int idpenyanyi){
         nomor++;
     }
 }   
+
+void printLagu(int idalbum, int idpenyanyi){
+    printf("\nDaftar Lagu Album %s oleh %s : \n", mapAlbum.Elements[idalbum].AlbumName.TabWord,ArrayPenyanyi.penyanyi[idpenyanyi].namapenyanyi.TabWord);
+
+    int idxset = Value(mapAlbum, idalbum);
+
+    for(int i = 0; i < SetLagu[idxset].Count ; i++){
+        printf("    %d. %s\n", i+1, SetLagu[idxset].AlbumLagu[i].JudulLagu.TabWord);
+    }
+    
+}

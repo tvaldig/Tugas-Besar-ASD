@@ -55,4 +55,5 @@ void CREATE_PLAYLIST(){
 void ADD_SONG_PLAYLIST(){
     printPenyanyi();
     printAlbum(0);
+    printLagu(0,0);
 }
