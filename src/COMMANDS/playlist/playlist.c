@@ -25,19 +25,19 @@ void PLAYLIST(){
 }
 
 void CREATE_PLAYLIST(){
-    printf("\nMasukkan nama playlist yang ingin dibuat : ");
+    printf("\nMasukkan nama playlist yang ingin dibuat : "); // Menerima input nama playlist
     STARTCOMMANDONELINE();
 
     int i = 0, count = 0;
 
-    if(currentCommand.TabWord[currentCommand.Length-1] == ';'){
+    if(currentCommand.TabWord[currentCommand.Length-1] == ';'){ // Mengecek apakah inputan terakhir dari user merupakan semicolon
         handleSemicolon(currentCommand);
     }else{
         unknownCommand();
         return;
     }
 
-    while(currentCommand.Length > i){
+    while(currentCommand.Length > i){ // Mengecek apakah syarat minimum 3 karakter selain whitespace terpenuhi atau tidak
         if(currentCommand.TabWord[i] != ' '){
             count++;
         }
@@ -45,11 +45,11 @@ void CREATE_PLAYLIST(){
     }
 
     if(count >= 3){
-        InsertLastArrayDin(&playlists, currentCommand);
-        CreateEmpty(&(playlists.A[playlists.Neff-1]));
+        InsertLastArrayDin(&playlists, currentCommand); // Menambahkan playlist dengan nama sesuai dengan keinginan user
+        CreateEmpty(&(playlists.A[playlists.Neff-1])); // Mendeclare playlist kosong
         printf("\nPlaylist %s berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!\n\n", currentCommand.TabWord);
     }else{
-        printf("\nMinimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.\n\n");
+        printf("\nMinimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.\n\n"); // Bila tidak memenuhi syarat minimum 3 karakter
     }
 
 }
@@ -101,29 +101,29 @@ void ADD_ALBUM_PLAYLIST(){
         return;
     }
 
-    printPlaylist();
+    printPlaylist(); // Menampilkan daftar playlist
 
-    printf("\nMasukkan ID Playlist yang dipilih : ");
+    printf("\nMasukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
     STARTCOMMANDONELINE();
 
     if(IsCommandWithSemicolon(currentCommand)){
-        handleSemicolon(currentCommand);
-        idxplaylist = ConvertWordToInt(currentCommand) - 1;
+        handleSemicolon(currentCommand); // Menghilangkan semicolon dari inputan user
+        idxplaylist = ConvertWordToInt(currentCommand) - 1; // Mengubah word menjadi sebuah int
 
         if((idxplaylist > playlists.Neff-1) || (idxplaylist < 0))
         {
-            printf("\nID Playlist %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
+            printf("\nID Playlist %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord); // Bila inputan ID playlist diluar list yang diperbolehkan
             return;
         }
     }else{
-        unknownCommand();
+        unknownCommand(); // Bila inputan tidak diakhiri dengan semicolon
         return;
     }
 
-    idxset = Value(mapAlbum, idxalbum);
+    idxset = Value(mapAlbum, idxalbum); // Mencari idxset dari Key idxalbum
 
-    for(int i = 0; i < SetLagu[idxset].Count; i++){
-        InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi,idxalbum, i);
+    for(int i = 0; i < SetLagu[idxset].Count; i++){ // Memasukkan semua lagu dari Album ke Playlist
+        InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi,idxalbum, i); 
     }
 }
 
@@ -200,24 +200,24 @@ void ADD_SONG_PLAYLIST(){
         return;
     }
   
-    printPlaylist();
+    printPlaylist(); // Menampilkan daftar playlist
 
-    printf("\nMasukkan ID Playlist yang dipilih : ");
+    printf("\nMasukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
     STARTCOMMANDONELINE();
 
     if(IsCommandWithSemicolon(currentCommand)){
-        handleSemicolon(currentCommand);
-        int idxplaylist = ConvertWordToInt(currentCommand) - 1;
+        handleSemicolon(currentCommand); // Menghilangkan semicolon dari inputan user
+        idxplaylist = ConvertWordToInt(currentCommand) - 1; // Mengubah word menjadi sebuah int
 
         if((idxplaylist > playlists.Neff-1) || (idxplaylist < 0))
         {
-            printf("\nID Playlist %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
+            printf("\nID Playlist %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord); // Bila inputan ID playlist diluar list yang diperbolehkan
             return;
         }
     }else{
-        unknownCommand();
+        unknownCommand(); // Bila inputan tidak diakhiri dengan semicolon
         return;
     }
 
-    InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi, idxalbum, idxlagu);
+    InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi, idxalbum, idxlagu); // Memasukkan lagu ke dalam playlist
 }
