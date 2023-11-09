@@ -2,6 +2,8 @@
 #include "stdio.h"
 #include "../commands.h"
 
+int idxplaylist, idxpenyanyi, idxalbum, idxlagu, idxset;
+
 void PLAYLIST(){
     STARTCOMMAND();
     if(IsStringEqual(currentCommand.TabWord,"CREATE;")){
@@ -62,7 +64,7 @@ void ADD_ALBUM_PLAYLIST(){
     { // Mengecek apakah command diakhiri dengan semicolon
         handleSemicolon(currentCommand); // Menghilangkan semicolon di input
         
-        int idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand); // Mencari idpenyanyi berdasarkan nama yang diinput oleh user
+        idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand); // Mencari idpenyanyi berdasarkan nama yang diinput oleh user
 
         if(idxpenyanyi != -1)
         { 
@@ -75,7 +77,7 @@ void ADD_ALBUM_PLAYLIST(){
             {
                 handleSemicolon(currentCommand); // Menghilangkan semicolon di input
 
-                int idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentCommand, mapAlbum); // Mencari idxalbum dari inputan user
+                idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentCommand, mapAlbum); // Mencari idxalbum dari inputan user
 
                 if(idxalbum == -1)
                 {
@@ -106,7 +108,7 @@ void ADD_ALBUM_PLAYLIST(){
 
     if(IsCommandWithSemicolon(currentCommand)){
         handleSemicolon(currentCommand);
-        int idxplaylist = ConvertWordToInt(currentCommand) - 1;
+        idxplaylist = ConvertWordToInt(currentCommand) - 1;
 
         if((idxplaylist > playlists.Neff-1) || (idxplaylist < 0))
         {
@@ -118,6 +120,11 @@ void ADD_ALBUM_PLAYLIST(){
         return;
     }
 
+    idxset = Value(mapAlbum, idxalbum);
+
+    for(int i = 0; i < SetLagu[idxset].Count; i++){
+        InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi,idxalbum, i);
+    }
 }
 
 
@@ -131,7 +138,7 @@ void ADD_SONG_PLAYLIST(){
     { // Mengecek apakah command diakhiri dengan semicolon
         handleSemicolon(currentCommand); // Menghilangkan semicolon di input
         
-        int idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand); // Mencari idpenyanyi berdasarkan nama yang diinput oleh user
+        idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand); // Mencari idpenyanyi berdasarkan nama yang diinput oleh user
 
         if(idxpenyanyi != -1)
         { 
@@ -144,7 +151,7 @@ void ADD_SONG_PLAYLIST(){
             {
                 handleSemicolon(currentCommand); // Menghilangkan semicolon di input
 
-                int idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentCommand, mapAlbum); // Mencari idxalbum dari inputan user
+                idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentCommand, mapAlbum); // Mencari idxalbum dari inputan user
 
                 if(idxalbum != -1)
                 {
@@ -157,9 +164,9 @@ void ADD_SONG_PLAYLIST(){
                     {
                         handleSemicolon(currentCommand); // Menghilangkan semicolon di input
 
-                        int idxlagu = ConvertWordToInt(currentCommand) - 1;
+                        idxlagu = ConvertWordToInt(currentCommand) - 1;
 
-                        int idxset = Value(mapAlbum, idxalbum); // Mencari idxset dari ID album yang diinput oleh user
+                        idxset = Value(mapAlbum, idxalbum); // Mencari idxset dari ID album yang diinput oleh user
 
                         if(idxlagu > SetLagu[idxset].Count -1 || idxlagu < 0){ // Cek apabila ID inputan user diluar yang seharusnya
                             printf("Lagu dengan ID %d tidak ada dalam daftar. Silakan coba lagi.\n\n", idxlagu);
@@ -212,5 +219,5 @@ void ADD_SONG_PLAYLIST(){
         return;
     }
 
-    
+    InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi, idxalbum, idxlagu);
 }
