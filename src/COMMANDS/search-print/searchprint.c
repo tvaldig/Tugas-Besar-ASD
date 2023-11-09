@@ -78,3 +78,11 @@ void printLagu(int idalbum, int idpenyanyi){
     }
     
 }
+
+void printPlaylist(){
+    printf("\nDaftar Playlist Pengguna : \n");
+
+    for(int i = 0; i < playlists.Neff; i++){
+        printf("    %d. %s\n", i+1, playlists.A[i].namaplaylist.TabWord);
+    }
+}

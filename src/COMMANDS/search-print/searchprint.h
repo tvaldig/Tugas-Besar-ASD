@@ -15,4 +15,6 @@ void printAlbum(int idpenyanyi);
 
 void printLagu (int idalbum, int idpenyanyi);
 
+void printPlaylist();
+
 #endif
