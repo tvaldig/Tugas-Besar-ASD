@@ -88,4 +88,6 @@ void ADVCOMMANDONELINE();
 
 void CopyCommandOneLine();
 
+void REMOVESEMICOLON();
+
 #endif

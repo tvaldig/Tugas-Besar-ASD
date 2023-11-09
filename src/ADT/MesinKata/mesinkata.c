@@ -120,7 +120,6 @@ void CopyCommand()
 
 void STARTCOMMANDONELINE(){
     START();
-    IgnoreBlanks();
     if(currentChar == ENTER){
         EndCommand = true;
     }else{
@@ -310,4 +309,9 @@ Word ConcatString(Word input1, Word input2){
 
     return hasil;
 
+}
+
+void REMOVESEMICOLON(){
+    currentCommand.TabWord[currentCommand.Length-1] = '\0';
+    currentCommand.Length--;
 }
