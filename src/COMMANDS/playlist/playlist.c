@@ -221,3 +221,5 @@ void ADD_SONG_PLAYLIST(){
 
     InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi, idxalbum, idxlagu); // Memasukkan lagu ke dalam playlist
 }
+
+
