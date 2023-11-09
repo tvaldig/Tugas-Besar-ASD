@@ -77,14 +77,14 @@ void CopyWord()
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-void STARTCOMMAND(){
+void STARTCOMMAND(boolean OnBlank){
     START();
     IgnoreBlanks();
     if(currentChar == ENTER){
         EndCommand = true;
     }else{
         EndCommand = false;
-        ADVCOMMAND();
+        OnBlank ? ADVCOMMANDONBLANK() : ADVCOMMAND();
     }
 }
 
@@ -102,16 +102,33 @@ void ADVCOMMAND()
 {
     Word empty = {"", 0};
     currentCommand = empty;
-    if (currentChar == ENTER && !EndCommand)
-    {
-        EndCommand= true;
-    }
-    else
-    {
-        CopyCommand();
-    }
+    
+        if (currentChar == ENTER && !EndCommand)
+        {
+            EndCommand = true;
+        }
+        else
+        {
+            CopyCommandNotBlank();
+        }
+    
+    
 }
 
+void ADVCOMMANDONBLANK()
+{
+        Word empty = {"", 0};
+        currentCommand = empty;
+
+        if (currentChar == BLANK && !EndCommand)
+        {
+            EndCommand = true;
+        }
+        else
+        {
+            CopyCommand();
+        }
+}
 
 void CopyCommand()
 {
@@ -128,6 +145,20 @@ void CopyCommand()
     currentCommand.Length = i;
 }
 
+void CopyCommandNotBlank()
+{
+    int i = 0;
+    while (currentChar != ENTER)
+    {
+        if (i < NMax)
+        {
+            currentCommand.TabWord[i] = currentChar;
+            i++;
+        }
+        ADV();
+    }
+    currentCommand.Length = i;
+}
 
 void ConvertWordToString(Word *word, char *output)
 {
@@ -271,4 +302,13 @@ Word ConcatString(Word input1, Word input2){
 
     return hasil;
 
+}
+
+boolean IsCommandWithSemicolon(Word command){
+    return (currentCommand.TabWord[currentCommand.Length - 1] == ';');
+}
+
+void handleSemicolon(Word command){
+    currentCommand.TabWord[currentCommand.Length - 1] = '\0';
+    currentCommand.Length--;
 }
