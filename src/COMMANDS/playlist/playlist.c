@@ -6,6 +6,15 @@ void PLAYLIST(){
     STARTCOMMAND();
     if(IsStringEqual(currentCommand.TabWord,"CREATE;")){
         CREATE_PLAYLIST();
+    }else if(IsStringEqual(currentCommand.TabWord, "ADD")){
+        STARTCOMMAND();
+        if(IsStringEqual(currentCommand.TabWord,"SONG;")){
+            ADD_SONG_PLAYLIST();
+        }else if (IsStringEqual(currentCommand.TabWord,"ALBUM;")){
+            printf("add album\n");
+        }else{
+            unknownCommand();
+        }
 
      }else{ // bila tidak diakhiri dengan ';'
         unknownCommand();
@@ -32,7 +41,7 @@ void CREATE_PLAYLIST(){
         }
         i++;
     }
-    
+
     if(count >= 3){
         InsertLastArrayDin(&playlists, currentCommand);
         CreateEmpty(&(playlists.A[playlists.Neff-1]));
@@ -41,4 +50,8 @@ void CREATE_PLAYLIST(){
         printf("\nMinimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.\n\n");
     }
 
+}
+
+void ADD_SONG_PLAYLIST(){
+    printPenyanyi();
 }

@@ -344,3 +344,9 @@ boolean IsMember(playlist L, int idpenyanyi, int idalbum, int idlagu)
 
     return false;
 }
+
+void InsertUnique(playlist *L, int idpenyanyi, int idalbum, int idlagu){
+    if(!IsMember(*L, idpenyanyi, idalbum, idlagu)){
+        InsVLast(L, idpenyanyi, idalbum, idlagu);
+    }
+}
