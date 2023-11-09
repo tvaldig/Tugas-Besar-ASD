@@ -11,10 +11,6 @@ void CREATE_PLAYLIST();
 
 void ADD_SONG_PLAYLIST();
 
-void inputPlaylist();
-
-void inputPenyanyiAlbum();
-
 void ADD_ALBUM_PLAYLIST();
 
 

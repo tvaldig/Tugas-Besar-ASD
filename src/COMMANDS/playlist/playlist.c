@@ -2,8 +2,6 @@
 #include "stdio.h"
 #include "../commands.h"
 
-int idxpenyanyi, idxalbum, idxlagu, idxplaylist;
-
 void PLAYLIST(){
     STARTCOMMAND();
     if(IsStringEqual(currentCommand.TabWord,"CREATE;")){
@@ -55,58 +53,6 @@ void CREATE_PLAYLIST(){
 }
 
 void ADD_ALBUM_PLAYLIST(){
-    inputPenyanyiAlbum();
-    inputPlaylist();
-}
-
-
-void ADD_SONG_PLAYLIST(){
-    inputPenyanyiAlbum();
-
-    printLagu(idxalbum, idxpenyanyi); // Menampilkan lagu yang dimiliki oleh album tersebut
-
-    printf("\nMasukkan ID Lagu yang dipilih : ");
-    STARTCOMMAND(); // Menerima input lagu dari user
-
-    if(IsCommandWithSemicolon(currentCommand))
-    {
-        handleSemicolon(currentCommand); // Menghilangkan semicolon di input
-
-        int idxlagu = ConvertWordToInt(currentCommand);
-
-        int idxset = Value(mapAlbum, idxalbum); // Mencari idxset dari ID album yang diinput oleh user
-
-        if(idxlagu > SetLagu[idxset].Count -1 || idxlagu < 0){ // Cek apabila ID inputan user diluar yang seharusnya
-            printf("Lagu dengan ID %d tidak ada dalam daftar. Silakan coba lagi.\n\n", idxlagu);
-            return;
-        }
-    }else
-    { // Bila command tidak diakhiri dengan semicolon 
-        unknownCommand();
-        return;
-    }
-
-    inputPlaylist();
-}
-
-void inputPlaylist(){ // Menerima Input Playlist
-    printPlaylist();
-
-    printf("\nMasukkan ID Playlist yang dipilih : ");
-    STARTCOMMANDONELINE();
-
-    if(IsCommandWithSemicolon(currentCommand)){
-        handleSemicolon(currentCommand);
-        idxplaylist = ConvertWordToInt(currentCommand) - 1;
-        
-        if(idxplaylist > ArrayPenyanyi.Neff-1 || idxplaylist < 0)
-        {
-            printf("ID Playlist %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
-        }
-    }
-}
-
-void inputPenyanyiAlbum(){ // Menerima Input Penyanyi dan Album
     printPenyanyi(); // Menampilkan list penyanyi yang ada di program
 
     printf("\nMasukkan Nama Penyanyi yang dipilih : ");
@@ -116,7 +62,7 @@ void inputPenyanyiAlbum(){ // Menerima Input Penyanyi dan Album
     { // Mengecek apakah command diakhiri dengan semicolon
         handleSemicolon(currentCommand); // Menghilangkan semicolon di input
         
-        idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand); // Mencari idpenyanyi berdasarkan nama yang diinput oleh user
+        int idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand); // Mencari idpenyanyi berdasarkan nama yang diinput oleh user
 
         if(idxpenyanyi != -1)
         { 
@@ -129,7 +75,7 @@ void inputPenyanyiAlbum(){ // Menerima Input Penyanyi dan Album
             {
                 handleSemicolon(currentCommand); // Menghilangkan semicolon di input
 
-                idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentCommand, mapAlbum); // Mencari idxalbum dari inputan user
+                int idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentCommand, mapAlbum); // Mencari idxalbum dari inputan user
 
                 if(idxalbum == -1)
                 {
@@ -152,4 +98,119 @@ void inputPenyanyiAlbum(){ // Menerima Input Penyanyi dan Album
         unknownCommand();
         return;
     }
+
+    printPlaylist();
+
+    printf("\nMasukkan ID Playlist yang dipilih : ");
+    STARTCOMMANDONELINE();
+
+    if(IsCommandWithSemicolon(currentCommand)){
+        handleSemicolon(currentCommand);
+        int idxplaylist = ConvertWordToInt(currentCommand) - 1;
+
+        if((idxplaylist > playlists.Neff-1) || (idxplaylist < 0))
+        {
+            printf("\nID Playlist %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
+            return;
+        }
+    }else{
+        unknownCommand();
+        return;
+    }
+
+}
+
+
+void ADD_SONG_PLAYLIST(){
+    printPenyanyi(); // Menampilkan list penyanyi yang ada di program
+
+    printf("\nMasukkan Nama Penyanyi yang dipilih : ");
+    STARTCOMMANDONELINE(); // Menerima input penyanyi dari user
+    
+    if(IsCommandWithSemicolon(currentCommand))
+    { // Mengecek apakah command diakhiri dengan semicolon
+        handleSemicolon(currentCommand); // Menghilangkan semicolon di input
+        
+        int idxpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand); // Mencari idpenyanyi berdasarkan nama yang diinput oleh user
+
+        if(idxpenyanyi != -1)
+        { 
+            printAlbum(idxpenyanyi); // Menampilkan album yang dimiliki oleh penyanyi tersebut
+
+            printf("\nMasukkan Judul Album yang dipilih : ");
+            STARTCOMMANDONELINE(); // Menerima input album dari user
+
+            if(IsCommandWithSemicolon(currentCommand))
+            {
+                handleSemicolon(currentCommand); // Menghilangkan semicolon di input
+
+                int idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentCommand, mapAlbum); // Mencari idxalbum dari inputan user
+
+                if(idxalbum != -1)
+                {
+                    printLagu(idxalbum, idxpenyanyi); // Menampilkan lagu yang dimiliki oleh album tersebut
+
+                    printf("\nMasukkan ID Lagu yang dipilih : ");
+                    STARTCOMMAND(); // Menerima input lagu dari user
+
+                    if(IsCommandWithSemicolon(currentCommand))
+                    {
+                        handleSemicolon(currentCommand); // Menghilangkan semicolon di input
+
+                        int idxlagu = ConvertWordToInt(currentCommand) - 1;
+
+                        int idxset = Value(mapAlbum, idxalbum); // Mencari idxset dari ID album yang diinput oleh user
+
+                        if(idxlagu > SetLagu[idxset].Count -1 || idxlagu < 0){ // Cek apabila ID inputan user diluar yang seharusnya
+                            printf("Lagu dengan ID %d tidak ada dalam daftar. Silakan coba lagi.\n\n", idxlagu);
+                            return;
+                        }
+                    }else
+                    { // Bila command tidak diakhiri dengan semicolon 
+                        unknownCommand();
+                        return;
+                    }
+
+                }else
+                {
+                    printf("Album %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
+                    return;
+                }
+            }else
+            { // Bila command tidak diakhiri dengan semicolon
+                unknownCommand();
+                return;
+            }
+
+        }else
+        { // Bila inputan user salah
+            printf("Penyanyi %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
+            return;
+        }
+    }else
+    { // Bila command tidak diakhiri dengan semicolon
+        unknownCommand();
+        return;
+    }
+  
+    printPlaylist();
+
+    printf("\nMasukkan ID Playlist yang dipilih : ");
+    STARTCOMMANDONELINE();
+
+    if(IsCommandWithSemicolon(currentCommand)){
+        handleSemicolon(currentCommand);
+        int idxplaylist = ConvertWordToInt(currentCommand) - 1;
+
+        if((idxplaylist > playlists.Neff-1) || (idxplaylist < 0))
+        {
+            printf("\nID Playlist %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
+            return;
+        }
+    }else{
+        unknownCommand();
+        return;
+    }
+
+    
 }
