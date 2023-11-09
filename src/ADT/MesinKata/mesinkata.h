@@ -88,6 +88,8 @@ void ADVCOMMANDONELINE();
 
 void CopyCommandOneLine();
 
-void REMOVESEMICOLON();
+void handleSemicolon(Word command);
+
+boolean IsCommandWithSemicolon(Word command);
 
 #endif

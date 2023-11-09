@@ -19,20 +19,20 @@ void CREATE_PLAYLIST(){
 
     int i = 0, count = 0;
 
+    if(currentCommand.TabWord[currentCommand.Length-1] == ';'){
+        handleSemicolon(currentCommand);
+    }else{
+        unknownCommand();
+        return;
+    }
+
     while(currentCommand.Length > i){
         if(currentCommand.TabWord[i] != ' '){
             count++;
         }
         i++;
     }
-
-    if(currentCommand.TabWord[currentCommand.Length-1] == ';'){
-        REMOVESEMICOLON();
-    }else{
-        unknownCommand();
-        return;
-    }
-
+    
     if(count >= 3){
         InsertLastArrayDin(&playlists, currentCommand);
         CreateEmpty(&(playlists.A[playlists.Neff-1]));

@@ -21,8 +21,8 @@ int main()
 
                 }else if(IsStringEqual(command, "LOAD")){
                     STARTCOMMAND();
-                    if(currentCommand.TabWord[currentCommand.Length-1] == ';'){
-                        REMOVESEMICOLON();
+                    if(IsCommandWithSemicolon(currentCommand)){
+                        handleSemicolon(currentCommand);
                         Word direktori = {"../save/",8};
                         startLoadFunction(ConcatString(direktori, currentCommand), true);
                     }else{

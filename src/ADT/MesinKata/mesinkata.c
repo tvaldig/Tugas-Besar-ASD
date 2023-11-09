@@ -311,7 +311,11 @@ Word ConcatString(Word input1, Word input2){
 
 }
 
-void REMOVESEMICOLON(){
-    currentCommand.TabWord[currentCommand.Length-1] = '\0';
+boolean IsCommandWithSemicolon(Word command){
+    return (currentCommand.TabWord[currentCommand.Length - 1] == ';');
+}
+
+void handleSemicolon(Word command){
+    currentCommand.TabWord[currentCommand.Length - 1] = '\0';
     currentCommand.Length--;
 }
