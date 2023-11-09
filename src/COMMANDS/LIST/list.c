@@ -72,7 +72,30 @@ void ListSongs(Set setLagu[], Word NamaAlbum, Word JudulLagu) {
 void ListPlaylists(ArrayDin Playlist, int playlistCount)
 {
     printf("Daftar playlist yang kamu miliki:\n");
-    for (int i = 0; i < Playlist.Neff; i++) {
+    for (int i = 0; i < playlistCount; i++) {
         printf("%d. %s\n", i + 1, Playlist.A[i].namaplaylist.TabWord);
+    }
+}
+
+void listDefaultFunction(){
+    char yn[2];
+    ListSingers(ArrayPenyanyi,ArrayPenyanyi.Neff);
+    printf("Ingin melihat album yang ada?(Y/N) :");
+    STARTCOMMAND();
+    if(IsCommandWithSemicolon(currentCommand)){
+        handleSemicolon(currentCommand);
+        ConvertWordToString(&currentCommand, yn);
+        if(IsStringEqual(yn, "Y")){
+            printf("Pilih penyanyi untuk melihat album mereka: \n");
+            ADVCOMMAND();
+            handleSemicolon(currentCommand);
+            ListAlbums(mapAlbum, currentCommand);
+            printf("Ingin melihat lagu yang ada?(Y/N): ");
+            ADVCOMMAND();
+            handleSemicolon(currentCommand);
+            ConvertWordToString(&currentCommand, yn);
+            if (IsStringEqual(yn, "Y"))
+            {
+            }
     }
 }
