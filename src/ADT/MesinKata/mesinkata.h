@@ -82,4 +82,8 @@ Word ConcatString(Word input1, Word input2);
 
 void ENDCOMMAND();
 
+boolean IsCommandWithSemicolon(Word command);
+
+void handleSemicolon(Word command);
+
 #endif
