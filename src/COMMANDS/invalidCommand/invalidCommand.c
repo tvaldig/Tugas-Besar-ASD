@@ -30,7 +30,7 @@ boolean checkCommand(char *command, boolean inSession) {
     /* Mengembalikan false jika command tidak sesuai */
     if (!(inSession)) {
         // Jika belum dalam sesi
-        if (IsStringEqual(command, "HELP")) {
+        if (IsStringEqual(command, "HELP;")) {
             if(currentChar == ' '){
                 unknownCommand();
                 return false;
@@ -38,7 +38,7 @@ boolean checkCommand(char *command, boolean inSession) {
                 return true;
             }
         
-        }else if (IsStringEqual(command, "START")){
+        }else if (IsStringEqual(command, "START;")){
             if (currentChar == ' '){
                 unknownCommand();
                 return false;
