@@ -125,6 +125,8 @@ void ADD_ALBUM_PLAYLIST(){
     for(int i = 0; i < SetLagu[idxset].Count; i++){ // Memasukkan semua lagu dari Album ke Playlist
         InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi,idxalbum, i); 
     }
+
+    printf("Album dengan judul \"%s\" berhasil ditambahkan ke dalam playlist pengguna \"%s\".\n\n", mapAlbum.Elements[idxalbum].AlbumName.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
 }
 
 
@@ -220,6 +222,8 @@ void ADD_SONG_PLAYLIST(){
     }
 
     InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi, idxalbum, idxlagu); // Memasukkan lagu ke dalam playlist
+
+    printf("Lagu dengan judul \"%s\" pada album \"%s\" oleh penyanyi \"%s\" berhasil ditambahkan ke dalam playlist \"%s\".\n\n",SetLagu[idxset].AlbumLagu[idxlagu].JudulLagu.TabWord,mapAlbum.Elements[idxalbum].AlbumName.TabWord, ArrayPenyanyi.penyanyi[idxpenyanyi].namapenyanyi.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
 }
 
 
