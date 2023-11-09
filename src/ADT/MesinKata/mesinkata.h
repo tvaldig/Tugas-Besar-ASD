@@ -47,11 +47,15 @@ void CopyWord();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-void STARTCOMMAND();
+void STARTCOMMAND(boolean OnBlank);
 
 void ADVCOMMAND();
 
+void ADVCOMMANDONBLANK();
+ 
 void CopyCommand();
+
+void CopyCommandNotBlank();
 
 void STARTFROMFILE(char *file);
 
