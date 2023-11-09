@@ -11,4 +11,6 @@ int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input);
 
 void printPenyanyi();
 
+void printAlbum(int idpenyanyi);
+
 #endif

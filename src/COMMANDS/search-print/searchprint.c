@@ -51,8 +51,19 @@ int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
 }
 
 void printPenyanyi(){
-    printf("\nDaftarPenyanyi : \n");
+    printf("\nDaftar Penyanyi : \n");
     for(int i = 0; i < ArrayPenyanyi.Neff; i++){
-        printf("   %d. %s\n", i+1, ArrayPenyanyi.penyanyi[i].namapenyanyi.TabWord);
+        printf("    %d. %s\n", i+1, ArrayPenyanyi.penyanyi[i].namapenyanyi.TabWord);
     }
 }
+
+void printAlbum(int idpenyanyi){
+    printf("\nDaftar Album oleh %s : \n", ArrayPenyanyi.penyanyi[idpenyanyi].namapenyanyi.TabWord);
+
+    int i = ArrayPenyanyi.penyanyi[idpenyanyi].IdAlbumPertama, nomor = 1;
+
+    for(i; i < ArrayPenyanyi.penyanyi[idpenyanyi].jumlahalbum; i++){
+        printf("    %d. %s\n", nomor, mapAlbum.Elements[i].AlbumName.TabWord);
+        nomor++;
+    }
+}   
