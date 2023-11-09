@@ -2,6 +2,14 @@
 #include "startload.h"
 
 boolean inSession = false;
+Penyanyi penyanyi;
+Album album;
+MapAlbum mapAlbum;
+TabInt ArrayPenyanyi;
+Set SetLagu[100];
+Queue antrian;
+Stack riwayat;
+ArrayDin playlists;
 
 int searchidpenyanyi(TabInt p, Word input)
 { // Mencari key id penyanyi berdasarkan inputan user
@@ -56,11 +64,7 @@ int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
 void startLoadFunction(Word fname, boolean loadiftrue)
 {
     keytype keyCounter = 0;
-    Penyanyi penyanyi;
-    Album album;
-    MapAlbum mapAlbum;
-    TabInt ArrayPenyanyi;
-    Set SetLagu[100];
+    
     int n, m, l, idSet = 0, laguAlbum = 0;
     MakeEmpty(&ArrayPenyanyi);
     CreateEmptyMap(&mapAlbum);
@@ -129,13 +133,11 @@ void startLoadFunction(Word fname, boolean loadiftrue)
         }
     }
 
-    Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
+   // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     CreateQueue(&antrian);
 
-    Stack riwayat;
     CreateEmptyStack(&riwayat); // membuat stack kosong
 
-    ArrayDin playlists;
     playlists = MakeArrayDin(); // membuat arraydin playlists kosong
 
     if (!finish)

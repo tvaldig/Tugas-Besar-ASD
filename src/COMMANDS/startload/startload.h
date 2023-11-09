@@ -6,7 +6,7 @@ extern Penyanyi penyanyi;
 extern MapAlbum mapAlbum;
 extern Album album;
 extern TabInt ArrayPenyanyi;
-extern Set SetLagu;
+extern Set SetLagu[100];
 extern Queue antrian;
 extern Stack riwayat;
 extern ArrayDin playlists;
