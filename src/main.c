@@ -7,9 +7,11 @@ int main()
 {
     boolean program = false;
     char command[100];
+    char nextcommand[100];
+    //welcomeMenu();
     while(!program){
         printf(">>");
-        STARTCOMMAND();
+        STARTCOMMAND(true);
         ConvertWordToString(&currentCommand, command);
         if(!inSession){
             if (checkCommand(command, inSession))

@@ -77,14 +77,14 @@ void CopyWord()
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-void STARTCOMMAND(){
+void STARTCOMMAND(boolean OnBlank){
     START();
     IgnoreBlanks();
     if(currentChar == ENTER){
         EndCommand = true;
     }else{
         EndCommand = false;
-        ADVCOMMAND();
+        OnBlank ? ADVCOMMANDONBLANK() : ADVCOMMAND();
     }
 }
 
@@ -92,16 +92,33 @@ void ADVCOMMAND()
 {
     Word empty = {"", 0};
     currentCommand = empty;
-    if (currentChar == ENTER && !EndCommand)
-    {
-        EndCommand= true;
-    }
-    else
-    {
-        CopyCommand();
-    }
+    
+        if (currentChar == ENTER && !EndCommand)
+        {
+            EndCommand = true;
+        }
+        else
+        {
+            CopyCommandNotBlank();
+        }
+    
+    
 }
 
+void ADVCOMMANDONBLANK()
+{
+        Word empty = {"", 0};
+        currentCommand = empty;
+
+        if (currentChar == BLANK && !EndCommand)
+        {
+            EndCommand = true;
+        }
+        else
+        {
+            CopyCommand();
+        }
+}
 
 void CopyCommand()
 {
@@ -118,31 +135,8 @@ void CopyCommand()
     currentCommand.Length = i;
 }
 
-void STARTCOMMANDONELINE(){
-    START();
-    if(currentChar == ENTER){
-        EndCommand = true;
-    }else{
-        EndCommand = false;
-        ADVCOMMANDONELINE();
-    }
-} 
-
-void ADVCOMMANDONELINE()
+void CopyCommandNotBlank()
 {
-    Word empty = {"", 0};
-    currentCommand = empty;
-    if (currentChar == ENTER && !EndCommand)
-    {
-        EndCommand= true;
-    }
-    else
-    {
-        CopyCommandOneLine();
-    }
-}
-
-void CopyCommandOneLine(){
     int i = 0;
     while (currentChar != ENTER)
     {
@@ -154,18 +148,7 @@ void CopyCommandOneLine(){
         ADV();
     }
     currentCommand.Length = i;
-} 
-
-void ENDCOMMAND(){
-    if(currentChar != ENTER){
-        START();
-        while(currentChar != ENTER){
-            ADV();
-        }
-    }
-    
 }
-
 
 void ConvertWordToString(Word *word, char *output)
 {

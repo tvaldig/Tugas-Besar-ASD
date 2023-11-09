@@ -6,7 +6,8 @@ boolean checkInSessionCommand(char *command){
     /* Cek apakah sesuai command dalam sesi */
     if (IsStringEqual(command, "LIST")) {
         return true;
-    } else if (IsStringEqual(command, "PLAY")) {
+    }
+    else if (IsStringEqual(command, "PLAY")) {
         return true;
     } else if (IsStringEqual(command, "QUEUE")) {
         return true;
@@ -14,11 +15,11 @@ boolean checkInSessionCommand(char *command){
         return true;
     } else if (IsStringEqual(command, "PLAYLIST")) {
         return true;
-    } else if (IsStringEqual(command, "STATUS")) {
+    } else if (IsStringEqual(command, "STATUS;")) {
         return true;
-    } else if (IsStringEqual(command, "SAVE")) {
+    } else if (IsStringEqual(command, "SAVE;")) {
         return true;
-    } else if (IsStringEqual(command, "QUIT")) {
+    } else if (IsStringEqual(command, "QUIT;")) {
         return true;
     } else {
         ENDCOMMAND();
@@ -67,7 +68,7 @@ boolean checkCommand(char *command, boolean inSession) {
         if (IsStringEqual(command, "START") || IsStringEqual(command, "LOAD")) {
             wrongCommand();
             return false;
-        }else if (IsStringEqual(command, "HELP") || checkInSessionCommand(command)) {
+        }else if (IsStringEqual(command, "HELP;") || checkInSessionCommand(command)) {
             return true;
         } else {
             unknownCommand();
