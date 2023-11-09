@@ -350,3 +350,16 @@ void InsertUnique(playlist *L, int idpenyanyi, int idalbum, int idlagu){
         InsVLast(L, idpenyanyi, idalbum, idlagu);
     }
 }
+
+int countPlaylist(playlist L){
+    int count = 0;
+
+    addressnode P = First(L);
+
+    while(P != null){
+        count++;
+        P = Next(P);
+    }
+
+    return count;
+}

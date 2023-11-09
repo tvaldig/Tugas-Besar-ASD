@@ -21,7 +21,7 @@ void PLAYLIST(){
         }
     }else if(IsStringEqual(currentCommand.TabWord, "SWAP"))
     {
-        
+        SWAP_PLAYLIST();
     }else
      { // bila tidak diakhiri dengan ';'
         unknownCommand();
@@ -232,5 +232,81 @@ void ADD_SONG_PLAYLIST(){
 }
 
 void SWAP_PLAYLIST(){
+    STARTCOMMAND(true);
+
+    idxplaylist = ConvertWordToInt(currentCommand) - 1;
+
+    STARTCOMMAND(true);
+
+    int max = countPlaylist(playlists.A[idxplaylist]);
+
+    int idxurutan1 = ConvertWordToInt(currentCommand) - 1;
     
+    int idxurutan2;
+
+    STARTCOMMAND(false);
+
+    if(IsCommandWithSemicolon(currentCommand))
+    {
+        handleSemicolon(currentCommand);
+        idxurutan2 = ConvertWordToInt(currentCommand) - 1;
+    }else
+    {
+        printf("masuk sini\n");
+        unknownCommand();
+        return;
+    }
+
+    printf("%d %d %d\n", idxurutan1, idxurutan2, max);
+    
+    if(idxplaylist > playlists.Neff - 1 || idxplaylist < 0)
+    {
+        printf("Tidak ada playlist dengan playlist ID %d\n\n", idxplaylist+1);
+        ENDCOMMAND();
+        return;
+    } else if(idxurutan1 > max - 1 || idxurutan1 < 0)
+    {
+        printf("Tidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan1+1, playlists.A[idxplaylist].namaplaylist.TabWord);
+        ENDCOMMAND();
+        return;
+    } else if(idxurutan2 > max - 1 || idxurutan2 < 0)
+    {
+        printf("Tidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan2+1, playlists.A[idxplaylist].namaplaylist.TabWord);
+        ENDCOMMAND();
+        return;
+    }
+
+    addressnode p1,p2;
+    int idlagutemp, idalbumtemp, idpenyanyitemp;
+
+    p1 = First(playlists.A[idxplaylist]);
+    p2 = p1;
+
+    for(int i = 0; i < idxurutan1; i++){
+        p1 = Next(p1);
+    }
+    for(int i = 0; i < idxurutan2; i++){
+        p2 = Next(p2);
+    }
+
+    PrintInfo(playlists.A[idxplaylist]);
+
+    idpenyanyitemp = p1->idpenyanyi;
+    idalbumtemp = p1->idalbum;
+    idlagutemp = p1->idlagu;
+
+    p1->idpenyanyi = p2->idpenyanyi;
+    p1->idalbum = p2->idalbum;
+    p1->idlagu = p2->idlagu;
+
+    p2->idpenyanyi = idpenyanyitemp;
+    p2->idalbum = idalbumtemp;
+    p2->idlagu = idlagutemp;
+    
+    
+    PrintInfo(playlists.A[idxplaylist]);
+
+
 }
+
+

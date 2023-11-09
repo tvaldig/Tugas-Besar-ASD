@@ -13,7 +13,7 @@ void ADD_SONG_PLAYLIST();
 
 void ADD_ALBUM_PLAYLIST();
 
-
+void SWAP_PLAYLIST();
 
 
 

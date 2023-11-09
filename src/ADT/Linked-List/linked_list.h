@@ -150,4 +150,6 @@ boolean IsMember(playlist L, int idpenyanyi, int idalbum, int idlagu);
 
 void InsertUnique(playlist *L, int idpenyanyi, int idalbum, int idlagu);
 
+int countPlaylist(playlist L);
+
 #endif
