@@ -20,7 +20,8 @@ int searchidpenyanyi(TabInt p, Word input)
 int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
 {
     int i = p.penyanyi[idpenyanyi].IdAlbumPertama;
-    while (i < p.penyanyi[idpenyanyi].jumlahalbum + i)
+    int maks = p.penyanyi[idpenyanyi].jumlahalbum + i;
+    while (i < maks)
     {
         if (map.Elements[i].AlbumName.Length == input.Length)
         {
