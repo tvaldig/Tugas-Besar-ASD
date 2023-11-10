@@ -15,11 +15,9 @@ void PLAYLIST(){
         STARTCOMMAND(true);
         if(IsStringEqual(currentCommand.TabWord,"SONG;")){
             ADD_SONG_PLAYLIST();
-            PrintInfo(playlists.A[idxplaylist]);
         }else if (IsStringEqual(currentCommand.TabWord,"ALBUM;")){
             statealbum = true;
             ADD_ALBUM_PLAYLIST();
-            PrintInfo(playlists.A[idxplaylist]);
         }else{
             unknownCommand();
         }
