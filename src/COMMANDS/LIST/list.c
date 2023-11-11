@@ -42,7 +42,7 @@ int SearchLagu(Word Lagu)
 // Fungsi untuk menampilkan daftar penyanyi
 void ListSingers(TabInt ArrayP, int singerCount)
 {
-    printf("Daftar Penyanyi:\n");
+    printf("\nDaftar Penyanyi : \n");
     for (int i = 0; i < singerCount; i++) {
         printf("%d. %s\n", i + 1, GetNamaPenyanyi(ArrayP, i).TabWord);
     }
@@ -53,7 +53,7 @@ void ListAlbums(MapAlbum MapAlb, Word NamaPenyanyi){
     int number = 0;
     int idalbumpertama = GetIdAlbumPertama(ArrayPenyanyi, SearchPenyanyi(NamaPenyanyi));
     int jumlahalbum = GetJumlahAlbum(ArrayPenyanyi, SearchPenyanyi(NamaPenyanyi));
-    printf("Daftar Album oleh %s:\n", NamaPenyanyi.TabWord);
+    printf("\nDaftar Album oleh %s : \n", NamaPenyanyi.TabWord);
     for (int i = idalbumpertama; i < idalbumpertama + jumlahalbum; i++) {
         printf("%d. %s\n", number + 1, mapAlbum.Elements[i].AlbumName.TabWord);
         number++;
@@ -64,7 +64,7 @@ void ListAlbums(MapAlbum MapAlb, Word NamaPenyanyi){
 void ListSongs(Set setLagu[], Word NamaAlbum) {
     int idAlbum = GetIdAlbum(NamaAlbum);
     Set s = setLagu[Value(mapAlbum,idAlbum)];
-    printf("Daftar Lagu di %s:\n", NamaAlbum.TabWord);
+    printf("\nDaftar Lagu di %s : \n", NamaAlbum.TabWord);
     for (int i = 0; i < s.Count; i++) {
         printf("%d. %s\n", i + 1, s.AlbumLagu[i].JudulLagu.TabWord);
     }
@@ -81,36 +81,41 @@ void ListPlaylists(ArrayDin Playlist, int playlistCount)
 void listDefaultFunction(){
     char yn[2];
     ListSingers(ArrayPenyanyi,ArrayPenyanyi.Neff);
-    printf("Ingin melihat album yang ada?(Y/N) : ");
+    printf("\nIngin melihat album yang ada?(Y/N) : ");
     STARTCOMMAND(false);
     ConvertWordToString(&currentCommand, yn);
-    if(IsStringEqual(yn, "Y;")){
-        printf("Pilih penyanyi untuk melihat album mereka : ");
+    if(IsStringEqual(yn, "Y;"))
+    {
+        printf("\nPilih penyanyi untuk melihat album mereka : ");
         STARTCOMMAND(false); printf("\n");
         handleSemicolon(currentCommand);
         ListAlbums(mapAlbum, currentCommand);
-        printf("Ingin melihat lagu yang ada?(Y/N) : ");
+        printf("\nIngin melihat lagu yang ada?(Y/N) : ");
         STARTCOMMAND(false);
         printf("\n");
         ConvertWordToString(&currentCommand, yn);
         if (IsStringEqual(yn, "Y;"))
-            {
-                printf("Pilih album untuk melihat lagu yang ada di album : ");
-                STARTCOMMAND(false);
-                printf("\n");
-                handleSemicolon(currentCommand);
-                ListSongs(SetLagu, currentCommand);
-            }
+        {
+            printf("\nPilih album untuk melihat lagu yang ada di album : ");
+            STARTCOMMAND(false);
+            printf("\n");
+            handleSemicolon(currentCommand);
+            ListSongs(SetLagu, currentCommand);
+        }else
+        {
+            unknownCommand();
+        }
+            
     }else{
         unknownCommand();
     }
 }
 
 void listPlaylistFunction(){
-    printf("Daftar playlist yang kamu miliki:\n") ;
+    printf("\nDaftar playlist yang kamu miliki : \n") ;
     if (IsEmptyArrayDin(playlists))
     {
-        printf("Kamu tidak memiliki playlist.\n");
+        printf("\nKamu tidak memiliki playlist.\n");
     } else {
         ListPlaylists(playlists, playlists.Neff);
     }

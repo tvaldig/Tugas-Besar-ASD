@@ -18,7 +18,7 @@ int main()
             if(IsStringEqual(command, "START;")){
                 Word fname = {"../save/new.txt", 15};
                 startLoadFunction(fname, false);
-                printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
+                printf("\nFile konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n\n");
                 inSession = true;
             }else if(IsStringEqual(command, "LOAD")){
                 STARTCOMMAND(false);

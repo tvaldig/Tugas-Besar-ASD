@@ -24,13 +24,14 @@ void startLoadFunction(Word fname, boolean loadiftrue)
 
     if (finish)
     {
-        printf("Masukkan nama file yang benar!\n\n");
+        printf("\nMasukkan nama file yang benar!\n\n");
         ENDCOMMAND();
         return;
     }
 
     if (loadiftrue){
         int i = 0;
+        printf("\n");
         while(currentCommand.TabWord[i] != '.'){
             printf("%c", currentCommand.TabWord[i]);
             i++;
