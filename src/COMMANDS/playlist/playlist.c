@@ -63,7 +63,7 @@ void CREATE_PLAYLIST(){
 
 void ADD_ALBUM_PLAYLIST(){
     state = true; // Menunjukkan belum ada error dalam program
-    printPenyanyi(); // Menampilkan list penyanyi yang ada di program
+    ListSingers(ArrayPenyanyi, ArrayPenyanyi.Neff); // Menampilkan list penyanyi yang ada di program
 
     printf("\nMasukkan Nama Penyanyi yang dipilih : ");
     STARTCOMMAND(false); // Menerima input penyanyi dari user
@@ -76,7 +76,7 @@ void ADD_ALBUM_PLAYLIST(){
 
         if(idxpenyanyi != -1)
         { 
-            printAlbum(idxpenyanyi); // Menampilkan album yang dimiliki oleh penyanyi tersebut
+            ListAlbums(mapAlbum, currentCommand); // Menampilkan album yang dimiliki oleh penyanyi tersebut
 
             printf("\nMasukkan Judul Album yang dipilih : ");
             STARTCOMMAND(false); // Menerima input album dari user
@@ -135,7 +135,7 @@ void ADD_SONG_PLAYLIST(){
 
     if(state) // Apabila proses ADD_ALBUM_PLAYLIST masih berhasil
     {
-        printLagu(idxalbum, idxpenyanyi); // Menampilkan lagu yang dimiliki oleh album tersebut
+        ListSongs(SetLagu, currentCommand); // Menampilkan lagu yang dimiliki oleh album tersebut
 
         printf("\nMasukkan ID Lagu yang dipilih : ");
         STARTCOMMAND(true); // Menerima input lagu dari user
@@ -171,7 +171,7 @@ void ADD_SONG_PLAYLIST(){
 }
 
 void INPUT_PLAYLIST(){
-    printPlaylist(); // Menampilkan daftar playlist
+    ListPlaylists(playlists, playlists.Neff); // Menampilkan daftar playlist
 
     printf("\nMasukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
     STARTCOMMAND(false);

@@ -51,39 +51,3 @@ int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
     return -1;
 }
 
-void printPenyanyi(){
-    printf("\nDaftar Penyanyi : \n");
-    for(int i = 0; i < ArrayPenyanyi.Neff; i++){
-        printf("    %d. %s\n", i+1, ArrayPenyanyi.penyanyi[i].namapenyanyi.TabWord);
-    }
-}
-
-void printAlbum(int idpenyanyi){
-    printf("\nDaftar Album oleh %s : \n", ArrayPenyanyi.penyanyi[idpenyanyi].namapenyanyi.TabWord);
-
-    int i = ArrayPenyanyi.penyanyi[idpenyanyi].IdAlbumPertama, nomor = 1;
-
-    for(i; i < ArrayPenyanyi.penyanyi[idpenyanyi].jumlahalbum; i++){
-        printf("    %d. %s\n", nomor, mapAlbum.Elements[i].AlbumName.TabWord);
-        nomor++;
-    }
-}   
-
-void printLagu(int idalbum, int idpenyanyi){
-    printf("\nDaftar Lagu Album %s oleh %s : \n", mapAlbum.Elements[idalbum].AlbumName.TabWord,ArrayPenyanyi.penyanyi[idpenyanyi].namapenyanyi.TabWord);
-
-    int idxset = Value(mapAlbum, idalbum);
-
-    for(int i = 0; i < SetLagu[idxset].Count ; i++){
-        printf("    %d. %s\n", i+1, SetLagu[idxset].AlbumLagu[i].JudulLagu.TabWord);
-    }
-    
-}
-
-void printPlaylist(){
-    printf("\nDaftar Playlist Pengguna : \n");
-
-    for(int i = 0; i < playlists.Neff; i++){
-        printf("    %d. %s\n", i+1, playlists.A[i].namaplaylist.TabWord);
-    }
-}

@@ -81,26 +81,28 @@ void ListPlaylists(ArrayDin Playlist, int playlistCount)
 void listDefaultFunction(){
     char yn[2];
     ListSingers(ArrayPenyanyi,ArrayPenyanyi.Neff);
-    printf("Ingin melihat album yang ada?(Y/N) :");
+    printf("Ingin melihat album yang ada?(Y/N) : ");
     STARTCOMMAND(false);
     ConvertWordToString(&currentCommand, yn);
     if(IsStringEqual(yn, "Y;")){
-        printf("Pilih penyanyi untuk melihat album mereka:");
+        printf("Pilih penyanyi untuk melihat album mereka : ");
         STARTCOMMAND(false); printf("\n");
         handleSemicolon(currentCommand);
         ListAlbums(mapAlbum, currentCommand);
-        printf("Ingin melihat lagu yang ada?(Y/N): ");
+        printf("Ingin melihat lagu yang ada?(Y/N) : ");
         STARTCOMMAND(false);
         printf("\n");
         ConvertWordToString(&currentCommand, yn);
         if (IsStringEqual(yn, "Y;"))
             {
-                printf("Pilih album untuk melihat lagu yang ada di album:");
+                printf("Pilih album untuk melihat lagu yang ada di album : ");
                 STARTCOMMAND(false);
                 printf("\n");
                 handleSemicolon(currentCommand);
                 ListSongs(SetLagu, currentCommand);
             }
+    }else{
+        unknownCommand();
     }
 }
 
