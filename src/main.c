@@ -5,6 +5,7 @@
 #include "COMMANDS/invalidCommand/invalidCommand.h"
 #include "COMMANDS/help/help.h"
 #include "COMMANDS/list/list.h"
+#include "COMMANDS/queue/queue.h"
 #include "ADT/ADT.h"
 
 
@@ -47,7 +48,17 @@ int main()
                         } else if(IsStringEqual(nextcommand, "PLAYLIST;")){
                             listPlaylistFunction();
                         } 
-                    }
+                }
+            } else if(IsStringEqual(command, "QUEUE")){
+                STARTCOMMAND(false);
+                ConvertWordToString(&currentCommand, nextcommand);
+                if(IsStringEqual(nextcommand, "SONG;")){
+                    QueueSong(&antrian);
+                }
+                if (IsStringEqual(nextcommand, "CLEAR;"))
+                {
+                    ClearQueue(&antrian);
+                }
             }
                
         }
