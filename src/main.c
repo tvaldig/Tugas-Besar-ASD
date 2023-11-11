@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include "boolean.h"
-#include "COMMANDS/welcomeMenu/welcomemenu.h"
-#include "COMMANDS/startload/startload.h"
-#include "COMMANDS/invalidCommand/invalidCommand.h"
-#include "COMMANDS/help/help.h"
-#include "COMMANDS/list/list.h"
-#include "ADT/ADT.h"
+#include  "./COMMANDS/commands.h"
 
 
 int main()
@@ -23,7 +18,7 @@ int main()
             if(IsStringEqual(command, "START;")){
                 Word fname = {"../save/new.txt", 15};
                 startLoadFunction(fname, false);
-                printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
+                printf("\nFile konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n\n");
                 inSession = true;
             }else if(IsStringEqual(command, "LOAD")){
                 STARTCOMMAND(false);
@@ -47,6 +42,14 @@ int main()
                         } else if(IsStringEqual(nextcommand, "PLAYLIST;")){
                             listPlaylistFunction();
                         } 
+                    }else{
+                        if(checkCommand(command, inSession))
+                        {
+                            if(IsStringEqual, "PLAYLIST")
+                            {
+                            PLAYLIST();
+                            }
+                        }   
                     }
             }
                

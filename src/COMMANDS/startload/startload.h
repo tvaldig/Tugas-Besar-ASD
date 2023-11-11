@@ -2,6 +2,8 @@
 #define _START_H
 
 #include "../../ADT/ADT.h"
+#include "../commands.h"
+
 extern Penyanyi penyanyi;
 extern MapAlbum mapAlbum;
 extern Album album;
