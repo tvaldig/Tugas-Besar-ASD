@@ -8,6 +8,7 @@
 #include "./invalidCommand/invalidCommand.h"
 #include "./help/help.h"
 #include "./search-print/searchprint.h"
+#include "./LIST/list.h"
 
 
 #endif
