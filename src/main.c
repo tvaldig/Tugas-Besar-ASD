@@ -47,18 +47,39 @@ int main()
                             listDefaultFunction();
                         } else if(IsStringEqual(nextcommand, "PLAYLIST;")){
                             listPlaylistFunction();
-                        } 
+                        }
+                        else {
+                            unknownCommand();
+                        }
                 }
             } else if(IsStringEqual(command, "QUEUE")){
-                STARTCOMMAND(false);
+                STARTCOMMAND(true);
                 ConvertWordToString(&currentCommand, nextcommand);
-                if(IsStringEqual(nextcommand, "SONG;")){
-                    QueueSong(&antrian);
+                if (IsCommandWithSemicolon(currentCommand)){
+                        if (IsStringEqual(nextcommand, "SONG;"))
+                        {
+                            QueueSong(&antrian);
+                        }
+                        else if (IsStringEqual(nextcommand, "CLEAR;"))
+                        {
+                            ClearQueue(&antrian);
+                        }
+                        else if (IsStringEqual(nextcommand, "PLAYLIST;"))
+                        {
+                        }
+                } else {
+                    if(IsStringEqual(nextcommand, "REMOVE")){
+                        STARTCOMMAND(false);
+                        if (IsCommandWithSemicolon(currentCommand))
+                            {
+                                handleSemicolon(currentCommand);
+                                int inputval = ConvertWordToInt(currentCommand);
+                                QueueRemove(&antrian, inputval);
+                        }
+                    }
+                    
                 }
-                if (IsStringEqual(nextcommand, "CLEAR;"))
-                {
-                    ClearQueue(&antrian);
-                }
+                       
             }
                
         }
