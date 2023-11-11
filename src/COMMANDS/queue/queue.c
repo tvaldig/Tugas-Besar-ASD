@@ -74,8 +74,23 @@ void QueueSong(Queue *q){
     
 }
 
-void QueuePlaylist(Queue *q){
-
+void QueuePlaylist(Queue *q, ArrayDin *playlists){
+    printf("Masukan ID Playlist: ");
+    STARTCOMMAND(false);
+    handleSemicolon(currentCommand);
+    int idplaylist = ConvertWordToInt(currentCommand);
+    if(idplaylist > playlists->Neff){
+        printf("Queue Playlist gagal. ID Playlist tidak ditemukan!\n");
+    } else {
+        playlist ply = playlists->A[idplaylist];
+        addressnode P = First(ply);
+        while (P != null)
+        {
+            enqueue(q, PENYANYI(P), ALBUM(P), LAGU(P));
+            P = Next(P);
+        }
+        printf("Berhasil menambahkan playlist %s ke queue.\n", ply.namaplaylist.TabWord);
+    }
 }
 
 void QueueRemove(Queue *q, int id)
@@ -98,12 +113,12 @@ void QueueRemove(Queue *q, int id)
                 
                 for (int j = i; j < IDX_HEAD(*q) + LengthQueue(*q); j++)
                 {
-                    q->Tab[j % (IDX_MAX)].album = q->Tab[j + 1 % (IDX_MAX )].album;
-                    q->Tab[j % (IDX_MAX)].lagu = q->Tab[j + 1 % (IDX_MAX )].lagu;
-                    q->Tab[j % (IDX_MAX)].penyanyi = q->Tab[j + 1 % (IDX_MAX)].penyanyi;
-                    q->Tab[j + 1 % (IDX_MAX)].album = IDX_UNDEF;
-                    q->Tab[j + 1 % (IDX_MAX)].lagu = IDX_UNDEF;
-                    q->Tab[j + 1 % (IDX_MAX)].penyanyi = IDX_UNDEF;
+                    q->Tab[j % (IDX_MAX + 1)].album = q->Tab[j + 1 % (IDX_MAX + 1 )].album;
+                    q->Tab[j % (IDX_MAX + 1)].lagu = q->Tab[j + 1 % (IDX_MAX + 1)].lagu;
+                    q->Tab[j % (IDX_MAX + 1)].penyanyi = q->Tab[j + 1 % (IDX_MAX + 1)].penyanyi;
+                    q->Tab[j + 1 % (IDX_MAX + 1)].album = IDX_UNDEF;
+                    q->Tab[j + 1 % (IDX_MAX + 1)].lagu = IDX_UNDEF;
+                    q->Tab[j + 1 % (IDX_MAX + 1)].penyanyi = IDX_UNDEF;
                     if(IDX_TAIL(*q) == 0){
                         IDX_TAIL(*q) == IDX_MAX;
                     } else {
