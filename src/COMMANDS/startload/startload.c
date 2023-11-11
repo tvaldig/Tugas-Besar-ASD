@@ -125,7 +125,7 @@ void startLoadFunction(Word fname, boolean loadiftrue)
             {
                 ADVOnEnter(false); // false karena dia mau baca string
                 // Masukin lagu ke set
-                InsertSetLagu(&SetLagu[keyCounter + 1], laguAlbum, keyCounter, keyCounter + 1, currentWord);
+                InsertSetLagu(&SetLagu[keyCounter + 1], keyCounter, keyCounter + 1, currentWord);
             }
             idSet++;
             laguAlbum++;
