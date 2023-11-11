@@ -60,6 +60,7 @@ int main()
                         }
                         else if (IsStringEqual(nextcommand, "PLAYLIST;"))
                         {
+                            QueuePlaylist(&antrian, &playlists);  
                         }
                 } else {
                     if(IsStringEqual(nextcommand, "REMOVE")){

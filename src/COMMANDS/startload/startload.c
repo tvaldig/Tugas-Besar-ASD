@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "startload.h"
-#include "../commands.h"
+
 
 boolean inSession = false;
 Penyanyi penyanyi;
