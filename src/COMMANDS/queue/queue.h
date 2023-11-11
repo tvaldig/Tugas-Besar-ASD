@@ -6,4 +6,5 @@
 void queueFunction();
 
 void ClearQueue(Queue *q);
+void QueueSong(Queue *q);
 #endif
