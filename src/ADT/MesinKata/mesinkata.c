@@ -88,16 +88,6 @@ void STARTCOMMAND(boolean OnBlank){
     }
 }
 
-void ENDCOMMAND(){
-    if(currentChar != ENTER){
-        START();
-        while(currentChar != ENTER){
-            ADV();
-        }
-    }
-    
-}
-
 void ADVCOMMAND()
 {
     Word empty = {"", 0};
@@ -311,4 +301,14 @@ boolean IsCommandWithSemicolon(Word command){
 void handleSemicolon(Word command){
     currentCommand.TabWord[currentCommand.Length - 1] = '\0';
     currentCommand.Length--;
+}
+
+void ENDCOMMAND(){
+    if(currentChar != ENTER){
+        START();
+        while(currentChar != ENTER){
+            ADV();
+        }
+    }
+    
 }
