@@ -23,10 +23,9 @@ boolean IsFullSet(Set S){
 /* Ciri Set penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Set ********* */
-void InsertSetLagu(Set *S, int IdLagu, int IdAlbum, int IdSet, Word Elmt){
+void InsertSetLagu(Set *S, int IdAlbum, int IdSet, Word Elmt){
     if(!(IsMemberSet(*S, Elmt))){
         S->AlbumLagu[S->Count].JudulLagu = Elmt;
-        S->AlbumLagu[S->Count].IdLagu = IdLagu;
         S->AlbumLagu[S->Count].IdAlbum = IdAlbum;
         S->idSet = IdSet;
         S->Count++;
