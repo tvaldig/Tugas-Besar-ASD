@@ -39,4 +39,10 @@ void STARTFILE(char *str);
 
 void ADVFILE();
 
+void NEWFILE(Word filename);
+
+void WRITE(char i);
+
+char INTtoCHAR(int i);
+
 #endif
