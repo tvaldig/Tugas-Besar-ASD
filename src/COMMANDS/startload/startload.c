@@ -1,66 +1,22 @@
 #include <stdio.h>
 #include "startload.h"
+#include "../commands.h"
 
 boolean inSession = false;
+Penyanyi penyanyi;
+Album album;
+MapAlbum mapAlbum;
+TabInt ArrayPenyanyi;
+Set SetLagu[100];
+Queue antrian;
+Stack riwayat;
+ArrayDin playlists;
 
-int searchidpenyanyi(TabInt p, Word input)
-{ // Mencari key id penyanyi berdasarkan inputan user
-    int i = 0;
-    while (i < p.Neff)
-    {
-        if (p.penyanyi[i].namapenyanyi.Length == input.Length)
-        {
-            if (IsStringEqual(p.penyanyi[i].namapenyanyi.TabWord, input.TabWord))
-            {
-                return i;
-            }
-        }
-        i++;
-    }
-    return -1;
-}
-
-int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
-{
-    int i = p.penyanyi[idpenyanyi].IdAlbumPertama;
-    while (i < p.penyanyi[idpenyanyi].jumlahalbum + i)
-    {
-        if (map.Elements[i].AlbumName.Length == input.Length)
-        {
-            if (IsStringEqual(map.Elements[i].AlbumName.TabWord, input.TabWord))
-            {
-                return i;
-            }
-        }
-        i++;
-    }
-    return -1;
-}
-
-int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
-{
-    int idxset = Value(map, idalbum);
-
-    for(int i = 0; i < s[idxset].Count; i++){
-        if (s[idxset].AlbumLagu[i].JudulLagu.Length == input.Length)
-            {
-                if (IsStringEqual(s[idxset].AlbumLagu[i].JudulLagu.TabWord, input.TabWord))
-                {
-                    return i;
-                }
-            }
-    }
-    return -1;
-}
 
 void startLoadFunction(Word fname, boolean loadiftrue)
 {
     keytype keyCounter = 0;
-    Penyanyi penyanyi;
-    Album album;
-    MapAlbum mapAlbum;
-    TabInt ArrayPenyanyi;
-    Set SetLagu[100];
+    
     int n, m, l, idSet = 0, laguAlbum = 0;
     MakeEmpty(&ArrayPenyanyi);
     CreateEmptyMap(&mapAlbum);
@@ -68,18 +24,19 @@ void startLoadFunction(Word fname, boolean loadiftrue)
 
     if (finish)
     {
-        printf("Masukkan nama file yang benar!\n");
+        printf("\nMasukkan nama file yang benar!\n\n");
         ENDCOMMAND();
         return;
     }
 
     if (loadiftrue){
         int i = 0;
+        printf("\n");
         while(currentCommand.TabWord[i] != '.'){
             printf("%c", currentCommand.TabWord[i]);
             i++;
         }
-        printf(" berhasil dibaca. WayangWave berhasil dijalankan.\n");
+        printf(" berhasil dibaca. WayangWave berhasil dijalankan.\n\n");
     }
 
     inSession = true;
@@ -129,13 +86,11 @@ void startLoadFunction(Word fname, boolean loadiftrue)
         }
     }
 
-    Queue antrian; // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
+   // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
     CreateQueue(&antrian);
 
-    Stack riwayat;
     CreateEmptyStack(&riwayat); // membuat stack kosong
 
-    ArrayDin playlists;
     playlists = MakeArrayDin(); // membuat arraydin playlists kosong
 
     if (!finish)

@@ -47,11 +47,15 @@ void CopyWord();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-void STARTCOMMAND();
+void STARTCOMMAND(boolean OnBlank);
 
 void ADVCOMMAND();
 
+void ADVCOMMANDONBLANK();
+ 
 void CopyCommand();
+
+void CopyCommandNotBlank();
 
 void STARTFROMFILE(char *file);
 
@@ -81,5 +85,9 @@ int ConvertWordToInt(Word word);
 Word ConcatString(Word input1, Word input2);
 
 void ENDCOMMAND();
+
+boolean IsCommandWithSemicolon(Word command);
+
+void handleSemicolon(Word command);
 
 #endif

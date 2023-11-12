@@ -146,4 +146,10 @@ void Konkat1(playlist *L1, playlist *L2, playlist *L3);
 /* dan L1 serta L2 menjadi list kosong.*/
 /* Tidak ada alokasi/dealokasi pada prosedur ini */
 
+boolean IsMember(playlist L, int idpenyanyi, int idalbum, int idlagu);
+
+void InsertUnique(playlist *L, int idpenyanyi, int idalbum, int idlagu);
+
+int countPlaylist(playlist L);
+
 #endif
