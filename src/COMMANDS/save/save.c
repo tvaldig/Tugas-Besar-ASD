@@ -76,14 +76,31 @@ void SAVE(){
         WRITEENTER();
 
         for(int i = 0; i < playlists.Neff; i++){
-            int jumlahlagu = countPlaylists(playlists.A[i]);
+            int jumlahlagu = countPlaylist(playlists.A[i]);
             WRITEINT(jumlahlagu);
             WRITEBLANK();
             WRITESTRING(playlists.A[i].namaplaylist.TabWord);
 
-            for(int j = 0; i < jumlahlagu; i++){
-                addressnode p = First(playlists.A[i]);
-                int indekspenyanyi = playlists
+            if(jumlahlagu != 0 || i != playlists.Neff-1){
+                WRITEENTER();
+            }
+
+            addressnode p = First(playlists.A[i]);
+
+            for(int j = 0; j < jumlahlagu; j++){
+                int indekspenyanyi = p->idpenyanyi;
+                int indeksalbum = p->idalbum;
+                int indekslagu = p->idlagu;
+                p = Next(p);
+                WRITESTRING(ArrayPenyanyi.penyanyi[indekspenyanyi].namapenyanyi.TabWord);
+                WRITESEMICOLON();
+                WRITESTRING(mapAlbum.Elements[indeksalbum].AlbumName.TabWord);
+                WRITESEMICOLON();
+                int idxset = Value(mapAlbum, indeksalbum);
+                WRITESTRING(SetLagu[idxset].AlbumLagu[indekslagu].JudulLagu.TabWord);
+                if (i != playlists.Neff - 1 || j != jumlahlagu - 1){
+                    WRITEENTER();
+                }
             }
 
         }
