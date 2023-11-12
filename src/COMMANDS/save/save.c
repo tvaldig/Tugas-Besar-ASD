@@ -3,8 +3,6 @@
 void SAVE(){
     STARTCOMMAND(false);
 
-    printf("%s\n", currentCommand.TabWord);
-
     if(!IsCommandWithSemicolon(currentCommand)){
         unknownCommand();
         return;
@@ -12,6 +10,30 @@ void SAVE(){
 
     handleSemicolon(currentCommand);
 
-    NEWFILE(currentCommand.TabWord);
+    Word direktori = {"../save/",8};
 
+    NEWFILE(ConcatString(direktori, currentCommand).TabWord);
+
+    char temp = INTtoChar(ArrayPenyanyi.Neff);
+
+    WRITE(&temp);
+
+    WRITEENTER();
+
+    for(int i = 0; i < ArrayPenyanyi.Neff; i++){
+        char temp = INTtoChar(ArrayPenyanyi.penyanyi[i].jumlahalbum);
+        WRITE(&temp);
+        WRITEBLANK();
+        WRITE(ArrayPenyanyi.penyanyi[i].namapenyanyi.TabWord);
+        WRITEENTER();
+
+        for(int j = i; j < ArrayPenyanyi.penyanyi[i].jumlahalbum + i; j++){
+            char temp = INTtoChar(SetLagu[Value(mapAlbum, j)].Count);
+            WRITE(&temp);
+            WRITEBLANK();
+            WRITE(mapAlbum.Elements[j].AlbumName.TabWord);
+        }
+    }
+
+    WRITEFINISH();
 }

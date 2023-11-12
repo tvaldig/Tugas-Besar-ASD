@@ -78,3 +78,25 @@ void ADVFILE(){
 void NEWFILE(char* filename){
     pita = fopen(filename, "w");
 }
+
+void WRITE(char* c){
+    fwrite(c, sizeof(c), sizeof(c), pita);
+}
+
+void WRITEBLANK(){
+    char blank = ' ';
+    fwrite(&blank, sizeof(char), sizeof(char), pita);
+}
+
+void WRITEENTER(){
+    char enter = '\n';
+    fwrite(&enter, sizeof(char), sizeof(char), pita);
+}
+
+char INTtoChar(int i){
+    return (i + '0');
+}
+
+void WRITEFINISH(){
+    fclose(pita);
+}
