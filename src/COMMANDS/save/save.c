@@ -106,7 +106,13 @@ void SAVE(){
         }
     }
 
-    printf("\n%s")
+    int i = 0;
+    printf("\n");
+    while(currentCommand.TabWord[i] != '.'){
+            printf("%c", currentCommand.TabWord[i]);
+            i++;
+        }
+    printf(" berhasil disimpan.\n\n");
 
     WRITEFINISH();
 }
