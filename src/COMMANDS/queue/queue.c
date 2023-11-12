@@ -97,9 +97,11 @@ void QueueRemove(Queue *q, int id)
 {
     int idlagu, idpenyanyi, idalbum;
     char judullagu[100], namapenyanyi[100];
-    if (id > IDX_TAIL(*q))
+    if (id > IDX_TAIL(*q) || id < 0)
     {
         printf("Lagu dengan urutan ke %d tidak ada.\n", id);
+    } else if(id < 0){
+        printf("Urutan lagu tidak valid.\n");
     }
     else
     {
@@ -111,29 +113,25 @@ void QueueRemove(Queue *q, int id)
                 idpenyanyi = q->Tab[i].penyanyi;
                 idalbum = q->Tab[i].album;
                 
-                for (int j = i; j < IDX_HEAD(*q) + LengthQueue(*q); j++)
+                for (int j = i; j < i +  LengthQueue(*q); j++)
                 {
-                    q->Tab[j % (IDX_MAX + 1)].album = q->Tab[j + 1 % (IDX_MAX + 1 )].album;
-                    q->Tab[j % (IDX_MAX + 1)].lagu = q->Tab[j + 1 % (IDX_MAX + 1)].lagu;
-                    q->Tab[j % (IDX_MAX + 1)].penyanyi = q->Tab[j + 1 % (IDX_MAX + 1)].penyanyi;
-                    q->Tab[j + 1 % (IDX_MAX + 1)].album = IDX_UNDEF;
-                    q->Tab[j + 1 % (IDX_MAX + 1)].lagu = IDX_UNDEF;
-                    q->Tab[j + 1 % (IDX_MAX + 1)].penyanyi = IDX_UNDEF;
-                    if(IDX_TAIL(*q) == 0){
-                        IDX_TAIL(*q) == IDX_MAX;
-                    } else {
-                        IDX_TAIL(*q)
-                        --;
-                    }
-                   
+                    q->Tab[j % (IDX_MAX + 1)].album = q->Tab[(j + 1) % (IDX_MAX + 1 )].album;
+                    q->Tab[j % (IDX_MAX + 1)].lagu = q->Tab[(j + 1) % (IDX_MAX + 1)].lagu;
+                    q->Tab[j % (IDX_MAX + 1)].penyanyi = q->Tab[(j + 1) % (IDX_MAX + 1)].penyanyi;
+                    q->Tab[(j + 1) % (IDX_MAX + 1)].album = IDX_UNDEF;
+                    q->Tab[(j + 1) % (IDX_MAX + 1)].lagu = IDX_UNDEF;
+                    q->Tab[(j + 1) % (IDX_MAX + 1)].penyanyi = IDX_UNDEF;
+                    
                 }
             }
             
         }
+        IDX_TAIL(*q)
+        --;
+        printf("%d\n", IDX_TAIL(*q));
         ConvertWordToString(&ArrayPenyanyi.penyanyi[idpenyanyi].namapenyanyi, namapenyanyi);
         Word Wjudullagu = SetLagu[Value(mapAlbum, idalbum)].AlbumLagu->JudulLagu;
         ConvertWordToString(&Wjudullagu, judullagu);
-        displayQueue(*q);
         printf("Lagu %s oleh %s telah dihapus dari queue!\n", judullagu, namapenyanyi);
     }
 }
