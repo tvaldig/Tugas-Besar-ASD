@@ -76,6 +76,7 @@ void ListPlaylists(ArrayDin Playlist, int playlistCount)
     for (int i = 0; i < playlistCount; i++) {
         printf("%d. %s\n", i + 1, Playlist.A[i].namaplaylist.TabWord);
     }
+    printf("\n");
 }
 
 void listDefaultFunction(){
@@ -87,7 +88,7 @@ void listDefaultFunction(){
     if(IsStringEqual(yn, "Y;"))
     {
         printf("\nPilih penyanyi untuk melihat album mereka : ");
-        STARTCOMMAND(false); printf("\n");
+        STARTCOMMAND(false); 
         handleSemicolon(currentCommand);
         ListAlbums(mapAlbum, currentCommand);
         printf("\nIngin melihat lagu yang ada?(Y/N) : ");
@@ -96,11 +97,11 @@ void listDefaultFunction(){
         ConvertWordToString(&currentCommand, yn);
         if (IsStringEqual(yn, "Y;"))
         {
-            printf("\nPilih album untuk melihat lagu yang ada di album : ");
+            printf("Pilih album untuk melihat lagu yang ada di album : ");
             STARTCOMMAND(false);
-            printf("\n");
             handleSemicolon(currentCommand);
             ListSongs(SetLagu, currentCommand);
+            printf("\n");
         }else
         {
             unknownCommand();

@@ -10,7 +10,7 @@ int main()
     char nextcommand[100];
     //welcomeMenu();
     while(!program){
-        printf(">>");
+        printf(">> ");
         STARTCOMMAND(true);
         ConvertWordToString(&currentCommand, command);
         if (checkCommand(command, inSession))
@@ -31,7 +31,8 @@ int main()
                 }
             }else if(IsStringEqual(command, "HELP;")) {
                 help(inSession);
-            } else if(IsStringEqual(command, "LIST")){
+            } else if(IsStringEqual(command, "LIST"))
+            {
                     STARTCOMMAND(false);
                     if (IsCommandWithSemicolon(currentCommand))
                     {
@@ -39,22 +40,22 @@ int main()
                         if (IsStringEqual(nextcommand, "DEFAULT;"))
                         {
                             listDefaultFunction();
-                        } else if(IsStringEqual(nextcommand, "PLAYLIST;")){
+                        } else if(IsStringEqual(nextcommand, "PLAYLIST;"))
+                        {
                             listPlaylistFunction();
                         } 
-                    }else{
-                        if(checkCommand(command, inSession))
-                        {
-                            if(IsStringEqual, "PLAYLIST")
-                            {
-                            PLAYLIST();
-                            }
-                        }   
                     }
-            }
-               
+            }else if(checkCommand(command, inSession))
+                {
+                    if(IsStringEqual, "PLAYLIST")
+                    {
+                    PLAYLIST();
+                    }
+                }   
         }
     }
-    
+               
 }
+    
+
     

@@ -123,7 +123,7 @@ void ADD_ALBUM_PLAYLIST(){
                 InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi,idxalbum, i); // Meastikan tidak ada duplikat lagu di playlist
             }
 
-            printf("Album dengan judul \"%s\" berhasil ditambahkan ke dalam playlist pengguna \"%s\".\n\n", mapAlbum.Elements[idxalbum].AlbumName.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
+            printf("\nAlbum dengan judul \"%s\" berhasil ditambahkan ke dalam playlist pengguna \"%s\".\n\n", mapAlbum.Elements[idxalbum].AlbumName.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
         }
     }
 }
@@ -162,7 +162,7 @@ void ADD_SONG_PLAYLIST(){
 
         if(state){ // Apabila proses INPUT_PLAYLIST masih berhasil
             InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi, idxalbum, idxlagu); // Memasukkan lagu ke dalam playlist
-            printf("Lagu dengan judul \"%s\" pada album \"%s\" oleh penyanyi \"%s\" berhasil ditambahkan ke dalam playlist \"%s\".\n\n",SetLagu[idxset].AlbumLagu[idxlagu].JudulLagu.TabWord,mapAlbum.Elements[idxalbum].AlbumName.TabWord, ArrayPenyanyi.penyanyi[idxpenyanyi].namapenyanyi.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
+            printf("\nLagu dengan judul \"%s\" pada album \"%s\" oleh penyanyi \"%s\" berhasil ditambahkan ke dalam playlist \"%s\".\n\n",SetLagu[idxset].AlbumLagu[idxlagu].JudulLagu.TabWord,mapAlbum.Elements[idxalbum].AlbumName.TabWord, ArrayPenyanyi.penyanyi[idxpenyanyi].namapenyanyi.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
         }
 
     }
@@ -173,7 +173,7 @@ void ADD_SONG_PLAYLIST(){
 void INPUT_PLAYLIST(){
     ListPlaylists(playlists, playlists.Neff); // Menampilkan daftar playlist
 
-    printf("\nMasukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
+    printf("Masukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
     STARTCOMMAND(false);
 
     if(IsCommandWithSemicolon(currentCommand)){
