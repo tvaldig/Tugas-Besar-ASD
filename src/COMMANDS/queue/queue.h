@@ -6,7 +6,7 @@
 void ClearQueue(Queue *q);
 
 void QueueSong(Queue *q);
-
+void QueueSwap(Queue *q, int id1, int id2);
 void QueuePlaylist(Queue *q, ArrayDin *playlists);
 void QueueRemove(Queue *q, int id);
 

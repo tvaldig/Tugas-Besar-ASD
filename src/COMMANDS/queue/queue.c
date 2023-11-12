@@ -2,6 +2,20 @@
 #include "../startload/startload.h"
 #include "../list/list.h"
 
+
+Word SearchJudulFromId(int idalbum, int idlagu){
+    return SetLagu[Value(mapAlbum, idalbum)].AlbumLagu[idlagu].JudulLagu;
+}
+
+boolean isIdFound(Queue *q, int id){
+    for (int i = IDX_HEAD(*q); i < IDX_HEAD(*q) + LengthQueue(*q); i++)
+    {
+        if(i == id){
+            return true;
+        }
+    }
+    return false;
+}
 boolean isEqual(int a, int b){
     return a == b;
 }
@@ -123,15 +137,46 @@ void QueueRemove(Queue *q, int id)
                     q->Tab[(j + 1) % (IDX_MAX + 1)].penyanyi = IDX_UNDEF;
                     
                 }
+                break;
             }
             
         }
         IDX_TAIL(*q)
         --;
-        printf("%d\n", IDX_TAIL(*q));
         ConvertWordToString(&ArrayPenyanyi.penyanyi[idpenyanyi].namapenyanyi, namapenyanyi);
-        Word Wjudullagu = SetLagu[Value(mapAlbum, idalbum)].AlbumLagu->JudulLagu;
-        ConvertWordToString(&Wjudullagu, judullagu);
+        Word judul = SearchJudulFromId(idalbum, idlagu);
+        ConvertWordToString(&judul, judullagu);
         printf("Lagu %s oleh %s telah dihapus dari queue!\n", judullagu, namapenyanyi);
+    }
+}
+
+void QueueSwap(Queue *q, int id1, int id2){
+    char judullagu1[100];
+    char judullagu2[100];
+    if(isIdFound(q, id1) && isIdFound(q, id2)){
+        int tempalbum = q->Tab[id1].album;
+        int temppenyanyi = q->Tab[id1].penyanyi;
+        int templagu = q->Tab[id1].lagu;
+
+        q->Tab[id1].album = q->Tab[id2].album;
+        q->Tab[id1].penyanyi = q->Tab[id2].penyanyi;
+        q->Tab[id1].lagu = q->Tab[id2].lagu;
+
+        q->Tab[id2].album = tempalbum;
+        q->Tab[id2].penyanyi = temppenyanyi;
+        q->Tab[id2].lagu = templagu;
+
+        Word judul1 = SearchJudulFromId(tempalbum, templagu);
+        ConvertWordToString(&judul1, judullagu1);
+        Word judul2 = SearchJudulFromId(q->Tab[id1].album, q->Tab[id1].lagu);
+        ConvertWordToString(&judul2, judullagu2);
+        printf("Lagu %s berhasil ditukar dengan %s \n", judullagu1, judullagu2);
+    } else if(isIdFound(q, id1) && !isIdFound(q, id2)){
+        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", id2);
+    }
+    else if (!isIdFound(q, id1) && isIdFound(q, id2)){
+        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", id1);
+    } else {
+        printf("Lagu dengan urutan ke %d dan urutan ke %d tidak terdapat dalam queue!\n", id1, id2);
     }
 }
