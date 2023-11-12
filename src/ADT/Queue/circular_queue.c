@@ -93,14 +93,17 @@ void displayQueue(Queue Q)
     {
         for (int i = IDX_HEAD(Q); i < IDX_HEAD(Q) + LengthQueue(Q); i++)
         {
-            printf("%d|", Q.Tab[i % (IDX_MAX + 1)].penyanyi);
-            printf("%d|", Q.Tab[i % (IDX_MAX + 1)].album);
-            printf("%d", Q.Tab[i % (IDX_MAX + 1)].lagu);
+            if(Q.Tab[i].album != IDX_UNDEF){
+                printf("%d|", Q.Tab[i % (IDX_MAX + 1)].penyanyi);
+                printf("%d|", Q.Tab[i % (IDX_MAX + 1)].album);
+                printf("%d", Q.Tab[i % (IDX_MAX + 1)].lagu);
 
-            if (i % (IDX_MAX + 1) != IDX_TAIL(Q))
-            {
-                printf(",");
-            }
+                if (i % (IDX_MAX + 1) != IDX_TAIL(Q))
+                {
+                    printf(", ");
+                }
+            }       
+           
         }
     }
     printf("]\n");
