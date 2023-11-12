@@ -99,9 +99,17 @@ int main()
                     
                 }
                        
+            }else if(IsStringEqual(command, "PLAYLIST"))
+            {
+                PLAYLIST();
+            }else if(IsStringEqual(command, "SAVE"))
+            {
+                SAVE();
             }
-               
+        }
+    }
 }
+    
     
 
     
