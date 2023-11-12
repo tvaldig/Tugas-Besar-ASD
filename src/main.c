@@ -45,13 +45,12 @@ int main()
                             listPlaylistFunction();
                         } 
                     }
-            }else if(checkCommand(command, inSession))
-                {
-                    if(IsStringEqual, "PLAYLIST")
-                    {
-                    PLAYLIST();
-                    }
-                }   
+            }else if(IsStringEqual(command, "PLAYLIST"))
+            {
+                PLAYLIST();
+            }else if(IsStringEqual(command, "SAVE")){
+                SAVE();
+            }
         }
     }
                

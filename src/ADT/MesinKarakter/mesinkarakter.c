@@ -74,3 +74,7 @@ void ADVFILE(){
         finish = true;
     }
 }  
+
+void NEWFILE(char* filename){
+    pita = fopen(filename, "w");
+}

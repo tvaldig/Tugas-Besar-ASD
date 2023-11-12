@@ -3,5 +3,6 @@
 
 #include "../commands.h"
 
+void SAVE();
 
 #endif
