@@ -42,13 +42,13 @@ void ADVFILE();
 
 void NEWFILE(char* filename);
 
-void WRITE(char* c);
+void WRITESTRING(char* c);
+
+void WRITEINT(int i);
 
 void WRITEBLANK();
 
 void WRITEENTER();
-
-char INTtoChar(int i);
 
 void WRITEFINISH();
 

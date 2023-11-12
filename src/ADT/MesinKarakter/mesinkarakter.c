@@ -79,23 +79,22 @@ void NEWFILE(char* filename){
     pita = fopen(filename, "w");
 }
 
-void WRITE(char* c){
-    fwrite(c, sizeof(c), sizeof(c), pita);
+void WRITESTRING(char* c){
+    fprintf(pita, "%s", c);
+}
+
+void WRITEINT(int i){
+    fprintf(pita, "%d", i);
 }
 
 void WRITEBLANK(){
-    char blank = ' ';
-    fwrite(&blank, sizeof(char), sizeof(char), pita);
+    fprintf(pita, "%c", BLANK);
 }
 
 void WRITEENTER(){
-    char enter = '\n';
-    fwrite(&enter, sizeof(char), sizeof(char), pita);
+    fprintf(pita, "%c", ENTER);
 }
 
-char INTtoChar(int i){
-    return (i + '0');
-}
 
 void WRITEFINISH(){
     fclose(pita);

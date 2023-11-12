@@ -14,24 +14,26 @@ void SAVE(){
 
     NEWFILE(ConcatString(direktori, currentCommand).TabWord);
 
-    char temp = INTtoChar(ArrayPenyanyi.Neff);
-
-    WRITE(&temp);
+    WRITEINT(ArrayPenyanyi.Neff);
 
     WRITEENTER();
 
     for(int i = 0; i < ArrayPenyanyi.Neff; i++){
-        char temp = INTtoChar(ArrayPenyanyi.penyanyi[i].jumlahalbum);
-        WRITE(&temp);
+        WRITEINT(ArrayPenyanyi.penyanyi[i].jumlahalbum);
         WRITEBLANK();
-        WRITE(ArrayPenyanyi.penyanyi[i].namapenyanyi.TabWord);
+        WRITESTRING(ArrayPenyanyi.penyanyi[i].namapenyanyi.TabWord);
         WRITEENTER();
 
-        for(int j = i; j < ArrayPenyanyi.penyanyi[i].jumlahalbum + i; j++){
-            char temp = INTtoChar(SetLagu[Value(mapAlbum, j)].Count);
-            WRITE(&temp);
+        for(int j = ArrayPenyanyi.penyanyi[i].IdAlbumPertama; j < ArrayPenyanyi.penyanyi[i].jumlahalbum + i; j++){
+            WRITEINT(SetLagu[Value(mapAlbum, j)].Count);
             WRITEBLANK();
-            WRITE(mapAlbum.Elements[j].AlbumName.TabWord);
+            WRITESTRING(mapAlbum.Elements[j].AlbumName.TabWord);
+            WRITEENTER();
+
+            for(int k = 0; k < SetLagu[Value(mapAlbum, j)].Count; k++){
+                WRITESTRING(SetLagu[Value(mapAlbum, j)].AlbumLagu[k].JudulLagu.TabWord);
+                WRITEENTER();
+            }
         }
     }
 
