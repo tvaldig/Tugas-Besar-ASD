@@ -100,9 +100,9 @@ void displayQueue(Queue Q)
 
                 if (i % (IDX_MAX + 1) != IDX_TAIL(Q))
                 {
-                    printf(",");
+                    printf(", ");
                 }
-            }
+            }       
            
         }
     }
