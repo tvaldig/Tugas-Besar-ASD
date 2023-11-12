@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include "../../boolean.h"
-#include "../ADT.h"
+#include "mesinkarakter.h"
 
 char currentChar;
 boolean EOP;
@@ -74,18 +74,3 @@ void ADVFILE(){
         finish = true;
     }
 }  
-
-
-void NEWFILE(Word filename){
-    pita = fopen(filename.TabWord,"w");
-}
-
-void WRITE(char i){
-    fwrite(i, sizeof(char), sizeof (char), pita);
-}
-
-char INTtoCHAR(int i){
-    char x = i + '0';
-
-    return x;
-}
