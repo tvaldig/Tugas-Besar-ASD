@@ -95,6 +95,9 @@ void WRITEENTER(){
     fprintf(pita, "%c", ENTER);
 }
 
+void WRITESEMICOLON(){
+    fprintf(pita, "%c", ';');
+}
 
 void WRITEFINISH(){
     fclose(pita);

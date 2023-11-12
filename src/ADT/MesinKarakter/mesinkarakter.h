@@ -50,6 +50,8 @@ void WRITEBLANK();
 
 void WRITEENTER();
 
+void WRITESEMICOLON();
+
 void WRITEFINISH();
 
 #endif

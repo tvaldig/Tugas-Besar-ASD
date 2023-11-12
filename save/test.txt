@@ -10,10 +10,6 @@ How You Like That
 Ice Cream (with Selena Gomez)
 Bet You Wanna (Feat. Cardi B)
 3 Arctic Monkeys
-3 THE ALBUM
-How You Like That
-Ice Cream (with Selena Gomez)
-Bet You Wanna (Feat. Cardi B)
 5 Favourite Worst Nightmare
 Brianstorm
 Teddy Picker
@@ -25,3 +21,16 @@ My Propeller
 Crying Lightning
 Secret Door
 Pretty Visitors
+3 AM
+Do I Wanna Know?
+R U Mine?
+Arabella
+5
+BLACKPINK;BORN PINK;Typa Girl
+BLACKPINK;THE ALBUM;How You Like That
+Arctic Monkeys;AM;Do I Wanna Know?
+BLACKPINK;BORN PINK;Shut Down
+Arctic Monkeys;AM;Arabella
+2
+Arctic Monkeys;Favourite Worst Nightmare;505
+BLACKPINK;BORN PINK;Pink Venom
