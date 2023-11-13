@@ -2,9 +2,11 @@
 #define PLAY_H
 
 #include "../../ADT/ADT.h"
-void PlaySong (Queue *q, Stack *s, TabInt ArrPenyanyi);
+#include "../startload/startload.h"
 
-void PlayPlaylist (Queue *q, Stack *s);
+void PlaySong (Queue *q, Stack *s);
+
+void PlayPlaylist (Queue *antrian, Stack *riwayat, ArrayDin *playlists);
 
 
 #endif 
