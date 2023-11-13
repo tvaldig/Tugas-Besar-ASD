@@ -14,20 +14,7 @@ int SearchPenyanyi(Word Nama){
     }
 }
 
-int GetIdAlbum(Word NamaAlbum)
-{
-    char namaalbumarr[100];
-    char nama[100];
-    ConvertWordToString(&NamaAlbum, nama);
-    for (int i = 0; i < mapAlbum.Count; i++)
-    {
-        ConvertWordToString(&mapAlbum.Elements[i].AlbumName, namaalbumarr);
-        if (IsStringEqual(namaalbumarr,nama))
-        {
-            return mapAlbum.Elements[i].Key;
-        }
-    }
-}
+
 
 int SearchLagu(Word Lagu)
 {
@@ -90,7 +77,7 @@ void listDefaultFunction(){
         STARTCOMMAND(false); printf("\n");
         handleSemicolon(currentCommand);
         if(searchidpenyanyi(ArrayPenyanyi, currentCommand) == -1){
-            printf("\nNama penyanyi tidak ditemukan!");
+            printf("\nNama penyanyi tidak ditemukan!\n");
         } else {
             ListAlbums(mapAlbum, currentCommand);
             printf("\nIngin melihat lagu yang ada?(Y/N) : ");
@@ -103,19 +90,24 @@ void listDefaultFunction(){
                 STARTCOMMAND(false);
                 printf("\n");
                 handleSemicolon(currentCommand);
-                ListSongs(SetLagu, currentCommand);
+                if(GetIdAlbum(currentCommand) == -1) {
+                    printf("\nNama album tidak ditemukan!\n");
+                } else {
+                    ListSongs(SetLagu, currentCommand);
+                }           
             }
-            else
+            else if (IsStringEqual(yn, "N;"))
             {
-                unknownCommand();
+                
+            } else {
+                printf("\nGagal. Masukan bukan Y/N.\n");
             }
         }
-        else
-        {
-            unknownCommand();
-        }
-        }
-  
+    } else if(IsStringEqual(yn, "N;")){
+      
+    } else{
+        printf("\nGagal. Masukan bukan Y/N.\n");
+    }
 }
 
 void listPlaylistFunction(){
