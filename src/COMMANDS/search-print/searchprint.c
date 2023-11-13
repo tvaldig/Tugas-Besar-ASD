@@ -71,3 +71,13 @@ Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi)
     }
     return NotFound;
 }
+
+void printCurrent(){
+    char judullagu[100], namaalbum[100], namapenyanyi[100];
+    ConvertWordToString(&current.lagu, judullagu);
+    ConvertWordToString(&current.album, namaalbum);
+    ConvertWordToString(&current.penyanyi, namapenyanyi);
+
+    printf("Now Playing...\n");
+    printf("%s--%s by %s\n", namaalbum, judullagu, namapenyanyi);
+}
