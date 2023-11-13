@@ -46,7 +46,7 @@ Arctic Monkeys;AM;Arabella
 Arctic Monkeys;Favourite Worst Nightmare;505
 Arctic Monkeys;Humbug;Pretty Visitors
 4 Mixed Playlist
-Arctic Monkeys;AM;Arabella
+BLACKPINK;BORN PINK;Ready For Love
 Arctic Monkeys;AM;Do I Wanna Know?
 Arctic Monkeys;AM;R U Mine?
-BLACKPINK;BORN PINK;Ready For Love
+Arctic Monkeys;AM;Arabella

@@ -247,6 +247,8 @@ void SWAP_PLAYLIST(){
     for(int i = 0; i < idxurutan2; i++){
         p2 = Next(p2);
     }
+
+
     idpenyanyitemp = p1->idpenyanyi;
     idalbumtemp = p1->idalbum;
     idlagutemp = p1->idlagu;
@@ -258,6 +260,13 @@ void SWAP_PLAYLIST(){
     p2->idpenyanyi = idpenyanyitemp;
     p2->idalbum = idalbumtemp;
     p2->idlagu = idlagutemp;
+
+    int idxset1 = Value(mapAlbum, p1->idalbum);
+    int idxset2 = Value(mapAlbum, p2->idalbum); 
+    
+    printf("Berhasil menukar lagu dengan nama \"%s\" dengan \"%s\" di playlist \"%s\".\n\n", SetLagu[idxset2].AlbumLagu[p2->idlagu].JudulLagu.TabWord,SetLagu[idxset1].AlbumLagu[p1->idlagu].JudulLagu.TabWord, playlists.A[idxplaylist].namaplaylist.TabWord);
+
+
 }
 
 
