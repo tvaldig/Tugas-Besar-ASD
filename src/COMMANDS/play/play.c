@@ -3,6 +3,8 @@
 NowPlaying current;
 
 void PlaySong (){
+    char namapenyanyi[100];
+    char judullagu[100];
     //Menuliskan daftar penyanyi
     ListSingers(ArrayPenyanyi, ArrayPenyanyi.Neff);
 
@@ -10,6 +12,7 @@ void PlaySong (){
     printf("Masukkan Nama Penyanyi yang dipilih : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
+    ConvertWordToString(&currentCommand, namapenyanyi);
     IdxType idPenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand);
 
     //Menuliskan daftar album
@@ -19,6 +22,7 @@ void PlaySong (){
     printf("Masukkan Nama Album yang dipilih : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
+    Word NamaAlbum = currentCommand;
     IdxType idAlbum = searchidalbum(ArrayPenyanyi, idPenyanyi, currentCommand, mapAlbum);
 
     //Menuliskan daftar lagu
@@ -28,7 +32,9 @@ void PlaySong (){
     printf("Masukkan ID Lagu yang dipilih : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
-    IdxType idLagu = ConvertWordToInt(currentCommand)-1;
+    IdxType idLagu = ConvertWordToInt(currentCommand);
+    Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idLagu, idPenyanyi);
+    ConvertWordToString(&JudulLaguWord, judullagu);
 
     //Memasukkan id dari tiap input ke lagu yang dimainkan
     (&current)->lagu = idLagu;
@@ -38,6 +44,7 @@ void PlaySong (){
     //Mengosongkan antrian dan riwayat
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
+    printf("Memutar lagu %s oleh %s.\n", judullagu, namapenyanyi);
 }
 
 void PlayPlaylist() {
