@@ -9,7 +9,7 @@ int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map);
 
 int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input);
 
-int GetIdAlbum(Word NamaAlbum);
+Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi);
 
 void printPenyanyi();
 
