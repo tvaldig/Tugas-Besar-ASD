@@ -10,11 +10,13 @@ typedef struct
     IdxType lagu;
 } NowPlaying;
 
-void PlaySong (NowPlaying *current);
+extern NowPlaying current;
 
-void PlayPlaylist (NowPlaying *current);
+void PlaySong ();
 
-void NotPlaying (NowPlaying *current);
+void PlayPlaylist ();
 
-boolean isPlaying (NowPlaying current);
+void NotPlaying ();
+
+boolean isPlaying ();
 #endif 

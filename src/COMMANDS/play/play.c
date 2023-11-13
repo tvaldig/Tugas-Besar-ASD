@@ -1,6 +1,6 @@
 #include "play.h"
 
-void PlaySong (NowPlaying *current){
+void PlaySong (){
     //Menuliskan daftar penyanyi
     ListSingers(ArrayPenyanyi, ArrayPenyanyi.Neff);
 
@@ -26,19 +26,19 @@ void PlaySong (NowPlaying *current){
     printf("Masukkan ID Lagu yang dipilih : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
-    IdxType idLagu = ConvertWordToInt(currentCommand);
+    IdxType idLagu = ConvertWordToInt(currentCommand)-1;
 
     //Memasukkan id dari tiap input ke lagu yang dimainkan
-    (*current).lagu = idLagu;
-    (*current).album = idAlbum;
-    (*current).penyanyi = idPenyanyi;
+    (&current)->lagu = idLagu;
+    (&current)->album = idAlbum;
+    (&current)->penyanyi = idPenyanyi;
 
     //Mengosongkan antrian dan riwayat
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
 }
 
-void PlayPlaylist(NowPlaying *current) {
+void PlayPlaylist() {
     printf("Masukkan ID Playlist: ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
@@ -47,7 +47,7 @@ void PlayPlaylist(NowPlaying *current) {
         printf("ID Playlist tidak ditemukan!\n");
     }
     else{
-    playlist p = playlists.A[idPlaylist];
+    playlist p = playlists.A[idPlaylist-1];
     addressnode P = First(p);
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
@@ -57,19 +57,19 @@ void PlayPlaylist(NowPlaying *current) {
         P=Next(P);
     }
     Reversestack(&riwayat);
-    dequeue(&antrian, (*current).penyanyi, (*current).album, (*current).lagu);
+    dequeue(&antrian, (&current)->penyanyi, (&current)->album, (&current)->lagu);
     printf("Memutar playlist %s", p.namaplaylist.TabWord);
     }
 }
     
     
-void NotPlaying (NowPlaying *current){
-    (*current).penyanyi = IdxUndef;
-    (*current).album = IdxUndef;
-    (*current).lagu = IdxUndef;
+void NotPlaying (){
+    (&current)->penyanyi = IdxUndef;
+    (&current)->album = IdxUndef;
+    (&current)->lagu = IdxUndef;
 }
 
-boolean isPlaying (NowPlaying current){
+boolean isPlaying (){
     return current.penyanyi == IdxUndef && 
     current.album == IdxUndef && 
     current.lagu == IdxUndef;
