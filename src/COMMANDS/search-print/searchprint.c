@@ -35,21 +35,6 @@ int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
     return -1;
 }
 
-int GetIdAlbum(Word NamaAlbum)
-{
-    char namaalbumarr[100];
-    char nama[100];
-    ConvertWordToString(&NamaAlbum, nama);
-    for (int i = 0; i < mapAlbum.Count; i++)
-    {
-        ConvertWordToString(&mapAlbum.Elements[i].AlbumName, namaalbumarr);
-        if (IsStringEqual(namaalbumarr, nama))
-        {
-            return mapAlbum.Elements[i].Key;
-        }
-    }
-    return -1;
-}
 
 int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
 {
@@ -67,3 +52,22 @@ int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
     return -1;
 }
 
+Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi)
+{
+    boolean found = false;
+    Word NotFound = {"NOTFOUND", 8};
+    int idAlbum = searchidalbum(ArrayPenyanyi, idpenyanyi, namaalbum, mapAlbum);
+    int i = 0, index;
+    Set S = SetLagu[Value(mapAlbum, idAlbum)];
+    idlagu = idlagu - 1;
+
+    while (i < S.Count && !found)
+    {
+            if (i == idlagu)
+            {
+                return S.AlbumLagu[i].JudulLagu;
+            }
+            i++;
+    }
+    return NotFound;
+}
