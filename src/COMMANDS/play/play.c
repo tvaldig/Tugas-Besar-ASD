@@ -42,12 +42,12 @@ void PlayPlaylist() {
     printf("Masukkan ID Playlist: ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
-    int idPlaylist = ConvertWordToInt(currentCommand);
+    int idPlaylist = ConvertWordToInt(currentCommand)-1;
     if(idPlaylist > playlists.Neff){
         printf("ID Playlist tidak ditemukan!\n");
     }
     else{
-    playlist p = playlists.A[idPlaylist-1];
+    playlist p = playlists.A[idPlaylist];
     addressnode P = First(p);
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
