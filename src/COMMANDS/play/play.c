@@ -1,5 +1,7 @@
 #include "play.h"
 
+NowPlaying current;
+
 void PlaySong (){
     //Menuliskan daftar penyanyi
     ListSingers(ArrayPenyanyi, ArrayPenyanyi.Neff);
@@ -57,7 +59,7 @@ void PlayPlaylist() {
         P=Next(P);
     }
     Reversestack(&riwayat);
-    dequeue(&antrian, (&current)->penyanyi, (&current)->album, (&current)->lagu);
+    dequeue(&antrian, &(&current)->penyanyi, &(&current)->album, &(&current)->lagu);
     printf("Memutar playlist %s", p.namaplaylist.TabWord);
     }
 }
