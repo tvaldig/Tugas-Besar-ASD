@@ -10,7 +10,7 @@ void Quit(boolean isLogin) {
         // Save
         printf("Apakah kamu ingin menyimpan data sesi sekarang? ");
         START();
-        if (currentChar == 'N') {
+        if (currentChar == 'N;') {
             printf("Kamu keluar dari WayangWave.\nDadah ^_^/\n");
         } else {
             // Memanggil Save
