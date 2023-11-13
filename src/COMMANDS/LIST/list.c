@@ -89,26 +89,33 @@ void listDefaultFunction(){
         printf("\nPilih penyanyi untuk melihat album mereka : ");
         STARTCOMMAND(false); printf("\n");
         handleSemicolon(currentCommand);
-        ListAlbums(mapAlbum, currentCommand);
-        printf("\nIngin melihat lagu yang ada?(Y/N) : ");
-        STARTCOMMAND(false);
-        printf("\n");
-        ConvertWordToString(&currentCommand, yn);
-        if (IsStringEqual(yn, "Y;"))
-        {
-            printf("\nPilih album untuk melihat lagu yang ada di album : ");
+        if(searchidpenyanyi(ArrayPenyanyi, currentCommand) == -1){
+            printf("\nNama penyanyi tidak ditemukan!");
+        } else {
+            ListAlbums(mapAlbum, currentCommand);
+            printf("\nIngin melihat lagu yang ada?(Y/N) : ");
             STARTCOMMAND(false);
             printf("\n");
-            handleSemicolon(currentCommand);
-            ListSongs(SetLagu, currentCommand);
-        }else
+            ConvertWordToString(&currentCommand, yn);
+            if (IsStringEqual(yn, "Y;"))
+            {
+                printf("\nPilih album untuk melihat lagu yang ada di album : ");
+                STARTCOMMAND(false);
+                printf("\n");
+                handleSemicolon(currentCommand);
+                ListSongs(SetLagu, currentCommand);
+            }
+            else
+            {
+                unknownCommand();
+            }
+        }
+        else
         {
             unknownCommand();
         }
-            
-    }else{
-        unknownCommand();
-    }
+        }
+  
 }
 
 void listPlaylistFunction(){
