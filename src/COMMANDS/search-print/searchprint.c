@@ -35,6 +35,22 @@ int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
     return -1;
 }
 
+int GetIdAlbum(Word NamaAlbum)
+{
+    char namaalbumarr[100];
+    char nama[100];
+    ConvertWordToString(&NamaAlbum, nama);
+    for (int i = 0; i < mapAlbum.Count; i++)
+    {
+        ConvertWordToString(&mapAlbum.Elements[i].AlbumName, namaalbumarr);
+        if (IsStringEqual(namaalbumarr, nama))
+        {
+            return mapAlbum.Elements[i].Key;
+        }
+    }
+    return -1;
+}
+
 int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
 {
     int idxset = Value(map, idalbum);

@@ -14,20 +14,7 @@ int SearchPenyanyi(Word Nama){
     }
 }
 
-int GetIdAlbum(Word NamaAlbum)
-{
-    char namaalbumarr[100];
-    char nama[100];
-    ConvertWordToString(&NamaAlbum, nama);
-    for (int i = 0; i < mapAlbum.Count; i++)
-    {
-        ConvertWordToString(&mapAlbum.Elements[i].AlbumName, namaalbumarr);
-        if (IsStringEqual(namaalbumarr,nama))
-        {
-            return mapAlbum.Elements[i].Key;
-        }
-    }
-}
+
 
 int SearchLagu(Word Lagu)
 {
@@ -89,25 +76,37 @@ void listDefaultFunction(){
         printf("\nPilih penyanyi untuk melihat album mereka : ");
         STARTCOMMAND(false); printf("\n");
         handleSemicolon(currentCommand);
-        ListAlbums(mapAlbum, currentCommand);
-        printf("\nIngin melihat lagu yang ada?(Y/N) : ");
-        STARTCOMMAND(false);
-        printf("\n");
-        ConvertWordToString(&currentCommand, yn);
-        if (IsStringEqual(yn, "Y;"))
-        {
-            printf("\nPilih album untuk melihat lagu yang ada di album : ");
+        if(searchidpenyanyi(ArrayPenyanyi, currentCommand) == -1){
+            printf("\nNama penyanyi tidak ditemukan!\n");
+        } else {
+            ListAlbums(mapAlbum, currentCommand);
+            printf("\nIngin melihat lagu yang ada?(Y/N) : ");
             STARTCOMMAND(false);
             printf("\n");
-            handleSemicolon(currentCommand);
-            ListSongs(SetLagu, currentCommand);
-        }else
-        {
-            unknownCommand();
+            ConvertWordToString(&currentCommand, yn);
+            if (IsStringEqual(yn, "Y;"))
+            {
+                printf("\nPilih album untuk melihat lagu yang ada di album : ");
+                STARTCOMMAND(false);
+                printf("\n");
+                handleSemicolon(currentCommand);
+                if(GetIdAlbum(currentCommand) == -1) {
+                    printf("\nNama album tidak ditemukan!\n");
+                } else {
+                    ListSongs(SetLagu, currentCommand);
+                }           
+            }
+            else if (IsStringEqual(yn, "N;"))
+            {
+                
+            } else {
+                printf("\nGagal. Masukan bukan Y/N.\n");
+            }
         }
-            
-    }else{
-        unknownCommand();
+    } else if(IsStringEqual(yn, "N;")){
+      
+    } else{
+        printf("\nGagal. Masukan bukan Y/N.\n");
     }
 }
 

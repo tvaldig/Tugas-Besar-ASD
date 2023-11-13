@@ -41,16 +41,62 @@ int main()
                             listDefaultFunction();
                         } else if(IsStringEqual(nextcommand, "PLAYLIST;")){
                             listPlaylistFunction();
-                        } 
-                    }else{
-                        if(checkCommand(command, inSession))
+                        }
+                        else {
+                            unknownCommand();
+                        }
+                }
+            } else if(IsStringEqual(command, "QUEUE")){
+                STARTCOMMAND(true);
+                ConvertWordToString(&currentCommand, nextcommand);
+                if (IsCommandWithSemicolon(currentCommand)){
+                        if (IsStringEqual(nextcommand, "SONG;"))
                         {
-                            if(IsStringEqual, "PLAYLIST")
+                            QueueSong(&antrian);
+                        }
+                        else if (IsStringEqual(nextcommand, "CLEAR;"))
+                        {
+                            ClearQueue(&antrian);
+                        }
+                        else if (IsStringEqual(nextcommand, "PLAYLIST;"))
+                        {
+                            QueuePlaylist(&antrian, &playlists);  
+                        }
+                        else{
+                            unknownCommand();
+                        }
+                } else {
+                    if(IsStringEqual(nextcommand, "REMOVE")){
+                        STARTCOMMAND(false);
+                        if (IsCommandWithSemicolon(currentCommand))
                             {
-                            PLAYLIST();
+                                handleSemicolon(currentCommand);
+                                int inputval = ConvertWordToInt(currentCommand);
+                                QueueRemove(&antrian, inputval);
+                        } else {
+                            unknownCommand();
+                        }
+                    } else if(IsStringEqual(nextcommand, "SWAP")){
+                        STARTCOMMAND(true);
+                        if(IsCommandWithSemicolon(currentCommand)){
+                            printf("Masukan id selanjutnya!\n");
+                        } else {
+                            int inputval1 = ConvertWordToInt(currentCommand);
+                            STARTCOMMAND(false);
+                            if (IsCommandWithSemicolon(currentCommand))
+                            {
+                                handleSemicolon(currentCommand);
+                                int inputval2 = ConvertWordToInt(currentCommand);
+                                QueueSwap(&antrian, inputval1, inputval2);
                             }
-                        }   
+                        }
+                        
+                    } else {
+                        unknownCommand();
                     }
+                    
+                }
+                       
             }
                
         }

@@ -4,6 +4,8 @@
 #include "../startload/startload.h"
 #include "../../ADT/ADT.h"
 // Prototipe fungsi-fungsi
+
+int SearchPenyanyi(Word Nama);
 void ListSingers(TabInt ArrayP, int singerCount);
 void ListAlbums(MapAlbum MapAlb, Word NamaPenyanyi);
 void ListSongs(Set setlagu[], Word NamaAlbum);
