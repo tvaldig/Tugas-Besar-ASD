@@ -10,9 +10,9 @@ typedef struct
     IdxType lagu;
 } NowPlaying;
 
-void PlaySong (Queue *antrian, Stack *riwayat, TabInt ArrPenyanyi, NowPlaying *current);
+void PlaySong (NowPlaying *current);
 
-void PlayPlaylist (Queue *antrian, Stack *riwayat, ArrayDin *playlists, NowPlaying *current);
+void PlayPlaylist (NowPlaying *current);
 
 void NotPlaying (NowPlaying *current);
 
