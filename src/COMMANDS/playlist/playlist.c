@@ -214,12 +214,9 @@ void SWAP_PLAYLIST(){
         idxurutan2 = ConvertWordToInt(currentCommand) - 1;
     }else
     {
-        printf("masuk sini\n");
         unknownCommand();
         return;
     }
-
-    printf("%d %d %d\n", idxurutan1, idxurutan2, max);
     
     if(idxplaylist > playlists.Neff - 1 || idxplaylist < 0)
     {
