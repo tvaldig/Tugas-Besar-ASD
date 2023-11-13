@@ -1,5 +1,5 @@
 # Tugas-Besar-ASD
-Kelompok 1 K01\n
+Kelompok 1 K01
 Anggota Kelompok :
 1. Bihurin Salsabila Firdaus (18222015)
 2. David Dewanto (18222027)
