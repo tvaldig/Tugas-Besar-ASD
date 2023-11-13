@@ -196,41 +196,42 @@ void INPUT_PLAYLIST(){
 void SWAP_PLAYLIST(){
     STARTCOMMAND(true);
 
-    idxplaylist = ConvertWordToInt(currentCommand) - 1;
+    int idxplaylist = ConvertWordToInt(currentCommand) - 1;
 
     STARTCOMMAND(true);
 
-    int max = countPlaylist(playlists.A[idxplaylist]);
+    if(idxplaylist > playlists.Neff - 1 || idxplaylist < 0)
+    {
+        printf("\nTidak ada playlist dengan playlist ID %d\n\n", idxplaylist+1);
+        ENDCOMMAND();
+        return;
+    }
 
-    int idxurutan1 = ConvertWordToInt(currentCommand) - 1;
+    int max = countPlaylist(playlists.A[idxplaylist]);
     
-    int idxurutan2;
+    int idxurutan1 = ConvertWordToInt(currentCommand) - 1;
 
     STARTCOMMAND(false);
 
     if(IsCommandWithSemicolon(currentCommand))
     {
         handleSemicolon(currentCommand);
-        idxurutan2 = ConvertWordToInt(currentCommand) - 1;
     }else
     {
         unknownCommand();
         return;
-    }
+    }    
     
-    if(idxplaylist > playlists.Neff - 1 || idxplaylist < 0)
+    int idxurutan2 = ConvertWordToInt(currentCommand) - 1;
+
+    if(idxurutan1 > max - 1 || idxurutan1 < 0)
     {
-        printf("Tidak ada playlist dengan playlist ID %d\n\n", idxplaylist+1);
+        printf("\nTidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan1+1, playlists.A[idxplaylist].namaplaylist.TabWord);
         ENDCOMMAND();
         return;
-    } else if(idxurutan1 > max - 1 || idxurutan1 < 0)
+    }else if(idxurutan2 > max - 1 || idxurutan2 < 0)
     {
-        printf("Tidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan1+1, playlists.A[idxplaylist].namaplaylist.TabWord);
-        ENDCOMMAND();
-        return;
-    } else if(idxurutan2 > max - 1 || idxurutan2 < 0)
-    {
-        printf("Tidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan2+1, playlists.A[idxplaylist].namaplaylist.TabWord);
+        printf("\nTidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan2+1, playlists.A[idxplaylist].namaplaylist.TabWord);
         ENDCOMMAND();
         return;
     }
@@ -264,7 +265,7 @@ void SWAP_PLAYLIST(){
     int idxset1 = Value(mapAlbum, p1->idalbum);
     int idxset2 = Value(mapAlbum, p2->idalbum); 
     
-    printf("Berhasil menukar lagu dengan nama \"%s\" dengan \"%s\" di playlist \"%s\".\n\n", SetLagu[idxset2].AlbumLagu[p2->idlagu].JudulLagu.TabWord,SetLagu[idxset1].AlbumLagu[p1->idlagu].JudulLagu.TabWord, playlists.A[idxplaylist].namaplaylist.TabWord);
+    printf("\nBerhasil menukar lagu dengan nama \"%s\" dengan \"%s\" di playlist \"%s\".\n\n", SetLagu[idxset2].AlbumLagu[p2->idlagu].JudulLagu.TabWord,SetLagu[idxset1].AlbumLagu[p1->idlagu].JudulLagu.TabWord, playlists.A[idxplaylist].namaplaylist.TabWord);
 
 
 }
