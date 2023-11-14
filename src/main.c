@@ -112,6 +112,17 @@ int main()
                     if(IsStringEqual(nextcommand, "SONG;")){
                         PlaySong();
                     }
+                    else if (IsStringEqual(nextcommand, "PLAYLIST;"))
+                    {
+                        PlayPlaylist();
+                    }
+                    else
+                    {
+                        unknownCommand();
+                    }
+                }
+                else{
+                    unknownCommand();
                 }
             }
         }
