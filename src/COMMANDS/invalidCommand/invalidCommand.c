@@ -65,7 +65,7 @@ boolean checkCommand(char *command, boolean inSession) {
         }
     } else {
         // Jika sudah dalam sesi
-        if (IsStringEqual(command, "START") || IsStringEqual(command, "LOAD")) {
+        if (IsStringEqual(command, "START;") || IsStringEqual(command, "LOAD")) {
             wrongCommand();
             return false;
         }else if (IsStringEqual(command, "HELP;") || checkInSessionCommand(command)) {

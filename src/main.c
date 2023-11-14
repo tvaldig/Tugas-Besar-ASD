@@ -105,6 +105,14 @@ int main()
             }else if(IsStringEqual(command, "SAVE"))
             {
                 SAVE();
+            } else if(IsStringEqual(command, "PLAY")){
+                STARTCOMMAND(false);
+                ConvertWordToString(&currentCommand, nextcommand);
+                if(IsCommandWithSemicolon(currentCommand)){
+                    if(IsStringEqual(nextcommand, "SONG;")){
+                        PlaySong();
+                    }
+                }
             }
         }
     }

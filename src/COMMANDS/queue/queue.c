@@ -19,23 +19,7 @@ boolean isIdFound(Queue *q, int id){
 boolean isEqual(int a, int b){
     return a == b;
 }
-Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu)
-{
-    boolean found = false;
-    Word NotFound = {"NOTFOUND",8};
-    int idAlbum = GetIdAlbum(namaalbum);
-    int i = 0, index;
-    Set S = SetLagu[Value(mapAlbum, idAlbum)];
-    idlagu = idlagu-1;
 
-    while(i < S.Count && !found){
-        if(i == idlagu){
-            return S.AlbumLagu[i].JudulLagu;
-        }
-        i++;
-    }        
-    return NotFound;
-}
 
 void ClearQueue(Queue *q){
     IDX_HEAD(*q) = IDX_UNDEF;
@@ -54,9 +38,9 @@ void QueueSong(Queue *q){
     printf("Masukkan Nama Penyanyi : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
-    Word WNamaPenyanyi = currentCommand;
+    int idpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand);
     ConvertWordToString(&currentCommand, namapenyanyi);
-
+  
     //prosedur memberikan list album
     ListAlbums(mapAlbum, currentCommand);
 
@@ -67,7 +51,7 @@ void QueueSong(Queue *q){
     Word NamaAlbum = currentCommand;
 
     //prosedur memberikan list lagu
-    ListSongs(SetLagu, currentCommand);
+    ListSongs(SetLagu, currentCommand, idpenyanyi);
 
     //prosedur untuk memilih ID lagu
     printf("Masukkan ID Lagu yang dipilih: ");
@@ -76,13 +60,13 @@ void QueueSong(Queue *q){
     int idlagu = ConvertWordToInt(currentCommand);
 
     //mencari judul lagu menggunakan ID
-    Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idlagu);
+    Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idlagu, idpenyanyi);
     ConvertWordToString(&JudulLaguWord, judullagu);
 
     if(IsStringEqual(judullagu, "NOTFOUND")){ //jika id tidak ditemukan maka queue gagal
         printf("Queue Song Gagal. ID Lagu tidak ditemukan!\n");
     } else {
-        enqueue(q, SearchPenyanyi(WNamaPenyanyi), GetIdAlbum(NamaAlbum), idlagu);
+        enqueue(q, idpenyanyi, searchidalbum(ArrayPenyanyi, idpenyanyi, NamaAlbum, mapAlbum), idlagu-1);
         printf("Berhasil menambahkan lagu %s oleh %s ke queue.\n", judullagu, namapenyanyi);
     }   
     
