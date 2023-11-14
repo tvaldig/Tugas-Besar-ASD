@@ -11,6 +11,8 @@ int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input);
 
 Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi);
 
+Word GetNamaAlbum(TabInt p, int idpenyanyi, int idalbum, MapAlbum map);
+
 void printPenyanyi();
 
 void printAlbum(int idpenyanyi);
