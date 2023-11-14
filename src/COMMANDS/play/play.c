@@ -67,7 +67,7 @@ void PlayPlaylist() {
     }
     Reversestack(&riwayat);
     dequeue(&antrian, &(&current)->penyanyi, &(&current)->album, &(&current)->lagu);
-    printf("Memutar playlist %s", p.namaplaylist.TabWord);
+    printf("Memutar playlist %s\n", p.namaplaylist.TabWord);
     }
 }
     
@@ -78,7 +78,7 @@ void NotPlaying (){
     (&current)->lagu = IdxUndef;
 }
 
-boolean isPlaying (){
+boolean isNotPlaying (){
     return current.penyanyi == IdxUndef && 
     current.album == IdxUndef && 
     current.lagu == IdxUndef;
