@@ -143,7 +143,7 @@ void ADD_SONG_PLAYLIST(){
         {
             handleSemicolon(currentCommand); // Menghilangkan semicolon di input
 
-            idxlagu = ConvertWordToInt(currentCommand) - 1;
+            idxlagu = ConvertWordToInt(currentCommand)-1;
 
             idxset = Value(mapAlbum, idxalbum); // Mencari idxset dari ID album yang diinput oleh user
 

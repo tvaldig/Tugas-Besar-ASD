@@ -44,14 +44,14 @@ void PlaySong (){
     //Mengosongkan antrian dan riwayat
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
-    printf("Memutar lagu %s oleh %s.\n", judullagu, namapenyanyi);
+    printf("Memutar lagu \"%s\" oleh \"%s\".\n", judullagu, namapenyanyi);
 }
 
 void PlayPlaylist() {
     printf("Masukkan ID Playlist: ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
-    int idPlaylist = ConvertWordToInt(currentCommand)-1;
+    int idPlaylist = ConvertWordToInt(currentCommand);
     if(idPlaylist > playlists.Neff){
         printf("ID Playlist tidak ditemukan!\n");
     }
@@ -67,7 +67,7 @@ void PlayPlaylist() {
     }
     Reversestack(&riwayat);
     dequeue(&antrian, &(&current)->penyanyi, &(&current)->album, &(&current)->lagu);
-    printf("Memutar playlist %s\n", p.namaplaylist.TabWord);
+    printf("Memutar playlist \"%s\".\n", p.namaplaylist.TabWord);
     }
 }
     
