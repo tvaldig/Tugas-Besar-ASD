@@ -44,3 +44,65 @@ void SongNext(){
         printf("\"%s\" oleh \"%s\"", judulLagu, namaPenyanyi);
     }
 }
+
+void SongPrevious(){
+    Word JudulLagu;
+    Word NamaPenyanyi;
+    Word NamaAlbum;
+    char namaPenyanyi[100];
+    char judulLagu[100];
+    if(IsEmptyStack(riwayat)){
+        //Mencari Judul Lagu yang sedang dimainkan
+        NamaAlbum = GetNamaAlbum(ArrayPenyanyi, current.penyanyi, current.album, mapAlbum);
+        JudulLagu = GetJudulLagu(SetLagu, NamaAlbum, current.lagu, current.penyanyi);
+        //Mencari Nama Penyanyi
+        NamaPenyanyi = GetNamaPenyanyi(ArrayPenyanyi, current.penyanyi);
+
+        //Mengubah Judul Lagu dan Nama Penyanyi menjadi string
+        ConvertWordToString(&JudulLagu, judulLagu);
+        ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
+
+        //Output
+        printf("Riwayat lagu kosong, memutar kembali lagu\n");
+        printf("\"%s\" oleh \"%s\"", judulLagu, namaPenyanyi);
+    }
+    else {
+        //Membuat temporary queue agar lagu yang dimainkan bisa ditaruh di head
+        Queue temp;
+        IdxType penyanyitemp;
+        IdxType albumtemp;
+        IdxType lagutemp;
+        CreateQueue(&temp);
+
+        //Memasukkan lagu yang dimainkan ke temp dan memasukkan sisanya dari antrian
+        enqueue(&temp, current.penyanyi, current.album, current.lagu);
+        while (!IsEmptyQueue(antrian)){
+            dequeue(&antrian, &penyanyitemp, albumtemp, lagutemp);
+            enqueue(&temp, penyanyitemp, albumtemp, lagutemp);           
+        }
+
+        //Memindahkan kembali isi temp ke antrian
+        while(!IsEmptyQueue(temp)){
+            dequeue(&temp, &penyanyitemp, albumtemp, lagutemp);
+            enqueue(&antrian, penyanyitemp, albumtemp, lagutemp);
+        
+        //Mengganti lagu ke lagu sebelumnya
+        Pop(&riwayat, (&current)->penyanyi, (&current)->album, (&current)->lagu);
+
+        //Mencari Judul Lagu akan dimainkan
+        NamaAlbum = GetNamaAlbum(ArrayPenyanyi, current.penyanyi, current.album, mapAlbum);
+        JudulLagu = GetJudulLagu(SetLagu, NamaAlbum, current.lagu, current.penyanyi);
+
+        //Mencari Nama Penyanyi
+        NamaPenyanyi = GetNamaPenyanyi(ArrayPenyanyi, current.penyanyi);
+
+        //Mengubah Judul Lagu dan Nama Penyanyi menjadi string
+        ConvertWordToString(&JudulLagu, judulLagu);
+        ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
+
+        //Output
+        printf("Memutar lagu sebelumnya\n");
+        printf("\"%s\" oleh \"%s\"", judulLagu, namaPenyanyi);
+        }
+    }
+}
