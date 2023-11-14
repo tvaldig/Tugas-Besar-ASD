@@ -18,5 +18,5 @@ void PlayPlaylist ();
 
 void NotPlaying ();
 
-boolean isPlaying ();
+boolean isNotPlaying ();
 #endif 

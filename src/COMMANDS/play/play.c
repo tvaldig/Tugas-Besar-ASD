@@ -78,7 +78,7 @@ void NotPlaying (){
     (&current)->lagu = IdxUndef;
 }
 
-boolean isPlaying (){
+boolean isNotPlaying (){
     return current.penyanyi == IdxUndef && 
     current.album == IdxUndef && 
     current.lagu == IdxUndef;
