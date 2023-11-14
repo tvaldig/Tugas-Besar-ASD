@@ -16,7 +16,9 @@ int main()
     if (IsStringEqual(command, "START"))
     {
         startFunction(&ListDefault);
+    } else 
+    {
+        /** Saat command tidak dikenali */
+        
     }
-
-    
 }
