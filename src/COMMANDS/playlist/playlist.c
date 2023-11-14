@@ -132,10 +132,9 @@ void ADD_ALBUM_PLAYLIST(){
 void ADD_SONG_PLAYLIST(){
     statealbum = false;
     ADD_ALBUM_PLAYLIST();
-
     if(state) // Apabila proses ADD_ALBUM_PLAYLIST masih berhasil
     {
-        ListSongs(SetLagu, currentCommand); // Menampilkan lagu yang dimiliki oleh album tersebut
+        ListSongs(SetLagu, currentCommand, idxpenyanyi); // Menampilkan lagu yang dimiliki oleh album tersebut
 
         printf("\nMasukkan ID Lagu yang dipilih : ");
         STARTCOMMAND(true); // Menerima input lagu dari user
