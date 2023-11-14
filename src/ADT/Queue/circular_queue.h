@@ -74,7 +74,7 @@ void dequeue(Queue *Q, IdxType *penyanyi, IdxType *album, IdxType *lagu);
 
 /* *** Display Queue *** */
 void displayQueue(Queue q);
-/* Proses : Menuliskan isi Queue dengan traversal dan mekanisme circular buffer;
+/* Proses : Menuliskan isi Queue dengan traversal dan mekanisme circular buffer; */
 /* Queue ditulis di antara kurung siku; antara dua elemen dipisahkan dengan separator "koma" */
 /* I.S. q boleh kosong */
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */

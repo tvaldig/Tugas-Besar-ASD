@@ -10,6 +10,6 @@
 #include "./search-print/searchprint.h"
 #include "./LIST/list.h"
 #include "./queue/queue.h"
-
+#include "./play/play.h"
 
 #endif

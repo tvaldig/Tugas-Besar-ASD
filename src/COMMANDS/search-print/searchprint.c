@@ -51,6 +51,21 @@ int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
     }
     return -1;
 }
+Word GetNamaAlbum(TabInt p, int idpenyanyi, int idalbum, MapAlbum map)
+{
+    int i = p.penyanyi[idpenyanyi].IdAlbumPertama;
+    int maks = p.penyanyi[idpenyanyi].jumlahalbum + i;
+    Word NotFound = {"NOTFOUND", 8};
+    while (i < maks)
+    {
+            if (i == idalbum)
+            {
+               return(map.Elements[i].AlbumName);
+            }
+            i++;
+    }
+    return NotFound;
+}
 
 Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi)
 {
@@ -70,4 +85,16 @@ Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi)
             i++;
     }
     return NotFound;
+}
+void printCurrent(){
+    char judullagu[100], namaalbum[100], namapenyanyi[100];
+    Word NamaPenyanyi = GetNamaPenyanyi(ArrayPenyanyi, current.penyanyi);
+    Word NamaAlbum = GetNamaAlbum(ArrayPenyanyi, current.penyanyi, current.album, mapAlbum);
+    Word JudulLaguW = GetJudulLagu(SetLagu, NamaAlbum, current.lagu, current.penyanyi);
+    ConvertWordToString(&NamaPenyanyi,namapenyanyi);
+    ConvertWordToString(&NamaAlbum, namaalbum);
+    ConvertWordToString(&JudulLaguW, judullagu);
+
+    printf("Now Playing...\n");
+    printf("%s--%s by %s\n", namaalbum, judullagu, namapenyanyi);
 }
