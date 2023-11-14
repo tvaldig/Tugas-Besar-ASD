@@ -67,4 +67,6 @@ void Pop(Stack *S, idx *penyanyi, idx *album, idx *lagu);
 
 void displayStack(Stack q);
 
+void Reversestack(Stack *S);
+
 #endif

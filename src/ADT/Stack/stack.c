@@ -66,3 +66,21 @@ void displayStack(Stack q){
     printf("]\n");
     }
 }
+
+void Reversestack(Stack *S){
+    Stack temp;
+    CreateEmptyStack(&temp);
+
+    idx p, l, a;
+
+    while (!IsEmptyStack(*S)){
+        Pop(S,&p,&a,&l); 
+        Push(&temp,p,a,l);
+    } 
+
+    for(int i = 0; i <= temp.TOP; i++){
+        S->T[i] = temp.T[i];
+    }
+    
+    S->TOP = temp.TOP;
+}

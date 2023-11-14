@@ -2,6 +2,6 @@
     "files.associations": {
         "mesinkarakter.h": "c",
         "circular_queue.h": "c",
-        "adt.h": "c"
+        "invalidcommand.h": "c"
     }
 }

@@ -47,27 +47,47 @@ void CopyWord();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-void STARTCOMMAND();
+void STARTCOMMAND(boolean OnBlank);
 
 void ADVCOMMAND();
 
+void ADVCOMMANDONBLANK();
+ 
 void CopyCommand();
+
+void CopyCommandNotBlank();
 
 void STARTFROMFILE(char *file);
 
-void ADVOnEnter(boolean isInt);
+void ADVOnEnter(boolean OnBlank);
 
 void COPYFILE();
 
 void COPYFILEOnBlank();
 
+void ADVCONTINUE();
+
 void IgnoreBlankFile();
 
 void displayWord(Word w);
+
     /* PRIMITIF CONVERTER WORD ATAU STRING*/
 void ConvertWordToString(Word *word, char *output);
 
 boolean IsStringEqual(char str1[], char str2[]);
 
+void COPYFILESEMICOLON();
+
+void ADVSEMICOLON();
+
 int ConvertWordToInt(Word word);
+
+Word ConcatString(Word input1, Word input2);
+
+void ENDCOMMAND();
+
+boolean IsCommandWithSemicolon(Word command);
+
+void handleSemicolon(Word command);
+
 #endif

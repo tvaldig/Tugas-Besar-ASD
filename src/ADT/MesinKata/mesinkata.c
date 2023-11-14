@@ -77,33 +77,53 @@ void CopyWord()
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-void STARTCOMMAND(){
+void STARTCOMMAND(boolean OnBlank){
     START();
     IgnoreBlanks();
     if(currentChar == ENTER){
         EndCommand = true;
-    } else {
+    }else{
         EndCommand = false;
-        ADVCOMMAND();
+        OnBlank ? ADVCOMMANDONBLANK() : ADVCOMMAND();
     }
 }
 
 void ADVCOMMAND()
 {
-    if (currentChar == ENTER && !EndCommand)
-    {
-        EndCommand= true;
-    }
-    else
-    {
-        CopyCommand();
-    }
+    Word empty = {"", 0};
+    currentCommand = empty;
+    
+        if (currentChar == ENTER && !EndCommand)
+        {
+            EndCommand = true;
+        }
+        else
+        {
+            CopyCommandNotBlank();
+        }
+    
+    
+}
+
+void ADVCOMMANDONBLANK()
+{
+        Word empty = {"", 0};
+        currentCommand = empty;
+
+        if (currentChar == BLANK && !EndCommand)
+        {
+            EndCommand = true;
+        }
+        else
+        {
+            CopyCommand();
+        }
 }
 
 void CopyCommand()
 {
     int i = 0;
-    while (currentChar != MARK && currentChar != ENTER)
+    while (currentChar != BLANK && currentChar != ENTER)
     {
         if (i < NMax)
         {
@@ -115,8 +135,20 @@ void CopyCommand()
     currentCommand.Length = i;
 }
 
-
-
+void CopyCommandNotBlank()
+{
+    int i = 0;
+    while (currentChar != ENTER)
+    {
+        if (i < NMax)
+        {
+            currentCommand.TabWord[i] = currentChar;
+            i++;
+        }
+        ADV();
+    }
+    currentCommand.Length = i;
+}
 
 void ConvertWordToString(Word *word, char *output)
 {
@@ -136,7 +168,7 @@ boolean IsStringEqual(char str1[], char str2[])
 {
     boolean equal = true;
     int i = 0;
-    while (str1[i] != '\0' && str2 != '\0')
+    while ((str1[i] != '\0' || str2[i] != '\0') && equal)
     {
         if (str1[i] != str2[i])
         {
@@ -144,10 +176,7 @@ boolean IsStringEqual(char str1[], char str2[])
         }
         i++;
     }
-    if (equal)
-        return true;
-    else
-        return false;
+    return equal;
 }
 
 void STARTFROMFILE(char *file){
@@ -156,10 +185,10 @@ void STARTFROMFILE(char *file){
     COPYFILE();
 } 
 
-void ADVOnEnter(boolean isInt){
+void ADVOnEnter(boolean OnBlank){
     Word Empty = {"", 0};
     currentWord = Empty;
-    if(currentChar == ENTER && !isInt){
+    if(currentChar == ENTER && !OnBlank){
         ADVFILE();
         COPYFILE();
     } else {
@@ -167,6 +196,7 @@ void ADVOnEnter(boolean isInt){
         COPYFILEOnBlank();
     }
 }
+
 void COPYFILEOnBlank(){
     int i = 0;
     while (currentChar != BLANK && !finish)
@@ -180,10 +210,35 @@ void COPYFILEOnBlank(){
     }
     currentWord.Length = i;
 }
-
+void ADVCONTINUE(){
+    ADVFILE();
+    COPYFILE();
+}
 void COPYFILE(){
     int i = 0;
     while (currentChar != ENTER && !finish)
+    {
+        if (i < NMax)
+        {
+            currentWord.TabWord[i] = currentChar;
+            i++;
+            ADVFILE();
+        }
+    }
+    currentWord.Length = i;
+    
+}
+
+void ADVSEMICOLON(){
+    Word Empty = {"", 0};
+    currentWord = Empty;
+    ADVFILE();
+    COPYFILESEMICOLON();
+}
+
+void COPYFILESEMICOLON(){
+    int i = 0;
+    while (currentChar != ENTER && !finish && currentChar != ';')
     {
         if (i < NMax)
         {
@@ -220,4 +275,40 @@ int ConvertWordToInt(Word word)
         num = num * 10 + (word.TabWord[i] - '0');
     }
     return num;
+}
+
+Word ConcatString(Word input1, Word input2){
+    Word hasil = {"",0};
+
+    for(int i = 0; i < input1.Length; i++){
+        hasil.TabWord[i] = input1.TabWord[i];
+        hasil.Length++;
+    }
+
+    for(int j = input1.Length; j < (input1.Length+input2.Length); j++){
+        hasil.TabWord[j] = input2.TabWord[j - input1.Length];
+        hasil.Length++;
+    }
+
+    return hasil;
+
+}
+
+boolean IsCommandWithSemicolon(Word command){
+    return (currentCommand.TabWord[currentCommand.Length - 1] == ';');
+}
+
+void handleSemicolon(Word command){
+    currentCommand.TabWord[currentCommand.Length - 1] = '\0';
+    currentCommand.Length--;
+}
+
+void ENDCOMMAND(){
+    if(currentChar != ENTER){
+        START();
+        while(currentChar != ENTER){
+            ADV();
+        }
+    }
+    
 }
