@@ -5,6 +5,7 @@
 #define __MESIN_KAR_H_
 
 #include "../../boolean.h"
+#include "../MesinKata/mesinkata.h"
 
 #define MARK '.'
 #define ENTER '\n'
@@ -38,5 +39,19 @@ boolean IsEOP();
 void STARTFILE(char *str);
 
 void ADVFILE();
+
+void NEWFILE(char* filename);
+
+void WRITESTRING(char* c);
+
+void WRITEINT(int i);
+
+void WRITEBLANK();
+
+void WRITEENTER();
+
+void WRITESEMICOLON();
+
+void WRITEFINISH();
 
 #endif

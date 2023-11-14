@@ -123,7 +123,7 @@ void ADD_ALBUM_PLAYLIST(){
                 InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi,idxalbum, i); // Meastikan tidak ada duplikat lagu di playlist
             }
 
-            printf("Album dengan judul \"%s\" berhasil ditambahkan ke dalam playlist pengguna \"%s\".\n\n", mapAlbum.Elements[idxalbum].AlbumName.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
+            printf("\nAlbum dengan judul \"%s\" berhasil ditambahkan ke dalam playlist pengguna \"%s\".\n\n", mapAlbum.Elements[idxalbum].AlbumName.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
         }
     }
 }
@@ -162,7 +162,7 @@ void ADD_SONG_PLAYLIST(){
 
         if(state){ // Apabila proses INPUT_PLAYLIST masih berhasil
             InsertUnique(&(playlists.A[idxplaylist]),idxpenyanyi, idxalbum, idxlagu); // Memasukkan lagu ke dalam playlist
-            printf("Lagu dengan judul \"%s\" pada album \"%s\" oleh penyanyi \"%s\" berhasil ditambahkan ke dalam playlist \"%s\".\n\n",SetLagu[idxset].AlbumLagu[idxlagu].JudulLagu.TabWord,mapAlbum.Elements[idxalbum].AlbumName.TabWord, ArrayPenyanyi.penyanyi[idxpenyanyi].namapenyanyi.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
+            printf("\nLagu dengan judul \"%s\" pada album \"%s\" oleh penyanyi \"%s\" berhasil ditambahkan ke dalam playlist \"%s\".\n\n",SetLagu[idxset].AlbumLagu[idxlagu].JudulLagu.TabWord,mapAlbum.Elements[idxalbum].AlbumName.TabWord, ArrayPenyanyi.penyanyi[idxpenyanyi].namapenyanyi.TabWord,playlists.A[idxplaylist].namaplaylist.TabWord);
         }
 
     }
@@ -173,7 +173,7 @@ void ADD_SONG_PLAYLIST(){
 void INPUT_PLAYLIST(){
     ListPlaylists(playlists, playlists.Neff); // Menampilkan daftar playlist
 
-    printf("\nMasukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
+    printf("Masukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
     STARTCOMMAND(false);
 
     if(IsCommandWithSemicolon(currentCommand)){
@@ -196,44 +196,42 @@ void INPUT_PLAYLIST(){
 void SWAP_PLAYLIST(){
     STARTCOMMAND(true);
 
-    idxplaylist = ConvertWordToInt(currentCommand) - 1;
+    int idxplaylist = ConvertWordToInt(currentCommand) - 1;
 
     STARTCOMMAND(true);
 
-    int max = countPlaylist(playlists.A[idxplaylist]);
+    if(idxplaylist > playlists.Neff - 1 || idxplaylist < 0)
+    {
+        printf("\nTidak ada playlist dengan playlist ID %d\n\n", idxplaylist+1);
+        ENDCOMMAND();
+        return;
+    }
 
-    int idxurutan1 = ConvertWordToInt(currentCommand) - 1;
+    int max = countPlaylist(playlists.A[idxplaylist]);
     
-    int idxurutan2;
+    int idxurutan1 = ConvertWordToInt(currentCommand) - 1;
 
     STARTCOMMAND(false);
 
     if(IsCommandWithSemicolon(currentCommand))
     {
         handleSemicolon(currentCommand);
-        idxurutan2 = ConvertWordToInt(currentCommand) - 1;
     }else
     {
-        printf("masuk sini\n");
         unknownCommand();
         return;
-    }
-
-    printf("%d %d %d\n", idxurutan1, idxurutan2, max);
+    }    
     
-    if(idxplaylist > playlists.Neff - 1 || idxplaylist < 0)
+    int idxurutan2 = ConvertWordToInt(currentCommand) - 1;
+
+    if(idxurutan1 > max - 1 || idxurutan1 < 0)
     {
-        printf("Tidak ada playlist dengan playlist ID %d\n\n", idxplaylist+1);
+        printf("\nTidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan1+1, playlists.A[idxplaylist].namaplaylist.TabWord);
         ENDCOMMAND();
         return;
-    } else if(idxurutan1 > max - 1 || idxurutan1 < 0)
+    }else if(idxurutan2 > max - 1 || idxurutan2 < 0)
     {
-        printf("Tidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan1+1, playlists.A[idxplaylist].namaplaylist.TabWord);
-        ENDCOMMAND();
-        return;
-    } else if(idxurutan2 > max - 1 || idxurutan2 < 0)
-    {
-        printf("Tidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan2+1, playlists.A[idxplaylist].namaplaylist.TabWord);
+        printf("\nTidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan2+1, playlists.A[idxplaylist].namaplaylist.TabWord);
         ENDCOMMAND();
         return;
     }
@@ -250,6 +248,8 @@ void SWAP_PLAYLIST(){
     for(int i = 0; i < idxurutan2; i++){
         p2 = Next(p2);
     }
+
+
     idpenyanyitemp = p1->idpenyanyi;
     idalbumtemp = p1->idalbum;
     idlagutemp = p1->idlagu;
@@ -261,6 +261,13 @@ void SWAP_PLAYLIST(){
     p2->idpenyanyi = idpenyanyitemp;
     p2->idalbum = idalbumtemp;
     p2->idlagu = idlagutemp;
+
+    int idxset1 = Value(mapAlbum, p1->idalbum);
+    int idxset2 = Value(mapAlbum, p2->idalbum); 
+    
+    printf("\nBerhasil menukar lagu dengan nama \"%s\" dengan \"%s\" di playlist \"%s\".\n\n", SetLagu[idxset2].AlbumLagu[p2->idlagu].JudulLagu.TabWord,SetLagu[idxset1].AlbumLagu[p1->idlagu].JudulLagu.TabWord, playlists.A[idxplaylist].namaplaylist.TabWord);
+
+
 }
 
 

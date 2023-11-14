@@ -74,3 +74,31 @@ void ADVFILE(){
         finish = true;
     }
 }  
+
+void NEWFILE(char* filename){
+    pita = fopen(filename, "w");
+}
+
+void WRITESTRING(char* c){
+    fprintf(pita, "%s", c);
+}
+
+void WRITEINT(int i){
+    fprintf(pita, "%d", i);
+}
+
+void WRITEBLANK(){
+    fprintf(pita, "%c", BLANK);
+}
+
+void WRITEENTER(){
+    fprintf(pita, "%c", ENTER);
+}
+
+void WRITESEMICOLON(){
+    fprintf(pita, "%c", ';');
+}
+
+void WRITEFINISH(){
+    fclose(pita);
+}

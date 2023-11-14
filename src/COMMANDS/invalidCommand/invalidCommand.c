@@ -17,7 +17,7 @@ boolean checkInSessionCommand(char *command){
         return true;
     } else if (IsStringEqual(command, "STATUS;")) {
         return true;
-    } else if (IsStringEqual(command, "SAVE;")) {
+    } else if (IsStringEqual(command, "SAVE")) {
         return true;
     } else if (IsStringEqual(command, "QUIT;")) {
         return true;

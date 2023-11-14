@@ -38,6 +38,7 @@ void ListPlaylists(ArrayDin Playlist, int playlistCount)
     for (int i = 0; i < playlistCount; i++) {
         printf("%d. %s\n", i + 1, Playlist.A[i].namaplaylist.TabWord);
     }
+    printf("\n");
 }
 
 void listDefaultFunction(){
@@ -49,7 +50,7 @@ void listDefaultFunction(){
     if(IsStringEqual(yn, "Y;"))
     {
         printf("\nPilih penyanyi untuk melihat album mereka : ");
-        STARTCOMMAND(false); printf("\n");
+        STARTCOMMAND(false); 
         handleSemicolon(currentCommand);
         int idpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand);
         if(idpenyanyi == -1){
