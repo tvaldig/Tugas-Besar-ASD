@@ -6,7 +6,10 @@ void SongNext(){
     Word NamaAlbum;
     char namaPenyanyi[100];
     char judulLagu[100];
-    if (IsEmptyQueue(antrian)){
+    if (isNotPlaying() && IsEmptyQueue (antrian)){
+        printf("Queue kosong dan tidak ada lagu yang sedang dimainkan");
+    }
+    else if (IsEmptyQueue(antrian)){
         //Mencari Judul Lagu yang sedang dimainkan
         NamaAlbum = GetNamaAlbum(ArrayPenyanyi, current.penyanyi, current.album, mapAlbum);
         JudulLagu = GetJudulLagu(SetLagu, NamaAlbum, current.lagu, current.penyanyi);
@@ -51,6 +54,9 @@ void SongPrevious(){
     Word NamaAlbum;
     char namaPenyanyi[100];
     char judulLagu[100];
+    if (isNotPlaying() && IsEmptyStack (riwayat)){
+        printf("Riwayat lagu kosong dan tidak ada lagu yang sedang dimainkan");
+    }
     if(IsEmptyStack(riwayat)){
         //Mencari Judul Lagu yang sedang dimainkan
         NamaAlbum = GetNamaAlbum(ArrayPenyanyi, current.penyanyi, current.album, mapAlbum);
