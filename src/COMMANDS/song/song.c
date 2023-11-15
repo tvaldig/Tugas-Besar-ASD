@@ -12,7 +12,7 @@ void SongNext(){
     else if (IsEmptyQueue(antrian)){
         //Mencari Judul Lagu yang sedang dimainkan
         NamaAlbum = GetNamaAlbum(ArrayPenyanyi, current.penyanyi, current.album, mapAlbum);
-        JudulLagu = GetJudulLagu(SetLagu, NamaAlbum, current.lagu, current.penyanyi);
+        JudulLagu = GetJudulLagu(SetLagu, NamaAlbum, current.lagu+1, current.penyanyi);
         //Mencari Nama Penyanyi
         NamaPenyanyi = GetNamaPenyanyi(ArrayPenyanyi, current.penyanyi);
 
@@ -22,7 +22,7 @@ void SongNext(){
 
         //Output
         printf("Queue kosong, memutar kembali lagu\n");
-        printf("\"%s\" oleh \"%s\"", judulLagu, namaPenyanyi);
+        printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
     }
     else{
         //Memasukkan lagu yang dimainkan ke riwayat
@@ -49,19 +49,18 @@ void SongNext(){
 }
 
 void SongPrevious(){
-    /*
     Word JudulLagu;
-     Word NamaPenyanyi;
-     Word NamaAlbum;
+    Word NamaPenyanyi;
+    Word NamaAlbum;
      char namaPenyanyi[100];
      char judulLagu[100];
      if (isNotPlaying() && IsEmptyStack (riwayat)){
-         printf("Riwayat lagu kosong dan tidak ada lagu yang sedang dimainkan");
+         printf("Riwayat lagu kosong dan tidak ada lagu yang sedang dimainkan\n");
      }
      if(IsEmptyStack(riwayat)){
          //Mencari Judul Lagu yang sedang dimainkan
          NamaAlbum = GetNamaAlbum(ArrayPenyanyi, current.penyanyi, current.album, mapAlbum);
-         JudulLagu = GetJudulLagu(SetLagu, NamaAlbum, current.lagu, current.penyanyi);
+         JudulLagu = GetJudulLagu(SetLagu, NamaAlbum, current.lagu+1, current.penyanyi);
          //Mencari Nama Penyanyi
          NamaPenyanyi = GetNamaPenyanyi(ArrayPenyanyi, current.penyanyi);
 
@@ -71,7 +70,7 @@ void SongPrevious(){
 
          //Output
          printf("Riwayat lagu kosong, memutar kembali lagu\n");
-         printf("\"%s\" oleh \"%s\"", judulLagu, namaPenyanyi);
+         printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
      }
      else {
          //Membuat temporary queue agar lagu yang dimainkan bisa ditaruh di head
@@ -90,15 +89,15 @@ void SongPrevious(){
 
          //Memindahkan kembali isi temp ke antrian
          while(!IsEmptyQueue(temp)){
-             dequeue(&temp, &penyanyitemp, albumtemp, lagutemp);
+             dequeue(&temp, &penyanyitemp, &albumtemp, &lagutemp);
              enqueue(&antrian, penyanyitemp, albumtemp, lagutemp);
-
+         }
          //Mengganti lagu ke lagu sebelumnya
-         Pop(&riwayat, current.penyanyi, current.album, current.lagu);
+         Pop(&riwayat, &current.penyanyi, &current.album, &current.lagu);
 
          //Mencari Judul Lagu akan dimainkan
          NamaAlbum = GetNamaAlbum(ArrayPenyanyi, current.penyanyi, current.album, mapAlbum);
-         JudulLagu = GetJudulLagu(SetLagu, NamaAlbum, current.lagu, current.penyanyi);
+         JudulLagu = GetJudulLagu(SetLagu, NamaAlbum, current.lagu+1, current.penyanyi);
 
          //Mencari Nama Penyanyi
          NamaPenyanyi = GetNamaPenyanyi(ArrayPenyanyi, current.penyanyi);
@@ -109,8 +108,6 @@ void SongPrevious(){
 
          //Output
          printf("Memutar lagu sebelumnya\n");
-         printf("\"%s\" oleh \"%s\"", judulLagu, namaPenyanyi);
-         }
+         printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
      }
-    */
 }
