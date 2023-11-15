@@ -32,7 +32,7 @@ void PlaySong (){
     printf("Masukkan ID Lagu yang dipilih : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
-    IdxType idLagu = ConvertWordToInt(currentCommand);
+    IdxType idLagu = ConvertWordToInt(currentCommand)-1;
     Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idLagu, idPenyanyi);
     ConvertWordToString(&JudulLaguWord, judullagu);
 

@@ -88,9 +88,11 @@ Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi)
 }
 void printCurrent(){
     char judullagu[100], namaalbum[100], namapenyanyi[100];
+    printf("%d\n", current.lagu);
     Word NamaPenyanyi = GetNamaPenyanyi(ArrayPenyanyi, current.penyanyi);
     Word NamaAlbum = GetNamaAlbum(ArrayPenyanyi, current.penyanyi, current.album, mapAlbum);
-    Word JudulLaguW = GetJudulLagu(SetLagu, NamaAlbum, current.lagu, current.penyanyi);
+    Word JudulLaguW = GetJudulLagu(SetLagu, NamaAlbum, current.lagu+1, current.penyanyi);
+    
     ConvertWordToString(&NamaPenyanyi,namapenyanyi);
     ConvertWordToString(&NamaAlbum, namaalbum);
     ConvertWordToString(&JudulLaguW, judullagu);
