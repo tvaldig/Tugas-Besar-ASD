@@ -22,7 +22,7 @@ typedef int address;
 typedef struct
 {
         keytype Key; // Id Album
-        valuetype Value;
+        valuetype Value; // IdSetLagu
         Word AlbumName;
 } Album;
 
