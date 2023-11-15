@@ -98,14 +98,15 @@ int main()
                     }
                     
                 }
-                       
+            
             }else if(IsStringEqual(command, "PLAYLIST"))
             {
                 PLAYLIST();
             }else if(IsStringEqual(command, "SAVE"))
             {
                 SAVE();
-            } else if(IsStringEqual(command, "PLAY")){
+            } 
+            else if(IsStringEqual(command, "PLAY")){
                 STARTCOMMAND(false);
                 ConvertWordToString(&currentCommand, nextcommand);
                 if(IsCommandWithSemicolon(currentCommand)){
@@ -123,6 +124,26 @@ int main()
                 }
                 else{
                     unknownCommand();
+                }
+            } 
+            else if(IsStringEqual(command, "SONG"))
+            {
+                STARTCOMMAND(false);
+                ConvertWordToString(&currentCommand, nextcommand);
+                if (IsCommandWithSemicolon(currentCommand))
+                {
+                    if (IsStringEqual(nextcommand, "NEXT;"))
+                    {
+                        SongNext();
+                    }
+                    else if (IsStringEqual(nextcommand, "PREVIOUS;"))
+                    {
+                        SongPrevious();
+                    }
+                    else
+                    {
+                        unknownCommand();
+                    }
                 }
             }
         }
