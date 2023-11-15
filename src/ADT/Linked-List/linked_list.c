@@ -247,9 +247,13 @@ void DelAfter(playlist *L, addressnode *Pdel, addressnode Prec)
     /* F.S. Menghapus Next(Prec): */
     /*      Pdel adalah alamat elemen list yang dihapus  */
     *Pdel = Next(Prec);
-    if (*Pdel != null)
+    if (Next(Prec) != null)
+    {
         Next(Prec) = Next(Next(Prec));
+        Next(*Pdel) = null;
+    }
 }
+
 /****************** PROSES SEMUA ELEMEN LIST ******************/
 void PrintInfo(playlist L)
 {

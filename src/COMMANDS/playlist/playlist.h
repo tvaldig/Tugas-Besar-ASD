@@ -17,6 +17,7 @@ void SWAP_PLAYLIST();
 
 void INPUT_PLAYLIST();
 
+void REMOVE_PLAYLIST();
 
 
 #endif

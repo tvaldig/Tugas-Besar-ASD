@@ -24,6 +24,8 @@ void PLAYLIST(){
     }else if(IsStringEqual(currentCommand.TabWord, "SWAP"))
     {
         SWAP_PLAYLIST();
+    }else if (IsStringEqual(currentCommand.TabWord, "REMOVE")){
+            REMOVE_PLAYLIST();
     }else
      { // bila tidak diakhiri dengan ';'
         unknownCommand();
@@ -270,3 +272,55 @@ void SWAP_PLAYLIST(){
 }
 
 
+void REMOVE_PLAYLIST(){
+    STARTCOMMAND(true);
+
+    int idxplaylist = ConvertWordToInt(currentCommand) - 1;
+
+    if(idxplaylist > playlists.Neff - 1 || idxplaylist < 0)
+    {
+        printf("\nTidak ada playlist dengan playlist ID %d\n\n", idxplaylist+1);
+        ENDCOMMAND();
+        return;
+    }
+
+    int max = countPlaylist(playlists.A[idxplaylist]);
+
+    STARTCOMMAND(false);
+
+    if(IsCommandWithSemicolon(currentCommand))
+    {
+        handleSemicolon(currentCommand);
+    }else
+    {
+        unknownCommand();
+        return;
+    }    
+    
+    int idxurutan1 = ConvertWordToInt(currentCommand) - 1;
+
+    if(idxurutan1 > max - 1 || idxurutan1 < 0)
+    {
+        printf("\nTidak ada lagu dengan urutan %d di playlist \"%s\"!\n\n", idxurutan1+1, playlists.A[idxplaylist].namaplaylist.TabWord);
+        ENDCOMMAND();
+        return;
+    }
+
+    addressnode prectemp = First(playlists.A[idxplaylist]);
+
+    for(int i = 0; i < idxurutan1 - 1; i++){
+        prectemp = Next(prectemp);
+    }
+
+
+    addressnode dealokasi;
+
+    DelAfter(&(playlists.A[idxplaylist]), &dealokasi, prectemp);
+
+    int idxset = Value(mapAlbum, dealokasi->idalbum);
+
+    printf("Lagu \"%s\" oleh \"%s\" telah dihapus dari playlist \"%s\"!\n\n", SetLagu[idxset].AlbumLagu[dealokasi->idlagu].JudulLagu.TabWord, ArrayPenyanyi.penyanyi[dealokasi->idpenyanyi].namapenyanyi.TabWord, playlists.A[idxplaylist].namaplaylist.TabWord);
+
+    Dealokasi(&dealokasi);
+
+}

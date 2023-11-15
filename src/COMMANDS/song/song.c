@@ -1,4 +1,5 @@
 #include "song.h"
+#include "../commands.h"
 
 void SongNext(){
     Word JudulLagu;
