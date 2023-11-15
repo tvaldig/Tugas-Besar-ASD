@@ -12,5 +12,6 @@
 #include "./save/save.h"
 #include "./queue/queue.h"
 #include "./play/play.h"
+#include "./song/song.h"
 
 #endif

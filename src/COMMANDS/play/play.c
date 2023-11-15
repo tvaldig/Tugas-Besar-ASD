@@ -33,7 +33,7 @@ void PlaySong (){
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
     IdxType idLagu = ConvertWordToInt(currentCommand)-1;
-    Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idLagu, idPenyanyi);
+    Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idLagu+1, idPenyanyi);
     ConvertWordToString(&JudulLaguWord, judullagu);
 
     //Memasukkan id dari tiap input ke lagu yang dimainkan
