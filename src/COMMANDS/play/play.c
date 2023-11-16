@@ -62,8 +62,9 @@ void PlayPlaylist() {
     CreateEmptyStack(&riwayat);
     while( P != null){
         enqueue(&antrian, PENYANYI(P), ALBUM(P), LAGU(P));
-        Push(&riwayat,PENYANYI(P), ALBUM(P), LAGU(P));
         P=Next(P);
+        Push(&riwayat,PENYANYI(P), ALBUM(P), LAGU(P));
+        
     }
     Reversestack(&riwayat);
     dequeue(&antrian, &(&current)->penyanyi, &(&current)->album, &(&current)->lagu);
