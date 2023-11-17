@@ -49,24 +49,40 @@ void PlaySong (){
 
 void PlayPlaylist() {
     printf("Masukkan ID Playlist: ");
+    
+    //Menerima input
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
     int idPlaylist = ConvertWordToInt(currentCommand);
+
+    //Mengecek ada tidaknya input di playlist
     if(idPlaylist > playlists.Neff){
         printf("ID Playlist tidak ditemukan!\n");
     }
     else{
     playlist p = playlists.A[idPlaylist];
     addressnode P = First(p);
+
+    //Mengosongkan antrian dan riwayat
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
+
     while( P != null){
+        //Memasukkan seluruh isi playlist ke antrian
         enqueue(&antrian, PENYANYI(P), ALBUM(P), LAGU(P));
-        Push(&riwayat,PENYANYI(P), ALBUM(P), LAGU(P));
         P=Next(P);
+        //Memasukkan isi playlist ke stack dimulai dari lagu kedua
+        if (P!=null){
+            Push(&riwayat,PENYANYI(P), ALBUM(P), LAGU(P));
+        }
     }
+    //Membalikkan isi riwayat
     Reversestack(&riwayat);
+    
+    //Mengambil lagu pertama dari antrian menjadi current song; antrian sekarang dimulai dari lagu kedua
     dequeue(&antrian, &(&current)->penyanyi, &(&current)->album, &(&current)->lagu);
+
+    //Output
     printf("Memutar playlist \"%s\".\n", p.namaplaylist.TabWord);
     }
 }
