@@ -15,14 +15,6 @@ Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi);
 
 Word GetNamaAlbum(TabInt p, int idpenyanyi, int idalbum, MapAlbum map);
 
-void printPenyanyi();
-
-void printAlbum(int idpenyanyi);
-
-void printLagu(int idalbum, int idpenyanyi);
-
-void printPlaylist();
-
 void printCurrent();
 
 #endif
