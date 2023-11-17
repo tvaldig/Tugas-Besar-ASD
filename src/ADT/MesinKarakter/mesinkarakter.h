@@ -7,7 +7,7 @@
 #include "../../boolean.h"
 #include "../MesinKata/mesinkata.h"
 
-#define MARK '.'
+#define MARK ';'
 #define ENTER '\n'
 /* State Mesin */
 extern char currentChar;
