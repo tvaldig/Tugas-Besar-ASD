@@ -13,5 +13,6 @@
 #include "./queue/queue.h"
 #include "./play/play.h"
 #include "./song/song.h"
+#include "./status/status.h"
 
 #endif

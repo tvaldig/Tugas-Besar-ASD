@@ -10,6 +10,8 @@ typedef struct
     IdxType lagu;
 } NowPlaying;
 
+typedef int currentid;
+extern currentid currentIdPlaylist;
 extern NowPlaying current;
 
 void PlaySong ();
@@ -18,5 +20,9 @@ void PlayPlaylist ();
 
 void NotPlaying ();
 
-boolean isNotPlaying ();
+void NotPlayingPlaylist();
+
+boolean IsNotPlayingPlaylist();
+
+boolean isNotPlaying();
 #endif 

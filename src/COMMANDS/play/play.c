@@ -1,7 +1,7 @@
 #include "play.h"
 
 NowPlaying current;
-
+currentid currentIdPlaylist;
 void PlaySong (){
     char namapenyanyi[100];
     char judullagu[100];
@@ -54,7 +54,7 @@ void PlayPlaylist() {
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
     int idPlaylist = ConvertWordToInt(currentCommand);
-
+    currentIdPlaylist = idPlaylist;
     //Mengecek ada tidaknya input di playlist
     if(idPlaylist > playlists.Neff){
         printf("ID Playlist tidak ditemukan!\n");
@@ -88,10 +88,18 @@ void PlayPlaylist() {
 }
     
     
-void NotPlaying (){
+void NotPlaying(){
     (&current)->penyanyi = IdxUndef;
     (&current)->album = IdxUndef;
     (&current)->lagu = IdxUndef;
+}
+
+void NotPlayingPlaylist(){
+    currentIdPlaylist = IdxUndef;
+}
+
+boolean isNotPlayingPlaylist(){
+    return currentIdPlaylist == IdxUndef;
 }
 
 boolean isNotPlaying (){
