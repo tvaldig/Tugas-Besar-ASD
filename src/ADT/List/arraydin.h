@@ -68,12 +68,30 @@ void InsertAt(ArrayDin *array, IdxType i, Word nama);
  */
 void DeleteAt(ArrayDin *array, IdxType i);
 
+/**
+ * Fungsi untuk menambahkan elemen baru di awal array.
+ * Prekondisi: array terdefinisi
+ */
 void InsertFirstArrayDin(ArrayDin *array, Word nama);
 
+/**
+ * Fungsi untuk menambahkan elemen baru di akhir array.
+ * Prekondisi: array terdefinisi
+ */
 void InsertLastArrayDin(ArrayDin *array, Word nama);
 
+/*
+ * Fungsi untuk melakukan search suatu ArrayDin.
+ * Index pertama yang ditemukan akan dikembalikan.
+ * Jika tidak ditemukan, akan mengembalikan -1.
+ * Prekondisi: array terdefinisi
+ */
 IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist, Word nama);
 
+/**
+ * Menuliskan isi dari array dinamik
+ * jika array kosong, output menjadi []
+ */
 void PrintArrayDin(ArrayDin array);
 
 #endif
