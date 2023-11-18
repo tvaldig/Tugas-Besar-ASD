@@ -9,9 +9,7 @@ void delayoutput(){
     printf("\n");
 }
 
-
-
-
+/* PROTOTYPE */
 int main(){
     /* Test Alokasi */
     addressnode p, new;
