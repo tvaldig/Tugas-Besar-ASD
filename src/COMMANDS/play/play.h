@@ -22,7 +22,7 @@ void NotPlaying ();
 
 void NotPlayingPlaylist();
 
-boolean IsNotPlayingPlaylist();
+boolean isNotPlayingPlaylist();
 
 boolean isNotPlaying();
 #endif 
