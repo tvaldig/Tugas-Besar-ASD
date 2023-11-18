@@ -80,15 +80,15 @@ void NEWFILE(char* filename){
 }
 
 void WRITESTRING(char* c){
-    fprintf(pita, "%s", c);
+    fprintf(pita, "%s", c); //menulis string ke file
 }
 
 void WRITEINT(int i){
-    fprintf(pita, "%d", i);
+    fprintf(pita, "%d", i); //menulis integer ke file
 }
 
 void WRITEBLANK(){
-    fprintf(pita, "%c", BLANK);
+    fprintf(pita, "%c", BLANK); 
 }
 
 void WRITEENTER(){
