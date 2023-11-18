@@ -57,7 +57,7 @@ void STARTFILE(char *str)
           Jika currentChar = MARK maka EOP akan menyala (true)
           finish bernilai salah karena belum mencapai akhir dari file */
 {
-    finish = false;
+    finish = false; 
     pita = fopen(str, "r");
     if(pita == NULL){
         finish = true;
@@ -100,5 +100,5 @@ void WRITESEMICOLON(){
 }
 
 void WRITEFINISH(){
-    fclose(pita);
+    fclose(pita); //menutup file
 }
