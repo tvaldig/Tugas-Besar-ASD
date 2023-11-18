@@ -76,7 +76,7 @@ void ADVFILE(){
 }  
 
 void NEWFILE(char* filename){
-    pita = fopen(filename, "w");
+    pita = fopen(filename, "w"); //membuka file
 }
 
 void WRITESTRING(char* c){
