@@ -20,8 +20,6 @@ typedef struct
 } Penyanyi;
 
 /* ********** KONSTRUKTOR ********** */
-
-
 typedef struct
 {
     Penyanyi penyanyi[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
