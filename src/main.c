@@ -9,6 +9,7 @@ int main()
     char command[100];
     char nextcommand[100];
     //welcomeMenu();
+    NotPlaying();
     while(!program){
         printf(">> ");
         STARTCOMMAND(true);
@@ -145,6 +146,9 @@ int main()
                         unknownCommand();
                     }
                 }
+            }
+            else if (IsStringEqual(command, "STATUS;")){
+                status(&antrian,ArrayPenyanyi, SetLagu, mapAlbum);
             }
         }
     }
