@@ -67,11 +67,11 @@ void STARTFILE(char *str)
 }
 
 void ADVFILE(){
-    retval = fscanf(pita,"%c", &currentChar);
-    if (retval == EOF)
+    retval = fscanf(pita,"%c", &currentChar); //membaca file
+    if (retval == EOF) //jika sudah mencapai akhir dari file
     {
-        fclose(pita);
-        finish = true;
+        fclose(pita); //menutup file
+        finish = true; //finish bernilai benar
     }
 }  
 

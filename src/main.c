@@ -150,6 +150,7 @@ int main()
             }
             else if (IsStringEqual(command, "STATUS;")){
                 status(&antrian,ArrayPenyanyi, SetLagu, mapAlbum);
+
             }
         }
     }

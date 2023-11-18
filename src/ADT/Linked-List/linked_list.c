@@ -64,6 +64,8 @@ addressnode search(playlist L, int idpenyanyi, int idalbum, int idlagu)
     boolean found = false;
     addressnode elmt = First(L);
 
+    
+
     if (!IsEmptyLinkedList(L))
     {
         while ((!found) && (elmt != null))
