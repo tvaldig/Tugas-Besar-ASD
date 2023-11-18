@@ -9,6 +9,7 @@ boolean finish;
 static FILE *pita;
 static int retval;
 
+/* Mesin Karakter */
 void START()
 {
     pita = stdin;
@@ -22,6 +23,7 @@ void START()
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
+/* Mesin Karakter File */
 void ADV()
 {
     retval = fscanf(pita, "%c", &currentChar);
@@ -66,25 +68,27 @@ void STARTFILE(char *str)
     ADVFILE();
 }
 
+// void STARTFILE(char *str)
 void ADVFILE(){
-    retval = fscanf(pita,"%c", &currentChar); //membaca file
-    if (retval == EOF) //jika sudah mencapai akhir dari file
+    retval = fscanf(pita,"%c", &currentChar); 
+    if (retval == EOF) 
     {
-        fclose(pita); //menutup file
-        finish = true; //finish bernilai benar
+        fclose(pita); 
+        finish = true; 
     }
 }  
 
+
 void NEWFILE(char* filename){
-    pita = fopen(filename, "w"); //membuka file
+    pita = fopen(filename, "w"); 
 }
 
 void WRITESTRING(char* c){
-    fprintf(pita, "%s", c); //menulis string ke file
+    fprintf(pita, "%s", c); 
 }
 
 void WRITEINT(int i){
-    fprintf(pita, "%d", i); //menulis integer ke file
+    fprintf(pita, "%d", i); 
 }
 
 void WRITEBLANK(){
@@ -100,5 +104,5 @@ void WRITESEMICOLON(){
 }
 
 void WRITEFINISH(){
-    fclose(pita); //menutup file
+    fclose(pita); 
 }
