@@ -5,7 +5,8 @@ void status(Queue * q, TabInt ArrayP, Set setlagu[], MapAlbum map) {
     Queue temp;
     CreateQueue(&temp);
     printf("Now Playing:\n");
-    if(!IsNotPlayingPlaylist()){
+    if(!isNotPlayingPlaylist()){
+        
         printf("Current Playlist: %s");
     }
     if(isNotPlaying()){
