@@ -48,6 +48,7 @@ void Pop(Stack *S, idx *penyanyi, idx *album, idx *lagu)
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
+/* ************ Menampilkan Stack ************ */
 void displayStack(Stack q){
     
     if (IsEmptyStack(q)){
@@ -67,6 +68,7 @@ void displayStack(Stack q){
     }
 }
 
+/* ************ Reverse Stack ************ */
 void Reversestack(Stack *S){
     Stack temp;
     CreateEmptyStack(&temp);
