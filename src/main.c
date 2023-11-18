@@ -10,6 +10,7 @@ int main()
     char nextcommand[100];
     //welcomeMenu();
     NotPlaying();
+    NotPlayingPlaylist();
     while(!program){
         printf(">> ");
         STARTCOMMAND(true);
