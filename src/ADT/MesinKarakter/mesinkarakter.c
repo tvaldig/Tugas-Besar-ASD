@@ -37,6 +37,7 @@ void ADV()
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
 
+
 char GetCC()
 {
     return currentChar;
@@ -78,6 +79,12 @@ void ADVFILE(){
     }
 }  
 
+/* Pita dimajukan satu karakter.
+   I.S. : Karakter pada jendela = currentChar, currentChar != MARK
+   F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
+          currentChar mungkin = MARK
+          Jika  currentChar = MARK maka EOP akan menyala (true)
+          finish akan menyala (true) karena sudah mencapai akhir dari file */
 
 void NEWFILE(char* filename){
     pita = fopen(filename, "w"); 
