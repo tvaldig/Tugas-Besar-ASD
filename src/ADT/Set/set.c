@@ -14,7 +14,7 @@ boolean IsEmptySet(Set S){
     return S.Count ==  Zero;
 }
 /* Mengirim true jika Set S kosong*/
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count bernilai Nil */.
 
 boolean IsFullSet(Set S){
     return S.Count == MaxEl;
