@@ -68,5 +68,6 @@ void InsertMap(MapAlbum *M, keytype k, valuetype v, Word albumname);
 boolean IsMemberMap(MapAlbum M, keytype k);
 /* Mengembalikan true jika k adalah member dari M */
 
+/* ********** Operator Tambahan MapAlbum ********* */
 void PrintMap(MapAlbum M);
 #endif
