@@ -1,19 +1,17 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "quit.h"
-#include "./../ADT/MesinKarakter/mesinkarakter.h"
-#include "./../ADT/MesinKarakter/mesinkarakter.c"
-#include "./../boolean.h"
 
 void Quit(boolean isLogin) {
     if (isLogin) {
+        char namacommand[100];
         // Save
-        printf("Apakah kamu ingin menyimpan data sesi sekarang? ");
-        START();
-        if (currentChar == 'N;') {
+        printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");
+        STARTCOMMAND(false);
+        ConvertWordToString(&currentCommand, namacommand);
+        if (IsStringEqual(namacommand, "N;")) {
             printf("Kamu keluar dari WayangWave.\nDadah ^_^/\n");
         } else {
-            // Memanggil Save
+            SAVE();
         }
         exit(0);
     }

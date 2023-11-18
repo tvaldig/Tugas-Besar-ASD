@@ -1,8 +1,8 @@
 #ifndef _QUIT_H
 #define _QUIT_H
 
-#include <stdio.h>
-#include "./../boolean.h"
+#include "../../ADT/ADT.h"
+#include "../commands.h"
 
 void Quit(boolean isLogin);
 
