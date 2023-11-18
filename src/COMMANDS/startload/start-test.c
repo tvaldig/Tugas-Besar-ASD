@@ -3,6 +3,7 @@
 
 boolean inSession = false;
 
+
 int searchidpenyanyi(TabInt p, Word input)
 { // Mencari key id penyanyi berdasarkan inputan user
     int i = 0;
@@ -20,6 +21,7 @@ int searchidpenyanyi(TabInt p, Word input)
     return -1;
 }
 
+/* Mengembalikan id album dari penyanyi */
 int searchidalbum(TabInt p, int idpenyanyi, Word input, MapAlbum map)
 {
     int i = p.penyanyi[idpenyanyi].IdAlbumPertama;
@@ -53,6 +55,7 @@ int searchidlagu(Set *s, MapAlbum map, int idalbum, Word input)
     return -1;
 }
 
+/* Mengembalikan true jika command sesuai dengan command yang ada di sesi */
 void startLoadFunction(Word fname, boolean loadiftrue)
 {
     keytype keyCounter = 0;
