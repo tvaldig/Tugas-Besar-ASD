@@ -1,6 +1,7 @@
 #include "stack.h"
 #include <stdio.h>
 
+/* Definisi list : */
 void delayoutput(){
     int input;
     printf("Masukkan angka sembarang untuk melanjutkan: ");
