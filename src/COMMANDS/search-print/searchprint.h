@@ -15,6 +15,8 @@ Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi);
 
 Word GetNamaAlbum(TabInt p, int idpenyanyi, int idalbum, MapAlbum map);
 
+Word GetNamaPlaylist(ArrayDin Playlists, int idplaylist);
+
 void printCurrent();
 
 #endif

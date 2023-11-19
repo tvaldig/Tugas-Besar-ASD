@@ -86,6 +86,20 @@ Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi)
     }
     return NotFound;
 }
+
+Word GetNamaPlaylist(ArrayDin Playlists, int idplaylist){
+    boolean found = false;
+    Word NotFound = {"NOTFOUND", 8};
+    int i = 0;
+    
+    while(i < Playlists.Neff && !found){
+        if(i == idplaylist){
+            return Playlists.A[i].namaplaylist;
+        }
+        i++;
+    }
+    return NotFound;
+}
 void printCurrent(){
     char judullagu[100], namaalbum[100], namapenyanyi[100];
     Word NamaPenyanyi = GetNamaPenyanyi(ArrayPenyanyi, current.penyanyi);
