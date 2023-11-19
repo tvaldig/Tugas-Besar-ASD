@@ -36,15 +36,6 @@ void CreateEmptySet(Set *S);
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
 /* Ciri Set kosong : count bernilai Nil */
 
-/* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsEmptySet(Set S);
-/* Mengirim true jika Set S kosong*/
-/* Ciri Set kosong : count bernilai Nil */
-
-boolean IsFullSet(Set S);
-/* Mengirim true jika Set S penuh */
-/* Ciri Set penuh : count bernilai MaxEl */
-
 /* ********** Operator Dasar Set ********* */
 void InsertSetLagu(Set *S, int IdAlbum, int IdSet, Word Elmt);
 /* Menambahkan Elmt sebagai elemen Set S. */
