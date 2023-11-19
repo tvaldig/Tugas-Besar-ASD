@@ -44,6 +44,8 @@ void PlaySong (){
     //Mengosongkan antrian dan riwayat
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
+
+    NotPlayingPlaylist();
     printf("Memutar lagu \"%s\" oleh \"%s\".\n", judullagu, namapenyanyi);
 }
 

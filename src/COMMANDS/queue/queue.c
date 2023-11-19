@@ -16,9 +16,6 @@ boolean isIdFound(Queue *q, int id){
     }
     return false;
 }
-boolean isEqual(int a, int b){
-    return a == b;
-}
 
 
 void ClearQueue(Queue *q){
@@ -66,6 +63,8 @@ void QueueSong(Queue *q){
     if(IsStringEqual(judullagu, "NOTFOUND")){ //jika id tidak ditemukan maka queue gagal
         printf("Queue Song Gagal. ID Lagu tidak ditemukan!\n");
     } else {
+        NotPlayingPlaylist();
+        printf("%d\n", isNotPlayingPlaylist());
         enqueue(q, idpenyanyi, searchidalbum(ArrayPenyanyi, idpenyanyi, NamaAlbum, mapAlbum), idlagu-1);
         printf("Berhasil menambahkan lagu %s oleh %s ke queue.\n", judullagu, namapenyanyi);
     }   
@@ -86,6 +85,9 @@ void QueuePlaylist(Queue *q, ArrayDin *playlists){
         {
             enqueue(q, PENYANYI(P), ALBUM(P), LAGU(P));
             P = Next(P);
+        }
+        if(idplaylist != currentIdPlaylist){
+            NotPlayingPlaylist();
         }
         printf("Berhasil menambahkan playlist %s ke queue.\n", ply.namaplaylist.TabWord);
     }
