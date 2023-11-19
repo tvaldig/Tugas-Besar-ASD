@@ -13,7 +13,7 @@ int tauswortheNumberGenerator(int min, int max){
 
 void ENHANCE(){
     PrintArrayDin(playlists);
-    printf("Masukan ID playlist yang ingin di-enhance : \n");
+    printf("\nMasukan ID playlist yang ingin di-enhance : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
     int id = ConvertWordToInt(currentCommand);
@@ -21,7 +21,12 @@ void ENHANCE(){
         printf("Gagal. Playlist tidak ditemukan.\n");
     } else{
         playlist ply = playlists.A[id];
-        
+        displayPlaylist(playlists, id);
+        printf("\nRekomendasi Penyanyi dengan Album :\n");
+        for(int i = 0; i < 2; i++){
+            Penyanyi penyanyi = ArrayPenyanyi.penyanyi[tauswortheNumberGenerator(0, ArrayPenyanyi.Neff)];
+            printf("%s - %s", penyanyi.namapenyanyi.TabWord, mapAlbum.Elements[tauswortheNumberGenerator(penyanyi.IdAlbumPertama, penyanyi.jumlahalbum)].AlbumName.TabWord);
+        }
     }
 
 }
