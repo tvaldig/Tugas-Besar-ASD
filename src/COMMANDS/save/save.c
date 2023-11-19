@@ -12,6 +12,11 @@ void SAVE(){
 
     Word direktori = {"../save/",8};
 
+    if(!(currentCommand.TabWord[currentCommand.Length-4] == '.' && currentCommand.TabWord[currentCommand.Length-3] == 't' && currentCommand.TabWord[currentCommand.Length-2] == 'x' && currentCommand.TabWord[currentCommand.Length-1] == 't')){
+        printf("Proses save gagal. Masukkan format file yang benar! (nama file harus diakhir .txt)\n\n");
+        return;
+    }
+
     NEWFILE(ConcatString(direktori, currentCommand).TabWord);
 
     WRITEINT(ArrayPenyanyi.Neff);
