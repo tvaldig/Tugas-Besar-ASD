@@ -35,39 +35,51 @@ void QueueSong(Queue *q){
     printf("Masukkan Nama Penyanyi : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
-    int idpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand);
-    ConvertWordToString(&currentCommand, namapenyanyi);
-  
-    //prosedur memberikan list album
-    ListAlbums(mapAlbum, currentCommand);
-
-    //prosedur untuk memilih nama album
-    printf("Masukkan Nama Album yang dipilih :");
-    STARTCOMMAND(false);
-    handleSemicolon(currentCommand);
-    Word NamaAlbum = currentCommand;
-
-    //prosedur memberikan list lagu
-    ListSongs(SetLagu, currentCommand, idpenyanyi);
-
-    //prosedur untuk memilih ID lagu
-    printf("Masukkan ID Lagu yang dipilih: ");
-    STARTCOMMAND(false);
-    handleSemicolon(currentCommand);
-    int idlagu = ConvertWordToInt(currentCommand);
-
-    //mencari judul lagu menggunakan ID
-    Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idlagu, idpenyanyi);
-    ConvertWordToString(&JudulLaguWord, judullagu);
-
-    if(IsStringEqual(judullagu, "NOTFOUND")){ //jika id tidak ditemukan maka queue gagal
-        printf("Queue Song Gagal. ID Lagu tidak ditemukan!\n");
+    if(searchidpenyanyi(ArrayPenyanyi, currentCommand) == -1){
+        printf("Queue song gagal. Nama penyanyi tidak ditemukan!\n");
     } else {
-        NotPlayingPlaylist();
-        printf("%d\n", isNotPlayingPlaylist());
-        enqueue(q, idpenyanyi, searchidalbum(ArrayPenyanyi, idpenyanyi, NamaAlbum, mapAlbum), idlagu-1);
-        printf("Berhasil menambahkan lagu %s oleh %s ke queue.\n", judullagu, namapenyanyi);
-    }   
+        int idpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand);
+        ConvertWordToString(&currentCommand, namapenyanyi);
+
+        // prosedur memberikan list album
+        ListAlbums(mapAlbum, currentCommand);
+
+        // prosedur untuk memilih nama album
+        printf("Masukkan Nama Album yang dipilih :");
+        STARTCOMMAND(false);
+        handleSemicolon(currentCommand);
+        if(searchidalbum(ArrayPenyanyi, idpenyanyi, currentCommand, mapAlbum) == -1){
+            printf("Queue Song Gagal. Nama album tidak ditemukan!\n");
+        } else {
+            Word NamaAlbum = currentCommand;
+
+            // prosedur memberikan list lagu
+            ListSongs(SetLagu, currentCommand, idpenyanyi);
+
+            // prosedur untuk memilih ID lagu
+            printf("Masukkan ID Lagu yang dipilih: ");
+            STARTCOMMAND(false);
+            handleSemicolon(currentCommand);
+            int idlagu = ConvertWordToInt(currentCommand);
+
+            // mencari judul lagu menggunakan ID
+            Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idlagu, idpenyanyi);
+            ConvertWordToString(&JudulLaguWord, judullagu);
+
+            if (IsStringEqual(judullagu, "NOTFOUND"))
+            { // jika id tidak ditemukan maka queue gagal
+                printf("Queue Song Gagal. ID Lagu tidak ditemukan!\n");
+            }
+            else
+            {
+                NotPlayingPlaylist();
+                enqueue(q, idpenyanyi, searchidalbum(ArrayPenyanyi, idpenyanyi, NamaAlbum, mapAlbum), idlagu - 1);
+                printf("Berhasil menambahkan lagu %s oleh %s ke queue.\n", judullagu, namapenyanyi);
+            }
+        }
+       
+    }
+    
     
 }
 
