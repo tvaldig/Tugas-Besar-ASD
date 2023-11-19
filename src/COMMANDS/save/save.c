@@ -38,6 +38,14 @@ void SAVE(){
         }
     }
 
+    WRITESTRING(ArrayPenyanyi.penyanyi[current.penyanyi].namapenyanyi.TabWord);
+    WRITESEMICOLON();
+    WRITESTRING(mapAlbum.Elements[current.album].AlbumName.TabWord);
+    WRITESEMICOLON();
+    int idxset = Value(mapAlbum, current.album);
+    WRITESTRING(SetLagu[idxset].AlbumLagu[current.lagu].JudulLagu.TabWord);
+    WRITEENTER();
+
     int panjangantrian = LengthQueue(antrian);
 
     WRITEINT(panjangantrian);
@@ -49,7 +57,7 @@ void SAVE(){
         WRITESEMICOLON();
         WRITESTRING(mapAlbum.Elements[antrian.Tab[i].album].AlbumName.TabWord);
         WRITESEMICOLON();
-        int idxset = Value(mapAlbum, antrian.Tab[i].album);
+        idxset = Value(mapAlbum, antrian.Tab[i].album);
         WRITESTRING(SetLagu[idxset].AlbumLagu[antrian.Tab[i].lagu].JudulLagu.TabWord);
         WRITEENTER();
     }

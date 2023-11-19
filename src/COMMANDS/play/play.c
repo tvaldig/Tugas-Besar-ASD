@@ -1,6 +1,5 @@
 #include "play.h"
 
-NowPlaying current;
 currentid currentIdPlaylist;
 void PlaySong (){
     char namapenyanyi[100];
