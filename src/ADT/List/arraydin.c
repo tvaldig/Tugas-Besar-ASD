@@ -110,19 +110,14 @@ void PrintArrayDin(ArrayDin array)
 {
     // KAMUS
     IdxType j;
-    // ALGORITMA
-    printf("[");
+    // ALGORITMA;
+    printf("ID | Nama Playlist\n");
+    printf("------------------\n");
     for (j = 0; j < (array).Neff; j++)
     {
-        printf("%d|", (array).A[j].idplaylist);
-        printf("%s", (array).A[j].namaplaylist.TabWord);
-
-        if (j != (array).Neff - 1)
-        {
-            printf(" ; ");
-        }
+        printf("%d  | ", (array).A[j].idplaylist);
+        printf("%s\n", (array).A[j].namaplaylist.TabWord);
     }
-    printf("]\n");
 }
 
 /*
@@ -160,7 +155,7 @@ ArrayDin CopyArrayDin(ArrayDin array)
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist, Word nama)
+IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist)
 {
     // KAMUS
     IdxType j = 0;
