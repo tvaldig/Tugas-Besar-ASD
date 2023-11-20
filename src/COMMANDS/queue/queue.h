@@ -27,6 +27,6 @@ void QueuePlaylist(Queue *q, ArrayDin *playlists);
 /**
  * Menghapus satu lagu dari antrian
 */
-void QueueRemove(Queue *q, int id);
+void QueueRemove(Queue *q, int inputId);
 
 #endif

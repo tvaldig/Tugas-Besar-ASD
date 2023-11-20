@@ -108,13 +108,14 @@ void QueuePlaylist(Queue *q, ArrayDin *playlists){
     }
 }
 
-void QueueRemove(Queue *q, int id)
-{
+void QueueRemove(Queue *q, int inputid)
+{   
+    int  id = inputid - 1;
     int idlagu, idpenyanyi, idalbum;
     char judullagu[100], namapenyanyi[100];
     if (id > IDX_TAIL(*q) || id < 0)
     {
-        printf("Lagu dengan urutan ke %d tidak ada.\n", id);
+        printf("Lagu dengan urutan ke %d tidak ada.\n", inputid);
     } else if(id < 0){
         printf("Urutan lagu tidak valid.\n");
     }
