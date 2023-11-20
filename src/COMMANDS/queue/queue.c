@@ -98,6 +98,9 @@ void QueuePlaylist(Queue *q, ArrayDin *playlists){
             enqueue(q, PENYANYI(P), ALBUM(P), LAGU(P));
             P = Next(P);
         }
+        if(isNotPlayingPlaylist()){
+            currentIdPlaylist = idplaylist;
+        }
         if(idplaylist != currentIdPlaylist){
             NotPlayingPlaylist();
         }
