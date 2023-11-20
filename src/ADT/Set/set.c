@@ -14,7 +14,7 @@ boolean IsEmptySet(Set S){
     return S.Count ==  Zero;
 }
 /* Mengirim true jika Set S kosong*/
-/* Ciri Set kosong : count bernilai Nil */.
+/* Ciri Set kosong : count bernilai Nil */
 
 /* ********** Operator Dasar Set ********* */
 void InsertSetLagu(Set *S, int IdAlbum, int IdSet, Word Elmt){
