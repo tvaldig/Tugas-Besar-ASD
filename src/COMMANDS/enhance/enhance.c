@@ -70,7 +70,7 @@ void ENHANCE(){
             printf("Gagal memasukan rekomendasi, ID tidak ditemukan\n");
         } else{
             id--;
-            InsertUnique(&ply, temppenyanyi[id], tempalbum[id], templagu[id]);
+            InsertUnique(&(playlists.A[idplaylist]), temppenyanyi[id], tempalbum[id], templagu[id]);
             printf("\nLagu berhasil ditambahkan!\n");
             displayPlaylist(playlists, idplaylist);
         }
