@@ -11,20 +11,28 @@ void PlaySong (){
     printf("Masukkan Nama Penyanyi yang dipilih : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
+    if(searchidpenyanyi(ArrayPenyanyi, currentCommand) == -1){
+        //Jika nama penyanyi tidak ditemukan maka play gagal
+        printf("Pencarian gagal. Nama penyanyi tidak ditemukan!\n");
+    } else {
     ConvertWordToString(&currentCommand, namapenyanyi);
     IdxType idPenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand);
-
-    //Menuliskan daftar album
+    
+    //Menuliskan daftar album dari penyanyi tersebut
     ListAlbums(mapAlbum, currentCommand);
-
+    
     //Menerima input nama album dari user dan mencari idalbum tersebut
     printf("Masukkan Nama Album yang dipilih : ");
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
+    if(searchidalbum(ArrayPenyanyi, idPenyanyi, currentCommand, mapAlbum) == -1){
+        //Jika nama album tidak ditemukan maka play gagal
+        printf("Pencarian gagal. Nama album tidak ditemukan!\n");
+    } else {
     Word NamaAlbum = currentCommand;
     IdxType idAlbum = searchidalbum(ArrayPenyanyi, idPenyanyi, currentCommand, mapAlbum);
 
-    //Menuliskan daftar lagu
+    //Menuliskan daftar lagu dari album tersebut
     ListSongs(SetLagu, currentCommand, idPenyanyi);
 
     //Menerima input id lagu dari user
@@ -34,6 +42,11 @@ void PlaySong (){
     IdxType idLagu = ConvertWordToInt(currentCommand)-1;
     Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idLagu+1, idPenyanyi);
     ConvertWordToString(&JudulLaguWord, judullagu);
+    
+    if (IsStringEqual(judullagu, "NOTFOUND"))
+    { // jika id tidak ditemukan maka play gagal
+    printf("Pencarian gagal. ID Lagu tidak ditemukan!\n");
+    } else {
 
     //Memasukkan id dari tiap input ke lagu yang dimainkan
     (&current)->lagu = idLagu;
@@ -46,8 +59,10 @@ void PlaySong (){
 
     NotPlayingPlaylist();
     printf("Memutar lagu \"%s\" oleh \"%s\".\n", judullagu, namapenyanyi);
-}
-
+        }
+    }
+}  
+} 
 void PlayPlaylist() {
     printf("Masukkan ID Playlist: ");
     
@@ -55,12 +70,12 @@ void PlayPlaylist() {
     STARTCOMMAND(false);
     handleSemicolon(currentCommand);
     int idPlaylist = ConvertWordToInt(currentCommand);
-    currentIdPlaylist = idPlaylist;
     //Mengecek ada tidaknya input di playlist
     if(idPlaylist > playlists.Neff){
         printf("ID Playlist tidak ditemukan!\n");
     }
     else{
+    currentIdPlaylist = idPlaylist;
     playlist p = playlists.A[idPlaylist];
     addressnode P = First(p);
 
