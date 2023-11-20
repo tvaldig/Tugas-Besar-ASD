@@ -9,6 +9,7 @@ boolean finish;
 static FILE *pita;
 static int retval;
 
+/* Mesin Karakter */
 void START()
 {
     pita = stdin;
@@ -22,6 +23,7 @@ void START()
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
+/* Mesin Karakter File */
 void ADV()
 {
     retval = fscanf(pita, "%c", &currentChar);
@@ -34,6 +36,7 @@ void ADV()
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
+
 
 char GetCC()
 {
@@ -57,7 +60,7 @@ void STARTFILE(char *str)
           Jika currentChar = MARK maka EOP akan menyala (true)
           finish bernilai salah karena belum mencapai akhir dari file */
 {
-    finish = false;
+    finish = false; 
     pita = fopen(str, "r");
     if(pita == NULL){
         finish = true;
@@ -66,29 +69,37 @@ void STARTFILE(char *str)
     ADVFILE();
 }
 
+// void STARTFILE(char *str)
 void ADVFILE(){
-    retval = fscanf(pita,"%c", &currentChar);
-    if (retval == EOF)
+    retval = fscanf(pita,"%c", &currentChar); 
+    if (retval == EOF) 
     {
-        fclose(pita);
-        finish = true;
+        fclose(pita); 
+        finish = true; 
     }
 }  
 
+/* Pita dimajukan satu karakter.
+   I.S. : Karakter pada jendela = currentChar, currentChar != MARK
+   F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
+          currentChar mungkin = MARK
+          Jika  currentChar = MARK maka EOP akan menyala (true)
+          finish akan menyala (true) karena sudah mencapai akhir dari file */
+
 void NEWFILE(char* filename){
-    pita = fopen(filename, "w");
+    pita = fopen(filename, "w"); 
 }
 
 void WRITESTRING(char* c){
-    fprintf(pita, "%s", c);
+    fprintf(pita, "%s", c); 
 }
 
 void WRITEINT(int i){
-    fprintf(pita, "%d", i);
+    fprintf(pita, "%d", i); 
 }
 
 void WRITEBLANK(){
-    fprintf(pita, "%c", BLANK);
+    fprintf(pita, "%c", BLANK); 
 }
 
 void WRITEENTER(){
@@ -100,5 +111,5 @@ void WRITESEMICOLON(){
 }
 
 void WRITEFINISH(){
-    fclose(pita);
+    fclose(pita); 
 }

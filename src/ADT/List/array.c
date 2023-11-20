@@ -69,6 +69,9 @@ void SetPenyanyi(TabInt *T, IdxType i, Penyanyi penyanyi)
     T->penyanyi[i] = penyanyi;
     T->Neff++;
 }
+/* I.S. T terdefinisi, sembarang */
+/* F.S. Elemen T yang ke-i bernilai v */
+/* Mengeset nilai elemen tabel yang ke-i sehingga bernilai penyanyi */
 
 void SetIdAlbumPertamaPenyanyi(TabInt *T, IdxType i, ElType idAlbum){
     T->penyanyi[i].IdAlbumPertama = idAlbum;

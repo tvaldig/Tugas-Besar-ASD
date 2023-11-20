@@ -19,6 +19,7 @@ typedef struct
     ElType IdAlbumPertama;
 } Penyanyi;
 
+/* ********** KONSTRUKTOR ********** */
 typedef struct
 {
     Penyanyi penyanyi[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
@@ -89,3 +90,5 @@ void TulisIsi(TabInt T);
 /* Proses : Menuliskan isi tabel dengan traversal */
 
 #endif
+
+// Path: src/ADT/List/array.c
