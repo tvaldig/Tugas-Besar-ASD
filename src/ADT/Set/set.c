@@ -16,12 +16,6 @@ boolean IsEmptySet(Set S){
 /* Mengirim true jika Set S kosong*/
 /* Ciri Set kosong : count bernilai Nil */
 
-boolean IsFullSet(Set S){
-    return S.Count == MaxEl;
-}
-/* Mengirim true jika Set S penuh */
-/* Ciri Set penuh : count bernilai MaxEl */
-
 /* ********** Operator Dasar Set ********* */
 void InsertSetLagu(Set *S, int IdAlbum, int IdSet, Word Elmt){
     if(!(IsMemberSet(*S, Elmt))){
@@ -35,11 +29,6 @@ void InsertSetLagu(Set *S, int IdAlbum, int IdSet, Word Elmt){
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */
 /* F.S. Elmt menjadi anggota dari S. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan */
-
-/* Menghapus Elmt dari Set S. */
-/* I.S. S tidak kosong
-        Elmt mungkin anggota / bukan anggota dari S */
-/* F.S. Elmt bukan anggota dari S */
 
 boolean IsMemberSet(Set S, Word Elmt){
     boolean found = false;

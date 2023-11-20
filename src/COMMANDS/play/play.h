@@ -3,16 +3,9 @@
 
 #include "../../ADT/ADT.h"
 #include "../startload/startload.h"
-typedef struct
-{
-    IdxType penyanyi;
-    IdxType album;
-    IdxType lagu;
-} NowPlaying;
 
 typedef int currentid;
 extern currentid currentIdPlaylist;
-extern NowPlaying current;
 
 void PlaySong ();
 

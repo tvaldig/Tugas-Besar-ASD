@@ -11,7 +11,7 @@ Set SetLagu[100];
 Queue antrian;
 Stack riwayat;
 ArrayDin playlists;
-
+NowPlaying current;
 
 void startLoadFunction(Word fname, boolean loadiftrue)
 {
@@ -95,10 +95,17 @@ void startLoadFunction(Word fname, boolean loadiftrue)
 
     if (!finish)
     {
+        int idxpenyanyi, idxalbum, idxlagu;
+
+        ADVSEMICOLON();
+        current.penyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord);
+        ADVSEMICOLON();
+        current.album = searchidalbum(ArrayPenyanyi, current.penyanyi, currentWord, mapAlbum);
+        ADVSEMICOLON();
+        current.lagu = searchidlagu(SetLagu, mapAlbum, current.album, currentWord);
+
         ADVOnEnter(false);                 // Mulai membaca sesi bagian queue (antrian)
         n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah antrian (jumlah queue)
-
-        int idxpenyanyi, idxalbum, idxlagu;
 
         for (int i = 0; i < n; i++)
         {

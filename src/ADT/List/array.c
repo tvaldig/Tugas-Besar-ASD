@@ -31,19 +31,8 @@ int NbElmt(TabInt T)
 }
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
-/* *** Daya tampung container *** */
-int MaxNbEl(TabInt T)
-{
-    return IdxMax;
-}
-/* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
+
 /* *** Selektor INDEKS *** */
-IdxType GetFirstIdx(TabInt T)
-{
-    return IdxMin;
-}
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks elemen pertama */
 IdxType GetLastIdx(TabInt T)
 {
     return NbElmt(T);
@@ -90,29 +79,6 @@ void SetIdAlbumPertamaPenyanyi(TabInt *T, IdxType i, ElType idAlbum){
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
-void SetNeff(TabInt *T, IdxType N)
-{
-    T->Neff = N;
-}
-/* I.S. T terdefinisi, sembarang */
-/* F.S. Nilai indeks efektif T bernilai N */
-/* Mengeset nilai indeks elemen efektif sehingga bernilai N */
-
-/* ********** Test Indeks yang valid ********** */
-boolean IsIdxValid(TabInt T, IdxType i)
-{
-    return (MaxNbEl(T) >= i && GetFirstIdx(T) <= i);
-}
-/* Prekondisi : i sembarang */
-/* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
-/* yaitu antara indeks yang terdefinisi utk container*/
-boolean IsIdxEff(TabInt T, IdxType i)
-{
-    return (GetLastIdx(T) >= i && GetFirstIdx(T) <= i);
-}
-/* Prekondisi : i sembarang*/
-/* Mengirimkan true jika i adalah indeks yang terdefinisi utk tabel */
-/* yaitu antara FirstIdx(T)..LastIdx(T) */
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
@@ -122,11 +88,6 @@ boolean IsEmptyArray(TabInt T)
 }
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFullArray(TabInt T)
-{
-    return NbElmt(T) == MaxNbEl(T);
-}
-/* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsi(TabInt T)

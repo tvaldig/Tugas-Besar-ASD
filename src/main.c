@@ -152,6 +152,8 @@ int main()
                 status(&antrian,ArrayPenyanyi, SetLagu, mapAlbum);
             } else if(IsStringEqual(command, "QUIT;")){
                 Quit(true);
+            } else if(IsStringEqual(command, "ENHANCE;")){
+                ENHANCE();
             }
         }
     }
