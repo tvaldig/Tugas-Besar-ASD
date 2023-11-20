@@ -3,17 +3,17 @@
 
 #include "../../ADT/ADT.h"
 
-boolean checkOtherCommand();
 /* Cek commands lain tapi tidak sesuai sesi */
+boolean checkOtherCommand();
 
-boolean checkCommand(char *command, boolean inSession);
 /* Cek command sesuai sesi belum/sudah load */
+boolean checkCommand(char *command, boolean inSession);
 
-void unknownCommand();
 /* Jika command tidak diketahui */
+void unknownCommand();
 
-void wrongCommand();
 /* Jika command tidak sesuai sesi belum/sudah load */
+void wrongCommand();
 
 /* Program utama invalidCommand untuk melakukan*/
 #endif
