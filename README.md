@@ -17,13 +17,10 @@ Dibuat oleh Kelompok 1 K01
 ## Configuration File yang Tersedia
 > save/konfigurasi.txt
 
+## Save File yang Tersedia
 > save/new.txt
 
 > save/test.txt
-
-> save/wayangaware.txt
-
-## Save File yang Tersedia
 
 ## Struktur Program
 ```
