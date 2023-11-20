@@ -46,7 +46,7 @@ char GetCC()
 
 boolean IsEOP()
 {
-    return (currentChar == MARK);
+    return (currentChar == ENTER);
 }
 /* Mengirimkan true jika currentChar = MARK */
 
