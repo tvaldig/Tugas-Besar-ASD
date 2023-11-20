@@ -54,15 +54,12 @@ int main(){
     /* Tes Search */
     delayoutput();
 
+    IdxType idpenyanyi;
     printf("Masukkan elemen yang ingin dicari\n");
     printf("Masukkan IDX penyanyi: ");
-    scanf("%d", &penyanyi);
-    printf("Masukkan IDX album: ");
-    scanf("%d", &album);
-    printf("Masukkan IDX lagu: ");
-    scanf("%d", &lagu);
+    scanf("%d", idpenyanyi);
 
-    printf("\nElemen ada di IDX: %d\n", SearchArrayDin(temp, penyanyi, album, lagu));
+    printf("\nElemen ada di IDX: %d\n", SearchArrayDin(temp, idpenyanyi));
     PrintArrayDin(temp);
     printf("\n");
 
