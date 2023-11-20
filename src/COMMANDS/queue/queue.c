@@ -74,7 +74,7 @@ void QueueSong(Queue *q){
             {
                 NotPlayingPlaylist();
                 enqueue(q, idpenyanyi, searchidalbum(ArrayPenyanyi, idpenyanyi, NamaAlbum, mapAlbum), idlagu - 1);
-                printf("Berhasil menambahkan lagu %s oleh %s ke queue.\n", judullagu, namapenyanyi);
+                printf("Berhasil menambahkan lagu \"%s\" oleh \"%s\" ke queue.\n", judullagu, namapenyanyi);
             }
         }
        
@@ -104,13 +104,13 @@ void QueuePlaylist(Queue *q, ArrayDin *playlists){
         if(idplaylist != currentIdPlaylist){
             NotPlayingPlaylist();
         }
-        printf("Berhasil menambahkan playlist %s ke queue.\n", ply.namaplaylist.TabWord);
+        printf("Berhasil menambahkan playlist \"%s\" ke queue.\n", ply.namaplaylist.TabWord);
     }
 }
 
 void QueueRemove(Queue *q, int inputid)
 {   
-    int  id = inputid - 1;
+    int id = inputid - 1;
     int idlagu, idpenyanyi, idalbum;
     char judullagu[100], namapenyanyi[100];
     if (id > IDX_TAIL(*q) || id < 0)
@@ -148,13 +148,15 @@ void QueueRemove(Queue *q, int inputid)
         ConvertWordToString(&ArrayPenyanyi.penyanyi[idpenyanyi].namapenyanyi, namapenyanyi);
         Word judul = SearchJudulFromId(idalbum, idlagu);
         ConvertWordToString(&judul, judullagu);
-        printf("Lagu %s oleh %s telah dihapus dari queue!\n", judullagu, namapenyanyi);
+        printf("Lagu \"%s\" oleh \"%s\" telah dihapus dari queue!\n", judullagu, namapenyanyi);
     }
 }
 
-void QueueSwap(Queue *q, int id1, int id2){
+void QueueSwap(Queue *q, int inputId1, int inputId2){
     char judullagu1[100];
     char judullagu2[100];
+    int id1 = inputId1 - 1;
+    int id2 = inputId2 - 1;
     if(isIdFound(q, id1) && isIdFound(q, id2)){
         int tempalbum = q->Tab[id1].album;
         int temppenyanyi = q->Tab[id1].penyanyi;
@@ -172,13 +174,13 @@ void QueueSwap(Queue *q, int id1, int id2){
         ConvertWordToString(&judul1, judullagu1);
         Word judul2 = SearchJudulFromId(q->Tab[id1].album, q->Tab[id1].lagu);
         ConvertWordToString(&judul2, judullagu2);
-        printf("Lagu %s berhasil ditukar dengan %s \n", judullagu1, judullagu2);
+        printf("Lagu \"%s\" berhasil ditukar dengan \"%s\" \n", judullagu1, judullagu2);
     } else if(isIdFound(q, id1) && !isIdFound(q, id2)){
-        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", id2);
+        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", inputId2);
     }
     else if (!isIdFound(q, id1) && isIdFound(q, id2)){
-        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", id1);
+        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", inputId1);
     } else {
-        printf("Lagu dengan urutan ke %d dan urutan ke %d tidak terdapat dalam queue!\n", id1, id2);
+        printf("Lagu dengan urutan ke %d dan urutan ke %d tidak terdapat dalam queue!\n", inputId1, inputId2);
     }
 }

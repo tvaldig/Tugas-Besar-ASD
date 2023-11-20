@@ -17,7 +17,7 @@ void QueueSong(Queue *q);
 /**
  * Mengubah posisi lagu 1 dan lagu 2 dalam antrian
 */
-void QueueSwap(Queue *q, int id1, int id2);
+void QueueSwap(Queue *q, int inputId1, int inputId2);
 
 /**
  * Memasukkan suatu playlist ke dalam antrian
