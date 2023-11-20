@@ -27,8 +27,9 @@ void SongNext(){
     }
     else{
         //Memasukkan lagu yang dimainkan ke riwayat
+        if(!isNotPlaying()){
         Push(&riwayat, current.penyanyi, current.album, current.lagu);
-
+        }
         //Mengganti lagu yang dimainkan menjadi lagu selanjutnya dalam antrian
         dequeue(&antrian, &(&current)->penyanyi, &(&current)->album, &(&current)->lagu);
         
@@ -82,11 +83,14 @@ void SongPrevious(){
          CreateQueue(&temp);
 
          //Memasukkan lagu yang dimainkan ke temp dan memasukkan sisanya dari antrian
+         if(!isNotPlaying()){
          enqueue(&temp, current.penyanyi, current.album, current.lagu);
+        }
          while (!IsEmptyQueue(antrian)){
              dequeue(&antrian, &penyanyitemp, &albumtemp, &lagutemp);
              enqueue(&temp, penyanyitemp, albumtemp, lagutemp);
-         }
+        }
+    
 
          //Memindahkan kembali isi temp ke antrian
          while(!IsEmptyQueue(temp)){

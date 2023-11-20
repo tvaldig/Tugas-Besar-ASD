@@ -1,6 +1,5 @@
 #include "play.h"
 
-NowPlaying current;
 currentid currentIdPlaylist;
 void PlaySong (){
     char namapenyanyi[100];
@@ -44,6 +43,8 @@ void PlaySong (){
     //Mengosongkan antrian dan riwayat
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
+
+    NotPlayingPlaylist();
     printf("Memutar lagu \"%s\" oleh \"%s\".\n", judullagu, namapenyanyi);
 }
 

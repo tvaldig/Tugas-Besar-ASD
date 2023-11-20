@@ -1,6 +1,7 @@
 #include "stack.h"
 #include <stdio.h>
 
+/* Definisi list : */
 void delayoutput(){
     int input;
     printf("Masukkan angka sembarang untuk melanjutkan: ");
@@ -39,6 +40,7 @@ int main(){
         Push(&temp, inputpenyanyi, inputalbum, inputlagu);
     }
 
+    /* Tes displayStack */
     printf("Enqueue %d elemen baru berhasil dilakukan\n",n);
     displayStack(temp);
     printf("\n");

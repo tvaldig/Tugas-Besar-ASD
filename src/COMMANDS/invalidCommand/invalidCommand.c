@@ -2,6 +2,7 @@
 #include "./invalidCommand.h"
 #include <stdio.h>
 
+
 boolean checkInSessionCommand(char *command){
     /* Cek apakah sesuai command dalam sesi */
     if (IsStringEqual(command, "LIST")) {
@@ -21,7 +22,13 @@ boolean checkInSessionCommand(char *command){
         return true;
     } else if (IsStringEqual(command, "QUIT;")) {
         return true;
-    } else {
+    }
+    else if (IsStringEqual(command, "ENHANCE;"))
+    {
+        return true;
+    }
+    else
+    {
         ENDCOMMAND();
         return false;
     }

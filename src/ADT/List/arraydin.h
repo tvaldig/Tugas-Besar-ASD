@@ -80,13 +80,7 @@ void InsertFirstArrayDin(ArrayDin *array, Word nama);
  */
 void InsertLastArrayDin(ArrayDin *array, Word nama);
 
-/*
- * Fungsi untuk melakukan search suatu ArrayDin.
- * Index pertama yang ditemukan akan dikembalikan.
- * Jika tidak ditemukan, akan mengembalikan -1.
- * Prekondisi: array terdefinisi
- */
-IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist, Word nama);
+IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist);
 
 /**
  * Menuliskan isi dari array dinamik

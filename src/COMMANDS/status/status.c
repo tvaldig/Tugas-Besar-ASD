@@ -4,10 +4,15 @@
 void status(Queue * q, TabInt ArrayP, Set setlagu[], MapAlbum map) {
     Queue temp;
     CreateQueue(&temp);
-    printf("Now Playing:\n");
-    if(!IsNotPlayingPlaylist()){
-        printf("Current Playlist: %s");
+   
+    if(!isNotPlayingPlaylist()){
+        char namaplaylist[100];
+        Word NamaPlaylist = GetNamaPlaylist(playlists, currentIdPlaylist);
+        ConvertWordToString(&NamaPlaylist, namaplaylist);
+        printf("Current Playlist: %s.\n", namaplaylist);
     }
+    printf("\n");
+    printf("Now Playing:\n");
     if(isNotPlaying()){
          printf("No songs have been played yet. Please search for a song to begin playback.\n");
     } else {

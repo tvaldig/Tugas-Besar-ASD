@@ -31,7 +31,7 @@ void Push(Stack *S, idx penyanyi, idx album, idx lagu)
     InfoTopAlbum (*S) = album;
     InfoTopLagu (*S) = lagu;
 }
-/* Menambahkan X sebagai elemen Stack S. */
+/* Menambahkan X sebagai elemen dari Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. TOP bertambah 1, X menjadi TOP yang baru, */
 
@@ -48,6 +48,7 @@ void Pop(Stack *S, idx *penyanyi, idx *album, idx *lagu)
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
+/* ************ Menampilkan Stack ************ */
 void displayStack(Stack q){
     
     if (IsEmptyStack(q)){
@@ -67,6 +68,7 @@ void displayStack(Stack q){
     }
 }
 
+/* ************ Reverse Stack ************ */
 void Reversestack(Stack *S){
     Stack temp;
     CreateEmptyStack(&temp);

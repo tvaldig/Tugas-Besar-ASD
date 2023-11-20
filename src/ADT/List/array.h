@@ -19,6 +19,7 @@ typedef struct
     ElType IdAlbumPertama;
 } Penyanyi;
 
+/* ********** KONSTRUKTOR ********** */
 typedef struct
 {
     Penyanyi penyanyi[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
@@ -49,13 +50,6 @@ void MakeEmpty(TabInt *T);
 int NbElmt(TabInt T);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
-/* *** Daya tampung container *** */
-int MaxNbEl(TabInt T);
-/* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
-/* *** Selektor INDEKS *** */
-IdxType GetFirstIdx(TabInt T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks elemen pertama */
 IdxType GetLastIdx(TabInt T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
@@ -85,31 +79,16 @@ void SetIdAlbumPertamaPenyanyi(TabInt *T, IdxType i, ElType idAlbum);
 /* F.S. Elemen T yang ke-i bernilai v */
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai idalbum*/
 
-void SetNeff(TabInt *T, IdxType N);
-/* I.S. T terdefinisi, sembarang */
-/* F.S. Nilai indeks efektif T bernilai N */
-/* Mengeset nilai indeks elemen efektif sehingga bernilai N */
-
-/* ********** Test Indeks yang valid ********** */
-boolean IsIdxValid(TabInt T, IdxType i);
-/* Prekondisi : i sembarang */
-/* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
-/* yaitu antara indeks yang terdefinisi utk container*/
-boolean IsIdxEff(TabInt T, IdxType i);
-/* Prekondisi : i sembarang*/
-/* Mengirimkan true jika i adalah indeks yang terdefinisi utk tabel */
-/* yaitu antara FirstIdx(T)..LastIdx(T) */
-
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
 boolean IsEmptyArray(TabInt T);
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFullArray(TabInt T);
-/* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsi(TabInt T);
 /* Proses : Menuliskan isi tabel dengan traversal */
 
 #endif
+
+// Path: src/ADT/List/array.c

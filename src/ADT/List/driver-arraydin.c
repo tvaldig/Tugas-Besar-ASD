@@ -1,4 +1,5 @@
 #include "arraydin.h"
+#include "../MesinKata/mesinkata.h"
 #include <stdio.h>
 
 void delayoutput(){
@@ -26,30 +27,25 @@ int main(){
     /* Tes Insert */
     delayoutput();
 
-    IdxType penyanyi, album, lagu;
-    printf("Masukkan IDX penyanyi: ");
-    scanf("%d", &penyanyi);
-    printf("Masukkan IDX album: ");
-    scanf("%d", &album);
-    printf("Masukkan IDX lagu: ");
-    scanf("%d", &lagu);
+    printf("Masukkan nama playlist: ");
+    STARTCOMMAND(false);
+    handleSemicolon(currentCommand);
+    Word playlist = currentCommand;
 
-    InsertFirstArrayDin(&temp, penyanyi, album, lagu);
-    InsertLastArrayDin(&temp, penyanyi, album, lagu);
+    InsertFirstArrayDin(&temp, playlist);
+    InsertLastArrayDin(&temp, playlist);
     printf("Berhasil di masukkan ke dalam Array Dinamis sebagai elemen pertama dan terakhir\n");
     PrintArrayDin(temp);
     printf("\n");
 
     delayoutput();
 
-    printf("Masukkan IDX penyanyi: ");
-    scanf("%d", &penyanyi);
-    printf("Masukkan IDX album: ");
-    scanf("%d", &album);
-    printf("Masukkan IDX lagu: ");
-    scanf("%d", &lagu);
+    printf("Masukkan nama playlist: ");
+    STARTCOMMAND(false);
+    handleSemicolon(currentCommand);
+    Word playlist = currentCommand;
 
-    InsertAt(&temp, penyanyi, album, lagu, 1);
+    InsertAt(&temp, 1, playlist);
     printf("Berhasil di masukkan ke dalam Array Dinamis sebagai elemen kedua\n");
 
     PrintArrayDin(temp);
@@ -58,15 +54,12 @@ int main(){
     /* Tes Search */
     delayoutput();
 
+    IdxType idpenyanyi;
     printf("Masukkan elemen yang ingin dicari\n");
     printf("Masukkan IDX penyanyi: ");
-    scanf("%d", &penyanyi);
-    printf("Masukkan IDX album: ");
-    scanf("%d", &album);
-    printf("Masukkan IDX lagu: ");
-    scanf("%d", &lagu);
+    scanf("%d", idpenyanyi);
 
-    printf("\nElemen ada di IDX: %d\n", SearchArrayDin(temp, penyanyi, album, lagu));
+    printf("\nElemen ada di IDX: %d\n", SearchArrayDin(temp, idpenyanyi));
     PrintArrayDin(temp);
     printf("\n");
 
