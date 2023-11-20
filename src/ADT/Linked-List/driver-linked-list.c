@@ -1,14 +1,6 @@
 #include "linked_list.h"
 #include <stdio.h>
 
-void delayoutput(){
-    int input;
-    printf("Masukkan angka sembarang untuk melanjutkan: ");
-    scanf("%d",&input);
-    printf("\n");
-}
-
-
 int main(){
     /* Test Alokasi */
     addressnode p, new;
