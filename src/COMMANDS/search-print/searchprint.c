@@ -112,3 +112,19 @@ void printCurrent(){
 
     printf("%s - %s - %s.\n", namapenyanyi, namaalbum, judullagu);
 }
+
+void displayPlaylist(ArrayDin playlists, int idplaylist){
+    playlist ply = playlists.A[idplaylist];
+    addressnode P = First(ply);
+    printf("-----------------------\n");
+    printf("| %s\n", ply.namaplaylist.TabWord);
+    printf("-----------------------\n");
+    printf("PENYANYI | ALBUM | LAGU\n");
+    printf("-----------------------\n");
+    do
+    {
+        printf("%s | %s | %s\n", ArrayPenyanyi.penyanyi[PENYANYI(P)].namapenyanyi.TabWord, mapAlbum.Elements[ALBUM(P)].AlbumName.TabWord, SetLagu[Value(mapAlbum, ALBUM(P))].AlbumLagu[LAGU(P)].JudulLagu.TabWord);
+        P = Next(P);
+
+    } while (P != null);
+}
