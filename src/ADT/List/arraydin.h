@@ -72,7 +72,7 @@ void InsertFirstArrayDin(ArrayDin *array, Word nama);
 
 void InsertLastArrayDin(ArrayDin *array, Word nama);
 
-IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist, Word nama);
+IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist);
 
 void PrintArrayDin(ArrayDin array);
 

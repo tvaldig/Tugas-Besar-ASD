@@ -19,4 +19,6 @@ Word GetNamaPlaylist(ArrayDin Playlists, int idplaylist);
 
 void printCurrent();
 
+void displayPlaylist(ArrayDin playlists, int idplaylist);
+
 #endif
