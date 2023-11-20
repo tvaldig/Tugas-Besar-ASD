@@ -26,37 +26,31 @@ void IgnoreBlanks();
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTWORD();
-/* I.S. : currentChar sembarang
-   F.S. : EndWord = true, dan currentChar = MARK;
-          atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
-
-void ADVWORD();
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
-
-void CopyWord();
-/* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
 void STARTCOMMAND(boolean OnBlank);
 
+/* Mesin kata untuk mengakuisisi kata selanjutnya dengan MARK sebagai new line
+   I.S : currentChar sembarang
+   F.S : currentWord menjadi kata yang telah diakuisi.
+*/
 void ADVCOMMAND();
 
+/* Mesin kata untuk mengakuisisi kata selanjutnya dengan MARK sebagai blank
+   I.S : currentChar sembarang
+   F.S : currentWord menjadi kata yang telah diakuisi.
+*/
 void ADVCOMMANDONBLANK();
- 
+
+ /* Melakukan salin pada mesin kata dengan BLANK untuk dijadikan CurrentWord
+ */
 void CopyCommand();
 
+/* Melakukan salin pada mesin kata tanpa BLANK untuk dijadikan CurrentWord
+ */
 void CopyCommandNotBlank();
 
+/*
+*/
 void STARTFROMFILE(char *file);
 
 void ADVOnEnter(boolean OnBlank);
@@ -67,24 +61,25 @@ void COPYFILEOnBlank();
 
 void ADVCONTINUE();
 
+void COPYFILESEMICOLON();
+
+void ADVSEMICOLON();
+
+void ENDCOMMAND();
+
 void IgnoreBlankFile();
 
-void displayWord(Word w);
 
     /* PRIMITIF CONVERTER WORD ATAU STRING*/
 void ConvertWordToString(Word *word, char *output);
 
 boolean IsStringEqual(char str1[], char str2[]);
 
-void COPYFILESEMICOLON();
-
-void ADVSEMICOLON();
+void displayWord(Word w);
 
 int ConvertWordToInt(Word word);
 
 Word ConcatString(Word input1, Word input2);
-
-void ENDCOMMAND();
 
 boolean IsCommandWithSemicolon(Word command);
 
