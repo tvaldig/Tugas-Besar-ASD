@@ -21,7 +21,13 @@ boolean checkInSessionCommand(char *command){
         return true;
     } else if (IsStringEqual(command, "QUIT;")) {
         return true;
-    } else {
+    }
+    else if (IsStringEqual(command, "ENHANCE;"))
+    {
+        return true;
+    }
+    else
+    {
         ENDCOMMAND();
         return false;
     }
