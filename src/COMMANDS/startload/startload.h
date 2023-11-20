@@ -4,6 +4,13 @@
 #include "../../ADT/ADT.h"
 #include "../commands.h"
 
+typedef struct
+{
+    IdxType penyanyi;
+    IdxType album;
+    IdxType lagu;
+} NowPlaying;
+
 extern Penyanyi penyanyi;
 extern MapAlbum mapAlbum;
 extern Album album;
@@ -13,6 +20,7 @@ extern Queue antrian;
 extern Stack riwayat;
 extern ArrayDin playlists;
 extern boolean inSession;
+extern NowPlaying current;
 
 void startLoadFunction(Word fname, boolean loadiftrue);
 

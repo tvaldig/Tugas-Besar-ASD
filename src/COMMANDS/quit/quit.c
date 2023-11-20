@@ -8,11 +8,21 @@ void Quit(boolean isLogin) {
         printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");
         STARTCOMMAND(false);
         ConvertWordToString(&currentCommand, namacommand);
+        while(!(IsStringEqual(namacommand, "N;") || IsStringEqual(namacommand, "Y;"))){
+            unknownCommand();
+            printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");
+            STARTCOMMAND(false);
+            ConvertWordToString(&currentCommand, namacommand);
+        }
         if (IsStringEqual(namacommand, "N;")) {
             printf("Kamu keluar dari WayangWave.\nDadah ^_^/\n");
-        } else {
+        } else if (IsStringEqual(namacommand, "Y;")) {
+            printf("Masukkan nama file!\n");
+            printf("* Perhatikan kesalahan penulisan dapat mengakibatkan file tidak tersimpan, program akan otomatis tidak menyimpan file apabila salah menulis nama file!\n");
+            printf("** Contoh penulisan yang benar : \"test.txt;\"\n\n");
             SAVE();
         }
+
         exit(0);
     }
 }

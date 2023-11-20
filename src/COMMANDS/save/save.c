@@ -12,6 +12,11 @@ void SAVE(){
 
     Word direktori = {"../save/",8};
 
+    if(!(currentCommand.TabWord[currentCommand.Length-4] == '.' && currentCommand.TabWord[currentCommand.Length-3] == 't' && currentCommand.TabWord[currentCommand.Length-2] == 'x' && currentCommand.TabWord[currentCommand.Length-1] == 't')){
+        printf("Proses save gagal. Masukkan format file yang benar! (nama file harus diakhir .txt)\n\n");
+        return;
+    }
+
     NEWFILE(ConcatString(direktori, currentCommand).TabWord);
 
     WRITEINT(ArrayPenyanyi.Neff);
@@ -38,6 +43,14 @@ void SAVE(){
         }
     }
 
+    WRITESTRING(ArrayPenyanyi.penyanyi[current.penyanyi].namapenyanyi.TabWord);
+    WRITESEMICOLON();
+    WRITESTRING(mapAlbum.Elements[current.album].AlbumName.TabWord);
+    WRITESEMICOLON();
+    int idxset = Value(mapAlbum, current.album);
+    WRITESTRING(SetLagu[idxset].AlbumLagu[current.lagu].JudulLagu.TabWord);
+    WRITEENTER();
+
     int panjangantrian = LengthQueue(antrian);
 
     WRITEINT(panjangantrian);
@@ -49,7 +62,7 @@ void SAVE(){
         WRITESEMICOLON();
         WRITESTRING(mapAlbum.Elements[antrian.Tab[i].album].AlbumName.TabWord);
         WRITESEMICOLON();
-        int idxset = Value(mapAlbum, antrian.Tab[i].album);
+        idxset = Value(mapAlbum, antrian.Tab[i].album);
         WRITESTRING(SetLagu[idxset].AlbumLagu[antrian.Tab[i].lagu].JudulLagu.TabWord);
         WRITEENTER();
     }
