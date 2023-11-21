@@ -34,6 +34,9 @@ void QueueSong(Queue *q){
     //prosedur untuk memilih nama penyanyi
     printf("Masukkan Nama Penyanyi : ");
     STARTCOMMAND(false);
+
+    //Mengecek input terakhir merupakan semicolon (;) atau bukan
+    if(IsCommandWithSemicolon(currentCommand)){
     handleSemicolon(currentCommand);
     if(searchidpenyanyi(ArrayPenyanyi, currentCommand) == -1){
         printf("Queue song gagal. Nama penyanyi tidak ditemukan!\n");
@@ -47,6 +50,9 @@ void QueueSong(Queue *q){
         // prosedur untuk memilih nama album
         printf("Masukkan Nama Album yang dipilih :");
         STARTCOMMAND(false);
+
+        //Mengecek input terakhir merupakan semicolon (;) atau bukan
+        if(IsCommandWithSemicolon(currentCommand)){
         handleSemicolon(currentCommand);
         if(searchidalbum(ArrayPenyanyi, idpenyanyi, currentCommand, mapAlbum) == -1){
             printf("Queue Song Gagal. Nama album tidak ditemukan!\n");
@@ -59,6 +65,9 @@ void QueueSong(Queue *q){
             // prosedur untuk memilih ID lagu
             printf("Masukkan ID Lagu yang dipilih: ");
             STARTCOMMAND(false);
+
+            //Mengecek input terakhir merupakan semicolon (;) atau bukan
+            if(IsCommandWithSemicolon(currentCommand)){
             handleSemicolon(currentCommand);
             int idlagu = ConvertWordToInt(currentCommand);
 
@@ -75,20 +84,27 @@ void QueueSong(Queue *q){
                 NotPlayingPlaylist();
                 enqueue(q, idpenyanyi, searchidalbum(ArrayPenyanyi, idpenyanyi, NamaAlbum, mapAlbum), idlagu - 1);
                 printf("Berhasil menambahkan lagu \"%s\" oleh \"%s\" ke queue.\n", judullagu, namapenyanyi);
+                }
+            }  else {
+            unknownCommand(); //input pengguna pada id lagu tidak diakhiri dengan ;
             }
         }
-       
+        } else {
+            unknownCommand(); //input pengguna pada nama album tidak diakhiri dengan ;
+        }
     }
-    
-    
+} else {
+    unknownCommand(); //input pengguna pada nama penyanyi tidak diakhiri dengan ;
+}
 }
 
 void QueuePlaylist(Queue *q, ArrayDin *playlists){
     printf("Masukan ID Playlist: ");
     STARTCOMMAND(false);
+    if(IsCommandWithSemicolon(currentCommand)){
     handleSemicolon(currentCommand);
-    int idplaylist = ConvertWordToInt(currentCommand);
-    if(idplaylist > playlists->Neff){
+    int idplaylist = ConvertWordToInt(currentCommand)-1;
+    if(idplaylist > playlists->Neff-1 || idplaylist < 0){
         printf("Queue Playlist gagal. ID Playlist tidak ditemukan!\n");
     } else {
         playlist ply = playlists->A[idplaylist];
@@ -105,6 +121,9 @@ void QueuePlaylist(Queue *q, ArrayDin *playlists){
             NotPlayingPlaylist();
         }
         printf("Berhasil menambahkan playlist \"%s\" ke queue.\n", ply.namaplaylist.TabWord);
+    }
+    } else {
+        unknownCommand();
     }
 }
 

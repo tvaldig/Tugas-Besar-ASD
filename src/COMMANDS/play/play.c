@@ -10,6 +10,9 @@ void PlaySong (){
     //Menerima input nama penyanyi dari user dan mencari idpenyanyi tersebut 
     printf("Masukkan Nama Penyanyi yang dipilih : ");
     STARTCOMMAND(false);
+    
+    //Mengecek input terakhir merupakan semicolon (;) atau bukan
+    if(IsCommandWithSemicolon(currentCommand)){
     handleSemicolon(currentCommand);
     if(searchidpenyanyi(ArrayPenyanyi, currentCommand) == -1){
         //Jika nama penyanyi tidak ditemukan maka play gagal
@@ -24,6 +27,9 @@ void PlaySong (){
     //Menerima input nama album dari user dan mencari idalbum tersebut
     printf("Masukkan Nama Album yang dipilih : ");
     STARTCOMMAND(false);
+    
+    //Mengecek input terakhir merupakan semicolon (;) atau bukan
+    if(IsCommandWithSemicolon(currentCommand)){
     handleSemicolon(currentCommand);
     if(searchidalbum(ArrayPenyanyi, idPenyanyi, currentCommand, mapAlbum) == -1){
         //Jika nama album tidak ditemukan maka play gagal
@@ -38,6 +44,9 @@ void PlaySong (){
     //Menerima input id lagu dari user
     printf("Masukkan ID Lagu yang dipilih : ");
     STARTCOMMAND(false);
+    
+    //Mengecek input terakhir merupakan semicolon (;) atau bukan
+    if(IsCommandWithSemicolon(currentCommand)){
     handleSemicolon(currentCommand);
     IdxType idLagu = ConvertWordToInt(currentCommand)-1;
     Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idLagu+1, idPenyanyi);
@@ -59,19 +68,29 @@ void PlaySong (){
 
     NotPlayingPlaylist();
     printf("Memutar lagu \"%s\" oleh \"%s\".\n", judullagu, namapenyanyi);
+                }
+            } else {
+                unknownCommand(); //input pengguna pada id lagu tidak diakhiri dengan ;
+            }
         }
+    } else {
+        unknownCommand(); //input pengguna pada nama album tidak diakhiri dengan ;
+    } 
     }
-}  
+}  else {
+    unknownCommand(); //input pengguna pada nama penyanyi tidak diakhiri dengan ;
+}
 } 
 void PlayPlaylist() {
     printf("Masukkan ID Playlist: ");
     
     //Menerima input
     STARTCOMMAND(false);
+    if(IsCommandWithSemicolon(currentCommand)){
     handleSemicolon(currentCommand);
-    int idPlaylist = ConvertWordToInt(currentCommand);
+    int idPlaylist = ConvertWordToInt(currentCommand)-1;
     //Mengecek ada tidaknya input di playlist
-    if(idPlaylist > playlists.Neff){
+    if(idPlaylist > playlists.Neff-1 || idPlaylist < 0){
         printf("ID Playlist tidak ditemukan!\n");
     }
     else{
@@ -100,6 +119,9 @@ void PlayPlaylist() {
 
     //Output
     printf("Memutar playlist \"%s\".\n", p.namaplaylist.TabWord);
+    }
+    } else {
+        unknownCommand();
     }
 }
     
