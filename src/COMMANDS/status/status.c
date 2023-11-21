@@ -42,5 +42,7 @@ void status(Queue * q, TabInt ArrayP, Set setlagu[], MapAlbum map) {
             dequeue(&temp, &penyanyi, &album, &lagu);
             enqueue(q, penyanyi, album, lagu);
         }
+
+        printf("\n");
     }
 }
