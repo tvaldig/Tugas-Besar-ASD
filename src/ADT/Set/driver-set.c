@@ -22,4 +22,6 @@ int main(){
         printf("Masukkan nama lagu: ");
         STARTCOMMAND(false);  
     }
+
+    printf("\nPengetesan set.c berhasil!\n\n");
 }
