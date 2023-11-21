@@ -32,11 +32,11 @@ int main(){
     printf("Masukkan berapa elemen yang mau diinput ke dalam queue: ");
     scanf("%d", &n);
     for(int i = 0; i<n; i++){ /* tes enqueue dengan 20 elemen */
-        printf("Nama penyanyi yang mau dimasukkan ke dalam Queue: ");
+        printf("ID penyanyi yang mau dimasukkan ke dalam Queue: ");
         scanf("%d", &inputpenyanyi);
-        printf("Nama album yang mau dimasukkan ke dalam Queue: ");
+        printf("ID album yang mau dimasukkan ke dalam Queue: ");
         scanf("%d", &inputalbum);
-        printf("Nama lagu yang mau dimasukkan ke dalam Queue: ");
+        printf("ID lagu yang mau dimasukkan ke dalam Queue: ");
         scanf("%d", &inputlagu);
         enqueue(&temp, inputpenyanyi, inputalbum, inputlagu);
     }
@@ -67,8 +67,7 @@ int main(){
     }
 
     displayQueue(temp);
-    printf("\n");
+    printf("Queue Berhasil Dikosongkan.\n\n");
 
-
-
+    printf("Pengetesan Driver Queue Berhasil! \n\n");
 }
