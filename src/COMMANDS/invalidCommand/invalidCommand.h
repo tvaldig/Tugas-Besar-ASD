@@ -6,7 +6,7 @@
 boolean checkOtherCommand();
 /* Cek commands lain tapi tidak sesuai sesi */
 
-boolean checkCommand(char *command, boolean inSession);
+boolean checkCommand(char *command, boolean inSession, boolean isLog);
 /* Cek command sesuai sesi belum/sudah load */
 
 void unknownCommand();
@@ -14,6 +14,7 @@ void unknownCommand();
 
 void wrongCommand();
 /* Jika command tidak sesuai sesi belum/sudah load */
+
 
 /* Program utama invalidCommand untuk melakukan*/
 #endif

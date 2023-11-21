@@ -5,12 +5,12 @@ void Quit(boolean isLogin) {
     if (!isLogin) {
         char namacommand[100];
         // Save
-        printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");
+        printf("Apakah kamu ingin menyimpan data sesi sekarang?");
         STARTCOMMAND(false);
         ConvertWordToString(&currentCommand, namacommand);
         while(!(IsStringEqual(namacommand, "N;") || IsStringEqual(namacommand, "Y;"))){
             unknownCommand();
-            printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");
+            printf("Apakah kamu ingin menyimpan data sesi sekarang? ");
             STARTCOMMAND(false);
             ConvertWordToString(&currentCommand, namacommand);
         }
