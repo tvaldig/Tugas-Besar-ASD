@@ -11,6 +11,7 @@ Dibuat oleh Kelompok 1 K01
 5. Timotius Vivaldi Gunawan (18222091)
 
 ## Deskripsi Singkat Laporan
+Spotifile adalah sebuah program aplikasi pemutar musik layaknya walkman. Spotifile adalah aplikasi WayangWave yang dapat meluluhkan hati Roro. Spotifile dapat dikatakan aplikasi yang dapat menggantikan perangkat lunak di walkman Roro
 
 ## Cara Kompilasi Program
 > gcc -o main main.c COMMANDS/welcomeMenu/welcomemenu.c COMMANDS/list/list.c COMMANDS/play/play.c COMMANDS/save/save.c COMMANDS/song/song.c COMMANDS/playlist/playlist.c  COMMANDS/queue/queue.c  COMMANDS/search-print/searchprint.c COMMANDS/startload/startload.c ADT/MesinKata/mesinkata.c ADT/MesinKarakter/mesinkarakter.c ADT/List/array.c COMMANDS/invalidCommand/invalidCommand.c COMMANDS/help/help.c ./ADT/Queue/circular_queue.c ./ADT/Stack/stack.c ./ADT/List/arraydin.c ./ADT/Linked-List/linked_list.c ./ADT/Map/map.c ./ADT/Set/set.c 
@@ -32,19 +33,18 @@ Dibuat oleh Kelompok 1 K01
 │   └─── settings.json                   
 │ 		       
 ├── save
-│   ├─── konfigurasi.txt		    
-│   ├─── new.txt		     
-│   ├─── test.txt	
-│   ├─── testing.txt
+│   ├─── konfigurasi.txt	  # config yang akan dibaca
+│   ├─── new.txt		      # file yang disimpan oleh user1
+│   ├─── test.txt	          # file yang disimpan oleh user2
 │   └───wayangwave.txt                        
 │ 
 ├── source
 │   ├─── boolean.h
-│   ├─── main.c
+│   ├─── main.c                # implementasi of all commands
 │   ├─── main.exe
 │   ├─── makefile
 │   ├─── testing.mk     
-│   ├─── ADT				    # folder berisikan main
+│   ├─── ADT				   
 │   │      ├─── Linked_List
 │   │      │       ├─── driver-linked-list,c
 │   │      │       ├─── linked_list.c
