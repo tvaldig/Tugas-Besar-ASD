@@ -8,7 +8,7 @@ void PlaySong (){
     ListSingers(ArrayPenyanyi, ArrayPenyanyi.Neff);
 
     //Menerima input nama penyanyi dari user dan mencari idpenyanyi tersebut 
-    printf("Masukkan Nama Penyanyi yang dipilih : ");
+    printf("\nMasukkan Nama Penyanyi yang dipilih : ");
     STARTCOMMAND(false);
     
     //Mengecek input terakhir merupakan semicolon (;) atau bukan
@@ -25,7 +25,7 @@ void PlaySong (){
     ListAlbums(mapAlbum, currentCommand);
     
     //Menerima input nama album dari user dan mencari idalbum tersebut
-    printf("Masukkan Nama Album yang dipilih : ");
+    printf("\nMasukkan Nama Album yang dipilih : ");
     STARTCOMMAND(false);
     
     //Mengecek input terakhir merupakan semicolon (;) atau bukan
@@ -42,7 +42,7 @@ void PlaySong (){
     ListSongs(SetLagu, currentCommand, idPenyanyi);
 
     //Menerima input id lagu dari user
-    printf("Masukkan ID Lagu yang dipilih : ");
+    printf("\nMasukkan ID Lagu yang dipilih : ");
     STARTCOMMAND(false);
     
     //Mengecek input terakhir merupakan semicolon (;) atau bukan
@@ -82,7 +82,7 @@ void PlaySong (){
 }
 } 
 void PlayPlaylist() {
-    printf("Masukkan ID Playlist: ");
+    printf("\nMasukkan ID Playlist: ");
     
     //Menerima input
     STARTCOMMAND(false);

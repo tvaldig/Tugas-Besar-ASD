@@ -32,7 +32,7 @@ void QueueSong(Queue *q){
     ListSingers(ArrayPenyanyi, ArrayPenyanyi.Neff);
 
     //prosedur untuk memilih nama penyanyi
-    printf("Masukkan Nama Penyanyi : ");
+    printf("\nMasukkan Nama Penyanyi : ");
     STARTCOMMAND(false);
 
     //Mengecek input terakhir merupakan semicolon (;) atau bukan
@@ -48,7 +48,7 @@ void QueueSong(Queue *q){
         ListAlbums(mapAlbum, currentCommand);
 
         // prosedur untuk memilih nama album
-        printf("Masukkan Nama Album yang dipilih :");
+        printf("\nMasukkan Nama Album yang dipilih :");
         STARTCOMMAND(false);
 
         //Mengecek input terakhir merupakan semicolon (;) atau bukan
@@ -63,7 +63,7 @@ void QueueSong(Queue *q){
             ListSongs(SetLagu, currentCommand, idpenyanyi);
 
             // prosedur untuk memilih ID lagu
-            printf("Masukkan ID Lagu yang dipilih: ");
+            printf("\nMasukkan ID Lagu yang dipilih: ");
             STARTCOMMAND(false);
 
             //Mengecek input terakhir merupakan semicolon (;) atau bukan
@@ -99,7 +99,7 @@ void QueueSong(Queue *q){
 }
 
 void QueuePlaylist(Queue *q, ArrayDin *playlists){
-    printf("Masukan ID Playlist: ");
+    printf("\nMasukkan ID Playlist: ");
     STARTCOMMAND(false);
     if(IsCommandWithSemicolon(currentCommand)){
     handleSemicolon(currentCommand);
