@@ -67,7 +67,7 @@ int main(){
     }
 
     displayQueue(temp);
-    printf("Queue Berhasil Dikosongkan.\n\n");
+    printf("Queue berhasil dikosongkan.\n\n");
 
-    printf("Pengetesan Driver Queue Berhasil! \n\n");
+    printf("Pengetesan queue.c berhasil! \n\n");
 }
