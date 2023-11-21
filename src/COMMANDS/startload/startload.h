@@ -11,6 +11,7 @@ typedef struct
     IdxType lagu;
 } NowPlaying;
 
+/* VARIABEL GLOBAL */
 extern Penyanyi penyanyi;
 extern MapAlbum mapAlbum;
 extern Album album;
