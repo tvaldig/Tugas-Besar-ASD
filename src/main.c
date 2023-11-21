@@ -92,6 +92,8 @@ int main()
                                 handleSemicolon(currentCommand);
                                 int inputval2 = ConvertWordToInt(currentCommand);
                                 QueueSwap(&antrian, inputval1, inputval2);
+                            } else {
+                                unknownCommand();
                             }
                         }
                         
