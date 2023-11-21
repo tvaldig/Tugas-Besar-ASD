@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "list.h"
 
-// Fungsi untuk menampilkan daftar penyanyi
 void ListSingers(TabInt ArrayP, int singerCount)
 {
     printf("\nDaftar Penyanyi : \n");
@@ -10,7 +9,7 @@ void ListSingers(TabInt ArrayP, int singerCount)
     }
 }
 
-// Fungsi untuk menampilkan daftar album penyanyi
+
 void ListAlbums(MapAlbum MapAlb, Word NamaPenyanyi){
     int number = 0;
     int idalbumpertama = GetIdAlbumPertama(ArrayPenyanyi, searchidpenyanyi(ArrayPenyanyi, NamaPenyanyi));
@@ -22,7 +21,7 @@ void ListAlbums(MapAlbum MapAlb, Word NamaPenyanyi){
     }
 }
 
-// Fungsi untuk menampilkan daftar lagu dalam album
+
 void ListSongs(Set setLagu[], Word NamaAlbum, int idpenyanyi) {
     int idAlbum = searchidalbum(ArrayPenyanyi, idpenyanyi, NamaAlbum, mapAlbum);
     Set s = setLagu[Value(mapAlbum,idAlbum)];
@@ -32,7 +31,7 @@ void ListSongs(Set setLagu[], Word NamaAlbum, int idpenyanyi) {
     }
 }
 
-// Fungsi untuk menampilkan daftar playlist pengguna
+
 void ListPlaylists(ArrayDin Playlist, int playlistCount)
 {
     for (int i = 0; i < playlistCount; i++) {

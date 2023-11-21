@@ -3,6 +3,7 @@
 
 #include "../commands.h"
 
+/* Fungsi untuk melakukan save */
 void SAVE();
 
 #endif
