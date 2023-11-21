@@ -146,6 +146,8 @@ int main()
                     {
                         unknownCommand();
                     }
+                }else{
+                    unknownCommand();
                 }
             }
             else if (IsStringEqual(command, "STATUS;")){

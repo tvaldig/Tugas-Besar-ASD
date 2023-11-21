@@ -14,10 +14,10 @@ int main(){
 
     /* Tes MakeArrayDin dan IsEmptyArrayDin */
     temp = MakeArrayDin();
-    printf("Sebuah array dinamik berhasil diinialisasi\n");
+    printf("\nSebuah array dinamik berhasil diinialisasi\n");
 
     if(IsEmptyArrayDin(temp)){
-        printf("Array tersebut kosong\n");
+        printf("\nFungsi IsEmptyArrayDin() berhasil di tes!\n\n");
     }
 
     PrintArrayDin(temp);
@@ -27,23 +27,25 @@ int main(){
     /* Tes Insert */
     delayoutput();
 
+    char removeenter;
+    scanf("%c", &removeenter);
+
     printf("Masukkan nama playlist: ");
     STARTCOMMAND(false);
-    handleSemicolon(currentCommand);
     Word playlist = currentCommand;
 
-    InsertFirstArrayDin(&temp, playlist);
     InsertLastArrayDin(&temp, playlist);
-    printf("Berhasil di masukkan ke dalam Array Dinamis sebagai elemen pertama dan terakhir\n");
+    printf("Berhasil di masukkan ke dalam Array Dinamis sebagai elemen pertama\n");
     PrintArrayDin(temp);
     printf("\n");
 
     delayoutput();
 
+    scanf("%c", &removeenter);
+
     printf("Masukkan nama playlist: ");
     STARTCOMMAND(false);
-    handleSemicolon(currentCommand);
-    Word playlist = currentCommand;
+    playlist = currentCommand;
 
     InsertAt(&temp, 1, playlist);
     printf("Berhasil di masukkan ke dalam Array Dinamis sebagai elemen kedua\n");
@@ -54,14 +56,16 @@ int main(){
     /* Tes Search */
     delayoutput();
 
-    IdxType idpenyanyi;
-    printf("Masukkan elemen yang ingin dicari\n");
-    printf("Masukkan IDX penyanyi: ");
-    scanf("%d", idpenyanyi);
+    IdxType idplaylist;
+    printf("Masukkan IDX playlist yang ingin dicari\n");
+    printf("Masukkan IDX playlist: ");
+    scanf("%d", &idplaylist);
 
-    printf("\nElemen ada di IDX: %d\n", SearchArrayDin(temp, idpenyanyi));
-    PrintArrayDin(temp);
-    printf("\n");
+    if(SearchArrayDin(temp, idplaylist) == -1){
+        printf("\nIDX playlist %d tidak ditemukan.\n\n", idplaylist);
+    }else{
+        printf("\nIDX playlist %d ditemukan.\n\n", idplaylist);
+    }
 
     /* Tes Delete */
     delayoutput();
@@ -70,9 +74,9 @@ int main(){
     while(!IsEmptyArrayDin(temp)){
         DeleteAt(&temp, 0);
     }
-
     PrintArrayDin(temp);
-    DeallocateArrayDin(&temp);
-    printf("Proses dealokasi berhasil dilakukan\n");
+
+    printf("\nPengetesan arraydin.c berhasil !\n\n");
+
     return 0;
 }

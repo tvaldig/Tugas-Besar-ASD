@@ -1,7 +1,7 @@
 all: run clean
 
-driver: arraydin.c arraydin.h driver-arraydin.c
-	gcc -o main arraydin.c driver-arraydin.c
+driver: 
+	gcc -o main arraydin.c driver-arraydin.c ../MesinKata/mesinkata.c ../MesinKarakter/mesinkarakter.c
 
 run: driver
 	./main
