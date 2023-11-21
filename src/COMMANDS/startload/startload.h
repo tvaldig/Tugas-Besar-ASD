@@ -28,9 +28,18 @@ extern Queue antrian;
 extern Stack riwayat;
 extern ArrayDin playlists;
 extern boolean inSession;
+extern boolean isLogin;
 extern NowPlaying current;
 extern UserSession Users[10];
+extern int IDLogged;
+extern int JumlahUser;
+
+int SearchUser(UserSession u[], Word Nama);
 
 void startLoadFunction(Word fname, boolean loadiftrue);
+
+void loginFunction();
+
+void logoutFunction();
 
 #endif

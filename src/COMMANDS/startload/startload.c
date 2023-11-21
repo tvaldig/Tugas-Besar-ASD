@@ -3,6 +3,7 @@
 
 
 boolean inSession = false;
+boolean isLogin = false;
 Penyanyi penyanyi;
 Album album;
 MapAlbum mapAlbum;
@@ -13,6 +14,8 @@ Stack riwayat;
 ArrayDin playlists;
 NowPlaying current;
 UserSession Users[10];
+int idLogged = -1;
+int JumlahUser = -1;
 
 void startLoadFunction(Word fname, boolean loadiftrue)
 {
@@ -87,8 +90,8 @@ void startLoadFunction(Word fname, boolean loadiftrue)
         }
     }
     ADVOnEnter(false);
-    int z = ConvertWordToInt(currentWord);
-    for(int a = 0; a < z; a++){
+    JumlahUser = ConvertWordToInt(currentWord);
+    for(int a = 0; a < JumlahUser; a++){
         ADVOnEnter(false);
         Users[a].namauser = currentWord;
         // inisialisasi Queue dan Stack kosong untuk menyimpan data dari file
@@ -99,18 +102,16 @@ void startLoadFunction(Word fname, boolean loadiftrue)
         Users[a].playlists = MakeArrayDin(); // membuat arraydin playlists kosong
     }
   
-    printf("flag1\n");
     if (!finish)
     {
-        
         int idxpenyanyi, idxalbum, idxlagu;
-        for(int b = 0; b < z; b++){
+        for(int b = 0; b < JumlahUser; b++){
             ADVSEMICOLON();
             Users[b].current.penyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord);
             ADVSEMICOLON();
-            Users[b].current.album = searchidalbum(ArrayPenyanyi, current.penyanyi, currentWord, mapAlbum);
+            Users[b].current.album = searchidalbum(ArrayPenyanyi, Users[b].current.penyanyi, currentWord, mapAlbum);
             ADVSEMICOLON();
-            Users[b].current.lagu = searchidlagu(SetLagu, mapAlbum, current.album, currentWord);
+            Users[b].current.lagu = searchidlagu(SetLagu, mapAlbum, Users[b].current.album, currentWord);
             ADVOnEnter(false);                 // Mulai membaca sesi bagian queue (antrian)
             n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah antrian (jumlah queue)
 
@@ -168,10 +169,69 @@ void startLoadFunction(Word fname, boolean loadiftrue)
                     addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu); // membuat sebuah node baru berisi idxpenyanyi, idxalbum, idxlagu
                     InsertLast(&(Users[b].playlists.A[i]), temp);                        // memasukkan data dari node yang sudah dibuat ke playlists
                 }
-                
             }
         }
-        
     }
-    printf("flag3\n");
+}
+
+void loginFunction(){
+    if(isLogin){
+        printf("Silahkan Logout terlebih dahulu!\n");
+    } else{
+        printf("Masukkan username user WayangWave : ");
+        STARTCOMMAND(false);
+        if (IsCommandWithSemicolon(currentCommand))
+        {
+            handleSemicolon(currentCommand);
+            idLogged = SearchUser(Users, currentCommand);
+            if (idLogged == -999)
+            {
+                printf("Username tidak ditemukan!\n");
+            }
+            else
+            {
+                current.album = Users[idLogged].current.album;
+                current.lagu = Users[idLogged].current.lagu;
+                current.penyanyi = Users[idLogged].current.penyanyi;
+                antrian = Users[idLogged].antrian;
+                riwayat = Users[idLogged].riwayat;
+                playlists = Users[idLogged].playlists;
+                isLogin = true;
+                printf("Berhasil Login dengan user %s!\n", currentCommand.TabWord);
+            }
+        }
+        else
+        {
+            unknownCommand();
+        }
+    }   
+    
+}
+void logoutFunction()
+    {
+        if (isLogin)
+        {
+            Users[idLogged].current.album = current.album;
+            Users[idLogged].current.lagu = current.lagu;
+            Users[idLogged].current.penyanyi = current.penyanyi;
+            Users[idLogged].antrian = antrian;
+            Users[idLogged].riwayat = riwayat;
+            Users[idLogged].playlists = playlists;
+            isLogin = false;
+            printf("Berhasil Logout!\n");
+        }
+        else
+        {
+            printf("Belum Login ke akun.\n");
+        }
+ } 
+
+
+int SearchUser(UserSession u[], Word Nama){
+    for(int i = 0; i < 10; i++){
+        if(IsStringEqual(u[i].namauser.TabWord, Nama.TabWord)){
+            return i;
+        }
+    }
+    return -999;
 }

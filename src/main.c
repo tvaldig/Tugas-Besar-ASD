@@ -31,10 +31,29 @@ int main()
                 }else{
                     unknownCommand();
                 }
-            }else if(IsStringEqual(command, "HELP;")) {
-                help(inSession);
-            } else if(IsStringEqual(command, "LIST"))
+            }else if(IsStringEqual(command, "LOGIN;")){
+                loginFunction();
+            }
+            else if (IsStringEqual(command, "LOGOUT;"))
             {
+                logoutFunction();
+            }
+            else if (IsStringEqual(command, "HELP;"))
+            {
+                help(inSession);
+            }
+            else if (IsStringEqual(command, "SAVE"))
+            {
+                SAVE();
+            }
+            else if (IsStringEqual(command, "QUIT;"))
+            {
+                Quit(isLogin);
+            }
+
+            if(isLogin){
+                if (IsStringEqual(command, "LIST"))
+                {
                     STARTCOMMAND(false);
                     if (IsCommandWithSemicolon(currentCommand))
                     {
@@ -42,18 +61,23 @@ int main()
                         if (IsStringEqual(nextcommand, "DEFAULT;"))
                         {
                             listDefaultFunction();
-                        } else if(IsStringEqual(nextcommand, "PLAYLIST;"))
+                        }
+                        else if (IsStringEqual(nextcommand, "PLAYLIST;"))
                         {
                             listPlaylistFunction();
                         }
-                        else {
+                        else
+                        {
                             unknownCommand();
                         }
+                    }
                 }
-            } else if(IsStringEqual(command, "QUEUE")){
-                STARTCOMMAND(true);
-                ConvertWordToString(&currentCommand, nextcommand);
-                if (IsCommandWithSemicolon(currentCommand)){
+                else if (IsStringEqual(command, "QUEUE"))
+                {
+                    STARTCOMMAND(true);
+                    ConvertWordToString(&currentCommand, nextcommand);
+                    if (IsCommandWithSemicolon(currentCommand))
+                    {
                         if (IsStringEqual(nextcommand, "SONG;"))
                         {
                             QueueSong(&antrian);
@@ -64,97 +88,114 @@ int main()
                         }
                         else if (IsStringEqual(nextcommand, "PLAYLIST;"))
                         {
-                            QueuePlaylist(&antrian, &playlists);  
+                            QueuePlaylist(&antrian, &playlists);
                         }
-                        else{
+                        else
+                        {
                             unknownCommand();
                         }
-                } else {
-                    if(IsStringEqual(nextcommand, "REMOVE")){
-                        STARTCOMMAND(false);
-                        if (IsCommandWithSemicolon(currentCommand))
-                            {
-                                handleSemicolon(currentCommand);
-                                int inputval = ConvertWordToInt(currentCommand);
-                                QueueRemove(&antrian, inputval);
-                        } else {
-                            unknownCommand();
-                        }
-                    } else if(IsStringEqual(nextcommand, "SWAP")){
-                        STARTCOMMAND(true);
-                        if(IsCommandWithSemicolon(currentCommand)){
-                            printf("Masukan id selanjutnya!\n");
-                        } else {
-                            int inputval1 = ConvertWordToInt(currentCommand);
+                    }
+                    else
+                    {
+                        if (IsStringEqual(nextcommand, "REMOVE"))
+                        {
                             STARTCOMMAND(false);
                             if (IsCommandWithSemicolon(currentCommand))
                             {
                                 handleSemicolon(currentCommand);
-                                int inputval2 = ConvertWordToInt(currentCommand);
-                                QueueSwap(&antrian, inputval1, inputval2);
+                                int inputval = ConvertWordToInt(currentCommand);
+                                QueueRemove(&antrian, inputval);
+                            }
+                            else
+                            {
+                                unknownCommand();
                             }
                         }
-                        
-                    } else {
-                        unknownCommand();
-                    }
-                    
-                }
-            
-            }else if(IsStringEqual(command, "PLAYLIST"))
-            {
-                PLAYLIST();
-            }else if(IsStringEqual(command, "SAVE"))
-            {
-                SAVE();
-            } 
-            else if(IsStringEqual(command, "PLAY")){
-                STARTCOMMAND(false);
-                ConvertWordToString(&currentCommand, nextcommand);
-                if(IsCommandWithSemicolon(currentCommand)){
-                    if(IsStringEqual(nextcommand, "SONG;")){
-                        PlaySong();
-                    }
-                    else if (IsStringEqual(nextcommand, "PLAYLIST;"))
-                    {
-                        PlayPlaylist();
-                    }
-                    else
-                    {
-                        unknownCommand();
+                        else if (IsStringEqual(nextcommand, "SWAP"))
+                        {
+                            STARTCOMMAND(true);
+                            if (IsCommandWithSemicolon(currentCommand))
+                            {
+                                printf("Masukan id selanjutnya!\n");
+                            }
+                            else
+                            {
+                                int inputval1 = ConvertWordToInt(currentCommand);
+                                STARTCOMMAND(false);
+                                if (IsCommandWithSemicolon(currentCommand))
+                                {
+                                    handleSemicolon(currentCommand);
+                                    int inputval2 = ConvertWordToInt(currentCommand);
+                                    QueueSwap(&antrian, inputval1, inputval2);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            unknownCommand();
+                        }
                     }
                 }
-                else{
-                    unknownCommand();
-                }
-            } 
-            else if(IsStringEqual(command, "SONG"))
-            {
-                STARTCOMMAND(false);
-                ConvertWordToString(&currentCommand, nextcommand);
-                if (IsCommandWithSemicolon(currentCommand))
+                else if (IsStringEqual(command, "PLAYLIST"))
                 {
-                    if (IsStringEqual(nextcommand, "NEXT;"))
+                    PLAYLIST();
+                }
+                else if (IsStringEqual(command, "PLAY"))
+                {
+                    STARTCOMMAND(false);
+                    ConvertWordToString(&currentCommand, nextcommand);
+                    if (IsCommandWithSemicolon(currentCommand))
                     {
-                        SongNext();
-                    }
-                    else if (IsStringEqual(nextcommand, "PREVIOUS;"))
-                    {
-                        SongPrevious();
+                        if (IsStringEqual(nextcommand, "SONG;"))
+                        {
+                            PlaySong();
+                        }
+                        else if (IsStringEqual(nextcommand, "PLAYLIST;"))
+                        {
+                            PlayPlaylist();
+                        }
+                        else
+                        {
+                            unknownCommand();
+                        }
                     }
                     else
                     {
                         unknownCommand();
                     }
                 }
+                else if (IsStringEqual(command, "SONG"))
+                {
+                    STARTCOMMAND(false);
+                    ConvertWordToString(&currentCommand, nextcommand);
+                    if (IsCommandWithSemicolon(currentCommand))
+                    {
+                        if (IsStringEqual(nextcommand, "NEXT;"))
+                        {
+                            SongNext();
+                        }
+                        else if (IsStringEqual(nextcommand, "PREVIOUS;"))
+                        {
+                            SongPrevious();
+                        }
+                        else
+                        {
+                            unknownCommand();
+                        }
+                    }
+                }
+                else if (IsStringEqual(command, "STATUS;"))
+                {
+                    status(&antrian, ArrayPenyanyi, SetLagu, mapAlbum);
+                }
+                else if (IsStringEqual(command, "ENHANCE;"))
+                {
+                    ENHANCE();
+                }
+            } else {
+                printf("Silahkan login terlebih dahulu!\n");
             }
-            else if (IsStringEqual(command, "STATUS;")){
-                status(&antrian,ArrayPenyanyi, SetLagu, mapAlbum);
-            } else if(IsStringEqual(command, "QUIT;")){
-                Quit(true);
-            } else if(IsStringEqual(command, "ENHANCE;")){
-                ENHANCE();
-            }
+            
         }
     }
 }

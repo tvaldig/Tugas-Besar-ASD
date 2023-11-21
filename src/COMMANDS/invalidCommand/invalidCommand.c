@@ -27,6 +27,14 @@ boolean checkInSessionCommand(char *command){
     {
         return true;
     }
+    else if (IsStringEqual(command, "LOGIN;"))
+    {
+        return true;
+    }
+    else if (IsStringEqual(command, "LOGOUT;"))
+    {
+        return true;
+    }
     else
     {
         ENDCOMMAND();
