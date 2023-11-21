@@ -1,6 +1,6 @@
 all: run clean
 
-driver: arraydin.c arraydin.h driver-arraydin.c
+driver: 
 	gcc -o main arraydin.c driver-arraydin.c
 
 run: driver
