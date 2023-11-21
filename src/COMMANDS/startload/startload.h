@@ -11,6 +11,14 @@ typedef struct
     IdxType lagu;
 } NowPlaying;
 
+typedef struct{
+    NowPlaying current;
+    Queue antrian;
+    Stack riwayat;
+    ArrayDin playlists;
+    Word namauser;
+} UserSession;
+
 extern Penyanyi penyanyi;
 extern MapAlbum mapAlbum;
 extern Album album;
@@ -21,6 +29,7 @@ extern Stack riwayat;
 extern ArrayDin playlists;
 extern boolean inSession;
 extern NowPlaying current;
+extern UserSession Users[10];
 
 void startLoadFunction(Word fname, boolean loadiftrue);
 
