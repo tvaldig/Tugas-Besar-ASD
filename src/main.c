@@ -49,6 +49,8 @@ int main()
                         else {
                             unknownCommand();
                         }
+                } else {
+                    unknownCommand();
                 }
             } else if(IsStringEqual(command, "QUEUE")){
                 STARTCOMMAND(true);
@@ -83,7 +85,7 @@ int main()
                     } else if(IsStringEqual(nextcommand, "SWAP")){
                         STARTCOMMAND(true);
                         if(IsCommandWithSemicolon(currentCommand)){
-                            printf("Masukan id selanjutnya!\n");
+                            printf("Masukkan id selanjutnya!\n");
                         } else {
                             int inputval1 = ConvertWordToInt(currentCommand);
                             STARTCOMMAND(false);
@@ -148,6 +150,8 @@ int main()
                     {
                         unknownCommand();
                     }
+                } else {
+                    unknownCommand();
                 }
             }
             else if (IsStringEqual(command, "STATUS;")){
