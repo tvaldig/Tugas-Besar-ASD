@@ -8,7 +8,7 @@ void SongNext(){
     char namaPenyanyi[100];
     char judulLagu[100];
     if (isNotPlaying() && IsEmptyQueue (antrian)){
-        printf("Queue kosong dan tidak ada lagu yang sedang dimainkan\n");
+        printf("\nQueue kosong dan tidak ada lagu yang sedang dimainkan\n\n");
     }
     else if (IsEmptyQueue(antrian)){
         //Mencari Judul Lagu yang sedang dimainkan
@@ -22,8 +22,8 @@ void SongNext(){
         ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
 
         //Output
-        printf("Queue kosong, memutar kembali lagu\n");
-        printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
+        printf("\nQueue kosong, memutar kembali lagu\n");
+        printf("\"%s\" oleh \"%s\"\n\n", judulLagu, namaPenyanyi);
     }
     else{
         //Memasukkan lagu yang dimainkan ke riwayat
@@ -45,8 +45,8 @@ void SongNext(){
         ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
 
         //Output
-        printf("Memutar lagu selanjutnya\n");
-        printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
+        printf("\nMemutar lagu selanjutnya\n");
+        printf("\"%s\" oleh \"%s\"\n\n", judulLagu, namaPenyanyi);
     }
 }
 
@@ -57,7 +57,7 @@ void SongPrevious(){
      char namaPenyanyi[100];
      char judulLagu[100];
      if (isNotPlaying() && IsEmptyStack (riwayat)){
-         printf("Riwayat lagu kosong dan tidak ada lagu yang sedang dimainkan\n");
+         printf("\nRiwayat lagu kosong dan tidak ada lagu yang sedang dimainkan\n\n");
      }
      if(IsEmptyStack(riwayat)){
          //Mencari Judul Lagu yang sedang dimainkan
@@ -71,8 +71,8 @@ void SongPrevious(){
          ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
 
          //Output
-         printf("Riwayat lagu kosong, memutar kembali lagu\n");
-         printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
+         printf("\nRiwayat lagu kosong, memutar kembali lagu\n");
+         printf("\"%s\" oleh \"%s\"\n\n", judulLagu, namaPenyanyi);
      }
      else {
          //Membuat temporary queue agar lagu yang dimainkan bisa ditaruh di head
@@ -112,7 +112,7 @@ void SongPrevious(){
          ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
 
          //Output
-         printf("Memutar lagu sebelumnya\n");
-         printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
+         printf("\nMemutar lagu sebelumnya\n");
+         printf("\"%s\" oleh \"%s\"\n\n", judulLagu, namaPenyanyi);
      }
 }
