@@ -73,7 +73,7 @@ int main()
                         }
                 } else {
                     if(IsStringEqual(nextcommand, "REMOVE")){
-                        STARTCOMMAND(false);
+                        STARTCOMMAND(true);
                         if (IsCommandWithSemicolon(currentCommand))
                             {
                                 handleSemicolon(currentCommand);
@@ -88,7 +88,7 @@ int main()
                             printf("Masukkan id selanjutnya!\n");
                         } else {
                             int inputval1 = ConvertWordToInt(currentCommand);
-                            STARTCOMMAND(false);
+                            STARTCOMMAND(true);
                             if (IsCommandWithSemicolon(currentCommand))
                             {
                                 handleSemicolon(currentCommand);
