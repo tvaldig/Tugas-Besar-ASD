@@ -1,6 +1,6 @@
 all: run clean
 
-driver: driver-linked-list.c linked_list.c linked_list.h
+driver: 
 	gcc -o main driver-linked-list.c linked_list.c
 
 run: driver

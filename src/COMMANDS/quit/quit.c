@@ -5,17 +5,17 @@ void Quit(boolean isLogin) {
     if (isLogin) {
         char namacommand[100];
         // Save
-        printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");
+        printf("\nApakah kamu ingin menyimpan data sesi sekarang? (Y/N) ");
         STARTCOMMAND(false);
         ConvertWordToString(&currentCommand, namacommand);
         while(!(IsStringEqual(namacommand, "N;") || IsStringEqual(namacommand, "Y;"))){
             unknownCommand();
-            printf("Apakah kamu ingin menyimpan data sesi sekarang?\n");
+            printf("Apakah kamu ingin menyimpan data sesi sekarang? (Y/N) ");
             STARTCOMMAND(false);
             ConvertWordToString(&currentCommand, namacommand);
         }
         if (IsStringEqual(namacommand, "N;")) {
-            printf("Kamu keluar dari WayangWave.\nDadah ^_^/\n");
+            printf("\nKamu keluar dari WayangWave.\n\nDadah ^_^/\n\n");
         } else if (IsStringEqual(namacommand, "Y;")) {
             printf("Masukkan nama file!\n");
             printf("* Perhatikan kesalahan penulisan dapat mengakibatkan file tidak tersimpan, program akan otomatis tidak menyimpan file apabila salah menulis nama file!\n");

@@ -10,13 +10,16 @@ void PlaySong (){
     //Menerima input nama penyanyi dari user dan mencari idpenyanyi tersebut 
     printf("\nMasukkan Nama Penyanyi yang dipilih : ");
     STARTCOMMAND(false);
-    
-    //Mengecek input terakhir merupakan semicolon (;) atau bukan
-    if(IsCommandWithSemicolon(currentCommand)){
+
+    if(!(IsCommandWithSemicolon(currentCommand))){
+        unknownCommand();
+        return;
+    }
+
     handleSemicolon(currentCommand);
     if(searchidpenyanyi(ArrayPenyanyi, currentCommand) == -1){
         //Jika nama penyanyi tidak ditemukan maka play gagal
-        printf("Pencarian gagal. Nama penyanyi tidak ditemukan!\n");
+        printf("\nPencarian gagal. Nama penyanyi tidak ditemukan!\n\n");
     } else {
     ConvertWordToString(&currentCommand, namapenyanyi);
     IdxType idPenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand);
@@ -27,13 +30,17 @@ void PlaySong (){
     //Menerima input nama album dari user dan mencari idalbum tersebut
     printf("\nMasukkan Nama Album yang dipilih : ");
     STARTCOMMAND(false);
-    
-    //Mengecek input terakhir merupakan semicolon (;) atau bukan
-    if(IsCommandWithSemicolon(currentCommand)){
-    handleSemicolon(currentCommand);
+
+    if(!(IsCommandWithSemicolon(currentCommand))){
+        unknownCommand();
+        return;
+    }
+
+    handleSemicolon(currentCommand); 
+    printf("\n");
     if(searchidalbum(ArrayPenyanyi, idPenyanyi, currentCommand, mapAlbum) == -1){
         //Jika nama album tidak ditemukan maka play gagal
-        printf("Pencarian gagal. Nama album tidak ditemukan!\n");
+        printf("Pencarian gagal. Nama album tidak ditemukan!\n\n");
     } else {
     Word NamaAlbum = currentCommand;
     IdxType idAlbum = searchidalbum(ArrayPenyanyi, idPenyanyi, currentCommand, mapAlbum);
@@ -44,9 +51,14 @@ void PlaySong (){
     //Menerima input id lagu dari user
     printf("\nMasukkan ID Lagu yang dipilih : ");
     STARTCOMMAND(false);
+
+    if(!(IsCommandWithSemicolon(currentCommand))){
+        unknownCommand();
+        return;
+    }
     
-    //Mengecek input terakhir merupakan semicolon (;) atau bukan
-    if(IsCommandWithSemicolon(currentCommand)){
+    
+
     handleSemicolon(currentCommand);
     IdxType idLagu = ConvertWordToInt(currentCommand)-1;
     Word JudulLaguWord = GetJudulLagu(SetLagu, NamaAlbum, idLagu+1, idPenyanyi);
@@ -54,7 +66,7 @@ void PlaySong (){
     
     if (IsStringEqual(judullagu, "NOTFOUND"))
     { // jika id tidak ditemukan maka play gagal
-    printf("Pencarian gagal. ID Lagu tidak ditemukan!\n");
+    printf("\nPencarian gagal. ID Lagu tidak ditemukan!\n\n");
     } else {
 
     //Memasukkan id dari tiap input ke lagu yang dimainkan
@@ -68,30 +80,26 @@ void PlaySong (){
 
     NotPlayingPlaylist();
     printf("Memutar lagu \"%s\" oleh \"%s\".\n", judullagu, namapenyanyi);
-                }
-            } else {
-                unknownCommand(); //input pengguna pada id lagu tidak diakhiri dengan ;
-            }
-        }
-    } else {
-        unknownCommand(); //input pengguna pada nama album tidak diakhiri dengan ;
-    } 
     }
-}  else {
-    unknownCommand(); //input pengguna pada nama penyanyi tidak diakhiri dengan ;
-}
 } 
+}
+}
 void PlayPlaylist() {
     printf("\nMasukkan ID Playlist: ");
     
     //Menerima input
     STARTCOMMAND(false);
-    if(IsCommandWithSemicolon(currentCommand)){
+
+    if(!(IsCommandWithSemicolon(currentCommand))){
+        unknownCommand();
+        return;
+    }
+
     handleSemicolon(currentCommand);
     int idPlaylist = ConvertWordToInt(currentCommand)-1;
     //Mengecek ada tidaknya input di playlist
     if(idPlaylist > playlists.Neff-1 || idPlaylist < 0){
-        printf("ID Playlist tidak ditemukan!\n");
+        printf("\nID Playlist tidak ditemukan!\n\n");
     }
     else{
     currentIdPlaylist = idPlaylist;
@@ -118,7 +126,7 @@ void PlayPlaylist() {
     dequeue(&antrian, &(&current)->penyanyi, &(&current)->album, &(&current)->lagu);
 
     //Output
-    printf("Memutar playlist \"%s\".\n", p.namaplaylist.TabWord);
+    printf("\nMemutar playlist \"%s\".\n\n", p.namaplaylist.TabWord);
     }
     } else {
         unknownCommand();

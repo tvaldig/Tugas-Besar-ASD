@@ -92,7 +92,7 @@ void ADD_ALBUM_PLAYLIST(){
                 idxalbum = searchidalbum(ArrayPenyanyi, idxpenyanyi, currentCommand, mapAlbum); // Mencari idxalbum dari inputan user
                 if(idxalbum == -1)
                 {
-                    printf("Album %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
+                    printf("\nAlbum %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
                     state = false;
                     return;
                 }
@@ -105,7 +105,7 @@ void ADD_ALBUM_PLAYLIST(){
 
         }else
         { // Bila inputan user salah
-            printf("Penyanyi %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
+            printf("\nPenyanyi %s tidak ada dalam daftar. Silakan coba lagi.\n\n", currentCommand.TabWord);
             state = false;
             return;
         }
@@ -137,6 +137,7 @@ void ADD_ALBUM_PLAYLIST(){
 void ADD_SONG_PLAYLIST(){
     statealbum = false;
     ADD_ALBUM_PLAYLIST();
+    printf("\n");
     if(state) // Apabila proses ADD_ALBUM_PLAYLIST masih berhasil
     {
         ListSongs(SetLagu, currentCommand, idxpenyanyi); // Menampilkan lagu yang dimiliki oleh album tersebut
@@ -153,7 +154,7 @@ void ADD_SONG_PLAYLIST(){
             idxset = Value(mapAlbum, idxalbum); // Mencari idxset dari ID album yang diinput oleh user
 
             if(idxlagu > SetLagu[idxset].Count -1 || idxlagu < 0){ // Cek apabila ID inputan user diluar yang seharusnya
-                printf("Lagu dengan ID %d tidak ada dalam daftar. Silakan coba lagi.\n\n", idxlagu + 1);
+                printf("\nLagu dengan ID %d tidak ada dalam daftar. Silakan coba lagi.\n\n", idxlagu + 1);
                 return;
             }
         }else
@@ -175,7 +176,7 @@ void ADD_SONG_PLAYLIST(){
 }
 
 void INPUT_PLAYLIST(){
-    ListPlaylists(playlists, playlists.Neff); // Menampilkan daftar playlist
+    listPlaylistFunction(); // Menampilkan daftar playlist
 
     printf("Masukkan ID Playlist yang dipilih : "); // Menerima input ID Playlist dari user
     STARTCOMMAND(false);
@@ -322,7 +323,7 @@ void REMOVE_PLAYLIST(){
 
     int idxset = Value(mapAlbum, dealokasi->idalbum);
 
-    printf("Lagu \"%s\" oleh \"%s\" telah dihapus dari playlist \"%s\"!\n\n", SetLagu[idxset].AlbumLagu[dealokasi->idlagu].JudulLagu.TabWord, ArrayPenyanyi.penyanyi[dealokasi->idpenyanyi].namapenyanyi.TabWord, playlists.A[idxplaylist].namaplaylist.TabWord);
+    printf("\nLagu \"%s\" oleh \"%s\" telah dihapus dari playlist \"%s\"!\n\n", SetLagu[idxset].AlbumLagu[dealokasi->idlagu].JudulLagu.TabWord, ArrayPenyanyi.penyanyi[dealokasi->idpenyanyi].namapenyanyi.TabWord, playlists.A[idxplaylist].namaplaylist.TabWord);
 
     Dealokasi(&dealokasi);
 
