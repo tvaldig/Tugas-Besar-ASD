@@ -128,9 +128,6 @@ void PlayPlaylist() {
     //Output
     printf("\nMemutar playlist \"%s\".\n\n", p.namaplaylist.TabWord);
     }
-    } else {
-        unknownCommand();
-    }
 }
     
     
