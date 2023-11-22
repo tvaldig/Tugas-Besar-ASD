@@ -11,31 +11,9 @@ ArrayDin MakeArrayDin()
     return arr;
 }
 
-void DeallocateArrayDin(ArrayDin *array)
-{
-    free((*array).A);
-    (*array).Capacity = 0;
-    (*array).Neff = 0;
-}
-
 boolean IsEmptyArrayDin(ArrayDin array)
 {
     return array.Neff == 0;
-}
-
-int LengthArrayDin(ArrayDin array)
-{
-    return array.Neff;
-}
-
-playlist Get(ArrayDin array, IdxType i)
-{
-    return array.A[i];
-}
-
-int GetCapacity(ArrayDin array)
-{
-    return array.Capacity;
 }
 
 void InsertAt(ArrayDin *array, IdxType i, Word nama)
@@ -66,15 +44,6 @@ void InsertLastArrayDin(ArrayDin *array, Word nama)
 }
 
 /**
- * Fungsi untuk menambahkan elemen baru di awal array.
- * Prekondisi: array terdefinisi
- */
-void InsertFirstArrayDin(ArrayDin *array, Word nama)
-{
-    return InsertAt(array, 0, nama);
-}
-
-/**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
@@ -86,24 +55,6 @@ void DeleteAt(ArrayDin *array, IdxType i)
         array->A[j] = array->A[j + 1];
     }
     array->Neff--;
-}
-
-void DeleteLast(ArrayDin *array)
-{
-    // KAMUS
-    // ALGORITMA
-    DeleteAt(array, (*array).Neff - 1);
-}
-
-/*
- * Fungsi untuk menghapus elemen pertama ArrayDin
- * Prekondisi: array tidak kosong
- */
-void DeleteFirst(ArrayDin *array)
-{
-    // KAMUS
-    // ALGORITMA
-    DeleteAt(array, 0);
 }
 
 void PrintArrayDin(ArrayDin array)
@@ -118,35 +69,6 @@ void PrintArrayDin(ArrayDin array)
         printf("%d  | ", (array).A[j].idplaylist);
         printf("%s\n", (array).A[j].namaplaylist.TabWord);
     }
-}
-
-/*
- * Fungsi untuk melakukan reverse suatu ArrayDin.
- * Prekondisi: array terdefinisi
- */
-void ReverseArrayDin(ArrayDin *array)
-{
-    IdxType j;
-    playlist *temp = (playlist *)malloc((*array).Capacity * sizeof(playlist));
-
-    for (j = 0; j < (*array).Neff; j++)
-    {
-        temp[j] = (*array).A[(*array).Neff - (1 + j)];
-    }
-    for (j = 0; j < (*array).Neff; j++)
-    {
-        (*array).A[j] = temp[j];
-    }
-    free(temp);
-}
-
-/*
- * Fungsi untuk melakukan copy suatu ArrayDin.
- * Prekondisi: array terdefinisi
- */
-ArrayDin CopyArrayDin(ArrayDin array)
-{
-    return array;
 }
 
 /*

@@ -17,11 +17,6 @@ boolean IsEmptyStack(Stack S)
     return S.TOP == NIL;
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFullStack(Stack S)
-{
-    return S.TOP == MaxEl - 1;
-}
-/* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
 void Push(Stack *S, idx penyanyi, idx album, idx lagu)

@@ -21,7 +21,7 @@ boolean isIdFound(Queue *q, int id){
 void ClearQueue(Queue *q){
     IDX_HEAD(*q) = IDX_UNDEF;
     IDX_TAIL(*q) = IDX_UNDEF;
-    printf("Queue berhasil dikosongkan.\n");
+    printf("\nQueue berhasil dikosongkan.\n\n");
 }
 
 void QueueSong(Queue *q){
@@ -32,11 +32,17 @@ void QueueSong(Queue *q){
     ListSingers(ArrayPenyanyi, ArrayPenyanyi.Neff);
 
     //prosedur untuk memilih nama penyanyi
-    printf("Masukkan Nama Penyanyi : ");
+    printf("\nMasukkan Nama Penyanyi : ");
     STARTCOMMAND(false);
+
+    if(!(IsCommandWithSemicolon(currentCommand))){
+        unknownCommand();
+        return;
+    }
+
     handleSemicolon(currentCommand);
     if(searchidpenyanyi(ArrayPenyanyi, currentCommand) == -1){
-        printf("Queue song gagal. Nama penyanyi tidak ditemukan!\n");
+        printf("\nQueue song gagal. Nama penyanyi tidak ditemukan!\n\n");
     } else {
         int idpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand);
         ConvertWordToString(&currentCommand, namapenyanyi);
@@ -45,11 +51,17 @@ void QueueSong(Queue *q){
         ListAlbums(mapAlbum, currentCommand);
 
         // prosedur untuk memilih nama album
-        printf("Masukkan Nama Album yang dipilih :");
+        printf("\nMasukkan Nama Album yang dipilih : ");
         STARTCOMMAND(false);
+
+        if(!(IsCommandWithSemicolon(currentCommand))){
+            unknownCommand();
+            return;
+        }
+
         handleSemicolon(currentCommand);
         if(searchidalbum(ArrayPenyanyi, idpenyanyi, currentCommand, mapAlbum) == -1){
-            printf("Queue Song Gagal. Nama album tidak ditemukan!\n");
+            printf("\nQueue Song Gagal. Nama album tidak ditemukan!\n\n");
         } else {
             Word NamaAlbum = currentCommand;
 
@@ -57,8 +69,14 @@ void QueueSong(Queue *q){
             ListSongs(SetLagu, currentCommand, idpenyanyi);
 
             // prosedur untuk memilih ID lagu
-            printf("Masukkan ID Lagu yang dipilih: ");
+            printf("\nMasukkan ID Lagu yang dipilih : ");
             STARTCOMMAND(false);
+
+            if(!(IsCommandWithSemicolon(currentCommand))){
+                unknownCommand();
+                return;
+            }
+
             handleSemicolon(currentCommand);
             int idlagu = ConvertWordToInt(currentCommand);
 
@@ -68,28 +86,29 @@ void QueueSong(Queue *q){
 
             if (IsStringEqual(judullagu, "NOTFOUND"))
             { // jika id tidak ditemukan maka queue gagal
-                printf("Queue Song Gagal. ID Lagu tidak ditemukan!\n");
+                printf("\nQueue Song Gagal. ID Lagu tidak ditemukan!\n\n");
             }
             else
             {
                 NotPlayingPlaylist();
                 enqueue(q, idpenyanyi, searchidalbum(ArrayPenyanyi, idpenyanyi, NamaAlbum, mapAlbum), idlagu - 1);
-                printf("Berhasil menambahkan lagu \"%s\" oleh \"%s\" ke queue.\n", judullagu, namapenyanyi);
+                printf("\nBerhasil menambahkan lagu \"%s\" oleh \"%s\" ke queue.\n\n", judullagu, namapenyanyi);
             }
         }
-       
     }
-    
-    
 }
 
 void QueuePlaylist(Queue *q, ArrayDin *playlists){
-    printf("Masukan ID Playlist: ");
+    printf("\nMasukkan ID Playlist: ");
     STARTCOMMAND(false);
+    if(!IsCommandWithSemicolon(currentCommand)){
+        unknownCommand();
+        return;
+    }
     handleSemicolon(currentCommand);
-    int idplaylist = ConvertWordToInt(currentCommand);
-    if(idplaylist > playlists->Neff){
-        printf("Queue Playlist gagal. ID Playlist tidak ditemukan!\n");
+    int idplaylist = ConvertWordToInt(currentCommand) - 1;
+    if(idplaylist > playlists->Neff-1 || idplaylist < 0){
+        printf("\nQueue Playlist gagal. ID Playlist tidak ditemukan!\n\n");
     } else {
         playlist ply = playlists->A[idplaylist];
         addressnode P = First(ply);
@@ -104,7 +123,7 @@ void QueuePlaylist(Queue *q, ArrayDin *playlists){
         if(idplaylist != currentIdPlaylist){
             NotPlayingPlaylist();
         }
-        printf("Berhasil menambahkan playlist \"%s\" ke queue.\n", ply.namaplaylist.TabWord);
+        printf("\nBerhasil menambahkan playlist \"%s\" ke queue.\n\n", ply.namaplaylist.TabWord);
     }
 }
 
@@ -115,11 +134,8 @@ void QueueRemove(Queue *q, int inputid)
     char judullagu[100], namapenyanyi[100];
     if (id > IDX_TAIL(*q) || id < 0)
     {
-        printf("Lagu dengan urutan ke %d tidak ada.\n", inputid);
-    } else if(id < 0){
-        printf("Urutan lagu tidak valid.\n");
-    }
-    else
+        printf("\nLagu dengan urutan ke %d tidak ada.\n\n", inputid);
+    }else
     {
         for (int i = IDX_HEAD(*q); i < IDX_HEAD(*q) + LengthQueue(*q); i++)
         {
@@ -148,7 +164,7 @@ void QueueRemove(Queue *q, int inputid)
         ConvertWordToString(&ArrayPenyanyi.penyanyi[idpenyanyi].namapenyanyi, namapenyanyi);
         Word judul = SearchJudulFromId(idalbum, idlagu);
         ConvertWordToString(&judul, judullagu);
-        printf("Lagu \"%s\" oleh \"%s\" telah dihapus dari queue!\n", judullagu, namapenyanyi);
+        printf("\nLagu \"%s\" oleh \"%s\" telah dihapus dari queue!\n\n", judullagu, namapenyanyi);
     }
 }
 
@@ -174,13 +190,13 @@ void QueueSwap(Queue *q, int inputId1, int inputId2){
         ConvertWordToString(&judul1, judullagu1);
         Word judul2 = SearchJudulFromId(q->Tab[id1].album, q->Tab[id1].lagu);
         ConvertWordToString(&judul2, judullagu2);
-        printf("Lagu \"%s\" berhasil ditukar dengan \"%s\" \n", judullagu1, judullagu2);
+        printf("\nLagu \"%s\" berhasil ditukar dengan \"%s\" \n\n", judullagu1, judullagu2);
     } else if(isIdFound(q, id1) && !isIdFound(q, id2)){
-        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", inputId2);
+        printf("\nLagu dengan urutan ke %d tidak terdapat dalam queue!\n\n", inputId2);
     }
     else if (!isIdFound(q, id1) && isIdFound(q, id2)){
-        printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", inputId1);
+        printf("\nLagu dengan urutan ke %d tidak terdapat dalam queue!\n\n", inputId1);
     } else {
-        printf("Lagu dengan urutan ke %d dan urutan ke %d tidak terdapat dalam queue!\n", inputId1, inputId2);
+        printf("\nLagu dengan urutan ke %d dan urutan ke %d tidak terdapat dalam queue!\n\n", inputId1, inputId2);
     }
 }

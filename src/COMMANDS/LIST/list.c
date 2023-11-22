@@ -25,7 +25,7 @@ void ListAlbums(MapAlbum MapAlb, Word NamaPenyanyi){
 void ListSongs(Set setLagu[], Word NamaAlbum, int idpenyanyi) {
     int idAlbum = searchidalbum(ArrayPenyanyi, idpenyanyi, NamaAlbum, mapAlbum);
     Set s = setLagu[Value(mapAlbum,idAlbum)];
-    printf("\nDaftar Lagu di %s : \n", NamaAlbum.TabWord);
+    printf("Daftar Lagu di %s : \n", NamaAlbum.TabWord);
     for (int i = 0; i < s.Count; i++) {
         printf("%d. %s\n", i + 1, s.AlbumLagu[i].JudulLagu.TabWord);
     }
@@ -53,12 +53,11 @@ void listDefaultFunction(){
         handleSemicolon(currentCommand);
         int idpenyanyi = searchidpenyanyi(ArrayPenyanyi, currentCommand);
         if(idpenyanyi == -1){
-            printf("\nNama penyanyi tidak ditemukan!\n");
+            printf("\nNama penyanyi tidak ditemukan!\n\n");
         } else {
             ListAlbums(mapAlbum, currentCommand);
             printf("\nIngin melihat lagu yang ada?(Y/N) : ");
             STARTCOMMAND(false);
-            printf("\n");
             ConvertWordToString(&currentCommand, yn);
             if (IsStringEqual(yn, "Y;"))
             {
@@ -68,22 +67,23 @@ void listDefaultFunction(){
                 handleSemicolon(currentCommand);
                 int idalbum = searchidalbum(ArrayPenyanyi, idpenyanyi, currentCommand, mapAlbum);
                 if(idalbum == -1) {
-                    printf("\nNama album tidak ditemukan!\n");
+                    printf("Nama album tidak ditemukan!\n\n");
                 } else {
                     ListSongs(SetLagu, currentCommand, idpenyanyi);
+                    printf("\n");
                 }           
             }
             else if (IsStringEqual(yn, "N;"))
             {
-                
+                printf("\n");
             } else {
-                printf("\nGagal. Masukan bukan Y/N.\n");
+                printf("\nGagal. Masukan bukan Y/N.\n\n");
             }
         }
     } else if(IsStringEqual(yn, "N;")){
-      
+      printf("\n");
     } else{
-        printf("\nGagal. Masukan bukan Y/N.\n");
+        printf("\nGagal. Masukan bukan Y/N.\n\n");
     }
 }
 
@@ -91,7 +91,7 @@ void listPlaylistFunction(){
     printf("\nDaftar playlist yang kamu miliki : \n") ;
     if (IsEmptyArrayDin(playlists))
     {
-        printf("\nKamu tidak memiliki playlist.\n");
+        printf("Kamu tidak memiliki playlist.\n\n");
     } else {
         ListPlaylists(playlists, playlists.Neff);
     }

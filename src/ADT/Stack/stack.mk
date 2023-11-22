@@ -1,7 +1,7 @@
 all : run clean
 
 driver: 
-	gcc -o main driver-mesin-karakter.c mesinkarakter.c
+	gcc -o main driver-stack.c stack.c
 
 run: driver
 	./main.exe

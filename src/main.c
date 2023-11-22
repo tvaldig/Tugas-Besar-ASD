@@ -52,22 +52,22 @@ int main()
             }
             else if (IsStringEqual(command, "LIST"))
             {
-                STARTCOMMAND(false);
-                if (IsCommandWithSemicolon(currentCommand))
-                {
-                    ConvertWordToString(&currentCommand, nextcommand);
-                    if (IsStringEqual(nextcommand, "DEFAULT;"))
+                    STARTCOMMAND(false);
+                    if (IsCommandWithSemicolon(currentCommand))
                     {
-                        listDefaultFunction();
-                    }
-                    else if (IsStringEqual(nextcommand, "PLAYLIST;"))
-                    {
-                        listPlaylistFunction();
-                    }
-                    else
-                    {
-                        unknownCommand();
-                    }
+                        ConvertWordToString(&currentCommand, nextcommand);
+                        if (IsStringEqual(nextcommand, "DEFAULT;"))
+                        {
+                            listDefaultFunction();
+                        } else if(IsStringEqual(nextcommand, "PLAYLIST;"))
+                        {
+                            listPlaylistFunction();
+                        }
+                        else {
+                            unknownCommand();
+                        }
+                } else {
+                    unknownCommand();
                 }
             }
             else if (IsStringEqual(command, "QUEUE"))
@@ -119,12 +119,14 @@ int main()
                         else
                         {
                             int inputval1 = ConvertWordToInt(currentCommand);
-                            STARTCOMMAND(false);
+                            STARTCOMMAND(true);
                             if (IsCommandWithSemicolon(currentCommand))
                             {
                                 handleSemicolon(currentCommand);
                                 int inputval2 = ConvertWordToInt(currentCommand);
                                 QueueSwap(&antrian, inputval1, inputval2);
+                            } else {
+                                unknownCommand();
                             }
                         }
                     }
@@ -176,6 +178,8 @@ int main()
                     {
                         unknownCommand();
                     }
+                } else {
+                    unknownCommand();
                 }
             }
             else if (IsStringEqual(command, "STATUS;"))

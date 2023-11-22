@@ -18,12 +18,6 @@ boolean IsEmptyQueue(Queue Q)
     return (IDX_HEAD(Q) == IDX_UNDEF) && (IDX_TAIL(Q) == IDX_UNDEF);
 }
 /* Mengirim true jika Q kosong: lihat definisi di atas */
-boolean IsFullQueue(Queue Q)
-{
-    return LengthQueue(Q) == IDX_MAX + 1;
-}
-/* Mengirim true jika tabel penampung elemen Q sudah penuh */
-/* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam Tab melingkar*/
 
 int LengthQueue(Queue Q)
 {

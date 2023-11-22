@@ -68,8 +68,7 @@ int main(){
 
     displayStack(temp);
 
-    printf("\n");
+    printf("Stack berhasil dikosongkan.\n\n");
 
-
-
+    printf("Pengetesan stack.c berhasil! \n\n");
 }
