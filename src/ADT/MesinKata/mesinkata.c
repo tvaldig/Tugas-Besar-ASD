@@ -7,6 +7,9 @@ Word currentCommand;
 boolean EndWord;
 boolean EndCommand;
 
+
+boolean UNDEF;
+
 void IgnoreBlanks()
 {
     while (currentChar == BLANK)
@@ -174,7 +177,14 @@ void ADVSEMICOLON(){
     Word Empty = {"", 0};
     currentWord = Empty;
     ADVFILE();
-    COPYFILESEMICOLON();
+    if(GetCC() == '-'){
+        UNDEF = true;
+        ADVCONTINUE();
+    } else {
+        UNDEF = false;
+        COPYFILESEMICOLON();
+    }
+   
 }
 
 void COPYFILESEMICOLON(){

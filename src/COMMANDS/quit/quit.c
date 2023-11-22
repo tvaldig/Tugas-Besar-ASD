@@ -2,7 +2,7 @@
 #include "quit.h"
 
 void Quit(boolean isLogin) {
-    if (isLogin) {
+    if (!isLogin) {
         char namacommand[100];
         // Save
         printf("\nApakah kamu ingin menyimpan data sesi sekarang? (Y/N) ");
@@ -22,7 +22,8 @@ void Quit(boolean isLogin) {
             printf("** Contoh penulisan yang benar : \"test.txt;\"\n\n");
             SAVE();
         }
-
         exit(0);
+    } else {
+        printf("Silahkan logout terlebih dahulu!\n");
     }
 }

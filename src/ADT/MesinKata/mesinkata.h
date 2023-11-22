@@ -21,6 +21,8 @@ extern Word currentWord;
 extern boolean EndCommand;
 extern Word currentCommand;
 
+extern boolean UNDEF;
+
 void IgnoreBlanks();
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
