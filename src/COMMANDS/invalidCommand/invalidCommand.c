@@ -29,7 +29,12 @@ boolean checkInSessionCommand(char *command, boolean isLog){
     }
     else if (IsStringEqual(command, "SAVE"))
     {
-        return true;
+        if(isLog){
+            return true;
+        } else {
+            return false;
+        }
+       
     }
     else if (IsStringEqual(command, "QUIT;"))
     {
@@ -99,7 +104,7 @@ boolean checkCommand(char *command, boolean inSession, boolean isLog) {
                     wrongCommand();
                     return false;
                 }
-                else if (IsStringEqual(command, "HELP;") || IsStringEqual(command, "SAVE") || checkInSessionCommand(command, isLog))
+                else if (IsStringEqual(command, "HELP;") || checkInSessionCommand(command, isLog))
                 {
                     return true;
                 }
@@ -107,9 +112,6 @@ boolean checkCommand(char *command, boolean inSession, boolean isLog) {
                 {
                     if(!isLog){
                         printf("Silahkan login terlebih dahulu.\n");
-                        return false;
-                    } else if((IsStringEqual(command, "SAVE"))){
-                        
                         return false;
                     } else{
                         unknownCommand();

@@ -2,7 +2,6 @@
 
 void SAVE(){
     if(isLogin){
-        printf("Silahkan logout terlebih dahulu.\n");
     } else {
         STARTCOMMAND(false);
 
