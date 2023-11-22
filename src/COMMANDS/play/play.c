@@ -36,7 +36,8 @@ void PlaySong (){
         return;
     }
 
-    handleSemicolon(currentCommand); printf("\n");
+    handleSemicolon(currentCommand); 
+    printf("\n");
     if(searchidalbum(ArrayPenyanyi, idPenyanyi, currentCommand, mapAlbum) == -1){
         //Jika nama album tidak ditemukan maka play gagal
         printf("Pencarian gagal. Nama album tidak ditemukan!\n\n");
@@ -55,6 +56,8 @@ void PlaySong (){
         unknownCommand();
         return;
     }
+    
+    
 
     handleSemicolon(currentCommand);
     IdxType idLagu = ConvertWordToInt(currentCommand)-1;
@@ -76,11 +79,11 @@ void PlaySong (){
     CreateEmptyStack(&riwayat);
 
     NotPlayingPlaylist();
-    printf("\nMemutar lagu \"%s\" oleh \"%s\".\n\n", judullagu, namapenyanyi);
-        }
+    printf("Memutar lagu \"%s\" oleh \"%s\".\n", judullagu, namapenyanyi);
     }
-}  
 } 
+}
+}
 void PlayPlaylist() {
     printf("\nMasukkan ID Playlist: ");
     
@@ -93,7 +96,7 @@ void PlayPlaylist() {
     }
 
     handleSemicolon(currentCommand);
-    int idPlaylist = ConvertWordToInt(currentCommand) - 1;
+    int idPlaylist = ConvertWordToInt(currentCommand)-1;
     //Mengecek ada tidaknya input di playlist
     if(idPlaylist > playlists.Neff-1 || idPlaylist < 0){
         printf("\nID Playlist tidak ditemukan!\n\n");

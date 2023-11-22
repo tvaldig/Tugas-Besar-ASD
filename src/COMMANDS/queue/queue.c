@@ -95,15 +95,16 @@ void QueueSong(Queue *q){
                 printf("\nBerhasil menambahkan lagu \"%s\" oleh \"%s\" ke queue.\n\n", judullagu, namapenyanyi);
             }
         }
-       
     }
-    
-    
 }
 
 void QueuePlaylist(Queue *q, ArrayDin *playlists){
-    printf("\nMasukan ID Playlist : ");
+    printf("\nMasukkan ID Playlist: ");
     STARTCOMMAND(false);
+    if(!IsCommandWithSemicolon(currentCommand)){
+        unknownCommand();
+        return;
+    }
     handleSemicolon(currentCommand);
     int idplaylist = ConvertWordToInt(currentCommand) - 1;
     if(idplaylist > playlists->Neff-1 || idplaylist < 0){

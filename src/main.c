@@ -49,6 +49,8 @@ int main()
                         else {
                             unknownCommand();
                         }
+                } else {
+                    unknownCommand();
                 }
             } else if(IsStringEqual(command, "QUEUE")){
                 STARTCOMMAND(true);
@@ -71,7 +73,7 @@ int main()
                         }
                 } else {
                     if(IsStringEqual(nextcommand, "REMOVE")){
-                        STARTCOMMAND(false);
+                        STARTCOMMAND(true);
                         if (IsCommandWithSemicolon(currentCommand))
                             {
                                 handleSemicolon(currentCommand);
@@ -83,15 +85,17 @@ int main()
                     } else if(IsStringEqual(nextcommand, "SWAP")){
                         STARTCOMMAND(true);
                         if(IsCommandWithSemicolon(currentCommand)){
-                            printf("Masukan id selanjutnya!\n");
+                            printf("Masukkan id selanjutnya!\n");
                         } else {
                             int inputval1 = ConvertWordToInt(currentCommand);
-                            STARTCOMMAND(false);
+                            STARTCOMMAND(true);
                             if (IsCommandWithSemicolon(currentCommand))
                             {
                                 handleSemicolon(currentCommand);
                                 int inputval2 = ConvertWordToInt(currentCommand);
                                 QueueSwap(&antrian, inputval1, inputval2);
+                            } else {
+                                unknownCommand();
                             }
                         }
                         
@@ -146,7 +150,7 @@ int main()
                     {
                         unknownCommand();
                     }
-                }else{
+                } else {
                     unknownCommand();
                 }
             }
