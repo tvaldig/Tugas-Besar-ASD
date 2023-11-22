@@ -24,6 +24,8 @@ void startLoadFunction(Word fname, boolean loadiftrue)
     int n, m, l, idSet = 0, laguAlbum = 0;
     MakeEmpty(&ArrayPenyanyi);
     CreateEmptyMap(&mapAlbum);
+    NotPlaying();
+    NotPlayingPlaylist();
     STARTFROMFILE(fname.TabWord); // memulai Mesin Kata
 
     if (finish)
@@ -100,6 +102,9 @@ void startLoadFunction(Word fname, boolean loadiftrue)
         CreateEmptyStack(&Users[a].riwayat); // membuat stack kosong
 
         Users[a].playlists = MakeArrayDin(); // membuat arraydin playlists kosong
+        Users[a].current.album = IdxUndef;
+        Users[a].current.penyanyi = IdxUndef;
+        Users[a].current.lagu = IdxUndef;
     }
   
     if (!finish)
@@ -107,14 +112,22 @@ void startLoadFunction(Word fname, boolean loadiftrue)
         int idxpenyanyi, idxalbum, idxlagu;
         for(int b = 0; b < JumlahUser; b++){
             ADVSEMICOLON();
-            Users[b].current.penyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord);
-            ADVSEMICOLON();
-            Users[b].current.album = searchidalbum(ArrayPenyanyi, Users[b].current.penyanyi, currentWord, mapAlbum);
-            ADVSEMICOLON();
-            Users[b].current.lagu = searchidlagu(SetLagu, mapAlbum, Users[b].current.album, currentWord);
-            ADVOnEnter(false);                 // Mulai membaca sesi bagian queue (antrian)
+            if(UNDEF){
+                Users[b].current.penyanyi = IdxUndef;
+                Users[b].current.album = IdxUndef;
+                Users[b].current.lagu = IdxUndef;
+                UNDEF = false;
+                ADVOnEnter(false);
+            } else {
+                Users[b].current.penyanyi = searchidpenyanyi(ArrayPenyanyi, currentWord);
+                ADVSEMICOLON();
+                Users[b].current.album = searchidalbum(ArrayPenyanyi, Users[b].current.penyanyi, currentWord, mapAlbum);
+                ADVSEMICOLON();
+                Users[b].current.lagu = searchidlagu(SetLagu, mapAlbum, Users[b].current.album, currentWord);
+                ADVOnEnter(false);
+            }
+                             // Mulai membaca sesi bagian queue (antrian)
             n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah antrian (jumlah queue)
-
             for (int i = 0; i < n; i++)
             {
                 ADVSEMICOLON();
@@ -126,7 +139,6 @@ void startLoadFunction(Word fname, boolean loadiftrue)
 
                 enqueue(&Users[b].antrian, idxpenyanyi, idxalbum, idxlagu); // menambahkan idxpenyanyi, idxalbum, idxlagu ke queue antrian
             }
-
             ADVOnEnter(false);                 // mulai membaca sesi bagian riwayat (stack)
             n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah riwayat (jumlah stack)
 
@@ -146,7 +158,6 @@ void startLoadFunction(Word fname, boolean loadiftrue)
 
             ADVOnEnter(false);
             n = ConvertWordToInt(currentWord); // n = berapa banyak jumlah playlist
-
             for (int i = 0; i < n; i++)
             {
                 ADVOnEnter(true);
@@ -169,7 +180,7 @@ void startLoadFunction(Word fname, boolean loadiftrue)
                     addressnode temp = alokasi(idxpenyanyi, idxalbum, idxlagu); // membuat sebuah node baru berisi idxpenyanyi, idxalbum, idxlagu
                     InsertLast(&(Users[b].playlists.A[i]), temp);                        // memasukkan data dari node yang sudah dibuat ke playlists
                 }
-            }
+            } 
         }
     }
 }

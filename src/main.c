@@ -9,8 +9,7 @@ int main()
     char command[100];
     char nextcommand[100];
     //welcomeMenu();
-    NotPlaying();
-    NotPlayingPlaylist();
+    
    
     while(!program){
         printf(">> ");
