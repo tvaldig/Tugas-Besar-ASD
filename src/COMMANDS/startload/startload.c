@@ -187,7 +187,7 @@ void startLoadFunction(Word fname, boolean loadiftrue)
 
 void loginFunction(){
     if(isLogin){
-        printf("Silahkan Logout terlebih dahulu!\n");
+        printf("Silakan Logout terlebih dahulu!\n\n");
     } else{
         printf("Masukkan username user WayangWave : ");
         STARTCOMMAND(false);
