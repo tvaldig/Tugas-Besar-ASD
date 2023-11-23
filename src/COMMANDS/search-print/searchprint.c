@@ -110,7 +110,7 @@ void printCurrent(){
     ConvertWordToString(&NamaAlbum, namaalbum);
     ConvertWordToString(&JudulLaguW, judullagu);
 
-    printf("%s - %s - %s.\n", namapenyanyi, namaalbum, judullagu);
+    printf("%s - %s - %s.\n", namapenyanyi, judullagu, namaalbum);
 }
 
 void displayPlaylist(ArrayDin playlists, int idplaylist){
