@@ -34,7 +34,7 @@ void status(Queue * q, TabInt ArrayP, Set setlagu[], MapAlbum map) {
             ConvertWordToString(&nama, namapenyanyi);
             ConvertWordToString(&mapAlbum.Elements[album].AlbumName, namaalbum);
             ConvertWordToString(&s.AlbumLagu[lagu].JudulLagu, namalagu);
-            printf("%s - %s - %s\n", &namapenyanyi, &namalagu, &namaalbum);
+            printf("%s - %s - %s\n", namapenyanyi, namalagu, namaalbum);
             enqueue(&temp, penyanyi, album, lagu);
             i++;
         }
