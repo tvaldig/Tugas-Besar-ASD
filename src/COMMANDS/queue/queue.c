@@ -1,6 +1,6 @@
 #include "queue.h"
 #include "../startload/startload.h"
-#include "../list/list.h"
+#include "../LIST/list.h"
 
 
 Word SearchJudulFromId(int idalbum, int idlagu){
