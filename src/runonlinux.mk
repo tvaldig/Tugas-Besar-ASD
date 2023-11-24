@@ -7,5 +7,5 @@ run: test
 	./main
 
 clean:
-	rm -f main
+	rm main
 	
