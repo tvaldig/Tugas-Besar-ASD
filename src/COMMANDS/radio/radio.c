@@ -73,7 +73,6 @@ void playRadio(Radio *r){
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
     int idalbum, album, lagu, penyanyi;
-    printf("tes\n");
     for(int i = 0; i < r->RNeff; i++){
         album = getSetLaguFromTemp(r->El[i])-1;
         lagu = searchidlagu(SetLagu, mapAlbum, album, temp[r->El[i]]);
@@ -92,12 +91,13 @@ void radioFunction(){
     int MAX = CountLagu(SetLagu, mapAlbum);
     int n, a = 1, lengthlagu;
     TempLagu(SetLagu, mapAlbum);
+    printf("\n");
     displayAll(SetLagu, mapAlbum);
     Radio rsong;
     Graph g;
     BMatrix MAdj;
     CreateEmptyRadio(&rsong);
-    printf("Silahkan masukan ID lagu yang ingin ditampilkan sebagai radio :");
+    printf("\nSilahkan masukan ID lagu yang ingin ditampilkan sebagai radio :");
     STARTCOMMAND(false);
     if(IsCommandWithSemicolon(currentCommand)){
         handleSemicolon(currentCommand);
@@ -141,15 +141,15 @@ void radioFunction(){
         }
 
         if(IsStringEqual(currentCommand.TabWord, "N;")){
-            printf("Anda keluar dari radio tanpa memutar lagu!\n");
+            printf("\nAnda keluar dari radio tanpa memutar lagu!\n\n");
         } else {
             playRadio(&rsong);
-            printf("Berhasil memutar radio!\n");
+            printf("\nBerhasil memutar radio!\n\n");
         }
 
         CreateEmptyRadio(&rsong);
     }else{
-        printf("kurang semicolon!\n");
+        printf("\nkurang semicolon!\n\n");
     }
 
 }

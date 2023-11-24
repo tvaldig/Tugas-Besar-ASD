@@ -229,11 +229,11 @@ void logoutFunction()
             Users[idLogged].riwayat = riwayat;
             Users[idLogged].playlists = playlists;
             isLogin = false;
-            printf("Berhasil Logout!\n");
+            printf("\nBerhasil Logout!\n\n");
         }
         else
         {
-            printf("Belum Login ke akun.\n");
+            printf("\nBelum Login ke akun.\n\n");
         }
  } 
 

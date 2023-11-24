@@ -30,11 +30,11 @@ boolean checkInSessionCommand(char *command, boolean isLog){
     else if (IsStringEqual(command, "SAVE"))
     {
         if(isLog){
-            return true;
-        } else {
+            printf("\nSilakan logout terlebih dahulu!\n\n");
             return false;
+        } else {
+            return true;
         }
-       
     }
     else if (IsStringEqual(command, "QUIT;"))
     {
@@ -113,7 +113,7 @@ boolean checkCommand(char *command, boolean inSession, boolean isLog) {
                 else
                 {
                     if(!isLog){
-                        printf("Silakan login terlebih dahulu.\n\n");
+                        printf("\nSilakan login terlebih dahulu.\n\n");
                         return false;
                     } else{
                         unknownCommand();
