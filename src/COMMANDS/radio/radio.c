@@ -73,7 +73,6 @@ void playRadio(Radio *r){
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
     int idalbum, album, lagu, penyanyi;
-    printf("tes\n");
     for(int i = 0; i < r->RNeff; i++){
         album = getSetLaguFromTemp(r->El[i])-1;
         lagu = searchidlagu(SetLagu, mapAlbum, album, temp[r->El[i]]);
