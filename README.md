@@ -46,11 +46,6 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │   └───wayangwave.txt                        
 │ 
 ├── src
-│   ├─── boolean.h
-│   ├─── main.c                # implementasi of all commands
-│   ├─── main.exe
-│   ├─── makefile
-│   ├─── testing.mk     
 │   ├─── ADT				   
 │   │      ├─── Linked_List
 │   │      │       ├─── driver-linked-list,c
@@ -98,46 +93,58 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │   │      └─── ADT.h
 │   │
 │   └─── COMMANDS
-│           ├─── LIST
-│           │       ├─── list.c
-│           │       └─── list.h
-│           ├─── enchance
-│           │       ├─── enchance.c
-│           │       └─── enchance.h
-│           ├─── help
-│           │       ├─── help.c
-│           │       └─── help.h
-│           ├─── invalidCommand
-│           │       ├─── invalidCommand.c
-│           │       └─── invalidCommand.h
-│           ├─── play
-│           │       ├─── play.c
-│           │       └─── play.h
-│           ├─── playlist
-│           │       ├─── playlist.c
-│           │       └─── playlist.h
-│           ├─── queue
-│           │       ├─── queue.c
-│           │       └─── queue.h
-│           ├─── save
-│           │       ├─── save.c
-│           │       └─── save.h
-│           ├─── search-print
-│           │       ├─── searchprint.c
-│           │       └─── searchprint.h
-│           ├─── song
-│           │       ├─── song.c
-│           │       └─── song.h
-│           ├─── starload
-│           │       ├─── starload.c
-│           │       └─── starload.h
-│           ├─── status
-│           │       ├─── status.c
-│           │       └─── status.h
-│           ├─── welcomeMenu
-│           │       ├─── welcomemenu.c
-│           │       └─── welcomemenu.h
-│           └─── commands.h
+│   │       ├─── LIST
+│   │       │       ├─── list.c
+│   │       │       └─── list.h
+│   │       ├─── enchance
+│   │       │       ├─── enchance.c
+│   │       │       └─── enchance.h
+│   │       ├─── help
+│   │       │       ├─── help.c
+│   │       │       └─── help.h
+│   │       ├─── invalidCommand
+│   │       │       ├─── invalidCommand.c
+│   │       │       └─── invalidCommand.h
+│   │       ├─── play
+│   │       │       ├─── play.c
+│   │       │       └─── play.h
+│   │       ├─── playlist
+│   │       │       ├─── playlist.c
+│   │       │       └─── playlist.h
+│   │       ├─── queue
+│   │       │       ├─── queue.c
+│   │       │       └─── queue.h
+│   │       ├─── quit
+│   │       │       ├─── quit.c
+│   │       │       ├─── quit.exe
+│   │       │       └─── quit.h
+│   │       ├─── radio
+│   │       │       ├─── radio.c
+│   │       │       └─── radio.h
+│   │       ├─── save
+│   │       │       ├─── save.c
+│   │       │       └─── save.h
+│   │       ├─── search-print
+│   │       │       ├─── searchprint.c
+│   │       │       └─── searchprint.h
+│   │       ├─── song
+│   │       │       ├─── song.c
+│   │       │       └─── song.h
+│   │       ├─── starload
+│   │       │       ├─── starload.c
+│   │       │       └─── starload.h
+│   │       ├─── status
+│   │       │       ├─── status.c
+│   │       │       └─── status.h
+│   │       ├─── welcomeMenu
+│   │       │       ├─── welcomemenu.c
+│   │       │       └─── welcomemenu.h
+│   │       └─── commands.h
+│   │
+│   ├─── boolean.h
+│   ├─── main.c                # implementasi of all commands
+│   ├─── run.mk
+│   └─── runonlinux.mk  
 │
 └─── README.md
  ```
