@@ -61,10 +61,9 @@ Arctic Monkeys;AM;Arabella
 1 Playlist Favorit
 Kodaline;Politics of Living;Head Held High
 -
-3
+2
 Kodaline;Politics of Living;Head Held High
 Taylor Swift;Evermore;Evermore
-Arctic Monkeys;AM;Typa Girl
 2
 Taylor Swift;Evermore;Evermore
 Arctic Monkeys;AM;Arabella
