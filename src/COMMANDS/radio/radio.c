@@ -68,7 +68,7 @@ void playRadio(Radio *r){
         lagu = searchidlagu(SetLagu, mapAlbum, album, temp[r->El[i]]);
         penyanyi = getIDPenyanyiFromAlbum(album);
         enqueue(&antrian, penyanyi, album, lagu);
-        if(i != r->RNeff-1){
+        if(i != 0){
             Push(&riwayat, penyanyi, album, lagu);
         }
     }
