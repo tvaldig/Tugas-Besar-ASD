@@ -56,6 +56,9 @@ void ENHANCE(){
         for (int i = 0; i < number; i++)
         {
             if(countPlaylist(playlists.A[idplaylist]) == NbElmt(ArrayPenyanyi)){
+                if(i == 0){
+                    printf("\nPlaylist sudah memiliki semua lagu. Tidak dapat menjalankan fitur ENHANCE!\n\n");
+                }
                 break;
             }
             do{
