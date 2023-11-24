@@ -1,8 +1,6 @@
 # Tugas-Besar - SPOTIFILE
 ## IF2111 Algoritma dan Struktur Data STI
 
-> Program WayangWave yang dapat meluluhkan hati Roro 
-
 Dibuat oleh Kelompok 1 K01
 
 1. Bihurin Salsabila Firdaus (18222015)
@@ -21,11 +19,7 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 > save/konfigurasi.txt
 
 ## Save File yang Tersedia
-> save/0.txt
-
-> save/1.txt
-
-> save/new.txt
+> Save file sesuai dengan pengguna
 
 ## Struktur Program
 ```
