@@ -66,26 +66,6 @@ void addEdge(Graph *g, int i, int j)
     CONNECTED(*g, j, i) = true;
 }
 
-int countConnections(Graph g, int i)
-{
-    int k, count = 0;
-    ;
-    for (k = 0; k < NUMEDGE(g); k++)
-    {
-        if (CONNECTED(g, i, k) == true && i != k)
-            count++;
-    }
-
-    return count;
-}
-
-void removeEdge(Graph *g, int i, int j)
-{
-    NUMEDGE(*g) -= 1;
-    CONNECTED(*g, i, j) = false;
-    CONNECTED(*g, j, i) = false;
-}
-
 void addVerticesToAll(Graph *g, int k)
 {
     NUMVERTICES(*g) += 1;

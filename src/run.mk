@@ -7,4 +7,4 @@ run: test
 	./main
 
 clean:
-	del main
+	rm main

@@ -143,9 +143,7 @@ void radioFunction(){
         if(IsStringEqual(currentCommand.TabWord, "N;")){
             printf("Anda keluar dari radio tanpa memutar lagu!\n");
         } else {
-            printf("tes\n");
             playRadio(&rsong);
-           
             printf("Berhasil memutar radio!\n");
         }
 

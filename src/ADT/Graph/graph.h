@@ -51,8 +51,6 @@ boolean isDirectlyConnected(Graph g, int i, int j);
 
 void addEdge(Graph *g, int i, int j);
 
-int countConnections(Graph g, int t);
-
 void addVerticesToAll(Graph *g, int i);
 
 #endif
