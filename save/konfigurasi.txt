@@ -1,4 +1,14 @@
-3
+4
+2 BLACKPINK
+4 BORN PINK
+Pink Venom
+Shut Down
+Typa Girl
+Ready For Love
+3 THE ALBUM
+How You Like That
+Ice Cream (with Selena Gomez)
+Bet You Wanna (Feat. Cardi B)
 3 Taylor Swift
 4 Lover
 ME!
@@ -54,7 +64,7 @@ Kodaline;Politics of Living;Head Held High
 3
 Kodaline;Politics of Living;Head Held High
 Taylor Swift;Evermore;Evermore
-Arctic Monkeys;AM;Arabella
+Arctic Monkeys;AM;Typa Girl
 2
 Taylor Swift;Evermore;Evermore
 Arctic Monkeys;AM;Arabella
@@ -62,8 +72,7 @@ Arctic Monkeys;AM;Arabella
 1 Playlist Favorit
 Kodaline;Politics of Living;Head Held High
 -
-2
+1
 Kodaline;Politics of Living;Head Held High
-Kodaline;Politics of Living;Coney Island
 0
 0

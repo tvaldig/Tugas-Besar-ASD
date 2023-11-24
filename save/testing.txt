@@ -1,4 +1,4 @@
-2
+4
 2 BLACKPINK
 4 BORN PINK
 Pink Venom
@@ -9,6 +9,19 @@ Ready For Love
 How You Like That
 Ice Cream (with Selena Gomez)
 Bet You Wanna (Feat. Cardi B)
+3 Taylor Swift
+4 Lover
+ME!
+I Forgot That You Existed
+The Man
+Daylight
+2 Red
+The Last Time
+Starlight
+3 Evermore
+Evermore
+Coney Island
+Willow
 3 Arctic Monkeys
 5 Favourite Worst Nightmare
 Brianstorm
@@ -25,96 +38,44 @@ Pretty Visitors
 Do I Wanna Know?
 R U Mine?
 Arabella
-5
+2 Kodaline
+3 In a Perfect World
+Big Bad World
+Talk
+Way Back When
+2 Politics of Living
+Head Held High
+Born Again
+3
 daviddewanto
 timotiusvivaldi
-rafidhiyaulhaq
 alvinfadhilah
-bihurinsalsabila
-BLACKPINK;THE ALBUM;How You Like That
-14
-BLACKPINK;THE ALBUM;Shut Down
-BLACKPINK;BORN PINK;Pink Venom
-BLACKPINK;BORN PINK;Shut Down
-BLACKPINK;BORN PINK;Typa Girl
-BLACKPINK;BORN PINK;Ready For Love
-BLACKPINK;THE ALBUM;Pink Venom
-BLACKPINK;THE ALBUM;Shut Down
-BLACKPINK;THE ALBUM;Typa Girl
-Arctic Monkeys;Favourite Worst Nightmare;Pink Venom
-Arctic Monkeys;Favourite Worst Nightmare;Shut Down
-Arctic Monkeys;Favourite Worst Nightmare;Typa Girl
-Arctic Monkeys;Favourite Worst Nightmare;Ready For Love
-Arctic Monkeys;Favourite Worst Nightmare;
-Arctic Monkeys;Humbug;Pink Venom
-22
-BLACKPINK;BORN PINK;Ready For Love
-BLACKPINK;BORN PINK;Typa Girl
-BLACKPINK;BORN PINK;Shut Down
-BLACKPINK;BORN PINK;Pink Venom
-BLACKPINK;BORN PINK;Shut Down
-BLACKPINK;BORN PINK;Typa Girl
-BLACKPINK;BORN PINK;Ready For Love
-BLACKPINK;THE ALBUM;How You Like That
-BLACKPINK;THE ALBUM;Ice Cream (with Selena Gomez)
-BLACKPINK;THE ALBUM;Bet You Wanna (Feat. Cardi B)
-Arctic Monkeys;Favourite Worst Nightmare;Brianstorm
-Arctic Monkeys;Favourite Worst Nightmare;Teddy Picker
-Arctic Monkeys;Favourite Worst Nightmare;Fluorescent Adolescent
-Arctic Monkeys;Favourite Worst Nightmare;Old Yellow Bricks
-Arctic Monkeys;Favourite Worst Nightmare;505
-Arctic Monkeys;Humbug;My Propeller
-Arctic Monkeys;Humbug;Crying Lightning
-Arctic Monkeys;Humbug;Secret Door
-Arctic Monkeys;Humbug;Pretty Visitors
-Arctic Monkeys;AM;Do I Wanna Know?
-Arctic Monkeys;AM;R U Mine?
+Kodaline;Politics of Living;Head Held High
+2
+Kodaline;Politics of Living;Head Held High
+Taylor Swift;Evermore;Willow
+2
+Taylor Swift;Evermore;Evermore
+Arctic Monkeys;AM;Arabella
+3
+1 Playlist Favorit
+Kodaline;Politics of Living;Head Held High
+0 test
+
+0 test2
+-
+3
+Kodaline;Politics of Living;Head Held High
+Taylor Swift;Evermore;Evermore
+Arctic Monkeys;AM;Typa Girl
+2
+Taylor Swift;Evermore;Evermore
 Arctic Monkeys;AM;Arabella
 1
-19 TEST
-BLACKPINK;BORN PINK;Pink Venom
-BLACKPINK;BORN PINK;Shut Down
-BLACKPINK;BORN PINK;Typa Girl
-BLACKPINK;BORN PINK;Ready For Love
-BLACKPINK;THE ALBUM;How You Like That
-BLACKPINK;THE ALBUM;Ice Cream (with Selena Gomez)
-BLACKPINK;THE ALBUM;Bet You Wanna (Feat. Cardi B)
-Arctic Monkeys;Favourite Worst Nightmare;Brianstorm
-Arctic Monkeys;Favourite Worst Nightmare;Teddy Picker
-Arctic Monkeys;Favourite Worst Nightmare;Fluorescent Adolescent
-Arctic Monkeys;Favourite Worst Nightmare;Old Yellow Bricks
-Arctic Monkeys;Favourite Worst Nightmare;505
-Arctic Monkeys;Humbug;My Propeller
-Arctic Monkeys;Humbug;Crying Lightning
-Arctic Monkeys;Humbug;Secret Door
-Arctic Monkeys;Humbug;Pretty Visitors
-Arctic Monkeys;AM;Do I Wanna Know?
-Arctic Monkeys;AM;R U Mine?
-Arctic Monkeys;AM;Arabella
+1 Playlist Favorit
+Kodaline;Politics of Living;Head Held High
 -
-0
-0
-0
--
-0
-0
-0
--
-0
-0
-0
-BLACKPINK;BORN PINK;Pink Venom
-3
-BLACKPINK;BORN PINK;Pink Venom
-BLACKPINK;BORN PINK;Shut Down
-BLACKPINK;BORN PINK;Typa Girl
-3
-BLACKPINK;BORN PINK;Shut Down
-BLACKPINK;BORN PINK;Typa Girl
-BLACKPINK;BORN PINK;Ready For Love
 1
-4 test2
-BLACKPINK;BORN PINK;Pink Venom
-BLACKPINK;BORN PINK;Shut Down
-BLACKPINK;BORN PINK;Typa Girl
-BLACKPINK;BORN PINK;Ready For Love
+Kodaline;Politics of Living;Head Held High
+0
+0

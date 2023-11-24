@@ -23,4 +23,6 @@ void displayPlaylist(ArrayDin playlists, int idplaylist);
 
 void displayAll(Set *s, MapAlbum m);
 
+int CountAllLagu(Set *s, MapAlbum m);
+
 #endif
