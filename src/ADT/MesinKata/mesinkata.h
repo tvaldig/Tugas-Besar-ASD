@@ -21,73 +21,91 @@ extern Word currentWord;
 extern boolean EndCommand;
 extern Word currentCommand;
 
+extern boolean UNDEF;
+
 void IgnoreBlanks();
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void STARTWORD();
-/* I.S. : currentChar sembarang
-   F.S. : EndWord = true, dan currentChar = MARK;
-          atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
-
-void ADVWORD();
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
-
-void CopyWord();
-/* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
 void STARTCOMMAND(boolean OnBlank);
 
+/* Mesin kata untuk mengakuisisi kata selanjutnya dengan MARK sebagai new line
+   I.S : currentChar sembarang
+   F.S : currentWord menjadi kata yang telah diakuisi.
+*/
 void ADVCOMMAND();
 
+/* Mesin kata untuk mengakuisisi kata selanjutnya dengan MARK sebagai blank
+   I.S : currentChar sembarang
+   F.S : currentWord menjadi kata yang telah diakuisi.
+*/
 void ADVCOMMANDONBLANK();
- 
+
+ /* Melakukan salin pada mesin kata dengan BLANK untuk dijadikan CurrentWord
+ */
 void CopyCommand();
 
+/* Melakukan salin pada mesin kata tanpa BLANK untuk dijadikan CurrentWord
+ */
 void CopyCommandNotBlank();
 
+/*Mesin kata untuk mengakuisisi kata pada sebuah file konfigurasi
+   I.S : currentChar sembarang
+   F.S : currentWord menjadi kata yang telah diakuisi.
+*/
 void STARTFROMFILE(char *file);
 
+/*Mesin kata untuk mengakuisisi selanjutnya kata pada sebuah file konfigurasi
+   I.S : currentChar sembarang
+   F.S : currentWord menjadi kata yang telah diakuisi.
+*/
 void ADVOnEnter(boolean OnBlank);
 
+/*Melakukan salin kata pada file dengan BLANK
+*/
 void COPYFILE();
 
+/*Melakukan salin kata pada file tanpa BLANK
+ */
 void COPYFILEOnBlank();
 
+/* prosedur untuk melakukan akuisisi kata selanjutnya bila belum berhenti
+*/
 void ADVCONTINUE();
 
-void IgnoreBlankFile();
-
-void displayWord(Word w);
-
-    /* PRIMITIF CONVERTER WORD ATAU STRING*/
-void ConvertWordToString(Word *word, char *output);
-
-boolean IsStringEqual(char str1[], char str2[]);
-
+/* prosedur untuk melakukan copy pada semicolon
+ */
 void COPYFILESEMICOLON();
 
+/* prosedur untuk melakukan akuisisi kata selanjutnya pada semicolon
+ */
 void ADVSEMICOLON();
 
-int ConvertWordToInt(Word word);
-
-Word ConcatString(Word input1, Word input2);
-
+/* prosedur untuk menutup input command
+ */
 void ENDCOMMAND();
 
-boolean IsCommandWithSemicolon(Word command);
+/* Mengabaikan satu atau beberapa BLANK
+   I.S. : currentChar sembarang
+   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+void IgnoreBlankFile();
 
-void handleSemicolon(Word command);
+
+/* PRIMITIF CONVERTER WORD ATAU STRING*/
+void ConvertWordToString(Word *word, char *output); //Convert word menjadi string
+
+boolean IsStringEqual(char str1[], char str2[]); //check string equal
+
+void displayWord(Word w); //print word
+
+int ConvertWordToInt(Word word); // Convert word menjadi integer
+
+Word ConcatString(Word input1, Word input2); //Concat dua buah word
+
+boolean IsCommandWithSemicolon(Word command); // fungsi untuk cek apakah command dengan semicolon
+
+void handleSemicolon(Word command);// prosedur untuk menghapus semicolon
 
 #endif

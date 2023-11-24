@@ -26,35 +26,10 @@ typedef struct
 ArrayDin MakeArrayDin();
 
 /**
- * Destruktor
- * I.S. ArrayDin terdefinisi
- * F.S. array->A terdealokasi
- */
-void DeallocateArrayDin(ArrayDin *array);
-
-/**
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
 boolean IsEmptyArrayDin(ArrayDin array);
-
-/**
- * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
- * Prekondisi: array terdefinisi
- */
-int LengthArrayDin(ArrayDin array);
-
-/**
- * Mengembalikan elemen array L yang ke-I (indeks lojik).
- * Prekondisi: array tidak kosong, i di antara 0..Length(array).
- */
-playlist Get(ArrayDin array, IdxType i);
-
-/**
- * Fungsi untuk mendapatkan kapasitas yang tersedia.
- * Prekondisi: array terdefinisi
- */
-int GetCapacity(ArrayDin array);
 
 /**
  * Fungsi untuk menambahkan elemen baru di index ke-i
@@ -68,12 +43,18 @@ void InsertAt(ArrayDin *array, IdxType i, Word nama);
  */
 void DeleteAt(ArrayDin *array, IdxType i);
 
-void InsertFirstArrayDin(ArrayDin *array, Word nama);
-
+/**
+ * Fungsi untuk menambahkan elemen baru di akhir array.
+ * Prekondisi: array terdefinisi
+ */
 void InsertLastArrayDin(ArrayDin *array, Word nama);
 
-IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist, Word nama);
+IdxType SearchArrayDin(ArrayDin array, IdxType idplaylist);
 
+/**
+ * Menuliskan isi dari array dinamik
+ * jika array kosong, output menjadi []
+ */
 void PrintArrayDin(ArrayDin array);
 
 #endif

@@ -12,7 +12,9 @@ Dibuat oleh Kelompok 1 K01
 5. Timotius Vivaldi Gunawan (18222091)
 
 ## Deskripsi Singkat Laporan
-WayangWave adalah sebuah program aplikasi pemutar musik layaknya walkman. WayangWAve adalah aplikasi WayangWave yang dapat meluluhkan hati Roro. WayangWave dapat dikatakan aplikasi yang dapat menggantikan perangkat lunak di walkman Roro
+
+WayangWave merupakan program simulasi media player layaknya walkman. WayangWave memiliki fitur utama yang dapat dilakukan oleh pengguna yaitu memutar lagu, menampilkan daftar lagu, membuat dan menghapus playlist, mengatur urutan dimainkannya lagu, menampilkan status dari aplikasi. Semua perubahan yang kita lakukan terhadap program pada saat memutar musik seperti menambahkan dan juga menghapus playlist dapat disimpan pada sebuah file.
+
 
 ## Cara Kompilasi Program
 > -C src -f run.mk
@@ -139,5 +141,3 @@ WayangWave adalah sebuah program aplikasi pemutar musik layaknya walkman. Wayang
      ├─── IF2111_TB1_01_01.pdf
      └─── Form Asistensi Tugas Besar_TB1_01_01.pdf
  ```
- 
-

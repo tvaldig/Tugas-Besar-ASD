@@ -4,19 +4,24 @@
 void status(Queue * q, TabInt ArrayP, Set setlagu[], MapAlbum map) {
     Queue temp;
     CreateQueue(&temp);
-    printf("Now Playing:\n");
-    if(!IsNotPlayingPlaylist()){
-        printf("Current Playlist: %s");
+   
+    if(!isNotPlayingPlaylist()){
+        char namaplaylist[100];
+        Word NamaPlaylist = GetNamaPlaylist(playlists, currentIdPlaylist);
+        ConvertWordToString(&NamaPlaylist, namaplaylist);
+        printf("Current Playlist: %s.\n", namaplaylist);
     }
+    printf("\n");
+    printf("Now Playing:\n");
     if(isNotPlaying()){
-         printf("No songs have been played yet. Please search for a song to begin playback.\n");
+         printf("Belum pernah ada lagu yang dimainkan. Gunakan fitur PLAY dan SONG untuk memainkan lagu.\n");
     } else {
         printCurrent();
     }
     printf("\n"); 
     printf("Queue: \n");
     if (IsEmptyQueue(*q)) {
-        printf("Your queue is empty.\n");
+        printf("Queue kosong.\n\n");
     } else {
         int i = 1;
         IdxType penyanyi, album, lagu;
@@ -29,7 +34,7 @@ void status(Queue * q, TabInt ArrayP, Set setlagu[], MapAlbum map) {
             ConvertWordToString(&nama, namapenyanyi);
             ConvertWordToString(&mapAlbum.Elements[album].AlbumName, namaalbum);
             ConvertWordToString(&s.AlbumLagu[lagu].JudulLagu, namalagu);
-            printf("%s - %s - %s\n", &namapenyanyi, &namalagu, &namaalbum);
+            printf("%s - %s - %s\n", namapenyanyi, namalagu, namaalbum);
             enqueue(&temp, penyanyi, album, lagu);
             i++;
         }
@@ -37,5 +42,7 @@ void status(Queue * q, TabInt ArrayP, Set setlagu[], MapAlbum map) {
             dequeue(&temp, &penyanyi, &album, &lagu);
             enqueue(q, penyanyi, album, lagu);
         }
+
+        printf("\n");
     }
 }

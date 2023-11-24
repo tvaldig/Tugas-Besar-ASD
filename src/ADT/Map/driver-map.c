@@ -4,26 +4,44 @@
 
 /* Prototype */
 int main(){
-    MapAlbum M;
-    Album I;
-    CreateMapEmpty(&M);
-    I.Key = stringToWord("Berbagia aku");
-    I.Value = 4;
+    MapAlbum Map;
+    Album album;
+    CreateEmptyMap(&Map);
 
-    Insert(&M, I.Key, I.Value);
-
-    if (IsMemberMap(M, I.Key)){
-        printf("k merupakan member dari M\n");
-    } else {
-        printf("k bukan merupakan member dari M\n");
+    if(IsEmptyMap(Map)){
+        printf("\nFungsi IsEmptyMap() berhasil di tes.\n\n");
     }
-    
-    Delete(&M, I.Key);
 
-    if (Value(M, I.Key) == I.Value){
-        printf("v merupakan value dari key k dalam M\n");
-    } else {
-        printf("v bukan merupakan value dari key k dalam M\n"); 
+    
+    printf("Masukkan Key dari Map: ");
+    scanf("%d", &(album.Key));
+    printf("Masukkan Value dari Map: ");
+    scanf("%d", &(album.Value));
+    
+    while(album.Key == album.Value){
+        printf("\nNilai Key dan Value tidak boleh sama!\n");
+        printf("Masukkan Key dari Map: ");
+        scanf("%d", &(album.Key));
+        printf("Masukkan Value dari Map: ");
+        scanf("%d", &(album.Value));
+    }
+
+    char temp;
+    scanf("%c", &temp); // untuk menghilangkan \n dari proses pengambilan kata
+
+    printf("Masukkan nama album: ");
+    STARTCOMMAND(false);
+
+    InsertMap(&Map, album.Key, album.Value, currentCommand);
+
+    printf("\nMasukkan Key yang ingin dicari Valuenya: ");
+    scanf("%d", &(album.Key));
+
+    if(Value(Map, album.Key) == album.Key){ // Sudah dibuat peraturan dalam program bahwa Key dan Value tidak boleh sama ketika diinsert ke dalam Map
+        printf("Key yang diinput belum pernah diinisialisasi, value gagal ditemukan!\n\n");
+    }else{
+        printf("\nValue dari Key yang dicari:%d\n", Value(Map, album.Key));
+        printf("Nama album dari Key yang dicari:%s\n\n", Map.Elements[0].AlbumName.TabWord);
     }
 
     return 0;

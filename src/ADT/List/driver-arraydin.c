@@ -1,4 +1,5 @@
 #include "arraydin.h"
+#include "../MesinKata/mesinkata.h"
 #include <stdio.h>
 
 void delayoutput(){
@@ -13,10 +14,10 @@ int main(){
 
     /* Tes MakeArrayDin dan IsEmptyArrayDin */
     temp = MakeArrayDin();
-    printf("Sebuah array dinamik berhasil diinialisasi\n");
+    printf("\nSebuah array dinamik berhasil diinialisasi\n");
 
     if(IsEmptyArrayDin(temp)){
-        printf("Array tersebut kosong\n");
+        printf("\nFungsi IsEmptyArrayDin() berhasil di tes!\n\n");
     }
 
     PrintArrayDin(temp);
@@ -26,30 +27,27 @@ int main(){
     /* Tes Insert */
     delayoutput();
 
-    IdxType penyanyi, album, lagu;
-    printf("Masukkan IDX penyanyi: ");
-    scanf("%d", &penyanyi);
-    printf("Masukkan IDX album: ");
-    scanf("%d", &album);
-    printf("Masukkan IDX lagu: ");
-    scanf("%d", &lagu);
+    char removeenter;
+    scanf("%c", &removeenter);
 
-    InsertFirstArrayDin(&temp, penyanyi, album, lagu);
-    InsertLastArrayDin(&temp, penyanyi, album, lagu);
-    printf("Berhasil di masukkan ke dalam Array Dinamis sebagai elemen pertama dan terakhir\n");
+    printf("Masukkan nama playlist: ");
+    STARTCOMMAND(false);
+    Word playlist = currentCommand;
+
+    InsertLastArrayDin(&temp, playlist);
+    printf("Berhasil di masukkan ke dalam Array Dinamis sebagai elemen pertama\n");
     PrintArrayDin(temp);
     printf("\n");
 
     delayoutput();
 
-    printf("Masukkan IDX penyanyi: ");
-    scanf("%d", &penyanyi);
-    printf("Masukkan IDX album: ");
-    scanf("%d", &album);
-    printf("Masukkan IDX lagu: ");
-    scanf("%d", &lagu);
+    scanf("%c", &removeenter);
 
-    InsertAt(&temp, penyanyi, album, lagu, 1);
+    printf("Masukkan nama playlist: ");
+    STARTCOMMAND(false);
+    playlist = currentCommand;
+
+    InsertAt(&temp, 1, playlist);
     printf("Berhasil di masukkan ke dalam Array Dinamis sebagai elemen kedua\n");
 
     PrintArrayDin(temp);
@@ -58,17 +56,16 @@ int main(){
     /* Tes Search */
     delayoutput();
 
-    printf("Masukkan elemen yang ingin dicari\n");
-    printf("Masukkan IDX penyanyi: ");
-    scanf("%d", &penyanyi);
-    printf("Masukkan IDX album: ");
-    scanf("%d", &album);
-    printf("Masukkan IDX lagu: ");
-    scanf("%d", &lagu);
+    IdxType idplaylist;
+    printf("Masukkan IDX playlist yang ingin dicari\n");
+    printf("Masukkan IDX playlist: ");
+    scanf("%d", &idplaylist);
 
-    printf("\nElemen ada di IDX: %d\n", SearchArrayDin(temp, penyanyi, album, lagu));
-    PrintArrayDin(temp);
-    printf("\n");
+    if(SearchArrayDin(temp, idplaylist) == -1){
+        printf("\nIDX playlist %d tidak ditemukan.\n\n", idplaylist);
+    }else{
+        printf("\nIDX playlist %d ditemukan.\n\n", idplaylist);
+    }
 
     /* Tes Delete */
     delayoutput();
@@ -77,9 +74,9 @@ int main(){
     while(!IsEmptyArrayDin(temp)){
         DeleteAt(&temp, 0);
     }
-
     PrintArrayDin(temp);
-    DeallocateArrayDin(&temp);
-    printf("Proses dealokasi berhasil dilakukan\n");
+
+    printf("\nPengetesan arraydin.c berhasil !\n\n");
+
     return 0;
 }

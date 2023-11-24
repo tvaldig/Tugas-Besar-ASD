@@ -86,6 +86,20 @@ Word GetJudulLagu(Set SetLagu[], Word namaalbum, int idlagu, int idpenyanyi)
     }
     return NotFound;
 }
+
+Word GetNamaPlaylist(ArrayDin Playlists, int idplaylist){
+    boolean found = false;
+    Word NotFound = {"NOTFOUND", 8};
+    int i = 0;
+    
+    while(i < Playlists.Neff && !found){
+        if(i == idplaylist){
+            return Playlists.A[i].namaplaylist;
+        }
+        i++;
+    }
+    return NotFound;
+}
 void printCurrent(){
     char judullagu[100], namaalbum[100], namapenyanyi[100];
     Word NamaPenyanyi = GetNamaPenyanyi(ArrayPenyanyi, current.penyanyi);
@@ -96,5 +110,40 @@ void printCurrent(){
     ConvertWordToString(&NamaAlbum, namaalbum);
     ConvertWordToString(&JudulLaguW, judullagu);
 
-    printf("%s - %s - %s.\n", namapenyanyi, namaalbum, judullagu);
+    printf("%s - %s - %s.\n", namapenyanyi, judullagu, namaalbum);
+}
+
+void displayPlaylist(ArrayDin playlists, int idplaylist){
+    playlist ply = playlists.A[idplaylist];
+    if(!IsEmptyLinkedList(ply)){
+        addressnode P = First(ply);
+        printf("-----------------------\n");
+        printf("| %s\n", ply.namaplaylist.TabWord);
+        printf("-----------------------\n");
+        printf("PENYANYI | ALBUM | LAGU\n");
+        printf("-----------------------\n");
+        do
+        {
+            printf("%s | %s | %s\n", ArrayPenyanyi.penyanyi[PENYANYI(P)].namapenyanyi.TabWord, mapAlbum.Elements[ALBUM(P)].AlbumName.TabWord, SetLagu[Value(mapAlbum, ALBUM(P))].AlbumLagu[LAGU(P)].JudulLagu.TabWord);
+            P = Next(P);
+
+        } while (P != null);
+    } else {
+        printf("Playlist kosong.\n");
+    }
+    
+}
+
+void displayAll(Set *s, MapAlbum m){
+    printf("DAFTAR SELURUH LAGU DALAM SESI INI : \n");
+    int idx = 0, idset;
+    for(int i = 0; i < m.Count; i++){
+        idset = Value(m, i);
+        printf("%s : \n", m.Elements[i].AlbumName.TabWord);
+        for(int j = 0; j < s[Value(m, i)].Count; j++){
+            printf(" %d. %s\n", idx + 1, s[idset].AlbumLagu[j].JudulLagu.TabWord);
+            idx++;
+        }
+    }
+    
 }

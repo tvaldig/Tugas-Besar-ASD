@@ -14,5 +14,8 @@
 #include "./play/play.h"
 #include "./song/song.h"
 #include "./status/status.h"
+#include "./quit/quit.h"
+#include "./enhance/enhance.h"
+#include "./radio/radio.h"
 
 #endif

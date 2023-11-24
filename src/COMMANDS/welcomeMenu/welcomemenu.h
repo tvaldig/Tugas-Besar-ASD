@@ -2,9 +2,10 @@
 #define WELCOME_H
 
 #include "../../ADT/ADT.h"
-void delay();
 /*prosedur delay terminal*/
-void welcomeMenu();
+void delay();
 /*prosedur membuka program dengan message berupa file txt*/
+void welcomeMenu();
+
 
 #endif

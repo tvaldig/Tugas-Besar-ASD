@@ -8,7 +8,7 @@ void SongNext(){
     char namaPenyanyi[100];
     char judulLagu[100];
     if (isNotPlaying() && IsEmptyQueue (antrian)){
-        printf("Queue kosong dan tidak ada lagu yang sedang dimainkan\n");
+        printf("\nQueue kosong dan tidak ada lagu yang sedang dimainkan\n\n");
     }
     else if (IsEmptyQueue(antrian)){
         //Mencari Judul Lagu yang sedang dimainkan
@@ -22,13 +22,14 @@ void SongNext(){
         ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
 
         //Output
-        printf("Queue kosong, memutar kembali lagu\n");
-        printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
+        printf("\nQueue kosong, memutar kembali lagu\n");
+        printf("\"%s\" oleh \"%s\"\n\n", judulLagu, namaPenyanyi);
     }
     else{
         //Memasukkan lagu yang dimainkan ke riwayat
+        if(!isNotPlaying()){
         Push(&riwayat, current.penyanyi, current.album, current.lagu);
-
+        }
         //Mengganti lagu yang dimainkan menjadi lagu selanjutnya dalam antrian
         dequeue(&antrian, &(&current)->penyanyi, &(&current)->album, &(&current)->lagu);
         
@@ -44,8 +45,8 @@ void SongNext(){
         ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
 
         //Output
-        printf("Memutar lagu selanjutnya\n");
-        printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
+        printf("\nMemutar lagu selanjutnya\n");
+        printf("\"%s\" oleh \"%s\"\n\n", judulLagu, namaPenyanyi);
     }
 }
 
@@ -56,7 +57,7 @@ void SongPrevious(){
      char namaPenyanyi[100];
      char judulLagu[100];
      if (isNotPlaying() && IsEmptyStack (riwayat)){
-         printf("Riwayat lagu kosong dan tidak ada lagu yang sedang dimainkan\n");
+         printf("\nRiwayat lagu kosong dan tidak ada lagu yang sedang dimainkan\n\n");
      }
      if(IsEmptyStack(riwayat)){
          //Mencari Judul Lagu yang sedang dimainkan
@@ -70,8 +71,8 @@ void SongPrevious(){
          ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
 
          //Output
-         printf("Riwayat lagu kosong, memutar kembali lagu\n");
-         printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
+         printf("\nRiwayat lagu kosong, memutar kembali lagu\n");
+         printf("\"%s\" oleh \"%s\"\n\n", judulLagu, namaPenyanyi);
      }
      else {
          //Membuat temporary queue agar lagu yang dimainkan bisa ditaruh di head
@@ -82,11 +83,14 @@ void SongPrevious(){
          CreateQueue(&temp);
 
          //Memasukkan lagu yang dimainkan ke temp dan memasukkan sisanya dari antrian
+         if(!isNotPlaying()){
          enqueue(&temp, current.penyanyi, current.album, current.lagu);
+        }
          while (!IsEmptyQueue(antrian)){
              dequeue(&antrian, &penyanyitemp, &albumtemp, &lagutemp);
              enqueue(&temp, penyanyitemp, albumtemp, lagutemp);
-         }
+        }
+    
 
          //Memindahkan kembali isi temp ke antrian
          while(!IsEmptyQueue(temp)){
@@ -108,7 +112,7 @@ void SongPrevious(){
          ConvertWordToString(&NamaPenyanyi, namaPenyanyi);
 
          //Output
-         printf("Memutar lagu sebelumnya\n");
-         printf("\"%s\" oleh \"%s\"\n", judulLagu, namaPenyanyi);
+         printf("\nMemutar lagu sebelumnya\n");
+         printf("\"%s\" oleh \"%s\"\n\n", judulLagu, namaPenyanyi);
      }
 }

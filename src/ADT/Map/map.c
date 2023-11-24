@@ -18,13 +18,6 @@ boolean IsEmptyMap(MapAlbum M)
 /* Mengirim true jika MapAlbum M kosong*/
 /* Ciri MapAlbum kosong : count bernilai Nil */
 
-boolean IsFullMap(MapAlbum M)
-{
-    return M.Count == MaxEl;
-}
-/* Mengirim true jika MapAlbum M penuh */
-/* Ciri MapAlbum penuh : count bernilai MaxEl */
-
 /* ********** Operator Dasar MapAlbum ********* */
 valuetype Value(MapAlbum M, keytype k)
 {
@@ -66,26 +59,6 @@ void InsertMap(MapAlbum *M,  keytype k, valuetype v, Word albumname)
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
-
-boolean IsMemberMap(MapAlbum M, keytype k)
-{
-    int i = 0;
-    boolean found = false;
-    while (i < M.Count && !found)
-    {
-        if (M.Elements[i].Key == k)
-        {
-            found = true;
-        }
-        else
-        {
-            i++;
-        }
-    }
-    return found;
-}
-
-/* Mengembalikan true jika k adalah member dari M */
 
 void PrintMap(MapAlbum M){
     if(IsEmptyMap(M)){

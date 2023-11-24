@@ -1,11 +1,10 @@
 3
 3 Taylor Swift
-5 Lover
+4 Lover
 ME!
 I Forgot That You Existed
 The Man
 Daylight
-The Man
 2 Red
 The Last Time
 Starlight
@@ -38,6 +37,21 @@ Way Back When
 Head Held High
 Born Again
 3
+daviddewanto
+timotiusvivaldi
+alvinfadhilah
+Kodaline;Politics of Living;Head Held High
+2
+Kodaline;Politics of Living;Head Held High
+Taylor Swift;Evermore;Willow
+2
+Taylor Swift;Evermore;Evermore
+Arctic Monkeys;AM;Arabella
+1
+1 Playlist Favorit
+Kodaline;Politics of Living;Head Held High
+-
+3
 Kodaline;Politics of Living;Head Held High
 Taylor Swift;Evermore;Evermore
 Arctic Monkeys;AM;Arabella
@@ -47,3 +61,9 @@ Arctic Monkeys;AM;Arabella
 1
 1 Playlist Favorit
 Kodaline;Politics of Living;Head Held High
+-
+2
+Kodaline;Politics of Living;Head Held High
+Kodaline;Politics of Living;Coney Island
+0
+0
