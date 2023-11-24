@@ -55,6 +55,9 @@ void ENHANCE(){
 
         for (int i = 0; i < number; i++)
         {
+            if(countPlaylist(playlists.A[idplaylist]) == NbElmt(ArrayPenyanyi)){
+                break;
+            }
             do{
                 delaytime();
                 numpenyanyi = tauswortheNumberGenerator(0, ArrayPenyanyi.Neff);
