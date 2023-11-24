@@ -123,7 +123,7 @@ void radioFunction(){
         MakeMatrix(rsong.RNeff, rsong.RNeff, &g.adjacencyMatrix);
         printf("\nRadio dari lagu  \"%s\" :\n", temp[rsong.El[0]].TabWord);
         for(int i = 0; i < ADJMaxtrix(g).NBrsEff; i++){
-           addVertices(&g, i);
+           addVerticesToAll(&g, i);
            if (isDirectlyConnected(g, 0, i))
            {
                printf("%d. %s\n", i, temp[rsong.El[i]].TabWord);
