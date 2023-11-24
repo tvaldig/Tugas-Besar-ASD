@@ -8,7 +8,7 @@ int main()
     boolean program = false;
     char command[100];
     char nextcommand[100];
-    //welcomeMenu();
+    welcomeMenu();
     while(!program){
         printf(">> ");
         STARTCOMMAND(true);

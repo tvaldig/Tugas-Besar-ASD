@@ -7,4 +7,4 @@ run: test
 	./main.exe
 
 clean:
-	rm main
+	del main
