@@ -46,49 +46,65 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │   └───wayangwave.txt                        
 │ 
 ├── src
-│   ├─── ADT				   
+│   ├─── ADT
+│   │      ├─── Graph
+│   │      │       ├─── driver-graph.c
+│   │      │       ├─── graph.c
+│   │      │       ├─── graph.h
+│   │      │       └─── graph.mk
+│   │      │				   
 │   │      ├─── Linked_List
-│   │      │       ├─── driver-linked-list,c
+│   │      │       ├─── driver-linked-list.c
 │   │      │       ├─── linked_list.c
 │   │      │       ├─── linked_list.h
-│   │      │       └───  makefile
+│   │      │       └─── linkedlist.mk
 │   │      │
 │   │      ├─── List
 │   │      │       ├─── array.c
 │   │      │       ├─── array.h
+│   │      │       ├─── array.mk
 │   │      │       ├─── arraydin.c
 │   │      │       ├─── arraydin.h
 │   │      │       ├─── arraydin.mk
+│   │      │       ├─── driver-array.c
 │   │      │       └─── driver-arraydin.c
 │   │      │
 │   │      ├─── Map
-│   │      │       ├─── map.c
-│   │      │       └───  map.h
+│   │      │      ├─── driver-map.c
+│   │      │      ├─── map.c
+│   │      │      ├─── map.h
+│   │      │      └─── map.mk
 │   │      │
 │   │      ├─── MesinKarakter
+│   │      │       ├─── driver-mesin-karakter.c
+│   │      │       ├─── driver.txt
 │   │      │       ├─── mesinkarakter.c
-│   │      │       └─── mesinkarakter.h
+│   │      │       ├─── mesinkarakter.h
+│   │      │       ├─── mesinkarakter.mk
+│   │      │       └─── new.txt
 │   │      │
 │   │      ├─── MesinKata
+│   │      │       ├─── driver-mesin-kata.c
 │   │      │       ├─── mesinkata.c
-│   │      │       └───  mesinkata.h
+│   │      │       ├─── mesinkata.h
+│   │      │       └─── mesinkata.mk
 │   │      │
 │   │      ├─── Queue
 │   │      │       ├─── circular_queue.c
 │   │      │       ├─── circular_queue.h
-│   │      │       ├───  driver-queue.c
-│   │      │       └─── makefile
+│   │      │       ├─── driver-queue.c
+│   │      │       └─── queue.mk
 │   │      │
 │   │      └─── Set
 │   │      │       ├─── driver-set.c
-│   │      │       ├─── main.exe
-│   │      │       ├───  set.c
-│   │      │       └─── set.h
+│   │      │       ├─── set.c
+│   │      │       ├─── set.h
+│   │      │       └─── set.mk
 │   │      └─── Stack
 │   │      │      ├─── driver-stack.c
-│   │      │      ├─── makefile
 │   │      │      ├─── stack.c
-│   │      │      └─── stack.h
+│   │      │      ├─── stack.h
+│   │      │      └─── stack.mk
 │   │      │ 
 │   │      └─── ADT.h
 │   │
