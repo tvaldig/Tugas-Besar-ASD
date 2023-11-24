@@ -31,6 +31,66 @@ timotiusvivaldi
 rafidhiyaulhaq
 alvinfadhilah
 bihurinsalsabila
+BLACKPINK;THE ALBUM;How You Like That
+14
+BLACKPINK;THE ALBUM;Shut Down
+BLACKPINK;BORN PINK;Pink Venom
+BLACKPINK;BORN PINK;Shut Down
+BLACKPINK;BORN PINK;Typa Girl
+BLACKPINK;BORN PINK;Ready For Love
+BLACKPINK;THE ALBUM;Pink Venom
+BLACKPINK;THE ALBUM;Shut Down
+BLACKPINK;THE ALBUM;Typa Girl
+Arctic Monkeys;Favourite Worst Nightmare;Pink Venom
+Arctic Monkeys;Favourite Worst Nightmare;Shut Down
+Arctic Monkeys;Favourite Worst Nightmare;Typa Girl
+Arctic Monkeys;Favourite Worst Nightmare;Ready For Love
+Arctic Monkeys;Favourite Worst Nightmare;
+Arctic Monkeys;Humbug;Pink Venom
+22
+BLACKPINK;BORN PINK;Ready For Love
+BLACKPINK;BORN PINK;Typa Girl
+BLACKPINK;BORN PINK;Shut Down
+BLACKPINK;BORN PINK;Pink Venom
+BLACKPINK;BORN PINK;Shut Down
+BLACKPINK;BORN PINK;Typa Girl
+BLACKPINK;BORN PINK;Ready For Love
+BLACKPINK;THE ALBUM;How You Like That
+BLACKPINK;THE ALBUM;Ice Cream (with Selena Gomez)
+BLACKPINK;THE ALBUM;Bet You Wanna (Feat. Cardi B)
+Arctic Monkeys;Favourite Worst Nightmare;Brianstorm
+Arctic Monkeys;Favourite Worst Nightmare;Teddy Picker
+Arctic Monkeys;Favourite Worst Nightmare;Fluorescent Adolescent
+Arctic Monkeys;Favourite Worst Nightmare;Old Yellow Bricks
+Arctic Monkeys;Favourite Worst Nightmare;505
+Arctic Monkeys;Humbug;My Propeller
+Arctic Monkeys;Humbug;Crying Lightning
+Arctic Monkeys;Humbug;Secret Door
+Arctic Monkeys;Humbug;Pretty Visitors
+Arctic Monkeys;AM;Do I Wanna Know?
+Arctic Monkeys;AM;R U Mine?
+Arctic Monkeys;AM;Arabella
+1
+19 TEST
+BLACKPINK;BORN PINK;Pink Venom
+BLACKPINK;BORN PINK;Shut Down
+BLACKPINK;BORN PINK;Typa Girl
+BLACKPINK;BORN PINK;Ready For Love
+BLACKPINK;THE ALBUM;How You Like That
+BLACKPINK;THE ALBUM;Ice Cream (with Selena Gomez)
+BLACKPINK;THE ALBUM;Bet You Wanna (Feat. Cardi B)
+Arctic Monkeys;Favourite Worst Nightmare;Brianstorm
+Arctic Monkeys;Favourite Worst Nightmare;Teddy Picker
+Arctic Monkeys;Favourite Worst Nightmare;Fluorescent Adolescent
+Arctic Monkeys;Favourite Worst Nightmare;Old Yellow Bricks
+Arctic Monkeys;Favourite Worst Nightmare;505
+Arctic Monkeys;Humbug;My Propeller
+Arctic Monkeys;Humbug;Crying Lightning
+Arctic Monkeys;Humbug;Secret Door
+Arctic Monkeys;Humbug;Pretty Visitors
+Arctic Monkeys;AM;Do I Wanna Know?
+Arctic Monkeys;AM;R U Mine?
+Arctic Monkeys;AM;Arabella
 -
 0
 0
@@ -43,11 +103,18 @@ bihurinsalsabila
 0
 0
 0
--
-0
-0
-0
--
-0
-0
-0
+BLACKPINK;BORN PINK;Pink Venom
+3
+BLACKPINK;BORN PINK;Pink Venom
+BLACKPINK;BORN PINK;Shut Down
+BLACKPINK;BORN PINK;Typa Girl
+3
+BLACKPINK;BORN PINK;Shut Down
+BLACKPINK;BORN PINK;Typa Girl
+BLACKPINK;BORN PINK;Ready For Love
+1
+4 test2
+BLACKPINK;BORN PINK;Pink Venom
+BLACKPINK;BORN PINK;Shut Down
+BLACKPINK;BORN PINK;Typa Girl
+BLACKPINK;BORN PINK;Ready For Love

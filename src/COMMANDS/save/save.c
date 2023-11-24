@@ -139,6 +139,9 @@ void SAVE(){
                         WRITESEMICOLON();
                         int idxset = Value(mapAlbum, indeksalbum);
                         WRITESTRING(SetLagu[idxset].AlbumLagu[indekslagu].JudulLagu.TabWord);
+                        if(j < jumlahlagu-1){
+                            WRITEENTER();
+                        }
                     }
                 }
             }
