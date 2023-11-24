@@ -12,9 +12,11 @@ Dibuat oleh Kelompok 1 K01
 ## Deskripsi Singkat Laporan
 WayangWave merupakan program simulasi media player layaknya walkman. WayangWave memiliki fitur utama yang dapat dilakukan oleh pengguna yaitu memutar lagu, menampilkan daftar lagu, membuat dan menghapus playlist, mengatur urutan dimainkannya lagu, menampilkan status dari aplikasi. Semua perubahan yang kita lakukan terhadap program pada saat memutar musik seperti menambahkan dan juga menghapus playlist dapat disimpan pada sebuah file.
 
-## Cara Kompilasi Program
-> -C src -f run.mk
+## Cara RUN Program
+> make -C src -f run.mk
 
+## Cara RUN Driver
+> make -C src/ADT/{nama-ADT} -f {nama-ADT}.mk
 ## Configuration File yang Tersedia
 > save/konfigurasi.txt
 
@@ -38,7 +40,7 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │   ├─── 0.txt
 │   ├─── 1.txt
 │   ├─── konfigurasi.txt	  # config yang akan dibaca
-│   ├─── new.txt		      # file yang disimpan oleh user
+│   ├─── new.txt		      
 │   └─── wayangwave.txt                        
 │ 
 ├── src
