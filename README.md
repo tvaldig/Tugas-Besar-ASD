@@ -136,8 +136,8 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │
 ├── README.md
 └── docs 
-     ├─── Spesifikasi Tugas Besar IF2111 2023/2024.pdf
+     ├─── Form Asistensi Tugas Besar_TB1_01_01.pdf
      ├─── IF2111_TB1_01_01.pdf
-     └─── Form Asistensi Tugas Besar_TB1_01_01.pdf
+     └─── Spesifikasi Tugas Besar IF2111 2023/2024.pdf 
  ```
  
