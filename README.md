@@ -21,9 +21,11 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 > save/konfigurasi.txt
 
 ## Save File yang Tersedia
-> save/new.txt
+> save/0.txt
 
-> save/test.txt
+> save/1.txt
+
+> save/new.txt
 
 ## Struktur Program
 ```
@@ -43,7 +45,7 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │   ├─── 1.txt
 │   ├─── konfigurasi.txt	  # config yang akan dibaca
 │   ├─── new.txt		      # file yang disimpan oleh user
-│   └───wayangwave.txt                        
+│   └─── wayangwave.txt                        
 │ 
 ├── src
 │   ├─── ADT
