@@ -32,26 +32,30 @@ int tauswortheNumberGenerator(int min, int max){
 
 void ENHANCE(){
     printf("\n");
-    PrintArrayDin(playlists);
-    printf("\nMasukan ID playlist yang ingin di-enhance : ");
-    STARTCOMMAND(false);
-    handleSemicolon(currentCommand);
-    int idplaylist = ConvertWordToInt(currentCommand);
-    if(SearchArrayDin(playlists, idplaylist) == -1){
-        printf("\nGagal. Playlist tidak ditemukan.\n\n");
-    } else{
-        displayPlaylist(playlists, idplaylist);
+    if(playlists.Neff != 0){
+        PrintArrayDin(playlists);
+        printf("\nMasukan ID playlist yang ingin di-enhance : ");
+        STARTCOMMAND(false);
+        handleSemicolon(currentCommand);
+        int idplaylist = ConvertWordToInt(currentCommand);
+        if (SearchArrayDin(playlists, idplaylist) == -1)
+        {
+            printf("\nGagal. Playlist tidak ditemukan.\n\n");
+        }
+        else
+        {
+            displayPlaylist(playlists, idplaylist);
 
-        printf("\nRekomendasi Lagu yang dapat ditambahkan:\n");
-        int number = tauswortheNumberGenerator(3, 5);
-        int temppenyanyi[number];
-        int tempalbum[number];
-        int templagu[number];
+            printf("\nRekomendasi Lagu yang dapat ditambahkan:\n");
+            int number = tauswortheNumberGenerator(3, 5);
+            int temppenyanyi[number];
+            int tempalbum[number];
+            int templagu[number];
 
-        int numpenyanyi, idalbumpertama, jumlahalbum, numalbum, numlagu;
-        Penyanyi P;
-        Album A;
-        Word judullagu;
+            int numpenyanyi, idalbumpertama, jumlahalbum, numalbum, numlagu;
+            Penyanyi P;
+            Album A;
+            Word judullagu;
 
         for (int i = 0; i < number; i++)
         {
@@ -68,32 +72,38 @@ void ENHANCE(){
                 idalbumpertama = P.IdAlbumPertama;
                 jumlahalbum = P.jumlahalbum;
 
-                numalbum = tauswortheNumberGenerator(idalbumpertama, idalbumpertama + jumlahalbum);
-                A = mapAlbum.Elements[numalbum];
+                    numalbum = tauswortheNumberGenerator(idalbumpertama, idalbumpertama + jumlahalbum);
+                    A = mapAlbum.Elements[numalbum];
 
-                delaytime();
-                numlagu = tauswortheNumberGenerator(0, SetLagu[Value(mapAlbum, A.Key)].Count);
-                judullagu = SetLagu[Value(mapAlbum, A.Key)].AlbumLagu[numlagu].JudulLagu;
-            }while(IsMember(playlists.A[idplaylist], numpenyanyi, numalbum, numlagu));
+                    delaytime();
+                    numlagu = tauswortheNumberGenerator(0, SetLagu[Value(mapAlbum, A.Key)].Count);
+                    judullagu = SetLagu[Value(mapAlbum, A.Key)].AlbumLagu[numlagu].JudulLagu;
+                } while (IsMember(playlists.A[idplaylist], numpenyanyi, numalbum, numlagu));
 
-            printf("%d. %s - %s - %s\n", i + 1, P.namapenyanyi.TabWord, A.AlbumName.TabWord, judullagu.TabWord);
-            temppenyanyi[i] = numpenyanyi;
-            tempalbum[i] = numalbum;
-            templagu[i] = numlagu;
+                printf("%d. %s - %s - %s\n", i + 1, P.namapenyanyi.TabWord, A.AlbumName.TabWord, judullagu.TabWord);
+                temppenyanyi[i] = numpenyanyi;
+                tempalbum[i] = numalbum;
+                templagu[i] = numlagu;
+            }
+            printf("\nMasukkan ID rekomendasi yang diinginkan : ");
+            STARTCOMMAND(false);
+            handleSemicolon(currentCommand);
+            int id = ConvertWordToInt(currentCommand);
+            if (id < 1 || id > number)
+            {
+                printf("\nGagal memasukan rekomendasi, ID tidak ditemukan\n\n");
+            }
+            else
+            {
+                id--;
+                InsertUnique(&(playlists.A[idplaylist]), temppenyanyi[id], tempalbum[id], templagu[id]);
+                printf("\nLagu berhasil ditambahkan!\n\n");
+                displayPlaylist(playlists, idplaylist);
+                printf("\n");
+            }
         }
-        printf("\nMasukkan ID rekomendasi yang diinginkan : ");
-        STARTCOMMAND(false);
-        handleSemicolon(currentCommand);
-        int id = ConvertWordToInt(currentCommand);
-        if(id < 1 || id > number){
-            printf("\nGagal memasukan rekomendasi, ID tidak ditemukan\n\n");
-        } else{
-            id--;
-            InsertUnique(&(playlists.A[idplaylist]), temppenyanyi[id], tempalbum[id], templagu[id]);
-            printf("\nLagu berhasil ditambahkan!\n\n");
-            displayPlaylist(playlists, idplaylist);
-            printf("\n");
-        }
+    } else {
+        printf("Tidak dapat ENHANCE, silahkan membuat playlist terlebih dahulu.\n");
     }
 
 }

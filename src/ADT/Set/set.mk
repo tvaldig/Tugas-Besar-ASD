@@ -4,7 +4,7 @@ driver:
 	gcc -o main driver-set.c set.c ../MesinKata/mesinkata.c ../MesinKarakter/mesinkarakter.c
 
 run: driver
-	./main.exe
+	./main
 
 clean:
-	del main.exe
+	rm main
