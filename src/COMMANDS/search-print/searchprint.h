@@ -21,4 +21,6 @@ void printCurrent();
 
 void displayPlaylist(ArrayDin playlists, int idplaylist);
 
+void displayAll(Set *s, MapAlbum m);
+
 #endif

@@ -133,3 +133,17 @@ void displayPlaylist(ArrayDin playlists, int idplaylist){
     }
     
 }
+
+void displayAll(Set *s, MapAlbum m){
+    printf("DAFTAR SELURUH LAGU DALAM SESI INI : \n");
+    int idx = 0, idset;
+    for(int i = 0; i < m.Count; i++){
+        idset = Value(m, i);
+        printf("%s : \n", m.Elements[i].AlbumName.TabWord);
+        for(int j = 0; j < s[Value(m, i)].Count; j++){
+            printf(" %d. %s\n", idx + 1, s[idset].AlbumLagu[j].JudulLagu.TabWord);
+            idx++;
+        }
+    }
+    
+}

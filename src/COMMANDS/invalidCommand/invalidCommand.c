@@ -43,6 +43,8 @@ boolean checkInSessionCommand(char *command, boolean isLog){
     else if (IsStringEqual(command, "ENHANCE;") && isLog)
     {
         return true;
+    } else if(IsStringEqual(command, "RADIO;") && isLog){
+        return true;
     }
     else if (IsStringEqual(command, "LOGIN;"))
     {

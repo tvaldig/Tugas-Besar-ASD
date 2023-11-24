@@ -10,6 +10,7 @@
 #include "./Stack/stack.h"
 #include "./Map/map.h"
 #include "./Set/set.h"
+#include "./Graph/graph.h"
 
 
 #endif
