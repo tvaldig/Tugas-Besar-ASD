@@ -56,45 +56,54 @@ void ENHANCE(){
             Penyanyi P;
             Album A;
             Word judullagu;
+            boolean full = false;
 
             for (int i = 0; i < number; i++)
             {
-                do
-                {
+                if(countPlaylist(playlists.A[idplaylist]) == CountAllLagu(SetLagu, mapAlbum)){
+                    if(i == 0){
+                        printf("\nPlaylist sudah memiliki semua lagu. Tidak dapat menjalankan fitur ENHANCE!\n\n");
+                        full = true;
+                    }
+                    break;
+                }
+                do{
                     delaytime();
                     numpenyanyi = tauswortheNumberGenerator(0, ArrayPenyanyi.Neff);
                     P = ArrayPenyanyi.penyanyi[numpenyanyi];
                     idalbumpertama = P.IdAlbumPertama;
                     jumlahalbum = P.jumlahalbum;
 
-                    numalbum = tauswortheNumberGenerator(idalbumpertama, idalbumpertama + jumlahalbum);
-                    A = mapAlbum.Elements[numalbum];
+                        numalbum = tauswortheNumberGenerator(idalbumpertama, idalbumpertama + jumlahalbum);
+                        A = mapAlbum.Elements[numalbum];
 
-                    delaytime();
-                    numlagu = tauswortheNumberGenerator(0, SetLagu[Value(mapAlbum, A.Key)].Count);
-                    judullagu = SetLagu[Value(mapAlbum, A.Key)].AlbumLagu[numlagu].JudulLagu;
-                } while (IsMember(playlists.A[idplaylist], numpenyanyi, numalbum, numlagu));
+                        delaytime();
+                        numlagu = tauswortheNumberGenerator(0, SetLagu[Value(mapAlbum, A.Key)].Count);
+                        judullagu = SetLagu[Value(mapAlbum, A.Key)].AlbumLagu[numlagu].JudulLagu;
+                    } while (IsMember(playlists.A[idplaylist], numpenyanyi, numalbum, numlagu));
 
-                printf("%d. %s - %s - %s\n", i + 1, P.namapenyanyi.TabWord, A.AlbumName.TabWord, judullagu.TabWord);
-                temppenyanyi[i] = numpenyanyi;
-                tempalbum[i] = numalbum;
-                templagu[i] = numlagu;
+                    printf("%d. %s - %s - %s\n", i + 1, P.namapenyanyi.TabWord, A.AlbumName.TabWord, judullagu.TabWord);
+                    temppenyanyi[i] = numpenyanyi;
+                    tempalbum[i] = numalbum;
+                    templagu[i] = numlagu;
             }
-            printf("\nMasukkan ID rekomendasi yang diinginkan : ");
-            STARTCOMMAND(false);
-            handleSemicolon(currentCommand);
-            int id = ConvertWordToInt(currentCommand);
-            if (id < 1 || id > number)
-            {
-                printf("\nGagal memasukan rekomendasi, ID tidak ditemukan\n\n");
-            }
-            else
-            {
-                id--;
-                InsertUnique(&(playlists.A[idplaylist]), temppenyanyi[id], tempalbum[id], templagu[id]);
-                printf("\nLagu berhasil ditambahkan!\n\n");
-                displayPlaylist(playlists, idplaylist);
-                printf("\n");
+            if(!full){
+                printf("\nMasukkan ID rekomendasi yang diinginkan : ");
+                STARTCOMMAND(false);
+                handleSemicolon(currentCommand);
+                int id = ConvertWordToInt(currentCommand);
+                if (id < 1 || id > number)
+                {
+                    printf("\nGagal memasukan rekomendasi, ID tidak ditemukan\n\n");
+                }
+                else
+                {
+                    id--;
+                    InsertUnique(&(playlists.A[idplaylist]), temppenyanyi[id], tempalbum[id], templagu[id]);
+                    printf("\nLagu berhasil ditambahkan!\n\n");
+                    displayPlaylist(playlists, idplaylist);
+                    printf("\n");
+                }
             }
         }
     } else {

@@ -50,36 +50,24 @@ Born Again
 daviddewanto
 timotiusvivaldi
 alvinfadhilah
-Kodaline;Politics of Living;Born Again
-10
-Taylor Swift;Red;The Last Time
-Taylor Swift;Red;Starlight
-Taylor Swift;Evermore;Evermore
-Taylor Swift;Evermore;Coney Island
-Taylor Swift;Evermore;Willow
-Arctic Monkeys;Favourite Worst Nightmare;Brianstorm
-Arctic Monkeys;Favourite Worst Nightmare;Teddy Picker
-Arctic Monkeys;Favourite Worst Nightmare;Fluorescent Adolescent
-Arctic Monkeys;Favourite Worst Nightmare;Old Yellow Bricks
-Arctic Monkeys;Favourite Worst Nightmare;505
-10
-Taylor Swift;Red;The Last Time
-Taylor Swift;Red;Starlight
-Taylor Swift;Evermore;Evermore
-Taylor Swift;Evermore;Coney Island
-Taylor Swift;Evermore;Willow
-Arctic Monkeys;Favourite Worst Nightmare;Brianstorm
-Arctic Monkeys;Favourite Worst Nightmare;Teddy Picker
-Arctic Monkeys;Favourite Worst Nightmare;Fluorescent Adolescent
-Arctic Monkeys;Favourite Worst Nightmare;Old Yellow Bricks
-Arctic Monkeys;Favourite Worst Nightmare;505
-1
-1 Playlist Favorit
 Kodaline;Politics of Living;Head Held High
--
 2
 Kodaline;Politics of Living;Head Held High
+Taylor Swift;Evermore;Willow
+2
 Taylor Swift;Evermore;Evermore
+Arctic Monkeys;AM;Arabella
+3
+1 Playlist Favorit
+Kodaline;Politics of Living;Head Held High
+0 test
+
+0 test2
+-
+3
+Kodaline;Politics of Living;Head Held High
+Taylor Swift;Evermore;Evermore
+Arctic Monkeys;AM;Typa Girl
 2
 Taylor Swift;Evermore;Evermore
 Arctic Monkeys;AM;Arabella

@@ -58,7 +58,7 @@ void SAVE(){
         }
         for (int a = 0; a < JumlahUser; a++)
         {
-            if (isNotPlaying() || Users[a].current.album == IdxUndef)
+            if (Users[a].current.album == IdxUndef)
             {
                 WRITESTRING("-");
                 WRITEENTER();
@@ -78,14 +78,13 @@ void SAVE(){
             WRITEINT(panjangantrian);
 
             WRITEENTER();
-
             for (int i = 0; i < panjangantrian; i++)
             {
                 WRITESTRING(ArrayPenyanyi.penyanyi[Users[a].antrian.Tab[i].penyanyi].namapenyanyi.TabWord);
                 WRITESEMICOLON();
                 WRITESTRING(mapAlbum.Elements[Users[a].antrian.Tab[i].album].AlbumName.TabWord);
                 WRITESEMICOLON();
-                int idxset = Value(mapAlbum, antrian.Tab[i].album);
+                int idxset = Value(mapAlbum, Users[a].antrian.Tab[i].album);
                 WRITESTRING(SetLagu[idxset].AlbumLagu[Users[a].antrian.Tab[i].lagu].JudulLagu.TabWord);
                 WRITEENTER();
             }
@@ -120,7 +119,7 @@ void SAVE(){
                     WRITEBLANK();
                     WRITESTRING(Users[a].playlists.A[i].namaplaylist.TabWord);
 
-                    if (jumlahlagu != 0 || i != Users[a].playlists.Neff - 1)
+                    if (jumlahlagu != 0)
                     {
                         WRITEENTER();
                     }
@@ -139,6 +138,12 @@ void SAVE(){
                         WRITESEMICOLON();
                         int idxset = Value(mapAlbum, indeksalbum);
                         WRITESTRING(SetLagu[idxset].AlbumLagu[indekslagu].JudulLagu.TabWord);
+                        if(j < jumlahlagu-1){
+                            WRITEENTER();
+                        }
+                    }
+                    if(i < Users[a].playlists.Neff-1){
+                        WRITEENTER();
                     }
                 }
             }

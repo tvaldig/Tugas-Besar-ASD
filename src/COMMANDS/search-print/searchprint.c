@@ -147,3 +147,16 @@ void displayAll(Set *s, MapAlbum m){
     }
     
 }
+
+int CountAllLagu(Set *s, MapAlbum m)
+{
+    int count = 0;
+    for (int i = 0; i < m.Count; i++)
+    {
+        for (int j = 0; j < s[Value(m, i)].Count; j++)
+        {
+            count++;
+        }
+    }
+    return count;
+}

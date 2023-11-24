@@ -187,9 +187,9 @@ void startLoadFunction(Word fname, boolean loadiftrue)
 
 void loginFunction(){
     if(isLogin){
-        printf("Silakan Logout terlebih dahulu!\n\n");
+        printf("\nSilakan Logout terlebih dahulu!\n\n");
     } else{
-        printf("Masukkan username user WayangWave : ");
+        printf("\nMasukkan username user WayangWave : ");
         STARTCOMMAND(false);
         if (IsCommandWithSemicolon(currentCommand))
         {
@@ -197,7 +197,7 @@ void loginFunction(){
             idLogged = SearchUser(Users, currentCommand);
             if (idLogged == -999)
             {
-                printf("Username tidak ditemukan!\n");
+                printf("\nUsername tidak ditemukan!\n");
             }
             else
             {
@@ -208,7 +208,7 @@ void loginFunction(){
                 riwayat = Users[idLogged].riwayat;
                 playlists = Users[idLogged].playlists;
                 isLogin = true;
-                printf("Berhasil Login dengan user %s!\n", currentCommand.TabWord);
+                printf("\nBerhasil Login dengan user %s!\n\n", currentCommand.TabWord);
             }
         }
         else
@@ -229,11 +229,11 @@ void logoutFunction()
             Users[idLogged].riwayat = riwayat;
             Users[idLogged].playlists = playlists;
             isLogin = false;
-            printf("Berhasil Logout!\n");
+            printf("\nBerhasil Logout!\n\n");
         }
         else
         {
-            printf("Belum Login ke akun.\n");
+            printf("\nBelum Login ke akun.\n\n");
         }
  } 
 

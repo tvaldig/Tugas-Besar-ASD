@@ -2,18 +2,7 @@
 
 
 Word temp[RMAX];
-int CountLagu(Set *s, MapAlbum m)
-{
-    int count = 0;
-    for (int i = 0; i < m.Count; i++)
-    {
-        for (int j = 0; j < s[Value(m, i)].Count; j++)
-        {
-            count++;
-        }
-    }
-    return count;
-}
+
 
 void TempLagu(Set *s, MapAlbum m)
 {
@@ -60,7 +49,7 @@ int getSetLaguFromTemp(int id){
 int getIDPenyanyiFromAlbum(int idalbum){
     int check = 0;
     for(int i = 0; i < ArrayPenyanyi.Neff; i++){
-        for (int j = ArrayPenyanyi.penyanyi->IdAlbumPertama; j < ArrayPenyanyi.penyanyi->IdAlbumPertama + ArrayPenyanyi.penyanyi->jumlahalbum;j++){
+        for (int j = ArrayPenyanyi.penyanyi[i].IdAlbumPertama; j < ArrayPenyanyi.penyanyi[i].IdAlbumPertama + ArrayPenyanyi.penyanyi[i].jumlahalbum;j++){
             if(check == idalbum){
                 return i;
             }
@@ -72,13 +61,14 @@ int getIDPenyanyiFromAlbum(int idalbum){
 void playRadio(Radio *r){
     CreateQueue(&antrian);
     CreateEmptyStack(&riwayat);
+    NotPlayingPlaylist();
     int idalbum, album, lagu, penyanyi;
     for(int i = 0; i < r->RNeff; i++){
         album = getSetLaguFromTemp(r->El[i])-1;
         lagu = searchidlagu(SetLagu, mapAlbum, album, temp[r->El[i]]);
         penyanyi = getIDPenyanyiFromAlbum(album);
         enqueue(&antrian, penyanyi, album, lagu);
-        if(i != r->RNeff-1){
+        if(i != 0){
             Push(&riwayat, penyanyi, album, lagu);
         }
     }
@@ -88,15 +78,16 @@ void playRadio(Radio *r){
     dequeue(&antrian, &(&current)->penyanyi, &(&current)->album, &(&current)->lagu);
 }
 void radioFunction(){
-    int MAX = CountLagu(SetLagu, mapAlbum);
+    int MAX = CountAllLagu(SetLagu, mapAlbum);
     int n, a = 1, lengthlagu;
     TempLagu(SetLagu, mapAlbum);
+    printf("\n");
     displayAll(SetLagu, mapAlbum);
     Radio rsong;
     Graph g;
     BMatrix MAdj;
     CreateEmptyRadio(&rsong);
-    printf("Silahkan masukan ID lagu yang ingin ditampilkan sebagai radio :");
+    printf("\nSilahkan masukan ID lagu yang ingin ditampilkan sebagai radio : ");
     STARTCOMMAND(false);
     if(IsCommandWithSemicolon(currentCommand)){
         handleSemicolon(currentCommand);
@@ -140,15 +131,15 @@ void radioFunction(){
         }
 
         if(IsStringEqual(currentCommand.TabWord, "N;")){
-            printf("Anda keluar dari radio tanpa memutar lagu!\n");
+            printf("\nAnda keluar dari radio tanpa memutar lagu!\n\n");
         } else {
             playRadio(&rsong);
-            printf("Berhasil memutar radio!\n");
+            printf("\nBerhasil memutar radio!\n\n");
         }
 
         CreateEmptyRadio(&rsong);
     }else{
-        printf("kurang semicolon!\n");
+        printf("\nkurang semicolon!\n\n");
     }
 
 }
