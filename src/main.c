@@ -9,8 +9,6 @@ int main()
     char command[100];
     char nextcommand[100];
     //welcomeMenu();
-    
-   
     while(!program){
         printf(">> ");
         STARTCOMMAND(true);
@@ -189,7 +187,9 @@ int main()
             else if (IsStringEqual(command, "ENHANCE;"))
             {
                 ENHANCE();
-            }      
+            } else if(IsStringEqual(command, "RADIO;")){
+                radioFunction();
+            }   
         }
     }
 }

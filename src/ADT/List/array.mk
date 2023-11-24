@@ -7,4 +7,4 @@ run: driver
 	./main
 
 clean:
-	del main.exe
+	rm main
