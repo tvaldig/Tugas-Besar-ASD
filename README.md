@@ -12,7 +12,9 @@ Dibuat oleh Kelompok 1 K01
 5. Timotius Vivaldi Gunawan (18222091)
 
 ## Deskripsi Singkat Laporan
+
 WayangWave merupakan program simulasi media player layaknya walkman. WayangWave memiliki fitur utama yang dapat dilakukan oleh pengguna yaitu memutar lagu, menampilkan daftar lagu, membuat dan menghapus playlist, mengatur urutan dimainkannya lagu, menampilkan status dari aplikasi. Semua perubahan yang kita lakukan terhadap program pada saat memutar musik seperti menambahkan dan juga menghapus playlist dapat disimpan pada sebuah file.
+
 
 ## Cara Kompilasi Program
 > -C src -f run.mk
@@ -32,20 +34,19 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │   ├─── c_cpp_properties.json		    
 │   ├─── launch.json		     
 │   └─── settings.json                   
-│
-├── docs 
-│    ├─── Form Asistensi Tugas Besar_TB1_01_01.pdf
-│    ├─── IF2111_TB1_01_01.pdf
-│    └─── Spesifikasi Tugas Besar IF2111 2023/2024.pdf 
-│
+│ 		       
 ├── save
-│   ├─── 0.txt
-│   ├─── 1.txt
 │   ├─── konfigurasi.txt	  # config yang akan dibaca
-│   ├─── new.txt		      # file yang disimpan oleh user
+│   ├─── new.txt		      # file yang disimpan oleh user1
+│   ├─── test.txt	          # file yang disimpan oleh user2
 │   └───wayangwave.txt                        
 │ 
-├── src
+├── source
+│   ├─── boolean.h
+│   ├─── main.c                # implementasi of all commands
+│   ├─── main.exe
+│   ├─── makefile
+│   ├─── testing.mk     
 │   ├─── ADT				   
 │   │      ├─── Linked_List
 │   │      │       ├─── driver-linked-list,c
@@ -93,59 +94,50 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │   │      └─── ADT.h
 │   │
 │   └─── COMMANDS
-│   │       ├─── LIST
-│   │       │       ├─── list.c
-│   │       │       └─── list.h
-│   │       ├─── enchance
-│   │       │       ├─── enchance.c
-│   │       │       └─── enchance.h
-│   │       ├─── help
-│   │       │       ├─── help.c
-│   │       │       └─── help.h
-│   │       ├─── invalidCommand
-│   │       │       ├─── invalidCommand.c
-│   │       │       └─── invalidCommand.h
-│   │       ├─── play
-│   │       │       ├─── play.c
-│   │       │       └─── play.h
-│   │       ├─── playlist
-│   │       │       ├─── playlist.c
-│   │       │       └─── playlist.h
-│   │       ├─── queue
-│   │       │       ├─── queue.c
-│   │       │       └─── queue.h
-│   │       ├─── quit
-│   │       │       ├─── quit.c
-│   │       │       ├─── quit.exe
-│   │       │       └─── quit.h
-│   │       ├─── radio
-│   │       │       ├─── radio.c
-│   │       │       └─── radio.h
-│   │       ├─── save
-│   │       │       ├─── save.c
-│   │       │       └─── save.h
-│   │       ├─── search-print
-│   │       │       ├─── searchprint.c
-│   │       │       └─── searchprint.h
-│   │       ├─── song
-│   │       │       ├─── song.c
-│   │       │       └─── song.h
-│   │       ├─── starload
-│   │       │       ├─── starload.c
-│   │       │       └─── starload.h
-│   │       ├─── status
-│   │       │       ├─── status.c
-│   │       │       └─── status.h
-│   │       ├─── welcomeMenu
-│   │       │       ├─── welcomemenu.c
-│   │       │       └─── welcomemenu.h
-│   │       └─── commands.h
-│   │
-│   ├─── boolean.h
-│   ├─── main.c                # implementasi of all commands
-│   ├─── run.mk
-│   └─── runonlinux.mk  
+│           ├─── LIST
+│           │       ├─── list.c
+│           │       └─── list.h
+│           ├─── enchance
+│           │       ├─── enchance.c
+│           │       └─── enchance.h
+│           ├─── help
+│           │       ├─── help.c
+│           │       └─── help.h
+│           ├─── invalidCommand
+│           │       ├─── invalidCommand.c
+│           │       └─── invalidCommand.h
+│           ├─── play
+│           │       ├─── play.c
+│           │       └─── play.h
+│           ├─── playlist
+│           │       ├─── playlist.c
+│           │       └─── playlist.h
+│           ├─── queue
+│           │       ├─── queue.c
+│           │       └─── queue.h
+│           ├─── save
+│           │       ├─── save.c
+│           │       └─── save.h
+│           ├─── search-print
+│           │       ├─── searchprint.c
+│           │       └─── searchprint.h
+│           ├─── song
+│           │       ├─── song.c
+│           │       └─── song.h
+│           ├─── starload
+│           │       ├─── starload.c
+│           │       └─── starload.h
+│           ├─── status
+│           │       ├─── status.c
+│           │       └─── status.h
+│           ├─── welcomeMenu
+│           │       ├─── welcomemenu.c
+│           │       └─── welcomemenu.h
+│           └─── commands.h
 │
-└─── README.md
+├── README.md
+└── docs 
+     ├─── Spesifikasi Tugas Besar IF2111 2023/2024.pdf
+     ├─── IF2111_TB1_01_01.pdf
+     └─── Form Asistensi Tugas Besar_TB1_01_01.pdf
  ```
- 
