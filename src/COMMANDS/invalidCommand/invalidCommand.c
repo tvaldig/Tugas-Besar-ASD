@@ -113,7 +113,7 @@ boolean checkCommand(char *command, boolean inSession, boolean isLog) {
                 else
                 {
                     if(!isLog){
-                        printf("Silahkan login terlebih dahulu.\n");
+                        printf("Silakan login terlebih dahulu.\n\n");
                         return false;
                     } else{
                         unknownCommand();
