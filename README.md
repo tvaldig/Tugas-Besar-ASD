@@ -32,7 +32,12 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │   ├─── c_cpp_properties.json		    
 │   ├─── launch.json		     
 │   └─── settings.json                   
-│ 		       
+│
+├── docs 
+│    ├─── Form Asistensi Tugas Besar_TB1_01_01.pdf
+│    ├─── IF2111_TB1_01_01.pdf
+│    └─── Spesifikasi Tugas Besar IF2111 2023/2024.pdf 
+│
 ├── save
 │   ├─── 0.txt
 │   ├─── 1.txt
@@ -40,7 +45,7 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │   ├─── new.txt		      # file yang disimpan oleh user
 │   └───wayangwave.txt                        
 │ 
-├── source
+├── src
 │   ├─── boolean.h
 │   ├─── main.c                # implementasi of all commands
 │   ├─── main.exe
@@ -134,10 +139,6 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │           │       └─── welcomemenu.h
 │           └─── commands.h
 │
-├── README.md
-└── docs 
-     ├─── Form Asistensi Tugas Besar_TB1_01_01.pdf
-     ├─── IF2111_TB1_01_01.pdf
-     └─── Spesifikasi Tugas Besar IF2111 2023/2024.pdf 
+└─── README.md
  ```
  
