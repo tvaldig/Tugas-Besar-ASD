@@ -12,7 +12,7 @@ Dibuat oleh Kelompok 1 K01
 5. Timotius Vivaldi Gunawan (18222091)
 
 ## Deskripsi Singkat Laporan
-Spotifile adalah sebuah program aplikasi pemutar musik layaknya walkman. Spotifile adalah aplikasi WayangWave yang dapat meluluhkan hati Roro. Spotifile dapat dikatakan aplikasi yang dapat menggantikan perangkat lunak di walkman Roro
+WayangWave adalah sebuah program aplikasi pemutar musik layaknya walkman. Spotifile adalah aplikasi WayangWave yang dapat meluluhkan hati Roro. Spotifile dapat dikatakan aplikasi yang dapat menggantikan perangkat lunak di walkman Roro
 
 ## Cara Kompilasi Program
 > -C src -f run.mk
