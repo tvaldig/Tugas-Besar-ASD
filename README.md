@@ -1,6 +1,7 @@
 # Tugas-Besar - SPOTIFILE
 ## IF2111 Algoritma dan Struktur Data STI
 
+> Program WayangWave yang dapat meluluhkan hati Roro 
 
 Dibuat oleh Kelompok 1 K01
 
@@ -14,7 +15,7 @@ Dibuat oleh Kelompok 1 K01
 Spotifile adalah sebuah program aplikasi pemutar musik layaknya walkman. Spotifile adalah aplikasi WayangWave yang dapat meluluhkan hati Roro. Spotifile dapat dikatakan aplikasi yang dapat menggantikan perangkat lunak di walkman Roro
 
 ## Cara Kompilasi Program
-> gcc -o main main.c COMMANDS/welcomeMenu/welcomemenu.c COMMANDS/list/list.c COMMANDS/play/play.c COMMANDS/save/save.c COMMANDS/song/song.c COMMANDS/playlist/playlist.c  COMMANDS/queue/queue.c  COMMANDS/search-print/searchprint.c COMMANDS/startload/startload.c ADT/MesinKata/mesinkata.c ADT/MesinKarakter/mesinkarakter.c ADT/List/array.c COMMANDS/invalidCommand/invalidCommand.c COMMANDS/help/help.c ./ADT/Queue/circular_queue.c ./ADT/Stack/stack.c ./ADT/List/arraydin.c ./ADT/Linked-List/linked_list.c ./ADT/Map/map.c ./ADT/Set/set.c 
+> -C src -f run.mk
 
 ## Configuration File yang Tersedia
 > save/konfigurasi.txt
@@ -132,7 +133,11 @@ Spotifile adalah sebuah program aplikasi pemutar musik layaknya walkman. Spotifi
 │           │       └─── welcomemenu.h
 │           └─── commands.h
 │
-└─── README.md
+├── README.md
+└── docs 
+     ├─── Spesifikasi Tugas Besar IF2111 2023/2024.pdf
+     ├─── IF2111_TB1_01_01.pdf
+     └─── Form Asistensi Tugas Besar_TB1_01_01.pdf
  ```
  
 
