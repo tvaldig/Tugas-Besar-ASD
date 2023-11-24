@@ -1,8 +1,6 @@
 # Tugas-Besar - SPOTIFILE
 ## IF2111 Algoritma dan Struktur Data STI
 
-> Program WayangWave yang dapat meluluhkan hati Roro 
-
 Dibuat oleh Kelompok 1 K01
 
 1. Bihurin Salsabila Firdaus (18222015)
@@ -15,17 +13,17 @@ Dibuat oleh Kelompok 1 K01
 
 WayangWave merupakan program simulasi media player layaknya walkman. WayangWave memiliki fitur utama yang dapat dilakukan oleh pengguna yaitu memutar lagu, menampilkan daftar lagu, membuat dan menghapus playlist, mengatur urutan dimainkannya lagu, menampilkan status dari aplikasi. Semua perubahan yang kita lakukan terhadap program pada saat memutar musik seperti menambahkan dan juga menghapus playlist dapat disimpan pada sebuah file.
 
+## Cara RUN Program
+> make -C src -f run.mk
 
-## Cara Kompilasi Program
-> -C src -f run.mk
+## Cara RUN Driver
+> make -C src/ADT/{nama-ADT} -f {nama-ADT}.mk
 
 ## Configuration File yang Tersedia
 > save/konfigurasi.txt
 
 ## Save File yang Tersedia
-> save/new.txt
-
-> save/test.txt
+> Save file sesuai dengan pengguna
 
 ## Struktur Program
 ```
@@ -37,59 +35,69 @@ WayangWave merupakan program simulasi media player layaknya walkman. WayangWave 
 │ 		       
 ├── save
 │   ├─── konfigurasi.txt	  # config yang akan dibaca
-│   ├─── new.txt		      # file yang disimpan oleh user1
-│   ├─── test.txt	          # file yang disimpan oleh user2
-│   └───wayangwave.txt                        
+│   ├─── new.txt		      
+│   └─── wayangwave.txt                        
 │ 
-├── source
-│   ├─── boolean.h
-│   ├─── main.c                # implementasi of all commands
-│   ├─── main.exe
-│   ├─── makefile
-│   ├─── testing.mk     
-│   ├─── ADT				   
+├── src
+│   ├─── ADT
+│   │      ├─── Graph
+│   │      │       ├─── driver-graph.c
+│   │      │       ├─── graph.c
+│   │      │       ├─── graph.h
+│   │      │       └─── graph.mk
+│   │      │				   
 │   │      ├─── Linked_List
-│   │      │       ├─── driver-linked-list,c
+│   │      │       ├─── driver-linked-list.c
 │   │      │       ├─── linked_list.c
 │   │      │       ├─── linked_list.h
-│   │      │       └───  makefile
+│   │      │       └─── linkedlist.mk
 │   │      │
 │   │      ├─── List
 │   │      │       ├─── array.c
 │   │      │       ├─── array.h
+│   │      │       ├─── array.mk
 │   │      │       ├─── arraydin.c
 │   │      │       ├─── arraydin.h
 │   │      │       ├─── arraydin.mk
+│   │      │       ├─── driver-array.c
 │   │      │       └─── driver-arraydin.c
 │   │      │
 │   │      ├─── Map
-│   │      │       ├─── map.c
-│   │      │       └───  map.h
+│   │      │      ├─── driver-map.c
+│   │      │      ├─── map.c
+│   │      │      ├─── map.h
+│   │      │      └─── map.mk
 │   │      │
 │   │      ├─── MesinKarakter
+│   │      │       ├─── driver-mesin-karakter.c
+│   │      │       ├─── driver.txt
 │   │      │       ├─── mesinkarakter.c
-│   │      │       └─── mesinkarakter.h
+│   │      │       ├─── mesinkarakter.h
+│   │      │       ├─── mesinkarakter.mk
+│   │      │       └─── new.txt
 │   │      │
 │   │      ├─── MesinKata
+│   │      │       ├─── driver-mesin-kata.c
 │   │      │       ├─── mesinkata.c
-│   │      │       └───  mesinkata.h
+│   │      │       ├─── mesinkata.h
+│   │      │       └─── mesinkata.mk
 │   │      │
 │   │      ├─── Queue
 │   │      │       ├─── circular_queue.c
 │   │      │       ├─── circular_queue.h
-│   │      │       ├───  driver-queue.c
-│   │      │       └─── makefile
+│   │      │       ├─── driver-queue.c
+│   │      │       └─── queue.mk
 │   │      │
 │   │      └─── Set
 │   │      │       ├─── driver-set.c
-│   │      │       ├─── main.exe
-│   │      │       ├───  set.c
-│   │      │       └─── set.h
+│   │      │       ├─── set.c
+│   │      │       ├─── set.h
+│   │      │       └─── set.mk
 │   │      └─── Stack
 │   │      │      ├─── driver-stack.c
-│   │      │      ├─── makefile
 │   │      │      ├─── stack.c
-│   │      │      └─── stack.h
+│   │      │      ├─── stack.h
+│   │      │      └─── stack.mk
 │   │      │ 
 │   │      └─── ADT.h
 │   │
